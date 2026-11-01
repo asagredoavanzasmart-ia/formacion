@@ -12,6 +12,12 @@ export const notasEquipos: Record<string, string> = {
 <p><span style="background-color:#fde68a">Diseñar un equipo de ventas no es dibujar un organigrama bonito; es construir un sistema que produzca ingresos de forma predecible.</span></p>
 <p><em>Si tuvieras que armar hoy un equipo de ventas desde cero, ¿por dónde empezarías?</em></p>`,
 
+  'eq-intro': `
+<p>Un equipo se diseña <strong>como un edificio</strong>: si tu equipo trabaja cada vez más y vende cada vez menos, el problema probablemente no está en las personas, sino en cómo está armado. No basta con contratar buenos vendedores y ponerlos bajo un jefe; hay que decidir cómo entra el cliente, quién hace qué, cómo viaja la información y qué sostiene todo cuando nadie está mirando.</p>
+<p>Por eso el equipo se piensa como cuatro piezas que encajan: <strong>un módulo de adquisición</strong>, que trae a los clientes; <strong>un motor de habilitación</strong>, que prepara a las personas; <strong>un flujo de valor</strong>, que hace avanzar cada cuenta, y <strong>una interfaz de crecimiento</strong>, que permite escalar sin desorden.</p>
+<p><span style="background-color:#fde68a">Tres palabras resumen el cambio: aplanamiento, habilitación y agilidad.</span></p>
+<p><em>¿Cuántas personas tiene que atravesar hoy una decisión comercial en tu empresa antes de llegar al cliente?</em></p>`,
+
   'eq-diagnostico': `
 <p>Estas cuatro cifras son el diagnóstico, y conviene leerlas juntas. La primera: <strong>6,2 meses</strong> de Ramp Time. Es lo que tarda un ejecutivo nuevo en rendir al 100% de su cuota; mientras tanto cuesta dinero y todavía no lo produce.</p>
 <p>Al lado, solo el <strong>48%</strong> de los AE logra su cuota: más de la mitad del equipo no cubre ni su propio costo. La más reveladora es la <strong>brecha de ejecución de 53 puntos</strong>: el 89% de las empresas tiene sus procesos escritos, pero solo el 36% los aplica de verdad frente al cliente. Y cierra el cuadro el <strong>46%</strong> del talento joven que dice no recibir feedback.</p>

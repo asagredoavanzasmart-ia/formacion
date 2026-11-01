@@ -32,7 +32,6 @@ import SlideOfferIntro from './components/SlideOfferIntro';
 import SlideFlowConstructor from './components/SlideFlowConstructor';
 import PortadaRepositorio from './components/PortadaRepositorio';
 import ClaseMetodologias from './components/ClaseMetodologias';
-import ClaseArquitecturaEquipos from './components/ClaseArquitecturaEquipos';
 import ClaseMeddpicc from './components/ClaseMeddpicc';
 import ClaseSpin from './components/ClaseSpin';
 import ClaseKahneman from './components/ClaseKahneman';
@@ -43,6 +42,7 @@ import ClaseComunicacion1 from './components/ClaseComunicacion1';
 import ClaseComunicacion2 from './components/ClaseComunicacion2';
 import ClaseOceano from './components/ClaseOceano';
 import ClaseLean from './components/ClaseLean';
+import ClaseEquipos from './components/ClaseEquipos';
 import ClaseChallenger from './components/ClaseChallenger';
 import ClaseTrampas from './components/ClaseTrampas';
 import ClaseCompensacion from './components/ClaseCompensacion';
@@ -56,6 +56,7 @@ import { guiadoComunicacion1 } from './data/guiadoComunicacion1';
 import { guiadoComunicacion2 } from './data/guiadoComunicacion2';
 import { guiadoOceano } from './data/guiadoOceano';
 import { guiadoLean } from './data/guiadoLean';
+import { guiadoEquipos } from './data/guiadoEquipos';
 import { guiadoMeddpicc } from './data/guiadoMeddpicc';
 import { guiadoSpin } from './data/guiadoSpin';
 import ClaseRevOps from './components/ClaseRevOps';
@@ -595,11 +596,6 @@ export default function App() {
 
   return (
     <div className={`min-h-screen transition-colors duration-500 overflow-hidden flex ${isDark ? 'bg-[#000000] text-[#f8f9fa]' : 'bg-[#f0f2f5] text-[#111827]'}`}>
-      {/* Aviso temporal de mantenimiento */}
-      <div role="status" className="fixed bottom-[72px] md:bottom-auto md:top-3 left-1/2 -translate-x-1/2 z-[200] pointer-events-none px-4 py-1.5 rounded-full text-xs md:text-sm font-bold text-white bg-gradient-to-r from-[#ff851d] to-[#ef375c] shadow-lg">
-        En mantenimiento
-      </div>
-
       {/* Sidebar - Ocupa altura completa y empuja el contenido */}
       <aside 
         className={`transition-all duration-300 flex flex-col h-dvh border-r shadow-xl overflow-hidden ${isCompact ? 'fixed inset-y-0 left-0 z-[120]' : 'z-50'} ${isDark ? 'bg-[#111111] border-[#2a2a2a]' : 'bg-white border-gray-100'} ${isSidebarOpen ? 'w-64 opacity-100' : 'w-0 opacity-0 pointer-events-none'}`}
@@ -784,7 +780,7 @@ export default function App() {
                 overflowY: 'hidden',
                 overflowX: 'hidden',
                 overscrollBehavior: 'contain',
-                padding: activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling' ? '20px 14px 92px' : '20px 14px 24px',
+                padding: activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'arquitectura-equipos' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling' ? '20px 14px 92px' : '20px 14px 24px',
                 boxSizing: 'border-box',
                 background: isDark ? '#000' : '#f0f2f5',
                 pointerEvents: 'auto'
@@ -897,7 +893,7 @@ export default function App() {
 
                 {/* Clase "Arquitectura de Equipos de Ventas": diapositivas de contenido (eq-*) */}
                 {currentSlideId.startsWith('eq-') && slidesOrder[currentSlideIndex].level !== 1 && (
-                  <ClaseArquitecturaEquipos slideId={currentSlideId} isDark={isDark} />
+                  <ClaseEquipos slideId={currentSlideId} isDark={isDark} />
                 )}
 
                 {/* Clase "MEDDPICC: calificar con rigor": diapositivas de contenido (md-*) */}
@@ -1029,6 +1025,16 @@ export default function App() {
             >
               {isFullscreen ? <Minimize size={18} /> : <Maximize size={18} />}
             </button>
+            {/* Modo oscuro: alterna el tema de la clase sin salir de la presentación */}
+            <button
+              onClick={() => setIsDark(prev => !prev)}
+              className={`p-2.5 rounded-full shadow-md border transition-all duration-300 hover:scale-110 ${isDark ? 'bg-[#111111] hover:bg-[#1c1c1c] border-[#3a3a3a] text-amber-300' : 'bg-white hover:bg-gray-50 border-gray-100 text-gray-500 hover:text-gray-700'}`}
+              title={isDark ? 'Modo claro' : 'Modo oscuro'}
+              aria-label={isDark ? 'Activar modo claro' : 'Activar modo oscuro'}
+              id="btn-modo-oscuro"
+            >
+              {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
             {/* Modo reel: contenido en vertical, pantalla completa y deslizar hacia arriba para avanzar */}
             <button
               onClick={toggleReel}
@@ -1042,10 +1048,10 @@ export default function App() {
         </div>
 
         {/* Reproducción global de la clase con audio (flecha, resaltado y aparición de elementos) */}
-        {(activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling') && (
+        {(activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'arquitectura-equipos' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling') && (
           <ClaseGuiada
             key={activeClassId}
-            datos={activeClassId === 'kahneman' ? guiadoKahneman : activeClassId === 'influencia-persuasion' ? guiadoInfluencia : activeClassId === 'negociacion' ? guiadoNegociacion : activeClassId === 'proteccion-datos' ? guiadoProteccion : activeClassId === 'comunicacion-1' ? guiadoComunicacion1 : activeClassId === 'comunicacion-2' ? guiadoComunicacion2 : activeClassId === 'oceano-azul' ? guiadoOceano : activeClassId === 'lean-startup' ? guiadoLean : activeClassId === 'meddpicc' ? guiadoMeddpicc : activeClassId === 'spin-selling' ? guiadoSpin : guiadoCompensacion}
+            datos={activeClassId === 'kahneman' ? guiadoKahneman : activeClassId === 'influencia-persuasion' ? guiadoInfluencia : activeClassId === 'negociacion' ? guiadoNegociacion : activeClassId === 'proteccion-datos' ? guiadoProteccion : activeClassId === 'comunicacion-1' ? guiadoComunicacion1 : activeClassId === 'comunicacion-2' ? guiadoComunicacion2 : activeClassId === 'oceano-azul' ? guiadoOceano : activeClassId === 'lean-startup' ? guiadoLean : activeClassId === 'arquitectura-equipos' ? guiadoEquipos : activeClassId === 'meddpicc' ? guiadoMeddpicc : activeClassId === 'spin-selling' ? guiadoSpin : guiadoCompensacion}
             slideActualId={currentSlideId}
             irA={(id) => { const i = slidesOrder.findIndex((s) => s.id === id); if (i >= 0) setCurrentSlideIndex(i); }}
             isDark={isDark}

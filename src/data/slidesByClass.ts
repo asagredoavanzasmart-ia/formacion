@@ -80,6 +80,7 @@ export const metodologiasSlides: SlideMeta[] = [
 // Clase "Diseño y Arquitectura de Equipos de Ventas" (prefijo de id: eq-).
 export const equiposSlides: SlideMeta[] = [
   { id: 'eq-slide-0', title: 'Inicio', level: 2 },
+  { id: 'eq-intro', title: 'Un equipo se diseña como un edificio', level: 2 },
   { id: 'eq-diagnostico', title: 'La Crisis de la Ejecución', level: 2 },
   { id: 'eq-inbound-outbound', title: 'Los Dos Motores de Adquisición', level: 2 },
 
