@@ -8,14 +8,36 @@ export type { PropsCE } from '../../oceano/escenas/comunOA';
 
 export const VERDE = '#10b981', VIOLETA = '#7c3aed', TEAL = '#0f766e';
 
-/* Bombilla de idea. (x, y) es su centro. */
-export const Bombilla: React.FC<{ x: number; y: number; s?: number; op?: number; id: string }> = ({ x, y, s = 1, op = 1, id }) => (
-  <g transform={`translate(${x} ${y}) scale(${s})`} opacity={op}>
-    <circle r={64} fill="#fde047" opacity={0.25} />
-    <path d="M -28 12 Q -44 -20 -24 -44 Q 0 -68 24 -44 Q 44 -20 28 12 Q 18 24 16 34 H -16 Q -18 24 -28 12 Z" fill={`url(#${id}-marca)`} />
-    <rect x={-15} y={36} width={30} height={10} rx={5} fill="#9ca3af" />
-  </g>
-);
+/* Ampolleta de idea: vidrio con brillo y reflejo, filamento, rosca metálica, halo y rayos que laten con t.
+   `luz` (0 a 1) la enciende. (x, y) es su centro; mide unos 140 de alto en s = 1. */
+export const Bombilla: React.FC<{ x: number; y: number; s?: number; op?: number; id: string; t?: number; luz?: number }> = ({ x, y, s = 1, op = 1, id, t = 0, luz = 1 }) => {
+  const late = 0.88 + 0.12 * Math.sin(t * 3.2);
+  const vidrio = 'M -30 20 C -30 6 -46 -6 -46 -28 C -46 -56 -24 -74 0 -74 C 24 -74 46 -56 46 -28 C 46 -6 30 6 30 20 Z';
+  return (
+    <g transform={`translate(${x} ${y}) scale(${s})`} opacity={op}>
+      <defs>
+        <radialGradient id={`${id}-bomH`}><stop offset="0" stopColor="#fde047" stopOpacity="0.75" /><stop offset="0.55" stopColor="#fbbf24" stopOpacity="0.25" /><stop offset="1" stopColor="#f59e0b" stopOpacity="0" /></radialGradient>
+        <radialGradient id={`${id}-bomV`} cx="0.42" cy="0.38" r="0.7"><stop offset="0" stopColor="#fffbe6" /><stop offset="0.45" stopColor="#fde047" /><stop offset="1" stopColor="#f59e0b" /></radialGradient>
+        <linearGradient id={`${id}-bomR`} x1="0" y1="0" x2="1" y2="0"><stop offset="0" stopColor="#d1d5db" /><stop offset="0.45" stopColor="#f3f4f6" /><stop offset="1" stopColor="#6b7280" /></linearGradient>
+      </defs>
+      {luz > 0.01 && <circle cy={-28} r={98} fill={`url(#${id}-bomH)`} opacity={luz * late} />}
+      {luz > 0.01 && Array.from({ length: 8 }, (_, k) => {
+        const len = 16 + 7 * Math.sin(t * 4 + k * 1.7);
+        return <rect key={k} x={-4.5} y={-78 - 18 - len} width={9} height={len} rx={4.5} fill="#fbbf24" opacity={luz * 0.9} transform={`rotate(${-67.5 + k * (135 / 7)} 0 -28)`} />;
+      })}
+      <path d={vidrio} fill={luz > 0.01 ? `url(#${id}-bomV)` : '#e5e7eb'} style={{ filter: 'drop-shadow(0 0 2px rgba(120,53,15,0.45))' }} />
+      {luz > 0.01 && luz < 1 && <path d={vidrio} fill="#e5e7eb" opacity={1 - luz} />}
+      <path d="M 4 -74 C 28 -72 46 -54 46 -28 C 46 -6 30 6 30 20 H 4 Z" fill="#b45309" opacity={0.12} />
+      <ellipse cx={-22} cy={-46} rx={8} ry={17} fill="#ffffff" opacity={0.75} transform="rotate(28 -22 -46)" />
+      <path d="M -9 20 V -16 M 9 20 V -16" stroke="#9ca3af" strokeWidth={3} strokeLinecap="round" />
+      <path d="M -11 -16 q 3.7 -10 7.3 0 q 3.7 -10 7.3 0 q 3.7 -10 7.3 0" stroke={luz > 0.5 ? '#fff7d6' : '#78716c'} strokeWidth={4} fill="none" strokeLinecap="round" style={luz > 0.5 ? { filter: 'drop-shadow(0 0 4px #f97316)' } : undefined} />
+      <rect x={-26} y={18} width={52} height={10} rx={4} fill="#9ca3af" />
+      {[0, 1, 2].map((k) => <rect key={k} x={-23 + k} y={28 + k * 10} width={46 - 2 * k} height={10} rx={5} fill={`url(#${id}-bomR)`} />)}
+      {[0, 1].map((k) => <rect key={k} x={-22} y={36 + k * 10} width={44} height={2.5} rx={1.2} fill="#4b5563" opacity={0.5} />)}
+      <path d="M -11 58 H 11 L 6 67 H -6 Z" fill="#374151" />
+    </g>
+  );
+};
 
 /* Engranaje; gira con t. */
 export const Engranaje: React.FC<{ x: number; y: number; r?: number; t?: number; color?: string; hueco: string; op?: number }> = ({ x, y, r = 44, t = 0, color = '#64748b', hueco, op = 1 }) => (
@@ -38,7 +60,7 @@ export const Telefono: React.FC<{ x: number; y: number; s?: number; widgets?: nu
 /* Calendario con n casillas tachadas. */
 export const Calendario: React.FC<{ x: number; y: number; s?: number; marcados?: number; op?: number }> = ({ x, y, s = 1, marcados = 0, op = 1 }) => (
   <g transform={`translate(${x} ${y}) scale(${s})`} opacity={op}>
-    <rect x={-84} y={-80} width={168} height={160} rx={20} fill="#fff" />
+    <rect x={-84} y={-80} width={168} height={160} rx={20} fill="#fff" style={{ filter: "drop-shadow(0 4px 10px rgba(15,23,42,0.35))" }} />
     <rect x={-84} y={-80} width={168} height={40} rx={20} fill={ROSA} /><rect x={-84} y={-58} width={168} height={18} fill={ROSA} />
     {Array.from({ length: 14 }, (_, k) => <g key={k}><rect x={-72 + (k % 7) * 22} y={-28 + Math.floor(k / 7) * 34} width={18} height={26} rx={5} fill="#e5e7eb" />{k < marcados && <path d={`M ${-69 + (k % 7) * 22} ${-18 + Math.floor(k / 7) * 34} l 6 8 l 8 -14`} stroke={VERDE} strokeWidth={4} fill="none" strokeLinecap="round" />}</g>)}
   </g>

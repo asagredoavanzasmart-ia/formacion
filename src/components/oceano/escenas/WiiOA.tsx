@@ -138,7 +138,7 @@ export const WiiOA: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico = 
             {aC > 0.01 && (
               <g opacity={aC}>
                 <g opacity={e1(t, M('clave'))}>
-                  <Persona id={ID} x={220} y={780} s={0.62} cuerpo="#334155" corbata />
+                  <Persona id={ID} x={220} y={780} s={0.62} cuerpo={isDark ? '#8da2c0' : '#334155'} corbata />
                   <Txt x={220} y={640} textAnchor="middle" fontSize={44} fill={ROSA}>?</Txt>
                 </g>
                 {t >= M('nopeleo') && (

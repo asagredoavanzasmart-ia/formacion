@@ -123,8 +123,8 @@ export const CurvaOA: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico 
                   <g opacity={aBC}>
                     <Curva pts={pts(REGIONAL)} u={ac(t, M('regional'), M('mismo') + 7)} color={ROJO_M} grosor={8} punteada op={0.9} />
                     <Curva pts={pts(RINGLING)} u={ac(t, M('ringling'), M('mismo') + 7)} color={ROJO_M} grosor={10} />
-                    <Txt f="a" x={X(2.5)} y={Y(0.8) - 24} textAnchor="middle" fontSize={26} fill={ROJO_O} opacity={e1(t, M('ringling') + 1)}>Ringling</Txt>
-                    <Txt f="a" x={X(2.5)} y={Y(0.6) + 70} textAnchor="middle" fontSize={26} fill={ROJO_O} opacity={e1(t, M('regional') + 1)}>Regional</Txt>
+                    <Txt f="a" x={X(2.5)} y={Y(0.8) - 24} textAnchor="middle" fontSize={26} fill={isDark ? "#ff7a80" : ROJO_O} opacity={e1(t, M('ringling') + 1)}>Ringling</Txt>
+                    <Txt f="a" x={X(2.5)} y={Y(0.6) + 70} textAnchor="middle" fontSize={26} fill={isDark ? "#ff7a80" : ROJO_O} opacity={e1(t, M('regional') + 1)}>Regional</Txt>
                     {/* C · Cirque du Soleil */}
                     {t >= M('cirque') && (
                       <g>

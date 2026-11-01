@@ -123,7 +123,7 @@ export const ValorOA: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico 
                     <g key={k} opacity={e1(t, t0)}>
                       <rect x={120} y={y - 85} width={960} height={170} rx={26} fill={c.panel} style={sombra(c.sombra, 6, 16)} />
                       {k === 0 && (<>
-                        <Persona id={ID} x={260} y={y + 62} s={0.55} cuerpo="#334155" corbata />
+                        <Persona id={ID} x={260} y={y + 62} s={0.55} cuerpo={isDark ? '#8da2c0' : '#334155'} corbata />
                         <Flecha x1={380} y1={y} x2={760} y2={y} u={ac(t, t0 + 0.3, t0 + 1.2)} color={NARANJA} />
                         <Txt f="a" x={570} y={y - 28} textAnchor="middle" fontSize={56} fill={ROSA}>?</Txt>
                         <Persona id={ID} x={900} y={y + 62} s={0.55} cuerpo="#ec4899" pelo="#8b3a3a" />
@@ -169,7 +169,7 @@ export const ValorOA: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico 
                 )}
                 {t >= M('pcs') && (
                   <g opacity={e1(t, M('pcs'))}>
-                    <rect x={650} y={190} width={90} height={150} rx={10} fill="#475569" /><rect x={662} y={206} width={66} height={14} rx={4} fill="#94a3b8" /><rect x={662} y={232} width={66} height={14} rx={4} fill="#94a3b8" />
+                    <rect x={650} y={190} width={90} height={150} rx={10} fill={isDark ? '#8294b3' : '#475569'} /><rect x={662} y={206} width={66} height={14} rx={4} fill="#94a3b8" /><rect x={662} y={232} width={66} height={14} rx={4} fill="#94a3b8" />
                     <Flecha x1={770} y1={265} x2={850} y2={265} color={NARANJA} />
                     <g transform="translate(940 265)"><rect x={-56} y={-50} width={112} height={78} rx={10} fill="#1f2937" /><rect x={-48} y={-42} width={96} height={62} rx={6} fill={AZUL_M} /><rect x={-8} y={28} width={16} height={22} fill="#64748b" /><rect x={-34} y={48} width={68} height={10} rx={5} fill="#64748b" /></g>
                     <g opacity={e1(t, M('pcs') + 1.5)} transform="translate(1060 270)"><rect x={-24} y={-48} width={48} height={96} rx={10} fill="#1f2937" /><rect x={-19} y={-38} width={38} height={72} rx={5} fill={AZUL_M} /></g>
@@ -181,7 +181,7 @@ export const ValorOA: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico 
             {/* D · la consultora imaginaria */}
             {aD > 0.01 && (
               <g opacity={aD}>
-                <Edificio x={200} y={560} w={140} h={220} color="#334155" />
+                <Edificio x={200} y={560} w={140} h={220} color={isDark ? "#8294b3" : "#334155"} />
                 {[0, 1, 2].map((k) => (
                   <g key={k} opacity={e1(t, M('consultora') + 0.5 + k * 0.3)}>
                     <circle cx={450 + k * 110} cy={470} r={36} fill={c.apagado} /><circle cx={450 + k * 110} cy={470} r={16} fill={c.panel2} />

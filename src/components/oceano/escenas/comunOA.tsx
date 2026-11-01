@@ -30,8 +30,10 @@ export const Barco: React.FC<{ x: number; y: number; s?: number; casco?: string;
     <path d="M -62 -2 L 62 -2 L 42 28 L -42 28 Z" fill={casco} />
     <path d="M 0 -2 L 62 -2 L 42 28 L 0 28 Z" fill="#000" opacity={0.16} />
     <rect x={-3} y={-92} width={6} height={92} rx={3} fill="#4b5563" />
-    <path d="M 6 -88 L 6 -10 L 54 -10 Z" fill={vela} />
-    <path d="M -6 -76 L -6 -10 L -44 -10 Z" fill={vela} opacity={0.88} />
+    <g style={{ filter: "drop-shadow(0 0 2.5px rgba(30,41,59,0.55))" }}>
+      <path d="M 6 -88 L 6 -10 L 54 -10 Z" fill={vela} />
+      <path d="M -6 -76 L -6 -10 L -44 -10 Z" fill={vela} opacity={0.88} />
+    </g>
     <path d="M 6 -88 L 6 -10 L 54 -10 Z" fill="#000" opacity={0.06} />
   </g>
 );

@@ -105,7 +105,7 @@ export const SintesisOA: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estati
             )}
             {niebla > 0.01 && (
               <g opacity={niebla}>
-                {[0, 1, 2].map((q) => <ellipse key={q} cx={500 + q * 240 + 30 * Math.sin(t * 0.7 + q)} cy={430 + q * 50} rx={260} ry={52} fill="#e5e7eb" opacity={0.85} />)}
+                {[0, 1, 2].map((q) => <ellipse key={q} cx={500 + q * 240 + 30 * Math.sin(t * 0.7 + q)} cy={430 + q * 50} rx={260} ry={52} fill={isDark ? "#4b5563" : "#cbd5e1"} opacity={0.85} />)}
                 <g transform="translate(860 300) rotate(12)"><rect x={-44} y={-44} width={88} height={88} rx={16} fill="#fff" style={sombra(c.sombra, 4, 10)} />{[[-18, -18], [18, 18], [0, 0], [-18, 18], [18, -18]].map(([dx, dy], q) => <circle key={q} cx={dx} cy={dy} r={7} fill="#1f2937" />)}</g>
               </g>
             )}

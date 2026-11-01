@@ -126,7 +126,7 @@ export const NoClientesOA: React.FC<PropsCE> = ({ isDark, marcas, pregunta, esta
                   <g opacity={resto}>
                     <g transform="translate(600 235)"><ellipse rx={80} ry={26} fill="#e5e7eb" /><ellipse rx={50} ry={15} fill="#fff" /><circle cx={0} cy={-6} r={12} fill="#ef4444" /><rect x={-110} y={-24} width={8} height={44} rx={4} fill="#94a3b8" /><rect x={102} y={-24} width={8} height={44} rx={4} fill="#94a3b8" /></g>
                     {t >= M('caro') && <g opacity={e1(t, M('caro'))}><Precio x={250} y={CY + 80} s={1} /><Flecha x1={250} y1={CY + 140} x2={250} y2={CY + 200} color={ROJO_O} grosor={9} op={0.0} /></g>}
-                    {t >= M('zona') && <g opacity={e1(t, M('zona'))}><Edificio x={1010} y={CY + 130} w={80} h={110} color="#475569" /><Persona id={ID} x={930} y={CY + 130} s={0.34} cuerpo="#2563eb" /><Persona id={ID} x={880} y={CY + 140} s={0.34} cuerpo="#0f766e" /></g>}
+                    {t >= M('zona') && <g opacity={e1(t, M('zona'))}><Edificio x={1010} y={CY + 130} w={80} h={110} color={isDark ? "#8294b3" : "#475569"} /><Persona id={ID} x={930} y={CY + 130} s={0.34} cuerpo="#2563eb" /><Persona id={ID} x={880} y={CY + 140} s={0.34} cuerpo="#0f766e" /></g>}
                   </g>
                 )}
               </g>

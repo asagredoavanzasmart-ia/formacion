@@ -154,12 +154,12 @@ export const AccionesOA: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estati
 
                 {/* arriba a la derecha: 1998, low cost, la fábrica Dacia y los dos precios */}
                 <g opacity={zona(M('schweitzer'), M('dacia'))}>
-                  <g opacity={e1(t, M('schweitzer'))}><Persona id={ID} x={890} y={340} s={0.7} cuerpo="#334155" corbata /></g>
+                  <g opacity={e1(t, M('schweitzer'))}><Persona id={ID} x={890} y={340} s={0.7} cuerpo={isDark ? '#8da2c0' : '#334155'} corbata /></g>
                   <Chip x={1010} y={200} texto="1998" c={c} id={ID} op={e1(t, M('schweitzer') + 0.3)} />
                   <g opacity={e1(t, M('lowcost'))}><Precio x={1010} y={290} s={0.9} color="#10b981" /></g>
                 </g>
                 <g opacity={zona(M('dacia'), M('familiar'))}>
-                  <Edificio x={960} y={350} w={130} h={110} color="#475569" />
+                  <Edificio x={960} y={350} w={130} h={110} color={isDark ? "#8294b3" : "#475569"} />
                   <rect x={900} y={210} width={26} height={30} fill="#64748b" /><rect x={940} y={190} width={26} height={50} fill="#64748b" />
                   <Flecha x1={900} y1={380} x2={800} y2={470} u={ac(t, M('dacia') + 0.4, M('dacia') + 1.4)} color={NARANJA} grosor={10} />
                 </g>

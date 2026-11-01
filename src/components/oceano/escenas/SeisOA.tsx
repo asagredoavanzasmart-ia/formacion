@@ -64,7 +64,7 @@ export const SeisOA: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico =
                     {/* 1 · grupos: precio y rendimiento */}
                     {k === 1 && t >= t0 && (
                       <g transform="translate(0 30)" opacity={e1(t, t0)}>
-                        <Persona id={ID} x={-90} y={50} s={0.5} cuerpo="#334155" corbata /><Persona id={ID} x={90} y={50} s={0.5} cuerpo="#0f766e" />
+                        <Persona id={ID} x={-90} y={50} s={0.5} cuerpo={isDark ? '#8da2c0' : '#334155'} corbata /><Persona id={ID} x={90} y={50} s={0.5} cuerpo="#0f766e" />
                         <g opacity={e1(t, M('precioRend'))}>
                           <Precio x={-90} y={-72} s={0.55} />
                           <path d="M 50 -50 A 40 40 0 0 1 130 -50" fill="none" stroke={c.apagado} strokeWidth={12} strokeLinecap="round" /><path d="M 50 -50 A 40 40 0 0 1 100 -86" fill="none" stroke={`url(#${ID}-marcaH)`} strokeWidth={12} strokeLinecap="round" />
@@ -96,7 +96,7 @@ export const SeisOA: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico =
                     {/* 4 · valor emocional: la cápsula que se corona */}
                     {k === 4 && t >= t0 && (
                       <g transform="translate(0 40)" opacity={e1(t, t0)}>
-                        <path d="M -44 -20 Q 0 -44 44 -20 L 30 50 Q 0 60 -30 50 Z" fill="#475569" /><path d="M -44 -20 Q 0 -44 44 -20 Q 0 -6 -44 -20 Z" fill="#94a3b8" />
+                        <path d="M -44 -20 Q 0 -44 44 -20 L 30 50 Q 0 60 -30 50 Z" fill={isDark ? '#8294b3' : '#475569'} /><path d="M -44 -20 Q 0 -44 44 -20 Q 0 -6 -44 -20 Z" fill="#94a3b8" />
                         <g opacity={e1(t, M('lujo'))} transform={`translate(0 ${-70 - 6 * Math.sin(t * 3)})`}><path d="M -40 30 L -48 -20 L -20 6 L 0 -34 L 20 6 L 48 -20 L 40 30 Z" fill="#f59e0b" /><circle cx={0} cy={-34} r={7} fill="#fde047" /></g>
                       </g>
                     )}

@@ -7,7 +7,7 @@ export const lotes: Pagina = {
   titulo: 'La técnica de', destaque: 'los lotes pequeños',
   bajada: 'Producir lo que se pide, cuando se pide, en tandas cortas.',
   inicio: 'la técnica de los lotes pequeños',
-  frases: ['producción en serie', 'flujo continuo', 'existencias de piezas', 'una forma de despilfarro', 'técnica de tirar', 'etapa anterior', 'el pedido desencadena', 'posguerra', 'taiichi ohno', 'una consultora', 'cuarenta hojas', 'resumen de una hoja'],
+  frases: ['producción en serie', 'flujo continuo', 'más rápida', 'problemas de calidad', 'existencias de piezas', 'una forma de despilfarro', 'técnica de tirar', 'etapa anterior', 'etapa siguiente', 'el pedido desencadena', 'posguerra', 'gigantescas fábricas', 'lotes más grandes', 'destruido por la guerra', 'taiichi ohno', 'una consultora', 'cuarenta hojas', 'resumen de una hoja', 'el cliente responde'],
   els: [],
   tarjetas: [
     { rotulo: 'Producción en serie', texto: 'Exige existencias de piezas sueltas: una forma de despilfarro.', frase: 'existencias de piezas' },
@@ -22,7 +22,7 @@ export const porques: Pagina = {
   titulo: 'La técnica de', destaque: 'los cinco porqués',
   bajada: 'Preguntar «¿por qué?» hasta llegar a la raíz del problema.',
   inicio: 'la técnica de los cinco porqués',
-  frases: ['causa profunda', 'hasta llegar a la raíz', 'de forma proporcional', 'lotes pequeños', 'un cliente cancela', 'no usaba el servicio', 'no supo cómo empezar', 'manual larguísimo', 'nadie lo revisó', 'nadie es responsable', 'chivo expiatorio', 'confianza mutua', 'con indulgencia', 'verdades incómodas'],
+  frases: ['causa profunda', 'más allá de las apariencias', 'hasta llegar a la raíz', 'de forma proporcional', 'problema es menor', 'lotes pequeños', 'un cliente cancela', 'no usaba el servicio', 'no supo cómo empezar', 'manual larguísimo', 'nadie lo revisó', 'nadie es responsable', 'faltaba un responsable', 'personas implicadas', 'chivo expiatorio', 'confianza mutua', 'con indulgencia', 'no se repita', 'verdades incómodas', 'tiempo y de dinero'],
   els: [],
   tarjetas: [
     { rotulo: 'Cinco veces por qué', texto: 'Cada porqué cuestiona la causa del anterior hasta llegar a la raíz.', frase: 'hasta llegar a la raíz', destacada: true },
@@ -37,7 +37,7 @@ export const motores: Pagina = {
   titulo: 'Los motores', destaque: 'de crecimiento',
   bajada: 'Pegajoso, viral o remunerado: un mecanismo para crecer de forma duradera.',
   inicio: 'los motores de crecimiento',
-  frases: ['mecanismo', 'tres tipos', 'motor pegajoso', 'tasa de retención', 'motor viral', 'de forma inconsciente', 'motor remunerado', 'a lo largo de su vida', 'preferir uno solo', 'idoneidad', 'sin aliento'],
+  frases: ['mecanismo', 'pocos indicadores', 'tres tipos', 'motor pegajoso', 'superar al de los que se van', 'tasa de retención', 'motor viral', 'cuántos amigos', 'de forma inconsciente', 'motor remunerado', 'coste de adquisición', 'a lo largo de su vida', 'varios a la vez', 'preferir uno solo', 'idoneidad', 'amplia y fiel', 'sin aliento', 'anticipar ese agotamiento'],
   els: [],
   tarjetas: [
     { rotulo: 'Pegajoso', texto: 'Atrae y retiene: los clientes nuevos superan a los que se van.', frase: 'motor pegajoso' },
@@ -52,7 +52,7 @@ export const aplicar: Pagina = {
   titulo: 'Cómo aplicarlo', destaque: 'en tu empresa',
   bajada: 'Hipótesis, producto mínimo, medida y decisión.',
   inicio: 'cómo aplicarlo en tu empresa',
-  frases: ['secuencia de preguntas', 'la hipótesis', 'el producto mínimo', 'la medida', 'la decisión', 'capacitación en ventas', 'cursos largos', 'una sesión de una hora', 'una segunda', 'sesiones cortas', 'grabar un solo video', 'no gastar más', 'un motor a la vez'],
+  frases: ['secuencia de preguntas', 'la hipótesis', 'todavía no has comprobado', 'el producto mínimo', 'esta semana', 'la medida', 'la decisión', 'señales pondrías', 'capacitación en ventas', 'cursos largos', 'una sesión de una hora', 'una segunda', 'sesiones cortas', 'no piden nada', 'grabar un solo video', 'no gastar más', 'un motor a la vez', 'el cliente al lado'],
   els: [],
   tarjetas: [
     { rotulo: 'Cuatro preguntas', texto: 'Hipótesis, producto mínimo, medida y decisión, con señales fijadas de antemano.', frase: 'la hipótesis', destacada: true },
@@ -67,7 +67,7 @@ export const criticas: Pagina = {
   titulo: 'Críticas', destaque: 'y límites',
   bajada: 'El método no despierta unanimidad.',
   inicio: 'críticas y límites',
-  frases: ['no despiertan unanimidad', 'intensificar el trabajo', 'bienestar físico y mental', 'corto plazo', 'cambio de estrategia', 'encontrar inversores', 'aspecto humano', 'razonamiento frío', 'un ensayo tras otro', 'incompletos o rotos', 'google y facebook', 'apple', 'pequeñas empresas'],
+  frases: ['no despiertan unanimidad', 'intensificar el trabajo', 'bienestar físico y mental', 'tiempos de recuperación', 'ganancia de productividad', 'corto plazo', 'cambio de estrategia', 'nunca se habrían abierto camino', 'encontrar inversores', 'aspecto humano', 'lado pasional', 'razonamiento frío', 'acaben pronto en la basura', 'un ensayo tras otro', 'ritmo frenético', 'incompletos o rotos', 'cuidado en cada detalle', 'google y facebook', 'aprendieron de los demás', 'apple', 'pequeñas empresas', 'medianas o grandes'],
   els: [],
   tarjetas: [
     { rotulo: 'El lean y el trabajo', texto: 'Se le reprocha intensificar el trabajo y dañar el bienestar de los trabajadores.', frase: 'intensificar el trabajo' },
@@ -82,7 +82,7 @@ export const sintesis: Pagina = {
   titulo: 'Aprender más rápido', destaque: 'de lo que se gasta',
   bajada: 'Lo valioso no es acertar a la primera.',
   inicio: 'en un mundo donde lanzar un producto es caro',
-  frases: ['otra forma de avanzar', 'nació en toyota', 'proceso de innovación', 'acudir al terreno', 'ajustes progresivos', 'lotes pequeños', 'motores de crecimiento muestran', 'rendimiento del ciclo de feedback', 'ahorrando tiempo y dinero', 'no ha dejado de crecer', 'aprender más rápido'],
+  frases: ['otra forma de avanzar', 'nació en toyota', 'proceso de innovación', 'clientes potenciales', 'acudir al terreno', 'ajustes progresivos', 'lotes pequeños', 'cinco porqués', 'motores de crecimiento muestran', 'rendimiento del ciclo de feedback', 'qué espera el cliente', 'ahorrando tiempo y dinero', 'en todo el mundo', 'pese a las críticas', 'no ha dejado de crecer', 'acertar a la primera', 'aprender más rápido'],
   els: [],
   tarjetas: [
     { rotulo: 'Del taller al producto', texto: 'El lean nació en Toyota para evitar el despilfarro; Ries lo trasladó a la innovación.', frase: 'nació en toyota' },

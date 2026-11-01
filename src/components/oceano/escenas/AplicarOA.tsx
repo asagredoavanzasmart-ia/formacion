@@ -87,7 +87,7 @@ export const AplicarOA: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatic
                 {/* los cuatro factores: visitas, informes, claridad, resumen */}
                 {[0, 1, 2, 3].map((j) => (
                   <g key={j} opacity={e1(t, M('firma') + 0.3 + j * 0.2)} transform={`translate(${XK(j)} 540)`}>
-                    {j === 0 && <g><Persona id={ID} x={0} y={22} s={0.28} cuerpo="#334155" corbata /></g>}
+                    {j === 0 && <g><Persona id={ID} x={0} y={22} s={0.28} cuerpo={isDark ? '#8da2c0' : '#334155'} corbata /></g>}
                     {j === 1 && <g>{[0, 1, 2].map((q) => <rect key={q} x={-18 + q * 6} y={-14 + q * 3} width={34} height={42} rx={4} fill={q === 2 ? '#fff' : '#e5e7eb'} stroke="#94a3b8" strokeWidth={2} />)}</g>}
                     {j === 2 && <g><circle r={20} fill="#fde68a" /><path d="M -10 14 Q -18 -2 -8 -12 Q 0 -20 8 -12 Q 18 -2 10 14 Z" fill={`url(#${ID}-marca)`} /></g>}
                     {j === 3 && <g><rect x={-24} y={-16} width={48} height={40} rx={8} fill="#fff" stroke="#94a3b8" strokeWidth={2} />{[-12, 0, 12].map((q) => <circle key={q} cx={q} cy={4} r={4} fill={NARANJA} />)}</g>}

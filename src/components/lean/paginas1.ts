@@ -7,7 +7,7 @@ export const portada: Pagina = {
   titulo: 'Aprender rápido,', destaque: 'gastar lo mínimo',
   bajada: 'Eric Ries y el método para saber en semanas si tu idea tiene clientes.',
   inicio: 'imagina descubrir en semanas',
-  frases: ['en semanas', 'nace en 1978', 'universidad de yale', 'silicon valley', 'catalyst recruiting', 'en 2004', 'imvu', 'en 2007', 'techfellow', 'harvard', 'en 2011', 'recorreremos'],
+  frases: ['en semanas', 'y no en años', 'tiene clientes', 'eric ries', 'gran velocidad', 'gastando lo mínimo', 'nace en 1978', 'guía de programación', 'universidad de yale', 'con un amigo', 'se gradúa en 2001', 'silicon valley', 'catalyst recruiting', 'en 2004', 'there com', 'imvu', 'avatares tridimensionales', 'desacreditaban', 'en 2007', 'techfellow', 'harvard', 'en 2011', 'superventas', 'recorreremos', 'de dónde viene', 'su ciclo', 'producto mínimo viable', 'los pivotes', 'las técnicas lean', 'los motores', 'cómo aplicarlo', 'las críticas'],
   els: [],
   tarjetas: [
     { rotulo: 'Eric Ries', texto: 'Nace en 1978, estudia en Yale y empieza su carrera como empresario en Silicon Valley.', frase: 'nace en 1978' },
@@ -22,7 +22,7 @@ export const toyota: Pagina = {
   titulo: 'De Toyota a las', destaque: 'empresas emergentes',
   bajada: 'La filosofía lean nació en una fábrica y Ries la trasladó a la innovación.',
   inicio: 'de toyota a las empresas emergentes',
-  frases: ['en 1972', 'significa en inglés', 'disminuir las pérdidas', 'siete fuentes', 'auge del consumo', 'cruza el pacífico', 'lean thinking', 'gestión lean', 'lean software', 'aplicar la filosofía lean', 'startup lessons learned', 'cómo me aseguro', 'steve blank', 'desarrollo de la clientela'],
+  frases: ['en 1972', 'significa en inglés', 'disminuir las pérdidas', 'se llama muda', 'siete fuentes', 'auge del consumo', 'producir más', 'cruza el pacífico', 'james womack', 'lean thinking', 'se propaga por las industrias', 'automovilística', 'gestión lean', 'lean software', 'aplicar la filosofía lean', 'en 2008', 'startup lessons learned', 'cómo me aseguro', 'desde hace meses', 'acercarse todo lo posible', 'steve blank', 'inversor de imvu', 'expectativas y los deseos', 'desarrollo de la clientela', 'base del movimiento'],
   els: [],
   tarjetas: [
     { rotulo: 'Lean manufacturing', texto: 'Desde 1972, Toyota reduce pérdidas y despilfarro (muda) para bajar costes.', frase: 'en 1972' },
@@ -37,7 +37,7 @@ export const ciclo: Pagina = {
   titulo: 'La incertidumbre y', destaque: 'el ciclo de feedback',
   bajada: 'Crear, medir y aprender, cada vez más rápido.',
   inicio: 'una empresa emergente vive en la incertidumbre',
-  frases: ['joven empresa innovadora', 'cuestionarse constantemente', 'innovaciones de forma permanente', 'tres rasgos', 'ciclo de feedback', 'crear medir y aprender', 'reducir la duración total', 'proceder a empujones', 'grupo reducido de personas', 'ejemplo imaginario', 'menús saludables', 'cinco menús', 'dos semanas'],
+  frases: ['joven empresa innovadora', 'potencial de crecimiento', 'incertidumbres y de riesgos', 'cuestionarse constantemente', 'innovaciones de forma permanente', 'tres rasgos', 'extremadamente rápido', 'deseos de los clientes', 'base científica', 'ciclo de feedback', 'crear medir y aprender', 'se crea un producto', 'se mide cómo reaccionan', 'se aprende para decidir', 'reducir la duración total', 'tiempo de dinero y de energía', 'proceder a empujones', 'rectificando la trayectoria', 'por todo lo alto', 'grupo reducido de personas', 'menor coste', 'detectan los errores', 'ejemplo imaginario', 'menús saludables', 'cocina industrial', 'cinco menús', 'dos oficinas', 'dos semanas', 'qué piden', 'año de planos'],
   els: [],
   tarjetas: [
     { rotulo: 'Tres rasgos', texto: 'Ciclo rápido, deseos de los clientes tenidos en cuenta y decisiones de base científica.', frase: 'tres rasgos' },
@@ -52,7 +52,7 @@ export const pmv: Pagina = {
   titulo: 'Crear: el producto', destaque: 'mínimo viable',
   bajada: 'Un prototipo que enfrenta a los clientes con tu hipótesis cuanto antes.',
   inicio: 'crear: el producto mínimo viable',
-  frases: ['producto mínimo viable', 'menor esfuerzo', 'enfrentarlo por primera vez', 'hipótesis', 'baja calidad', 'malas noticias', 'el fracaso permite', 'la experiencia de imvu', 'capital riesgo', 'en qué unidades', 'crecer con rapidez', 'canchas de pádel', 'formulario sencillo'],
+  frases: ['producto mínimo viable', 'un prototipo', 'menor esfuerzo', 'muchas funcionalidades', 'enfrentarlo por primera vez', 'camino más corto', 'hipótesis', 'baja calidad', 'considerará valioso', 'malas noticias', 'el fracaso permite', 'no perder la esperanza', 'la experiencia de imvu', 'capital riesgo', 'avergonzados', 'en qué unidades', 'crecer con rapidez', 'canchas de pádel', 'pagos y mapas', 'formulario sencillo', 'diez clubes', 'reserva a mano', 'en días y no en meses'],
   els: [],
   tarjetas: [
     { rotulo: 'Mínimo, no perfecto', texto: 'Requiere el menor esfuerzo y tiempo; incluso uno de baja calidad aporta datos útiles.', frase: 'menor esfuerzo', destacada: true },
@@ -67,7 +67,7 @@ export const medir: Pagina = {
   titulo: 'Medir: la contabilidad', destaque: 'de la innovación',
   bajada: 'Cifras que obligan a decidir, no cifras que halagan.',
   inicio: 'medir: la contabilidad de la innovación',
-  frases: ['progreso real', 'una mirada cuantitativa', 'régimen ideal', 'microajustes', 'tasa de activación', 'conocimiento validado', 'decisión final', 'indicadores ilusorios', 'número total de clientes', 'las tres a', 'accionable', 'accesible', 'auditable', 'diez mil visitas'],
+  frases: ['progreso real', 'una mirada cuantitativa', 'empleando el pmv', 'régimen ideal', 'microajustes', 'cambios pequeños', 'mejorar el diseño', 'tasa de activación', 'conocimiento validado', 'decisión final', 'cambiar de rumbo', 'o persistir', 'indicadores ilusorios', 'simular un éxito', 'número total de clientes', 'fidelización', 'adquisición y de anulación', 'las tres a', 'accionable', 'accesible', 'auditable', 'factor humano', 'diez mil visitas', 'de cada cien visitantes', 'cuántos regresan'],
   els: [],
   tarjetas: [
     { rotulo: 'Pequeños pasos', texto: 'Muchos intentos y microajustes; un cambio que mejora la activación es conocimiento validado.', frase: 'microajustes' },
@@ -82,7 +82,7 @@ export const pivotar: Pagina = {
   titulo: 'Aprender: perseverar', destaque: 'o pivotar',
   bajada: 'Nada es más peligroso que una empresa estancada.',
   inicio: 'aprender: perseverar o pivotar',
-  frases: ['concepto de pivote', 'empresa estancada', 'callejón sin salida', 'número de pivotes', 'nueva ocasión', 'tardan demasiado', 'miedo al fracaso', 'emocionalmente duro', 'dos factores', 'efectividad decreciente', 'más productivo', 'valor suficiente'],
+  frases: ['concepto de pivote', 'empresa estancada', 'destruye la creatividad', 'callejón sin salida', 'cambio de dirección', 'actividad sostenible', 'número de pivotes', 'nueva ocasión', 'que está en expansión', 'tardan demasiado', 'por indicadores ilusorios', 'resultados iniciales ambiguos', 'objetivos poco claros', 'miedo al fracaso', 'emocionalmente duro', 'un poco más de tiempo', 'sin temerle', 'dos factores', 'efectividad decreciente', 'más productivo', 'valor suficiente'],
   els: [],
   tarjetas: [
     { rotulo: 'El estancamiento', texto: 'Destruye la creatividad, igual que empeñarse en un callejón sin salida.', frase: 'empresa estancada' },

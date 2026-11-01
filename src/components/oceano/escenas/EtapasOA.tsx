@@ -98,7 +98,7 @@ export const EtapasOA: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico
               {t >= M('jerarquico') && [0, 1, 2].map((j) => <g key={j} opacity={e1(t, M('jerarquico') + j * 0.4)}><Persona id={ID} x={CX(3) - 70 + j * 70} y={TOP(3) + 250 + (j - 1) * (j % 2 ? 0 : 14)} s={0.34 + 0.04 * (1 - j % 2)} cuerpo={['#334155', '#0f766e', '#7c3aed'][j]} /></g>)}
 
               {/* quien sube */}
-              <Persona id={ID} x={px} y={py} s={0.62} cuerpo="#334155" corbata />
+              <Persona id={ID} x={px} y={py} s={0.62} cuerpo={isDark ? '#8da2c0' : '#334155'} corbata />
             </g>
 
             {/* cómo empezar */}

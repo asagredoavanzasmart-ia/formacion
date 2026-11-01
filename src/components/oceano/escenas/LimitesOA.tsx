@@ -61,7 +61,7 @@ export const LimitesOA: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatic
               {[0, 1, 2].map((k) => <g key={k} opacity={e1(t, M('posteriori') + k * 0.3)}><path d={`M ${130 + k * 80} 270 l 12 -34 l 14 34 l -34 -20 l 40 0 Z`} fill="#f59e0b" /></g>)}
               <Flecha x1={380} y1={252} x2={310} y2={252} u={ac(t, M('sectores'), M('sectores') + 1)} color={NARANJA} grosor={9} />
               <g opacity={e1(t, M('sectores'))} transform="translate(420 240)"><circle r={36} fill="#fde047" opacity={0.4} /><path d="M -20 8 Q -30 -14 -16 -26 Q 0 -42 16 -26 Q 30 -14 20 8 Q 12 18 10 26 H -10 Q -12 18 -20 8 Z" fill={`url(#${ID}-marca)`} /></g>
-              <g opacity={e1(t, M('ford'))}><Persona id={ID} x={170} y={330} s={0.36} cuerpo="#334155" corbata /><Persona id={ID} x={260} y={330} s={0.36} cuerpo="#7c3aed" /></g>
+              <g opacity={e1(t, M('ford'))}><Persona id={ID} x={170} y={330} s={0.36} cuerpo={isDark ? '#8da2c0' : '#334155'} corbata /><Persona id={ID} x={260} y={330} s={0.36} cuerpo="#7c3aed" /></g>
             </g>
             <g opacity={z(M('quince'), M('canib'))} transform="translate(250 260) scale(1.3)">
               <rect x={-90} y={-80} width={180} height={160} rx={20} fill={c.panel} style={sombra(c.sombra, 6, 14)} /><rect x={-90} y={-80} width={180} height={44} rx={20} fill={ROJO_M} />
@@ -70,10 +70,10 @@ export const LimitesOA: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatic
 
             {/* arriba a la derecha: la regla sin marcas y la canibalización */}
             <g opacity={z(M('extremos'), M('difusa'))} transform="translate(940 270) scale(1.2)">
-              <rect x={-170} y={-24} width={340} height={48} rx={10} fill="#e5e7eb" />
+              <rect x={-170} y={-24} width={340} height={48} rx={10} fill={isDark ? "#e5e7eb" : "#cbd5e1"} />
               {Array.from({ length: 15 }, (_, k) => <rect key={k} x={-160 + k * 22.8} y={-24} width={4} height={k % 5 === 0 ? 24 : 14} fill={k < 5 ? '#64748b' : c.apagado} opacity={k < 5 ? 1 : 0.2} />)}
               <Txt x={0} y={-52} textAnchor="middle" fontSize={44} fill={ROSA} opacity={e1(t, M('actores'))}>?</Txt>
-              <circle cx={60} cy={96} r={46} fill={AZUL_M} opacity={0.12 + 0.18 * e1(t, M('cuantif'))} /><circle cx={60} cy={96} r={30} fill={AZUL_M} opacity={0.2 * e1(t, M('cuantif'))} />
+              <circle cx={60} cy={96} r={46} fill={AZUL_M} opacity={0.22 + 0.28 * e1(t, M("cuantif"))} /><circle cx={60} cy={96} r={30} fill={AZUL_M} opacity={0.2 * e1(t, M('cuantif'))} />
             </g>
             <g opacity={z(M('canib'), M('schum'))} transform="translate(950 280) scale(1.2)">
               <circle cx={-60} cy={0} r={52} fill={`url(#${ID}-marca)`} />
