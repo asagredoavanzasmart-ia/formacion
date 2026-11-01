@@ -16,7 +16,7 @@ import { presenterBus } from '../lib/presenterBus';
  */
 
 const STORAGE_KEY = 'CLASE_NOTAS_DOCENTE_V1';
-const ENDPOINT_GUIONES = '/formaci-nb2b/__guiones';
+const ENDPOINT_GUIONES = '/formacion/__guiones';
 
 const HIGHLIGHTS: { name: string; color: string }[] = [
   { name: 'Amarillo', color: '#fde68a' },

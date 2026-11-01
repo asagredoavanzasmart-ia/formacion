@@ -5,7 +5,7 @@ import path from 'path';
 import {defineConfig, loadEnv, type Plugin} from 'vite';
 
 const ARCHIVO_GUIONES = path.resolve(__dirname, 'guiones/guiones-editados.json');
-const ENDPOINT_GUIONES = '/formaci-nb2b/__guiones';
+const ENDPOINT_GUIONES = '/formacion/__guiones';
 
 /* Solo en desarrollo: guarda los guiones editados en un JSON dentro del proyecto. */
 function guardarGuiones(): Plugin {
@@ -57,7 +57,7 @@ function guardarGuiones(): Plugin {
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
-    base: '/formaci-nb2b/',
+    base: '/formacion/',
     plugins: [react(), tailwindcss(), guardarGuiones()],
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
