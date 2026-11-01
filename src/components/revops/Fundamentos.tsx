@@ -7,7 +7,7 @@ import {
   ORANGE, PINK, BRAND, PEACH, NEUTRAL, SLATE, sceneTone, SceneDefs, IsoBox, IsoFloor, Cylinder, Orb, Float, Lift, Traveler, PulseDisc, hop, Persona,
 } from '../scene3d';
 import type { Faces } from '../scene3d';
-import { SlideProps, heading, Piso, Bola, Cifra, Cita, Nota, Fuente, Opcion, BarrasIso, Paso, Verificado } from './kit';
+import { SlideProps, heading, Piso, Bola, Cifra, Cita, Nota, Fuente, Opcion, BarrasIso, Paso, Verificado, useNarrado } from './kit';
 
 /* ══════════════════════════════════════════════════════════════════
    LECCIÓN 1 · Bienvenida
@@ -286,10 +286,17 @@ const AFIRMACIONES = [
   'Conectamos las aplicaciones de la empresa en un solo lugar, sin importar ni exportar a mano.',
 ];
 
+const DIAG_ARR = (a: number[]) => Object.fromEntries(a.map((x, k) => ['a' + k, x])) as Record<string, number>;
+const DIAG_PLAN = (p: number) => ({ [-1]: DIAG_ARR([2, 2, 2, 2, 2, 2, 2, 2, 2, 2]), 7: DIAG_ARR([1, 1, 2, 1, 1, 2, 1, 1, 0, 1]), 8: DIAG_ARR([3, 2, 3, 2, 3, 2, 2, 3, 2, 2]), 9: DIAG_ARR([4, 4, 3, 4, 4, 3, 4, 4, 3, 4]), 10: DIAG_ARR([2, 2, 2, 2, 2, 2, 2, 2, 2, 2]) } as Record<number, Record<string, number>>)[p] ?? null;
+
 export function Diagnostico({ isDark }: SlideProps) {
   const t = sceneTone(isDark);
-  const [v, setV] = useState<number[]>(Array(10).fill(2));
+  const [obj, setObj, paso] = useNarrado('ro-2-diagnostico', DIAG_ARR([2, 2, 2, 2, 2, 2, 2, 2, 2, 2]), DIAG_PLAN);
+  const v = Array.from({ length: 10 }, (_, k) => Math.round(obj['a' + k]));
+  const setV = (f: (p: number[]) => number[]) => setObj(DIAG_ARR(f(v)));
   const total = v.reduce((a, b) => a + b, 0);
+  const filaFoco = (k: number) => paso !== null && ((paso === 3 && k === 0) || (paso === 4 && k >= 1 && k <= 5) || (paso === 5 && k >= 6));
+  const ve = (desde: number) => (paso === null || paso >= desde ? 'opacity-100' : 'opacity-0');
   const tramo = total <= 16
     ? { r: '0 a 16 puntos', txt: 'RevOps no está en buen estado, y eso es una gran oportunidad: hay muchísimo valor por agregar. Usa este curso para armar un plan.' }
     : total <= 31
@@ -303,7 +310,7 @@ export function Diagnostico({ isDark }: SlideProps) {
       <div className="h-full flex flex-col lg:flex-row gap-5 min-h-0">
         <div className="lg:w-[64%] flex flex-col gap-1 justify-center">
           {AFIRMACIONES.map((a, k) => (
-            <div key={k} className={`flex items-center gap-2 px-2.5 py-1 rounded-xl ${k % 2 ? '' : isDark ? 'bg-white/[0.03]' : 'bg-gray-50'}`}>
+            <div key={k} className={`flex items-center gap-2 px-2.5 py-1 rounded-xl transition-all duration-500 ${filaFoco(k) ? (isDark ? 'bg-[#ff851d]/15' : 'bg-orange-50 shadow-sm') : k % 2 ? '' : isDark ? 'bg-white/[0.03]' : 'bg-gray-50'}`}>
               <span className={`text-[12px] leading-tight flex-1 ${textMuted(isDark)}`}><strong className="text-[#ff851d] mr-1">{k + 1}.</strong>{a}</span>
               <span className="flex gap-1 shrink-0">
                 {[0, 1, 2, 3, 4].map((n) => (
@@ -332,12 +339,12 @@ export function Diagnostico({ isDark }: SlideProps) {
             <text x={170} y={B - hMax - 10} fontSize={11} fontWeight={800} fill={t.muted}>40</text>
             <text x={170} y={B + 4} fontSize={11} fontWeight={800} fill={t.muted}>0</text>
           </svg>
-          <div className={`w-full p-3.5 rounded-3xl text-center ${featuredClass(isDark)}`}>
+          <div className={`w-full p-3.5 rounded-3xl text-center transition-opacity duration-500 ${featuredClass(isDark)} ${ve(6)}`}>
             <p className={microLabel(isDark)}>Tu puntaje · {tramo.r}</p>
             <p className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ff851d] to-[#ef375c] leading-none my-1">{total}<span className={`text-lg ${textMuted(isDark)}`}> / 40</span></p>
             <p className={`text-xs leading-snug ${textMuted(isDark)}`}>{tramo.txt}</p>
           </div>
-          <p className={`text-[11px] text-center leading-snug ${textMuted(isDark)}`}>Contexto: una empresa mediana usa en promedio <strong>137 aplicaciones SaaS</strong> y una grande <strong>288</strong> (Blissfully, 2020). Mantener esos datos sincronizados es un trabajo de tiempo completo.</p>
+          <p className={`text-[11px] text-center leading-snug transition-opacity duration-500 ${textMuted(isDark)} ${ve(11)}`}>Contexto: una empresa mediana usa en promedio <strong>137 aplicaciones SaaS</strong> y una grande <strong>288</strong> (Blissfully, 2020). Mantener esos datos sincronizados es un trabajo de tiempo completo.</p>
         </div>
       </div>
     </Shell>

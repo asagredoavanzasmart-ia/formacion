@@ -1,0 +1,11 @@
+Una hoja de 11 por 17 pulgadas. Eso es todo el espacio que Toyota le dio a sus ingenieros para explicar un problema, analizarlo y proponer una solución. Esa restricción fue intencional: si no cabe en una página, es que todavía no se entiende del todo. Alicia Butler Pierre lo resume igual: la gerencia no lee prosa larga, necesita imágenes y viñetas. El error más frecuente con esta herramienta es usarla para documentar una decisión que ya estaba tomada, en vez de usarla para desarrollar la solución.
+
+La hoja se divide en dos lados. La izquierda responde por qué importa el problema. Antecedentes cuenta la historia: marketing genera leads que ventas no contacta. Condición actual muestra datos reales: mil leads al mes, 15 contactados, con el costo que implica. Metas muestra el estado ideal en los mismos gráficos. Y análisis es el corazón: los cinco porqués con cada equipo y el diagrama de espina de pescado con seis costillas, personas, métodos, materiales, equipos, entorno y gestión, numerando cada causa raíz.
+
+La derecha construye la solución. Contramedidas tiene una fila por causa raíz, con descripción y beneficios. Plan define cronograma y responsables con DARCI: quién decide, quién es accountable, quién ejecuta, a quién se consulta y a quién se informa. Y seguimiento indica qué indicadores se medirán y cada cuánto.
+
+Sobre la hoja van las iniciales de quienes la revisaron. Cada firma es una señal visible de respaldo: cuando la propuesta llega a la gerencia no llega sola, llega con la lista de quienes ya la vieron y están de acuerdo.
+
+Lo que suele revelar el análisis es que el problema no es de confianza entre equipos. Quizá ventas no contacta los leads porque no son calificados, o quizá ni sabía que marketing los enviaba. Si no se hace el análisis, se propone una solución al problema equivocado.
+
+¿Qué problema de tu empresa merecería un A3 antes de que alguien proponga una solución?

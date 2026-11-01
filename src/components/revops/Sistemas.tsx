@@ -4,7 +4,7 @@ import { Shell, panelClass, textMuted, microLabel, Pill, featuredClass } from '.
 import {
   ORANGE, PINK, BRAND, PEACH, NEUTRAL, SLATE, sceneTone, SceneDefs, IsoBox, IsoFloor, Cylinder, Orb, Float, Lift, Traveler, PulseDisc, hop, Persona,
 } from '../scene3d';
-import { SlideProps, heading, Piso, Bola, Cifra, Cita, Nota, Fuente, Opcion, BarrasIso, Campo, Paso, Verificado, fmt } from './kit';
+import { SlideProps, heading, Piso, Bola, Cifra, Cita, Nota, Fuente, Opcion, BarrasIso, Campo, Paso, Verificado, fmt, useNarrado } from './kit';
 
 /* ══════════════════════════════════════════════════════════════════
    LECCIÓN 6 · Gestión de sistemas
@@ -273,13 +273,19 @@ const CATEGORIAS_C = [
   { k: 'Prevención', d: 'Lo que cuesta reducir las otras tres. Aquí cabe tu propuesta: no es un gasto nuevo, es prevención.' },
 ];
 
+const COPQ_PLAN = (p: number) => ({ [-1]: { vend: 0, hDia: 0, dias: 0, costoH: 0, sueldo: 0, c: 0 }, 5: { c: 0 }, 6: { c: 1 }, 7: { c: 2 }, 8: { c: 3 }, 13: { vend: 10 }, 14: { hDia: 1 }, 15: { dias: 260 }, 16: { costoH: 50 }, 19: { sueldo: 100000 } } as Record<number, Record<string, number>>)[p] ?? null;
+
 export function CostoMalaCalidad({ isDark }: SlideProps) {
-  const [vend, setVend] = useState(10);
-  const [hDia, setHDia] = useState(1);
-  const [dias, setDias] = useState(260);
-  const [costoH, setCostoH] = useState(50);
-  const [sueldo, setSueldo] = useState(100000);
-  const [c, setC] = useState(3);
+  const [v, setV, paso] = useNarrado('ro-7-copq', { vend: 10, hDia: 1, dias: 260, costoH: 50, sueldo: 100000, c: 3 }, COPQ_PLAN);
+  const { vend, hDia, dias, costoH, sueldo } = v;
+  const c = Math.round(v.c);
+  const setC = (x: number) => setV((o) => ({ ...o, c: x }));
+  const setVend = (x: number) => setV((o) => ({ ...o, vend: x }));
+  const setHDia = (x: number) => setV((o) => ({ ...o, hDia: x }));
+  const setDias = (x: number) => setV((o) => ({ ...o, dias: x }));
+  const setCostoH = (x: number) => setV((o) => ({ ...o, costoH: x }));
+  const setSueldo = (x: number) => setV((o) => ({ ...o, sueldo: x }));
+  void paso;
   const horas = vend * hDia * dias;
   const costo = horas * costoH;
   const ahorro = costo - sueldo;
@@ -296,11 +302,11 @@ export function CostoMalaCalidad({ isDark }: SlideProps) {
         <div className="lg:w-[62%] flex flex-col gap-2 justify-center">
           <Nota isDark={isDark} label="Caso del material">Un vendedor quiere dejar su cuota de $120.000 y pasar a operaciones con un sueldo de $100.000. La gerencia ve $220.000 en contra. ¿Cómo se paga solo?</Nota>
           <div className="grid grid-cols-5 gap-1.5">
-            <Campo isDark={isDark} label="Vendedores" value={vend} onChange={setVend} />
-            <Campo isDark={isDark} label="Horas admin/día" value={hDia} step={0.5} onChange={setHDia} />
-            <Campo isDark={isDark} label="Días al año" value={dias} onChange={setDias} />
-            <Campo isDark={isDark} label="Costo hora" prefijo="$" value={costoH} onChange={setCostoH} />
-            <Campo isDark={isDark} label="Sueldo pedido" prefijo="$" value={sueldo} step={5000} onChange={setSueldo} />
+            <Campo isDark={isDark} label="Vendedores" value={vend} onChange={setVend} activo={paso === 13} />
+            <Campo isDark={isDark} label="Horas admin/día" value={hDia} step={0.5} onChange={setHDia} activo={paso === 14} />
+            <Campo isDark={isDark} label="Días al año" value={dias} onChange={setDias} activo={paso === 15} />
+            <Campo isDark={isDark} label="Costo hora" prefijo="$" value={costoH} onChange={setCostoH} activo={paso === 16} />
+            <Campo isDark={isDark} label="Sueldo pedido" prefijo="$" value={sueldo} step={5000} onChange={setSueldo} activo={paso === 19 || paso === 20} />
           </div>
           <div className="grid grid-cols-3 gap-2">
             <Cifra isDark={isDark} n={horas} titulo="Horas de venta en tareas admin" lineas={[`= ${fmt(anios, 1)} años de trabajo de un vendedor (50 h × 52 semanas)`]} />

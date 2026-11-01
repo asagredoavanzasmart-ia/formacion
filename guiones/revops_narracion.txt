@@ -1,0 +1,667 @@
+Página 2
+---
+Marketing, ventas y servicio al cliente. Desde cada figura viaja una partícula hacia una esfera central: los tres equipos alimentan y consultan el mismo núcleo de información.
+
+La definición que guía todo el curso es deliberadamente simple: RevOps son las personas, los procesos, los sistemas y los datos que controlan cómo una empresa genera ingresos. El objetivo no es tener más herramientas ni más reportes, sino lograr que el negocio crezca más rápido de lo que crece su costo.
+
+El término se puso de moda hace poco porque cambiaron tres cosas a la vez: los clientes esperan experiencias mejores, más rápidas y más personalizadas; están conectados entre sí y cuentan lo que viven; y las empresas tienen más datos que nunca, pero repartidos entre muchos sistemas y equipos.
+
+Si hoy alguien te preguntara quién es responsable del recorrido completo del cliente en tu empresa, ¿qué nombre darías?
+
+Página 3
+---
+La escena muestra cuatro bloques en fila, cada uno con un componente de RevOps: Personas, Procesos, Sistemas y Datos. El bloque seleccionado se eleva y cambia el panel de la derecha, con una explicación y una cita de un profesional entrevistado en el curso.
+
+En Personas, Daniel Remedios plantea que quien trabaja en una empresa con ingresos recurrentes y no tiene un cargo de RevOps debería asumirlo igual: trabajar aislado del ciclo completo hoy es un error grave. En Procesos, Ross Nibur, de Toast, baja la idea al escritorio: cotizar no es una abstracción, es armar una cotización y enviarla, y no tiene sentido hacerlo de dos maneras distintas para una venta nueva y para un upsell.
+
+En Sistemas aparece el problema del crecimiento: cada persona compra su aplicación favorita y cada jefatura mantiene su planilla. En Datos, Matt Bolian resume la tesis central: todo lo que hacen marketing, ventas y servicio genera datos, de modo que toda empresa ya hace revenue operations, bien o mal.
+
+El panel inferior marca la diferencia con las áreas tradicionales de operaciones: sales ops, marketing ops o CS ops diseñan procesos mirando un solo pedazo del negocio, mientras RevOps planifica de forma uniforme y holística.
+
+De los cuatro componentes, ¿cuál está más desordenado hoy en tu organización?
+
+Página 4
+---
+La ruta: 10 lecciones, un plan propio. Cada lección deja una pieza de tu estrategia de RevOps, y al final tendrás un plan completo, aplicable a cualquier tamaño de empresa e industria. En la lección 1, Bienvenida, aprendes qué es RevOps y de qué está hecho, y construyes un mapa de las personas, procesos, sistemas y datos que generan ingresos en tu empresa. En la lección 2, Introducción a RevOps, aprendes por qué crecer a escala exige otra forma de operar y por dónde empezar, y construyes un diagnóstico de 10 afirmaciones con 40 puntos posibles para decidir si tu empresa necesita invertir en RevOps. En la lección 3, El flywheel, aprendes a pensar en atraer, interactuar y deleitar como un ciclo, con fuerzas que lo aceleran y fricciones que lo frenan, y construyes el dibujo de tu flywheel con sus fuerzas, fricciones y acciones priorizadas. En la lección 4, Responsabilidad con SLA, aprendes cómo funciona el acuerdo de servicio entre marketing y ventas, y construyes tu SLA con la cantidad de leads por mes y el plazo máximo de contacto. En la lección 5, Mapear el proceso de ventas, aprendes a diseñar etapas centradas en el comprador, con criterios de salida y playbook, y construyes un proceso de ventas depurado donde cada etapa tiene la acción del vendedor y la acción del comprador.
+
+La segunda mitad se enfoca en los sistemas y en el equipo. En la lección 6, Gestión de sistemas, aprendes a priorizar el proceso antes que la herramienta, con gobierno de datos y control del stack, y construyes un diccionario de datos y una evaluación de tus herramientas. En la lección 7, Comunicar el valor, aprendes a hablar en el idioma de las finanzas, a calcular el costo de la mala calidad, a usar el informe A3 y a persuadir, y construyes una propuesta para tus líderes con pre-wiring y respuestas a objeciones. En la lección 8, Estructurar el equipo, aprendes sobre silos, estructura formal e informal y cómo crece un equipo de operaciones, y construyes tu organigrama actual, el ideal y el camino entre ambos. En la lección 9, Contratar al equipo, aprendes cuándo contratar, qué tipo de candidato buscar y cómo evaluarlo, y construyes roles, perfiles y una pauta de entrevista. En la lección 10, Evaluar e iterar, aprendes el ciclo continuo de datos, comunicación y alineación, y construyes un plan de cuatro trimestres con métricas y prioridades diarias.
+
+¿Cuál de estas piezas te haría más falta mañana mismo en tu trabajo?
+
+Página 6
+---
+El título plantea la pregunta de la lección: crecer en línea recta o crecer a escala. El subtítulo da la definición del curso: hay escala cuando el negocio crece más rápido que la inversión, y se nota cuando los ingresos crecen más que la plantilla, cuando mejora el margen neto o cuando mejora la relación LTV:CAC, el valor de vida del cliente dividido por lo que cuesta adquirirlo. Esa sigla se explica también al pie de la diapositiva.
+
+El gráfico compara dos áreas a lo largo del tiempo: la plantilla, en gris, y los ingresos, en degradado naranja. En la pestaña «Crecimiento lineal» ambas suben casi en paralelo, y el texto bajo el gráfico lo explica: cada cliente nuevo exige una persona más. En «Crecimiento a escala», la curva de ingresos se dobla hacia arriba y supera a la plantilla: el crecimiento deja de depender de contratar y empieza a financiar contratación, desarrollo y expansión. Es un esquema ilustrativo, no datos de una empresa.
+
+La primera tarjeta, «Por qué el trato personalizado deja de alcanzar», desarrolla el argumento: si cada prospecto y cada cliente recibe atención uno a uno, la única forma de crecer es sumar personas. Más ventas exigen más vendedores y más clientes exigen más soporte, y el costo de contratar y formar a ese equipo consume los recursos que deberían ir a todo lo demás.
+
+La cita de Jen Spencer agrega un costo que no aparece en el gráfico: con un equipo chico se puede abrazar a cada cliente, pero al crecer la historia de cada cuenta pasa de un gerente a otro y se diluye.
+
+Las dos tarjetas de abajo ordenan el momento de cada estrategia. En «Etapa temprana», Daniel Remedios recomienda hacer lo que no escala: dar la mejor experiencia posible a cada cliente y aprender de él. En «Etapa de escala», Sarah Doughty aclara que no se deja de cuidar al cliente: se buscan formas uno a muchos que igual aporten valor, como un correo con información de la industria firmado por su ejecutivo de cuenta.
+
+En tu empresa, ¿qué crece hoy más rápido, los ingresos o la cantidad de personas necesarias para generarlos?
+
+Página 7
+---
+El título es «Diagnóstico: ¿cómo está tu RevOps hoy?». La diapositiva reproduce el diagnóstico del workbook, y el subtítulo explica la escala: cada una de las diez afirmaciones vale de 0 a 4 puntos, donde 4 es «siempre», 3 «casi siempre», 2 «a veces», 1 «de vez en cuando» y 0 «nunca». Cada fila tiene sus cinco botones, y el número elegido se resalta; al abrir la diapositiva todas parten en 2.
+
+Las afirmaciones recorren lo que hace un equipo de operaciones maduro. La primera habla del tiempo: más del 50% en proyectos estratégicos y de impacto. Las siguientes, de datos: alimentar a marketing, ventas y servicio con información del cliente, avisar cuando los datos fueron auditados, rastrear las ineficiencias de toda la organización, buscar constantemente cómo mejorar la operación y crear reportes de los que las áreas saquen conclusiones. Las últimas, de gobierno y tecnología: procedimientos diseñados para un servicio de calidad, una única fuente de verdad sobre el cliente para toda la empresa, la propiedad de los reportes de todas las funciones de ingresos y la conexión de las aplicaciones en un solo lugar, sin importar ni exportar a mano.
+
+La columna derecha suma el puntaje sobre 40, lo muestra como un bloque que crece y entrega la lectura del tramo. De 0 a 16 puntos, RevOps no está en buen estado, lo que el workbook presenta como una gran oportunidad de aportar valor. De 17 a 31, la organización va en la dirección correcta y por delante de la mayoría, con espacio para mejorar. De 32 a 40, el nivel es de clase mundial, con una advertencia: RevOps no se configura y se olvida, y el diagnóstico se repite cada trimestre.
+
+La nota al pie explica por qué este trabajo existe. Según el dato de Blissfully (2020) citado en el workbook, una empresa mediana usa en promedio 137 aplicaciones SaaS y una grande, 288, y mantener esos datos sincronizados es un trabajo de tiempo completo.
+
+¿Cuál de las diez afirmaciones crees que tendría el puntaje más bajo en tu organización, y por qué?
+
+Página 8
+---
+El título es «Por dónde empezar: los datos que ya tienes». El subtítulo plantea el primer paso: si te encargaron unificar las operaciones de ingresos, no empieces cambiando procesos, sino mirando los datos que existen y entendiendo cómo se generan. La escena muestra cuatro plataformas ascendentes, una por cada paso; la seleccionada se eleva y una partícula recorre el camino de la primera a la última.
+
+La lista de la derecha despliega el texto del paso seleccionado, y debajo cambia la cita. El primero, Instrumentar, dice que si la empresa no tiene infraestructura para recolectar datos, esa es la prioridad número uno: implementar sistemas y procesos para capturar todo de forma consistente. Greg Keshian cuenta que eso fue lo primero que hizo: medirlo todo y poner procesos para que la gente trabajara igual. La cita de Daniel Remedios insiste en lo crítico desde el comienzo: una vista consolidada del cliente, para no recibir a nadie sin saber de dónde viene ni qué quiere.
+
+El segundo, Entender antes de cambiar, cita a Stephen Covey: primero busca entender. Antes de tocar nada hay que comprender qué pasa en la organización, empezando por la base de cuentas: quién ingresa datos, qué está duplicado y qué está limpio. La cita de Sandy Robinson resume la urgencia: siempre habrá una base desordenada, y sin datos limpios ni marketing ni los BDR (representantes de desarrollo de negocio, sigla que se aclara al pie) están conformes.
+
+El tercero, Dar consistencia, observa que las métricas de la venta nueva suelen estar claras, pero no las de después: cuántos clientes se incorporaron bien, cuántos tuvieron un primer uso exitoso a tiempo, cuántos renovaron y ampliaron. La cita de Sarah Doughty pone esas preguntas como ejemplo, y el texto propone usar las mismas definiciones antes y después de la venta, y el mismo proceso cuando el trabajo es el mismo, como cotizar una venta nueva o un upsell.
+
+El cuarto, Mirar desde el cliente, propone preguntar qué intenta lograr el cliente en cada etapa, quién participa de cada lado y qué siente, en un taller con marketing, ventas, éxito del cliente y producto. Su cita cierra con una conclusión del curso: la mayoría de las ineficiencias no vienen de malas personas ni de mala ejecución, sino de áreas que intentan lo mismo, ayudar al cliente, cada una a su manera.
+
+¿Qué dato sobre tus clientes no existe hoy en ningún sistema, y debería existir?
+
+Página 9
+---
+El título contrasta dos palabras: «Velocidad, no rapidez». El subtítulo trae la distinción de Doug Davidoff: rapidez mide qué tan rápido vas; velocidad mide cuánto tardas en llegar a destino. El trabajo de RevOps es aumentar la velocidad, no la rapidez.
+
+La escena tiene dos estados. En la pestaña «Cada equipo a su ritmo», cinco esferas grises corren en direcciones distintas sin acercarse a la «Meta de ingresos», y el texto inferior dice que todos corren al máximo, cada uno en otra dirección. En «Mismo rumbo», las esferas se alinean y las partículas viajan juntas hacia la meta: menos vueltas, más tracción.
+
+La primera tarjeta es la cita de Davidoff con su analogía de la bicicleta: en primera marcha das muchas vueltas y avanzas poco; en una marcha más larga das menos vueltas, pero cada una tiene más tracción.
+
+La tarjeta «La consecuencia» saca la conclusión práctica, que es incómoda: si la empresa no crece, la solución no es exigir más esfuerzo, porque cada persona ya corre tras su cuota. Lo que hace falta es alguien con perspectiva que logre que todos tiren en la misma dirección, aunque a veces eso signifique ir más lento.
+
+Las dos tarjetas de abajo advierten sobre el estilo. «El error clásico de operaciones» recuerda que a su área de operaciones de ventas Davidoff la llamaba «el departamento de prevención de ventas», porque siempre decía que no. «La actitud correcta» propone lo contrario, como plantean Ross Nibur y Sandy Robinson: empatía y curiosidad sinceras por lo que cada persona hace en su escritorio, porque los equipos internos también son clientes.
+
+¿Qué equipo de tu empresa corre más rápido hoy, y hacia dónde?
+
+Página 10
+---
+«Crecer sin gastar un peso más». Y el subtítulo lo dice con precisión: mejorar una tasa de conversión, con todo lo demás constante, se compone a lo largo del embudo. Ese es el tipo de mejora que RevOps sabe encontrar. Si de cada cien leads hoy conviertes treinta y mañana treinta y cinco, no ganaste cinco leads una vez; los ganaste en cada etapa que viene detrás, cada trimestre. Esa mejora no aparece en ningún presupuesto, porque vive en los datos del proceso y no en la cuenta de gastos.
+
+Antes de empezar, tres siglas. Un MQL es un lead calificado por marketing. Un SQL es ese mismo contacto ya validado por ventas como oportunidad real. Y un SDR es el representante que hace el primer contacto. El paso de MQL a SQL es la junta más frágil del embudo, y por eso aparece en tres de los cuatro casos.
+
+Veremos cuatro casos reales, uno por pestaña: Toast, Decaimiento, Puntos de contacto y Comisiones.
+
+Primer caso, Toast: duplicar la conversión inbound sin tocar los leads. Ross Nibur midió de dónde venían los MQL, qué tan rápido y con cuánta profundidad se trabajaban y cuándo convertían. Con eso definió cuántos contactos hacer y en cuántos días. No cambió los leads, ni las personas, ni las llamadas: solo el orden en que el sistema los ponía frente al vendedor. En el gráfico, cada barra es la conversión inbound, antes del cambio, una vez, y después, dos veces. Es una escala relativa, no un porcentaje. Lo importante es que la tasa de cierre de las oportunidades no cayó. Al duplicar el volumen lo normal es diluir la calidad; que no pasara significa que esas oportunidades siempre estuvieron ahí y el proceso no llegaba a tiempo.
+
+Segundo caso, Decaimiento: dejar de trabajar leads que ya se enfriaron. Matt Volm agrupó los MQL por cohortes, según el día en que entraron. Después del día cuatro o cinco casi nadie convertía, pero los SDR insistían hasta el nueve o diez. La regla nueva fue soltar todo MQL de más de cinco días y concentrarse en los recién llegados. En el gráfico, cada barra es el porcentaje de MQL que se convierten en SQL: 33% antes, 45% después, en un trimestre. La aritmética: son 12 puntos, es decir 36% más SQL con el mismo equipo. La fuente atribuye al cambio 33% más ingresos. No se trabajó más: se eliminó esfuerzo que ya no pagaba.
+
+Tercer caso, Puntos de contacto: diseñar las secuencias con datos. Volm propone ordenar tus cuentas objetivo por número de contacto y buscar en cuál salta la tasa de reuniones agendadas: puede ser el contacto quince o dieciséis. Luego compáralo con tus secuencias reales. El gráfico hace justamente esa comparación: una secuencia corta típica, ocho pasos, que es solo un ejemplo porque la fuente no da una cifra media, frente al punto donde los datos muestran el salto, quince o dieciséis. Casi siempre las secuencias tienen demasiados pasos o, más a menudo, muy pocos: se abandona en el quinto intento lo que recién rendía en el decimoquinto. Mejorar cinco puntos esta conversión en un trimestre se compone en todo el embudo.
+
+Cuarto caso, Comisiones: la venta que se pagó y nunca se activó. Sandy Robinson revisó los reportes de comisiones tras una adquisición y encontró ventas duplicadas, pagadas más de una vez, y clientes que nunca implementaban. Los datos mostraron el umbral: seis días sin contacto de éxito del cliente y ya no implementaba. En el gráfico, la barra alta son los clientes contactados dentro de cinco días, que implementan; la baja, los que pasan seis o más sin contacto, que casi no lo hacen. Es el patrón descrito, no porcentajes exactos. La solución: pagar la comisión recién con el cliente activo, traspaso cálido a implementación y alertas a los cinco o seis días. Aquí no se arregló un proceso, se arregló un incentivo: mientras la comisión premiaba la firma, a nadie le importaba la activación.
+
+Los cuatro casos tienen la misma forma: alguien midió una junta que nadie miraba, encontró un umbral y cambió una regla. Ninguno pidió más presupuesto.
+
+¿Qué tasa de conversión de tu empresa nadie ha medido por cohortes todavía?
+
+Página 12
+---
+Del embudo al flywheel. El subtítulo plantea el contraste: el embudo tiene un final, porque los leads entran arriba y los clientes salen abajo; el flywheel es un ciclo, porque los clientes deleitados atraen a los siguientes. Detrás de ese cambio de imagen hay una crítica a cómo suelen organizarse las operaciones. Si vienes de operaciones, estás acostumbrado a mirar una sola función, y si la empresa ha invertido mucho en ops, probablemente existan varios equipos: uno de ventas, otro de marketing, cada uno atento a su tramo. Invertir en operaciones casi siempre es buena idea, pero ese enfoque en silos genera un problema serio: cada área optimiza lo suyo y nadie mira el recorrido completo. El flywheel es el modelo que obliga a mirarlo entero. Hay dos formas de verlo: el embudo y el flywheel.
+
+El embudo. Cinco etapas: atraer, interactuar, capturar, nutrir y convertir. Cada una más angosta que la anterior, porque en cada paso quedan menos prospectos. El gráfico lo muestra con un prospecto que baja y sale como cliente. Ahí termina el recorrido. La tarjeta «Cómo razona el embudo» lo resume: los prospectos entran arriba y se filtran etapa por etapa hasta convertirse en clientes. El cliente es el fondo del embudo, el resultado final. Pero la tarjeta «Lo que queda fuera» señala el costo de esa lógica: todo lo que ocurre después de la compra, como renovaciones, recomendaciones y referidos. En el embudo, la energía de un cliente feliz no vuelve a entrar al sistema. En un negocio recurrente eso es dejar fuera la mayor parte del valor, y además deja sin dueño la parte del recorrido donde se gana o se pierde la lealtad.
+
+El flywheel. Parte de la idea central del enfoque inbound, que es un método para atraer, interactuar y deleitar a las personas con el fin de hacer crecer un negocio que aporta valor y genera confianza. En lugar de imaginar leads que entran por arriba y clientes que salen por abajo, se piensa en un círculo. HubSpot adaptó este modelo para explicar el impulso que se gana cuando toda la organización se alinea en torno a una experiencia de cliente notable. Funciona así: la empresa atrae prospectos con contenido útil y otros recursos en línea, los equipos de primera línea interactúan con ellos y los convierten en clientes, y esos clientes quedan tan satisfechos que se lo cuentan a sus colegas y amigos. Ese boca a boca positivo atrae a nuevos prospectos y el ciclo vuelve a empezar. Nunca termina, y debe pensarse así.
+
+El gráfico muestra tres flechas, atraer, interactuar y deleitar, girando alrededor de crecimiento. La tarjeta «El anillo exterior» nombra a la persona en cada tramo: desconocidos que se vuelven prospectos, prospectos que se vuelven clientes y clientes que se vuelven promotores. Los promotores atraen a nuevos desconocidos y la rueda gana impulso: es el punto naranja que recorre el aro.
+
+Entender el flywheel de tu empresa es la base de RevOps, y se hace respondiendo tres preguntas, una por fase, con sus definiciones. Atraer es traer a las personas correctas con contenido y conversaciones valiosas que te posicionan como asesor de confianza. Un prospecto atraído es alguien que se interesó en tu forma de resolver su problema y te dejó sus datos a cambio de algo útil para él. Para mapearla se revisan las propiedades en línea que usas, como el sitio web, las redes sociales o directorios como Yelp, y el contenido que creaste para acompañar al comprador mientras investiga antes de decidir, por ejemplo, páginas pilares y grupos de temas que respondan sus preguntas. Si tienes locales físicos, cuentan las tácticas para que la gente llegue, como cupones en el boletín. En todos los casos se anota qué métrica dice si funcionan.
+
+Interactuar es presentar ideas y soluciones alineadas con los dolores y metas de la persona, para que sea más probable que te compre. Un prospecto interactuado ya considera tu solución y quiere conectar con alguien de tu empresa. Se revisan los puntos de contacto: qué tan fácil es obtener respuestas, qué tan fácil encuentra el comprador lo que busca, si debe hablar con una persona para comprar o puede resolverlo solo, cómo se pone en contacto con tu equipo y cuánto tardas en responder.
+
+Deleitar es dar ayuda y soporte para que el cliente tenga éxito con lo que compró, y por eso quiera recomendarte. Un cliente deleitado es el que recurre a soporte para resolver problemas y a éxito del cliente para planear cómo sacar más provecho. Se mide con encuestas de NPS, Net Promoter Score, que indica qué tan probable es que un cliente te recomiende a un amigo, con las razones por las que algunos vuelven a comprar y con los reclamos que recibes.
+
+Emmanuelle Skala lo dice sin rodeos: nadie mira el embudo completo, y de hecho ya no es un embudo, es un círculo. Los embudos, por definición, tienen un final, y en SaaS no hay final: hay renovaciones, recomendaciones y referidos. Su pregunta es la que justifica el rol de RevOps: cuando separas ventas de éxito del cliente, ¿quién mira el ciclo completo y se asegura de que en todas las fases del recorrido el cliente esté bien atendido?
+
+¿Quién en tu empresa es responsable de mirar el ciclo completo, de la atracción a la recomendación?
+
+Página 13
+---
+«Fuerza y fricción». Fuerza es cualquier programa o estrategia que acelera tu flywheel; fricción es todo lo que lo frena. RevOps trabaja sobre las dos. Dicho simple: la fuerza es en qué inviertes, y la fricción es lo que se come esa inversión.
+
+La maqueta lo muestra en dos lecturas. En Empujar más fuerte, las manchas oscuras son la fricción: aunque se empuje al máximo, la rueda gira lenta. En Quitar la fricción no hay roce, y con un empuje normal gira mucho más rápido. Más fuerza sobre un sistema con roce rinde poco; menos roce rinde más que cualquier esfuerzo extra.
+
+Devyn Bellamy lo explica con un carrusel: no hace falta que el niño grande empuje más fuerte, hace falta que el carrusel gire mejor. Ver dónde está la fricción es enorme, y ahí entra RevOps.
+
+Con un cliente, Alex, se ven los dos efectos. En Fuerza bien aplicada, Alex queda feliz, lo cuenta a colegas y amigos, y cada ciclo trae más alcance: el crecimiento se acelera de forma exponencial y rompe la línea recta. En Fricción sin atender, Alex tiene una mala experiencia y el boca a boca negativo viaja de persona en persona: cada vez cuesta más encontrar a alguien dispuesto a comprarte. Por eso la experiencia del cliente es prioridad desde que se empieza a escalar.
+
+Dónde poner la fuerza: en deleitar. Un ejemplo no obvio es la compensación de ventas. Si el cliente cancela dentro de los 8 meses, el vendedor devuelve la comisión, y quienes retienen más y tienen clientes más felices ganan más. Normalmente el vendedor cobra al cerrar, así que se siente tentado a vender a cualquiera; con este esquema su interés coincide con el éxito del cliente, y eso produce más deleite.
+
+Tu ejercicio. Lista todas las fuerzas que tu empresa despliega para atraer, interactuar y deleitar, y en qué lugares se pueden reasignar recursos para aumentar el deleite del cliente.
+
+¿Qué incentivo de tu empresa empuja hoy a vender a clientes que no van a tener éxito?
+
+Página 14
+---
+«Dónde está la fricción». Busca los bordes filosos: lugares con demasiados traspasos o donde algo no funciona. Haz la lista, ordénala por facilidad de arreglo o por impacto, y ataca las primeras de inmediato. La fricción no se elimina en abstracto: se encuentra, se prioriza y se ataca.
+
+Hay dos frentes: La vive el cliente y La viven tus equipos. Cada plataforma es una etapa del recorrido; el pulso rosa marca dónde se siente la fricción elegida y el punto naranja es el cliente avanzando.
+
+Yamini Rangan lo resume así: quitar la fricción es examinar la experiencia del cliente a lo largo del recorrido e identificar los bordes filosos, los demasiados traspasos y los lugares que no funcionan. Si recién empiezas con el flywheel, lo normal es encontrar varios.
+
+En La vive el cliente, las etapas son Descubre, Compra, Recibe y Pide ayuda. Los formularios web sin respuesta y la información difícil de hallar golpean al descubrir. Obligar a hablar con alguien para algo de autoservicio, los precios altos y los cobros sorpresa golpean al comprar; este último rompe la confianza justo al decidir. Los retrasos en la entrega y las fallas del producto o servicio golpean al recibir, y las esperas largas en teléfono o chat, al pedir ayuda.
+
+En La viven tus equipos, las etapas son Marketing, Ventas, Servicio y Operaciones. Una fuente de verdad distinta por equipo hace que nadie coincida sobre quién es el cliente. Si su información es difícil de encontrar, se le pregunta de nuevo lo que ya contó. Los procesos duplicados o en conflicto y los equipos sin procesos consistentes generan experiencias distintas según con quién se hable. La alta rotación y la incorporación insuficiente dejan a personas nuevas atendiendo sin preparación.
+
+Regla de prioridad. Prioridad es qué tan fácil es arreglar un proceso o cuánto impacto tendrá en clientes y compañeros; basta elegir un criterio y empezar por lo de arriba. Cualquier mejora a la experiencia del cliente tiene efecto positivo en el negocio, y lo interno importa igual: todo lo que dificulta a tus equipos servir bien termina como fricción para el cliente.
+
+Si tuvieras que elegir una sola fricción para eliminar este mes, ¿cuál tendría más impacto en tus clientes?
+
+Página 15
+---
+«Cuando la fricción suma valor». Al principio conviene asumir que toda fricción es mala. Con más madurez, aprendes a usarla a propósito: la cantidad de fricción debe calzar con el valor que agrega. Al empezar con el flywheel es razonable suponer que todo lo que se interpone entre un prospecto y un defensor de por vida debe eliminarse. Pero a medida que se implementan cambios, hay que vigilar los efectos secundarios de quitarlo todo. Quitar fricción no es un objetivo en sí mismo; el objetivo es que la fricción que quede esté justificada.
+
+Doug Davidoff lo dice en la cita: «Toda experiencia de alto valor tiene fricción; si no la tuviera, ni la notaría. El problema es la fricción en un lugar de poco valor. No usar la fricción es no usar una herramienta». Nadie debería renunciar a una herramienta sin saber por qué.
+
+Dos preguntas ordenan el tema: si el momento es de alto o de bajo valor, y si tiene o no fricción. Eso da cuatro combinaciones. Fricción en lugar de poco valor: «elimínala, es la que daña la experiencia». Fricción intencional en un momento de alto valor: «úsala, hace que la persona se detenga y piense». Sin fricción en lo rutinario: «lo ideal, lo de poco valor debe ser fluido». Sin fricción en lo decisivo: «cuidado, la persona avanza sin darse cuenta de lo que implica». Los casos ocupan las dos celdas de arriba: el de fricción útil en alto valor y el de fricción mal ubicada.
+
+Los tres casos son Fechas de inicio, Formulario de pasaporte y Fricción que se traslada.
+
+En Fechas de inicio, Jen Spencer cuenta: «una agencia arranca clientes nuevos solo los días 1 y 15 de cada mes. Para quien quiere empezar el 5 es fricción, pero ventas la convierte en fuerza: para partir el 15, el contrato debe llegar antes de fin de mes. Alinea expectativas y acelera la firma». Es como no poder entrar a la consulta de un cirujano y pedir operarse ahora, o pedirle a tu estilista de confianza una cita para hoy: te dirá que puede atenderte en tres semanas. Si hoy es 30 de marzo y el próximo cupo es el 15 de abril, la fecha de inicio ordena todo lo demás, incluido el contacto del equipo con el cliente.
+
+En Formulario de pasaporte, Davidoff relata: «a mitad de un formulario aparecían 17 documentos requeridos. Al pedir que la persona confirmara al inicio que los tenía (más fricción), subieron los formularios completados, la satisfacción y el NPS». Quien no estaba listo decidía volver más tarde, en lugar de abandonar a mitad de camino. Davidoff vivió lo contrario con una cuenta gratuita que, ya empezada, pedía datos bancarios: un poco de fricción al inicio lo habría hecho pensar y habría sido una mejor experiencia.
+
+En Fricción que se traslada: Cuando reduces la fricción en un lugar, casi siempre se crea en otro. Quitarla exige un análisis de costo y beneficio, no un reflejo automático». No basta con quitar lo que claramente no funciona; hay que considerar el matiz y el impacto de cada punto, por sutil o pequeño que parezca.
+
+Cómo empezar. Dibuja tu flywheel, lista todos sus puntos de fuerza y fricción, y elimina primero las fricciones más negativas. Después distingue cuáles dañan y cuáles mejoran la experiencia. La fuerza tampoco es siempre positiva: así como hay fricción que suma, hay fuerza que resta. El objetivo final es reducir la fricción y la fuerza negativas y aumentar las positivas. Cuanto más valor entregas, más oportunidades hay de usar la fricción como fuerza, y el cliente sabe qué esperar y cuándo.
+
+¿Qué paso de tu proceso de venta debería tener más fricción de la que tiene hoy?
+
+Página 16
+---
+«Un flywheel de ejemplo». Así se ve el flywheel de una empresa B2B típica una vez mapeado: cada fase con su herramienta, el equipo que la maneja, la métrica que la mide y el indicador que alimenta. B2B significa que la empresa le vende a otras empresas. Las cifras son ilustrativas, no un estándar publicado: sirven para ver cómo se conecta una fase con la siguiente.
+
+Al centro gira la misma rueda de la lección, y la fase resaltada corresponde a la tarjeta activa; el punto que sale hacia cada tarjeta es el indicador que esa fase alimenta. Son cuatro: Atraer, Interactuar, Deleitar y Promotores.
+
+Atraer. Herramienta: blog, SEO y anuncios. Equipo: marketing. Métrica: MQL, leads calificados por marketing, y costo por lead. El indicador: 400 MQL al mes, de 20.000 visitas, porque un 2% deja sus datos. Esa tasa es la palanca: subirla a 3% da 600 MQL sin una visita más.
+
+Interactuar. Herramienta: prospección y demos. Equipo: ventas. Métrica: tasa de cierre. El indicador: 25 negocios ganados, porque de 400 MQL salen 100 SQL, leads que ventas valida como oportunidad, y de ellos se cierra uno de cada cuatro. Aquí vive la junta entre marketing y ventas, la que la próxima lección ordena con un acuerdo de servicio.
+
+Deleitar. Herramienta: onboarding, chat y soporte. Equipo: servicio y éxito del cliente. Métrica: NPS y retención. El indicador: NPS 45, con 90% de los clientes que renuevan al año. El NPS resta el porcentaje de detractores al de promotores, así que puede ir de menos 100 a 100, y 45 es un número sano.
+
+Promotores. Herramienta: referidos y reseñas. Equipo: éxito del cliente y marketing. Métrica: clientes que llegan referidos. El indicador: uno de cada cinco clientes nuevos llega recomendado. Es la energía que vuelve a entrar a la rueda: esos clientes no costaron un peso de anuncios y suelen cerrar más rápido.
+
+Leído completo, el ejemplo muestra que cada fase tiene un dueño y un número, y que el número de una fase es la entrada de la siguiente. Cuando una fila no tiene métrica, o la comparten dos equipos sin acuerdo, ahí suele estar la fricción.
+
+Si pusieras las cifras de tu empresa en estas cuatro tarjetas, ¿cuál estaría vacía?
+
+Página 18
+---
+Por qué marketing y ventas necesitan un SLA. Un SLA, acuerdo de nivel de servicio, garantiza un resultado entre quien presta un servicio y su cliente. Entre marketing y ventas es un acuerdo de ida y vuelta: cada equipo es proveedor y cliente del otro.
+
+Marketing promete leads calificados; ventas promete contactarlos a tiempo. El punto naranja viaja de marketing a ventas y el rosado vuelve: sin la segunda mitad, la primera no sirve.
+
+Dos cifras dan la medida del problema. El 69% de las empresas de alto desempeño dice que comunicar las metas a toda la empresa es lo más efectivo para formar un equipo de alto rendimiento. Pero en una empresa típica, solo el 7% de los empleados sabe qué debe hacer para contribuir a esas metas. Ambas circulan sin un estudio de origen identificado: valen como referencia, no como dato verificado.
+
+La brecha que cierra el SLA. Una meta de ingresos clara sirve de poco si los equipos no saben qué les toca. Sin acuerdo, marketing y ventas persiguen metas distintas y hasta opuestas: uno celebra volumen de leads y el otro se queja de su calidad. El SLA traduce la meta en un compromiso para cada lado y los vuelve responsables en conjunto de los ingresos.
+
+Ni más ni menos leads. La meta es entregarle a ventas el número exacto que necesita. Y no basta un monto: hace falta una mezcla de ventas, por ejemplo una grande al trimestre, tres pequeñas y una mediana. Steve Bookbinder, de DM Training, lo explica desde el vendedor: en su pipeline solo necesita lo suficiente para llegar a su meta. Los leads que sobran se pierden sin llamar; los que faltan lo dejan sin trabajo.
+
+Janet Comenos lo plantea así: «Para que no haya fricción entre ventas y marketing, sus metas deben ser complementarias, de modo que estén obligados a trabajar juntos, en vez de una estructura de incentivos que los haga competir». Matthew Cook va más lejos: la línea entre marketing y ventas desapareció, y el foco es uno solo, el ingreso.
+
+¿Qué meta de marketing y qué meta de ventas de tu empresa compiten hoy entre sí?
+
+Página 19
+---
+Calcula tu SLA. Con tres datos de un año de ventas, la tasa de lead a oportunidad, la de oportunidad a cierre y el ticket promedio, se sabe cuántos leads necesita ventas para llegar a la meta. Conviene comparar trimestres: la estacionalidad es normal y entra en el cálculo.
+
+Las tasas salen de contar: oportunidades divididas por leads calificados, y clientes nuevos divididos por oportunidades. El ticket es la suma de las ventas dividida por su número.
+
+La cuenta va de atrás hacia adelante. Con los valores cargados, una meta de $100.000 al mes y un ticket de $5.000 exigen 20 negocios. Con 25% de cierre, esos 20 negocios exigen 80 oportunidades. Con 20% de lead a oportunidad, esas 80 oportunidades exigen 400 leads calificados. Las barras muestran la cadena: leads calificados en naranja, luego oportunidades y negocios cerrados. Cualquier campo que cambie recalcula todo. Si la meta es anual, se divide por doce.
+
+Algunas guías indican multiplicar por las tasas de conversión; lo correcto es dividir. Con 25% de cierre, 20 negocios exigen 20 dividido por 0,25, es decir 80 oportunidades, no 5.
+
+El plazo: 24 horas para empezar. Si aún no hay un plazo definido, 24 horas es un buen punto de partida. Reducirlo es un tema permanente de las reuniones entre marketing y ventas.
+
+Tu SLA. Cada mes, marketing entregará 400 leads calificados a ventas, y ventas contactará cada uno dentro de 24 horas desde que lo recibe. Es la forma más básica del acuerdo, y ya es un gran punto de partida.
+
+Referencia real. Mark Roberge, de Harvard Business School: con 100 leads al mes, un vendedor del segmento medio conectaba con 50, hacía 30 llamadas de descubrimiento, 15 demostraciones y cerraba 5 clientes. Con 10 vendedores, marketing debía entregar 1.000 leads al mes. Un SLA así ya deja a la empresa en el 5% superior.
+
+¿Conoces las tres tasas de tu empresa con datos de un año completo, o solo una intuición?
+
+Página 20
+---
+Valor del lead, no volumen de leads. No todos los MQL, leads calificados por marketing, valen lo mismo. Cuando marketing se atrasaba, cambiaba sus llamados a la acción por descargas de ebooks, más fáciles de conseguir, y ventas preguntaba: «¿dónde están las solicitudes de demo?». Es la historia de Mark Roberge: un SLA por cantidad premia el lead fácil, no el que cierra.
+
+Las barras comparan dos leads del mismo perfil, un gerente de marketing de una empresa mediana, y la misma venta de $100.000. La descarga de ebook, en durazno, cierra el 1% de las veces: vale $1.000. La solicitud de demo, en naranja, cierra el 3%: vale $3.000. La leyenda da la regla: valor de un lead igual a tasa de cierre por valor de la venta.
+
+Valor de leads entregado este mes. Con 150 descargas y 50 demos, el mes suma $300.000, justo la meta. A marketing ya no le importa la mezcla: puede llegar con 100 demos, con 300 ebooks o combinando. Así marketing queda con una cuota de ingresos, igual que ventas. Roberge lo recuerda como un momento decisivo para su empresa.
+
+De ahí sale el SLA avanzado: cada mes, marketing entregará $300.000 en valor de leads, y ventas contactará cada MQL dentro de 24 horas. Con la matriz de calificación de leads el cálculo es simple: los que levantan la mano, los que piden hablar con ventas, suelen cerrar más, y se cuentan por lo que valen.
+
+La fuente original dice que $300.000 se logran con 1.000 demos o 3.000 ebooks; con sus propios valores eso suma $3.000.000. Lo correcto son 100 demos o 300 ebooks.
+
+Y ventas tampoco se libra: el tablero «no aparezcas aquí». Si un lead no recibía llamada en 24 horas, el nombre del vendedor aparecía en pantalla. Si un lead llevaba dos semanas sin cinco intentos de contacto, también. Si marketing asume una cuota, ventas asume el mismo nivel de responsabilidad.
+
+¿Qué tipo de lead de tu empresa se cuenta igual que los demás aunque cierre mucho más?
+
+Página 21
+---
+Qué tan rápido contactar. La meta de marketing se calcula con matemática. El plazo de ventas es otra cosa: la respuesta correcta es lo antes posible, y el SLA fija el más rápido que el equipo puede cumplir de verdad. La probabilidad relativa de calificar un lead cambia drásticamente según cuánto tardas en responder. Contactar en menos de una hora multiplica las chances por 60; una hora después, solo por 9; a las 24 horas estás en la base, uno. Esos datos vienen de una auditoría de Oldroyd, McElheran y Elkington, publicada en Harvard Business Review en 2011, sobre 2.241 empresas de Estados Unidos, cuyo tiempo promedio de primera respuesta era de 42 horas. Quien responde en una hora le gana a casi toda su competencia.
+
+Caso Huify, siete personas. Regla: todo lead se llama dentro de 5 minutos, aunque el equipo de ventas completo esté en una conferencia; si hace falta, llama alguien de éxito del cliente. Su fundador, Josh Harcus, cuenta que multiplicaron sus ingresos por 6 en un año. Los prospectos lo agradecían: alguien los llamaba con la duda todavía fresca. Harcus afirma además que llamar en 5 minutos en vez de 24 horas multiplica por 1.000 la probabilidad de cerrar, pero esa cifra no aparece en el estudio publicado: el estudio habla de unas 60 veces para calificar el lead, no para cerrarlo.
+
+Caso PeopleDoc. Movieron al equipo de ventas internas y desarrollo de negocio dentro de marketing para cuidar el primer contacto humano. Laura Poggi, su vicepresidenta de marketing, cuenta que las reuniones calificadas subieron un 60%.
+
+El ritmo importa. Según Mark Roberge, si la meta es 100.000 dólares de valor al mes, traza una línea recta de 0 a 100.000 en 30 días, sin una súper campaña la primera semana ni tres semanas dormidas para correr al final. Lo primero desperdicia leads que nadie alcanza a llamar; lo segundo deja vendedores ociosos. Si hay meses de alta carga predecibles, la línea cambia de forma: menos leads en los meses ocupados, más en los tranquilos.
+
+¿Cuántas veces insistir? El patrón óptimo cambia entre empresas grandes, medianas y pequeñas. Sin volumen para analizarlo, se parte de la investigación de mercado y de supuestos razonables, se instala la medición y se corrige con datos propios en 3 a 6 meses.
+
+¿Cuánto tarda hoy tu equipo en responder a un lead nuevo, medido y no estimado?
+
+Página 22
+---
+Cuatro problemas del SLA y la rama judicial. Al implementar un SLA aparecen cuatro preocupaciones típicas, y todas tienen solución si existen los sistemas correctos.
+
+En el diagrama, un lead en disputa llega desde la derecha a una mesa de líderes y sale hacia el equipo que corresponde. Decide un COO, director de operaciones, o el CEO, director general; no lo encabezan marketing ni ventas.
+
+Pide más leads de los posibles. Si la meta exige un número imposible, no es realista y hay que replantearla. Pero si solo pide más de lo que marketing ha hecho antes, quizá falte velocidad de marketing: medir cuánto tiempo cuesta cada pieza y cuántos leads genera, y mover horas hacia lo que mejor rinde. Jamie Shanks reduce todo a tres palancas, el volumen, la velocidad de producción y la conversión de cada pieza, medidas formato por formato, como lo haría una agencia.
+
+Llegan más leads de los que ventas atiende. Se calcula la velocidad de ventas, con la fórmula del libro Aligned to Achieve, de Andrea Austin y Tracy Eiler: cuánto ingreso puede producir el equipo en un periodo. Si la meta es $500.000 al mes y la velocidad actual es $300.000, hay un problema antes de empezar. Marketing también mueve esos números: trae más oportunidades, sube la tasa de cierre calificando mejor y acorta el ciclo con contenido.
+
+Ventas rechaza leads. Un lead rechazado nunca debe perderse: si no estaba listo, vuelve a nutrición; si estaba listo, ventas lo contacta. Para las disputas existe la rama judicial, idea de Dan McDade, de PointClear: un grupo pequeño de líderes que revisa cada lead rechazado o no contactado a tiempo y decide qué equipo debe actuar. Sin esa revisión no se sabe si el lead no estaba calificado o si ventas dejó de insistir antes de tiempo. Así se tapa un embudo que pierde leads en cada etapa.
+
+Los leads de marketing no sirven. Es un problema que se arregla. Los leads son tan buenos o tan malos como el mensaje que los atrajo: si el mensaje es claro sobre lo que eres y lo que no eres, los leads mejoran. Marcus Sheridan lo dice sin rodeos: «arregla tu mensaje y arreglarás tu problema de leads». Por eso el contenido es central: buen contenido genera buenos leads; mal contenido, malos leads.
+
+Cómo funciona la rama judicial. Sus miembros deben ser imparciales: el CMO, director de marketing, o el VP, vicepresidente de ventas, pueden participar, pero no presidirla. Al comienzo se reúne en persona; con el tiempo marketing califica mejor, ventas confía más, la lista se achica y basta un turno rotativo que revise un tablero. En una empresa pequeña alcanza con un solo líder imparcial. Jen Spencer, de Allbound, lo aplica así: cuando su equipo dice que un lote de leads no sirve, los revisan uno por uno, con su fuente y su momento de contacto, antes de concluir nada.
+
+Cuando ventas descarta un lead de marketing en tu empresa, ¿quién se entera y qué pasa con él?
+
+Página 23
+---
+Velocidad de marketing y velocidad de ventas. Dos cálculos para saber si el SLA es posible: cuántos leads produce cada hora de marketing y cuánto ingreso puede procesar ventas por día.
+
+Velocidad de marketing · una pieza de contenido. Tres campos: piezas al año, leads por pieza y horas por pieza. Tres resultados: leads por hora, que es leads dividido por horas; horas por lead; y horas al año, que es volumen por horas. Con el ejemplo de Jamie Shanks, de Sales for Life, 250 blogs al año, 5 leads por blog y 3 horas cada uno dan 1,7 leads por hora y 750 horas al año. Bajar cada blog a 1 hora libera 500 horas para otra pieza que rinda más. El ejercicio se repite con cada formato: el que rinde poco por hora cede sus horas al que rinde más.
+
+Velocidad de ventas. Oportunidades por ticket por tasa de cierre, dividido por los días de ciclo. Con 40 oportunidades, un ticket de $5.000, 25% de cierre y 60 días de ciclo, el equipo procesa unos $833 al día, cerca de $25.000 en 30 días. Si la meta mensual es mayor, el SLA no cierra antes de empezar. Las oportunidades que un vendedor maneja dependen de la complejidad de la venta y de su experiencia; el ciclo, idealmente, baja con el tiempo.
+
+Si la tasa de cierre es baja, quizá marketing atrae a la gente equivocada: conviene revisar el perfil de cliente ideal y buscar rasgos comunes en los negocios perdidos que no aparecen en los clientes. Marketing también puede acortar el ciclo con contenido que responda dudas antes de la reunión.
+
+¿Qué pieza de contenido de tu empresa consume más horas en relación con los leads que genera?
+
+Página 25
+---
+La paradoja del proceso de ventas. Cory Bray y Hilmon Sorey la formulan en The Sales Enablement Playbook: «Demasiado proceso mata a los equipos de ventas, pero los equipos de ventas mueren sin proceso».
+
+Un vendedor avanza entre dos hileras de barandas, y hay tres niveles. Sin proceso, las barandas se alejan y el punto zigzaguea: «Cada uno por su camino». Con barandas, el punto avanza recto: «Rumbo claro, estilo propio». Con guion rígido, las barandas se cierran: «Sin espacio para adaptarse».
+
+Sin proceso. Cada vendedor vende a su manera. Funciona con dos o tres estrellas, pero no se puede medir, enseñar ni escalar: es volar «a ojo». Es lo habitual cuando vende el fundador: domina la venta, pero no puede explicar cómo lo hace, y por eso no puede traspasarla.
+
+Barandas. Etapas claras con criterios de salida, y libertad dentro de ellas para que cada vendedor use su estilo y se adapte al comprador. El estilo propio se cultiva, pero no al punto de romper el proceso, como advierte Dave Casey. Es el punto medio entre los dos extremos.
+
+Guion rígido. Todos dicen lo mismo, como autómatas. Se pierde lo que más vale en ventas: la capacidad de adaptarse a cada persona.
+
+Qué es un proceso de ventas. Un conjunto de pasos claramente definidos y formas de comunicación entre la empresa y sus prospectos, desde que el comprador sabe que existes hasta que renueva. Permite métricas, repetición, escala y responsabilidad, y guía a quién contratar, cómo capacitar y cómo hacer coaching. Por eso es el cimiento del equipo: sin él, cada contratación parte de cero.
+
+Doug Davidoff recuerda a Jack Welch: «Welch, el gran promotor de Six Sigma, decía que había dos disciplinas que no podía estandarizar: el derecho y las ventas. Six Sigma elimina la variación, y en ventas todo el valor está en la variación». Es el argumento contra la rigidez. Steve Bookbinder da el argumento contrario: «Quiero que cada venta en la que trabajo sea aburridamente parecida a las historias de las ventas que se cierran. "Esta es distinta" casi siempre significa "esta probablemente no se cierra"».
+
+En tu equipo, ¿qué parte de la venta está demasiado apretada y cuál no tiene barandas?
+
+Página 26
+---
+Vender es ayudar a comprar. «Selling is about buying», dice Mark Roberge, de Harvard Business School. El proceso no parte de tu producto: parte del recorrido que hace el comprador.
+
+Ese recorrido tiene tres plataformas: Reconocimiento, Consideración y Decisión. La figura con la brújula se mueve a la etapa activa, y cada etapa trae una pregunta que el vendedor debe poder responder. El ejemplo es TINYpulse, que mide el clima de una organización con una pregunta semanal, y cada respuesta del comprador lleva una de tres etiquetas: buen encaje, oportunidad de reencuadre o no es su fortaleza.
+
+Reconocimiento · la pregunta del vendedor. ¿Qué problemas y oportunidades prioriza el comprador para los próximos meses, y cómo los nombra? Mala cultura, rotación alta y contratar rápido son buen encaje. «Mi oficina es aburrida, necesito otro arquitecto» es una oportunidad de reencuadre: el comprador nombró mal su problema, y ahí el vendedor aporta.
+
+Consideración · la pregunta del vendedor. ¿Qué categorías de solución está evaluando: contratar a alguien, un consultor, comprar un producto? Hacer una fiesta de pizza no es la fortaleza de TINYpulse; contratar un consultor es una oportunidad de reencuadre; comprar software que mida el clima es buen encaje.
+
+Decisión · la pregunta del vendedor. Ya eligió la categoría: ¿con qué criterio decide entre proveedores? Si busca el más barato o al líder del mercado, no es su fortaleza. Si busca el que integra la cultura y orienta cómo actuar, es buen encaje.
+
+De dónde salen las etapas del proceso. Los tres compradores son prospectos calificados, pero la conversación ideal con cada uno es muy distinta. Las etapas del proceso son los puntos del recorrido donde el comprador no puede avanzar sin ayuda de un vendedor. El primer trabajo del vendedor, entonces, es ubicar al comprador en el recorrido. Mike Kunkle lo llama conocer al comprador: sus desafíos, su rol, quién decide y con qué indicadores lo miden.
+
+Lo contrario: «llegar y vomitar la presentación». Armar un deck de diez láminas con funciones, precios y casos, y dárselo igual a todos. También se le llama «venta cocodrilo»: boca grande, orejas chicas.
+
+¿En qué punto del recorrido tus compradores no pueden avanzar sin hablar con un vendedor?
+
+Página 27
+---
+Los cuatro filtros de cada etapa. Se escriben todos los pasos de una venta típica, del vendedor y del prospecto, cada uno con su responsable. Luego la lista pasa por cuatro filtros: lo que no los supera se tacha o se reescribe.
+
+Primero, el contexto. Un proceso de ventas es una lista de etapas, como casilleros por los que avanza cada negocio: primera reunión, propuesta, cierre. La pregunta de esta clase es cuáles casilleros merecen existir. Si se anota todo lo que pasa en una venta, salen veinte o treinta cosas, y la mayoría no sirve como etapa. Los filtros son la forma de elegir.
+
+Por qué se hace. Cada vendedor suele llamar «etapa» a cosas distintas: para uno, «propuesta» es haberla enviado; para otro, que el cliente la aceptó. Así nadie sabe en qué punto está cada negocio. Es como si dos personas dijeran «voy llegando»: una está en la puerta y la otra recién sale de su casa.
+
+Para qué sirve. Para dejar solo los pasos que ocurren en toda venta, se pueden comprobar y muestran un avance del comprador. Esos pasos pasan a ser las etapas del pipeline, que es la lista de negocios abiertos ordenada por etapa.
+
+Cómo impacta. El pronóstico se vuelve confiable, la jefatura revisa cada negocio con evidencia y una persona nueva aprende el proceso más rápido. Dicho en simple: cuando alguien dice «este negocio está en evaluación», todos entienden lo mismo.
+
+Ahora el ejercicio. A la derecha hay ocho pasos candidatos de una venta, un ejemplo ilustrativo, numerados del 1 al 8. A la izquierda, los cuatro filtros, que se activan en orden, del 1 al 4. Cada filtro es una pregunta que se le hace a cada paso. Si la respuesta es no, el paso queda tachado con su motivo, y el contador de arriba muestra cuántos quedan de ocho.
+
+Requerido. ¿Ocurre en todas las ventas? Si la venta puede cerrarse sin ese paso, no es una etapa. Una etapa es un lugar por donde pasan todos los negocios, no algunos. Caen dos. El paso 2, «Hacer seguimiento si el prospecto no responde», solo ocurre cuando el prospecto no contesta: es un plan de contingencia, no una etapa. Si el prospecto responde a la primera, ese paso nunca existió. El paso 3, «Tercera reunión para "revisar" lo mismo», repite una reunión anterior: la venta avanza igual sin ella. Quedan seis.
+
+Factual. ¿Se responde con sí o no? Es un hecho concreto, no una sensación ni una opinión del vendedor. Cae el paso 4, «El prospecto disfruta la consultoría»: es una sensación y nadie puede comprobarla. «Asistió» sí se responde con sí o no. La diferencia es práctica: un vendedor optimista siempre cree que al cliente le encantó; en cambio, o el cliente fue a la reunión o no fue. Quedan cinco.
+
+Inspeccionable. ¿Queda un registro que otro pueda revisar? Debe verse en el CRM, el gestor de relaciones con clientes, que es donde el equipo anota cada negocio. Si no está registrado, no cuenta. Cae el paso 5, «El prospecto lo conversa con su directorio»: ocurre puertas adentro del comprador, y el vendedor no lo ve ni puede registrarlo. Puede ser decisivo para la venta, pero no sirve como etapa, porque nadie del equipo puede demostrar que pasó. Quedan cuatro.
+
+Centrado en el comprador. ¿Describe lo que logró el comprador? La etapa se nombra por el avance del comprador, no por la tarea del vendedor. Cae el paso 6, «Le dimos la demo»: describe al vendedor, no al comprador. Un vendedor puede dar diez demos sin que ningún cliente avance. Por eso no se elimina: se reescribe como «Producto evaluado», que solo es verdad si el comprador vio el producto y resolvió sus dudas. Quedan tres.
+
+Los tres que quedan llevan la marca «Pasa los cuatro: es una etapa»: el prospecto asiste a la consultoría, agenda la segunda reunión y confirma los próximos pasos por correo. Los tres ocurren siempre, son hechos, dejan registro y los realiza el comprador. De ocho pasos salieron tres etapas, y eso es lo esperable: menos etapas, pero cada una significa algo.
+
+De las etapas de tu pipeline, ¿cuál no pasaría alguno de estos cuatro filtros, y por qué?
+
+Página 28
+---
+Criterios de salida y etapas después del cierre. Cada etapa combina una acción del vendedor con un resultado del comprador. Los criterios de salida son las condiciones que deben cumplirse para pasar a la siguiente.
+
+Acción del vendedor. Hacer la demostración del producto. Etapa centrada en el comprador. Producto evaluado. A una acción del vendedor le corresponden una o más acciones del comprador, y esas son los criterios de salida.
+
+Criterios de salida de «Producto evaluado». El comprador asistió a la demo y resolvió sus preguntas. Antes de cortar, agendó otra reunión para avanzar. Respondió el correo de resumen confirmando los próximos pasos. Bray y Sorey los definen como el compromiso que una persona razonable esperaría antes de seguir: nadie pide el cierre en una llamada en frío.
+
+Por qué importa. La jefatura puede preguntar «¿me muestras el correo donde el comprador confirmó?». Con etapas así de rigurosas, el pronóstico se vuelve confiable: si el 21% de lo que sale de evaluación cierra este mes, se mantiene mes a mes.
+
+El gráfico compara dos procesos. En «Termina al cerrar» hay ocho etapas numeradas: «1 a 8 · hasta cerrado-ganado». En «Con etapas posventa» se suman tres en color: «9 traspaso · 10 implementación» y «11 cliente en marcha». Es el caso de Mike Venman: con las etapas 9 a 11 mide cuánto tarda éxito del cliente en reaccionar y si el negocio realmente quedó en marcha.
+
+¿Cuántas etapas? Las necesarias para mantener el avance y confirmar o descartar al prospecto. Muy pocas dejan pipelines llenos que nunca dan negocios; demasiadas le complican la venta al vendedor, según Bray y Sorey. Ante la duda, menos es más.
+
+La prueba de Mark Roberge. A los 6, 9 o 12 meses, ¿cumpliste la promesa de valor que vendiste? Debe ser cierto en más del 80 u 85% de los clientes. Y esos clientes, ¿son rentables? Un proceso que cierra negocios que después se caen no funciona, aunque la cuota se cumpla.
+
+Bertrand Hazard, de TrustRadius, lo resume: «No tienes dos vendedores: tienes 1.002. Tus mil clientes que hablan maravillas de tu producto son tus mejores vendedores».
+
+¿Dónde termina hoy tu proceso de ventas: en la firma o cuando el cliente ya está en marcha?
+
+Página 29
+---
+El playbook: cómo se ejecuta el proceso. El proceso dice qué etapas existen. La metodología, tu «salsa secreta», dice qué hacer en cada una. El playbook reúne todo lo que el vendedor necesita en el momento en que lo necesita. Tiene tres partes: metodología adaptativa, las cuatro áreas y la matriz dolor, persona, función y contenido.
+
+Metodología adaptativa. Cuatro formas de vender, cada una con cuándo se aplica y cómo se ve. Venta por necesidades: el comprador ya habla en lenguaje de necesidades, «necesitamos lograr…, nos importa…»; el vendedor pregunta qué, por qué y cómo, prioriza y muestra cómo su producto calza. Venta por soluciones: el comprador casi se queja, describe problemas y no necesidades; el vendedor profundiza en ellos y co-crea la solución con pensamiento crítico. Venta por objetivos: el comprador tiene objetivos e iniciativas claras, propias o encargadas; el vendedor muestra que es la mejor ayuda para cumplirlos. Venta por insights: el vendedor ve una oportunidad que el comprador aún no capta del todo y aporta una perspectiva nueva para aprovecharla.
+
+Mike Kunkle lo observó así: «En dieciséis años analizando a los mejores vendedores vi una tendencia: no usan una sola metodología. Se adaptan según de dónde viene el comprador, no según lo que ellos intentan hacer».
+
+Ninguna metodología calza perfecto. Por eso conviene combinar las que sirven al proceso y a la persona compradora. La metodología enseña a ejecutar cada etapa.
+
+Las cuatro áreas. Qué saber: producto o servicio, metodología de venta y personas compradoras. Qué hacer: pasos, estrategias y tácticas antes, durante y después de cada conversación. Qué decir: mensaje central, historias, preguntas y guiones de conversación. Qué mostrar: menos decks y más pizarra, video y contenido visual que genere emoción.
+
+Walter Pollard agrega el formato: «Un playbook debe ser web, a pedido e interactivo; tener video; y ser perenne, es decir, actualizarse constantemente, porque para el vendedor siempre está cambiando».
+
+Más importante que la metodología elegida. Es cómo la documentas: la consistencia entre vendedores es lo que convierte a los clientes en fans. El playbook incluye también el contenido que el vendedor comparte con el prospecto en cada etapa.
+
+La matriz. Se lee de izquierda a derecha en cuatro columnas: persona, dolor, función y contenido. Con el gerente de personas de una empresa mediana de 300 trabajadores, el dolor «La rotación subió y no sabe por qué» lleva a la función «Encuesta semanal de clima», y esta a dos piezas: el caso de un cliente del mismo rubro que bajó su rotación en un año, y la pregunta «¿Cómo te enteras hoy de que alguien está pensando en irse?». Es una matriz de ejemplo ilustrativa, basada en el caso TINYpulse.
+
+Para qué sirve. Por cada persona, sus dolores; por cada dolor, las funciones que lo resuelven; por cada función, el contenido que lo explica: casos, preguntas, frases, plantillas de correo y guiones.
+
+Cory Bray y Hilmon Sorey cuentan un caso: «Una empresa decía que le faltaban casos de clientes. El problema real: no había un circuito cerrado entre éxito del cliente y ventas, y las historias nunca llegaban a los vendedores». La matriz deja a la vista esos vacíos: una celda sin contenido es una conversación que el vendedor enfrenta solo.
+
+Si un vendedor nuevo entrara mañana, ¿dónde encontraría qué decirle a cada tipo de comprador?
+
+Página 30
+---
+¿Tu proceso funciona, experimenta o se agita? Todo proceso de ventas está en uno de tres estados. Conviene revisarlo al menos cada tres meses: medir qué pasa en cada etapa y preguntarse qué se aprendió, como propone Doug Davidoff. Su razón es simple: en ventas, el otro lado también decide, y ningún plan sobrevive intacto al contacto con el comprador.
+
+Mathias Thulin y Dailius Wilson lo cuentan desde su experiencia: «Lo que más ha hecho prosperar a mis equipos es preguntar a los clientes ganados y también a los que perdimos por qué siguieron o no. Ese aprendizaje casi nunca vuelve al inicio del proceso».
+
+La plataforma representa el proceso. En armonía, dos puntos giran en órbita: «Ritmo estable y predecible». Al experimentar, un punto sigue la órbita y dos zonas pulsan: «Pruebas controladas, una a la vez». Al agitarse, la plataforma se apaga y los puntos cruzan en todas direcciones: «Cambios sin control: todo se desordena».
+
+Estado · Funciona en armonía. Más del 80% de los vendedores cumple su cuota de forma consistente, las personas nuevas alcanzan rápido el rendimiento esperado y nadie se queja de las «mejoras de proceso». Qué hacer. No relajarse: el mercado cambia. Hacer más de lo que rinde y menos del ruido, en palabras de Dave Casey, que habla de actividades de alto apalancamiento.
+
+Estado · Experimenta. Si el proceso aún no está en armonía, la vía es hacer experimentos rápidos y mejorar de forma continua, en un entorno controlado. Qué hacer. Escuchar a la primera línea; preguntar a clientes ganados y perdidos por qué; copiar lo que hace el mejor vendedor y probarlo A/B, es decir, comparando dos versiones, como hace Mike Venman. El «uno-dos»: un líder escribe de par a par al decisor para pedir feedback franco.
+
+Estado · Se agita sin control. Saltar de una «solución» a otra cada vez que algo sale mal. Cory Bray y Hilmon Sorey lo describen como corrosivo: nunca debería pasar. Qué hacer. Volver a experimentos acotados. Bob Britton: la mayoría de los equipos de ventas vive en el cuadrante de crisis; hay que mudarse al proactivo.
+
+Cuando perdiste un negocio con el mismo proceso que antes ganó. Preguntar qué cambió: ¿el cliente, el mercado, la oferta? Analizar los negocios perdidos y pedir feedback a clientes ganados y perdidos, en vez de cambiar todo el proceso de golpe.
+
+¿En cuál de los tres estados está hoy tu proceso de ventas, y qué evidencia tienes para afirmarlo?
+
+Página 32
+---
+Primero el proceso, después la herramienta. Hay tres áreas en las que invertir para tener buenos datos, y van en este orden. Las herramientas aceleran el proceso que ya existe: si no está definido, se acelera en la dirección equivocada.
+
+La pirámide se lee de abajo hacia arriba y cada piso lleva su leyenda: «1. Definir procesos» en la base, «2. Gobierno de datos» al medio y «3. Stack tecnológico» en la punta. Cada piso se apoya en el anterior.
+
+Área 1 · Definir procesos. Qué hacemos, paso 1, 2, 3, 4: enrutamiento y puntaje de leads, segmentación, puntaje de cuentas, ABM, datos de intención. ¿Estamos todos de acuerdo? Un lead es un contacto que mostró interés: enrutarlo es decidir a quién se le asigna y puntuarlo es ordenarlo según su probabilidad de compra. ABM es el marketing basado en cuentas, que apunta a empresas específicas. Los datos de intención son señales de que alguien busca una solución. Lo central es la pregunta final: el proceso existe cuando todos lo describen igual.
+
+Área 2 · Gobierno de datos. Las reglas que mantienen los datos limpios y confiables: qué campos existen, quién puede crearlos o borrarlos y hacia dónde se sincronizan. Sin esas reglas, un proceso bien definido igual termina con datos en los que nadie confía.
+
+Área 3 · Stack tecnológico. Recién ahora: qué sistemas tenemos y cómo pueden apoyar ese proceso. El stack es el conjunto de herramientas de la empresa. Llega al final porque su trabajo es servir al proceso, no definirlo.
+
+Daniel Remedios lo plantea así: «Hay herramientas maravillosas y brillantes, pero son un multiplicador de fuerza. Si las traes demasiado pronto, te frenas casi hasta detenerte, porque no tienes claro qué herramienta necesitas ni para qué». Multiplicar sirve cuando lo multiplicado funciona: un proceso confuso, multiplicado, es más confusión y más rápido.
+
+Asia Corbett cuenta lo que le ocurrió: «Finanzas y marketing me preguntaron por qué dos reportes daban distinto: "¡uno está mal!". Ninguno estaba mal. Usaban definiciones distintas de lo que es un SQL». SQL es el lead calificado por ventas, el contacto que ventas acepta trabajar. Dos reportes correctos se contradicen cuando cada área cuenta algo distinto bajo el mismo nombre.
+
+Extender el mapa en ambas direcciones. ¿De dónde vienen los leads antes del pipeline y qué pasa con los clientes después del cierre? Lo que más importa son los traspasos entre equipos y cada tasa de conversión: ahí todos deben usar la misma definición. El pipeline es la lista de negocios abiertos, ordenada por etapa. El mapa de ventas cubre solo ese tramo; el recorrido completo del cliente empieza antes y termina después.
+
+El modelo de datos se protege. Ventas, marketing y servicio acuerdan el modelo de datos y un proceso para cambiarlo. Si un equipo lo modifica por su cuenta, los reportes de punta a punta se rompen, advierte Bryan Semple. El modelo de datos es la forma en que la empresa registra a sus clientes, prospectos y negocios. Con un modelo dañado no se distingue quién es cliente y quién es prospecto dentro de una misma cuenta.
+
+¿Qué definición, como SQL o cliente activo, significa cosas distintas para dos áreas de tu empresa?
+
+Página 33
+---
+El título es Gobierno de datos, y el subtítulo lo define: un marco interno que gestiona la disponibilidad, la usabilidad, la integridad y la seguridad de los datos, y fija las normas y políticas de acceso. Quien lidera RevOps debe encabezarlo. La torre de bloques ilustra dos estados. En Sin reglas, las piezas se desalinean y se tambalean: sacas una pieza y todo se cae. En Con gobierno, la torre es simple, documentada y estable. Asia Corbett describe así un CRM de 10 años lleno de objetos y campos personalizados: sacar una pieza arriesgaba que todo se cayera.
+
+La tabla de la derecha es un diccionario de datos, la pieza central del gobierno, con un ejemplo ilustrativo. Sus columnas son el dato, el nombre del campo en el CRM, en la automatización de marketing y en facturación, y el sistema de registro. Las filas muestran un mismo dato con nombres distintos: código postal y ZIP, región y estado, nombre con apellido y nombre completo, monto y total facturado. La fila seleccionada se resalta y la nota indica la dirección de sincronización de ese dato. Un mismo dato con nombres distintos es la causa más común de inconsistencias.
+
+La tarjeta Controles mínimos concreta el gobierno: no todos pueden borrar ni crear, ciertos campos son obligatorios antes de entrar al sistema y cada sincronización tiene dirección y responsable. La tarjeta Regla de la casa resume la filosofía: no se puede añadir simple, hay que quitar complejidad, porque cada personalización suma mantenimiento futuro. La cita de Bryan Semple ofrece un mecanismo práctico: quien pide un campo nuevo debe reportarlo cada semana; a los 5 o 6 meses suele abandonarse, y entonces se elimina.
+
+¿Cuántos campos de tu CRM existen hoy sin que nadie sepa para qué se crearon?
+
+Página 34
+---
+Indicadores adelantados y la historia detrás del número. Los ingresos son un indicador rezagado. Para corregir a tiempo hay que encontrar los indicadores adelantados que terminan convirtiéndose en ingresos, y vigilarlos de cerca, plantea Dwamian Mcleish. Rezagado quiere decir que informa tarde; adelantado, que avisa antes.
+
+El gráfico es una cadena de cuatro esferas, de izquierda a derecha. Las tres primeras llevan la leyenda «adelantado»: tickets de soporte, uso del producto y riesgo de renovación. La última, ingresos, lleva la leyenda «rezagado». Abajo, la frase que resume la cadena: «Más tickets de soporte pueden anticipar la pérdida de clientes».
+
+Tickets de soporte. Suben los tickets de un cliente: primera señal de que algo no funciona. Un ticket es cada solicitud de ayuda que el cliente abre.
+
+Uso del producto. Cae el uso: el cliente deja de obtener valor.
+
+Riesgo de renovación. Se acerca la renovación con un cliente poco comprometido.
+
+Ingresos. Indicador rezagado: cuando se mueve, el problema ya ocurrió. Entre la primera esfera y la última pueden pasar meses, y ese es el tiempo disponible para actuar.
+
+El dato se lee como una historia. 100.000 visitas en un día, cuando lo normal son 1.000. A primera vista es una gran noticia. Las pistas aparecen una a una. La tasa de rebote es de 99%: casi todos entran y se van sin hacer nada. Casi todo el tráfico viene de un país donde no se vende. Ese país es conocido por su tráfico de bots, que son programas automáticos y no personas. La conclusión: no es un triunfo, probablemente es tráfico de bots. Interpretar el dato es el oficio de quien analiza. El ejemplo es de Devyn Bellamy, y muestra que un número solo no dice nada hasta que se cruza con otros.
+
+Bellamy lo lleva a los reportes: «Los buenos reportes no salen de la nada; lo intenté. Lo que funciona es preguntar a la gente qué quiere saber, no qué reporte quiere ver, y buscar los datos que respondan esa pregunta». Un reporte parte de una pregunta, no de una plantilla.
+
+Para qué sirve todo esto. Ver juntos varios datos, tickets y pérdida de clientes por ejemplo, muestra qué palancas mueven el resultado y cuáles se pueden mover para cambiarlo. Una empresa pequeña o mediana puede partir por las herramientas que ya tiene. No hace falta un equipo de analistas: basta con sacar esos indicadores de los sistemas actuales y revisarlos con frecuencia.
+
+¿Qué indicador adelantado anticiparía mejor la pérdida de clientes en tu empresa?
+
+Página 35
+---
+Administrar el stack tecnológico. Lo normal no es implementar desde cero: es heredar un stack desordenado, porque cada departamento compró herramientas sin pensar en el resto. RevOps debe tener voz en qué entra y por qué. La meta no es un stack pequeño, que a veces no es posible, sino que cada herramienta tenga una razón.
+
+El gráfico es un mapa de flujo de valor, y su leyenda lo explica: «el camino del cliente por los sistemas». Con «Hoy: 7 sistemas», el punto recorre siete cajas y la leyenda dice «Siete traspasos: el dato se aleja de la verdad». En cada traspaso el dato puede llegar tarde o cambiado. Con «Integrado: 3 sistemas», la leyenda dice «Recorrido corto y datos que no se pierden».
+
+Dwamian Mcleish explica para qué sirve dibujarlo: «Una vez que muestras "movemos a un cliente por siete sistemas sin ningún beneficio", la conversación es más fácil que decir "voy a sacar cuatro sistemas"». La discusión deja de ser sobre la herramienta favorita de cada equipo y pasa a ser sobre el recorrido del cliente.
+
+Sacar un sistema también es un cambio. El equipo que lo ocupa está acostumbrado y puede resistirse: necesita acompañamiento. También conviene revisar qué datos se dejarían de capturar, advierte Asia Corbett.
+
+RevOps no es TI. TI, tecnologías de la información, y los administradores hacen que las cosas funcionen, incluso con eficiencia, pero rara vez entran en el porqué. RevOps se ocupa de la eficiencia de ingresos, la transparencia de los datos y el uso responsable de herramientas y datos, según Devyn Bellamy. Un sistema configurado sin entender para qué existe crece sin control.
+
+Antes de aprobar una herramienta nueva, cuatro preguntas.
+
+1. ¿Ya lo hace lo que hay? Si el CRM o la herramienta principal ya lo hace, la negociación será difícil, dice Jen Bergren. Lo integrado tiene menos funciones, pero ahorra complejidad y costo.
+
+2. ¿Quién la aprueba? Operaciones debe aprobar las herramientas, junto a finanzas y TI. Nadie la carga a la tarjeta de la empresa por su cuenta. Sin ese control, ventas, marketing y soporte terminan cada uno con su propio chat.
+
+3. ¿Profundidad o complejidad? Las soluciones puntuales tienen más funciones; muchas juntas terminan en un sistema «espagueti», en palabras de Bryan Semple. La pregunta de fondo es si esa función adicional da una ventaja real frente a la competencia.
+
+4. ¿Vale la pena automatizar? Primero se resuelve a mano. No conviene dedicar 10 horas a automatizar algo que toma 30 minutos, calcula Matthew Volm.
+
+¿Por cuántos sistemas pasa hoy un cliente de tu empresa desde que es lead hasta que renueva?
+
+Página 37
+---
+Habla el idioma del negocio. Operaciones se ve como un gasto en los estados financieros. Tu trabajo frente a la gerencia es traducir ese gasto en un activo que genera ingresos. Alicia Butler Pierre lleva más de dos décadas en roles operativos y lo resume así. Matt Bolian describe el error más común: llegar con el CEO y proponer reducir la fricción de ventas y romper silos. El CEO responde que eso es lo que lleva haciendo 20 años. Si no puedes articular qué tiene de distinto lo que propones, en términos financieros, la conversación termina ahí.
+
+El estado de resultados simplificado tiene cinco líneas: ingresos arriba, de ahí viene top line revenue; luego costo de ventas, margen bruto, gastos operativos y resultado operacional. Tres iniciativas muestran qué línea mueve cada una. Bajar el costo de adquirir clientes sube el resultado operacional. Vender a la base de clientes actual sube los ingresos de primera línea. Vender más sin agrandar el equipo baja los gastos operativos en proporción a lo que se vende.
+
+Tres estados financieros que todo profesional de operaciones debería dominar. Uno, balance general: una foto en un momento. Activos equivalen a pasivos más patrimonio. La mayoría de las mejoras operativas aumentan activos sin aumentar pasivos en la misma proporción, y eso siempre mejora la posición financiera. Dos, estado de resultados: cubre un periodo. Ingresos menos costo de ventas da el margen bruto; restar los gastos operativos da el resultado operacional; descontar impuestos da la utilidad neta. Tres, flujo de caja: de dónde viene y adónde va el dinero. Flujo operacional igual a utilidad neta, más depreciación y amortización, porque no son desembolsos reales de caja, menos los cambios en capital de trabajo.
+
+Matt Bolian lo pone en palabras: le dices al CEO que vas a reducir la fricción de ventas y romper silos con estas herramientas, y te responde «genial, es lo que llevo haciendo 20 años, ¿qué tiene de distinto?», y no puedes explicar por qué importa. Alicia Butler Pierre recomienda cursos gratuitos o de bajo costo de contabilidad y finanzas en LinkedIn Learning, Udemy o en las plataformas de Stanford, Harvard o Yale, porque «más eficiente» son palabras vacías hasta que las atas a un número concreto.
+
+¿Qué iniciativa de tu área podrías expresar hoy como un impacto en el estado de resultados de tu empresa?
+
+Página 38
+---
+Toda propuesta de mejora enfrenta la misma objeción: «eso es un gasto nuevo». El COPQ, Costo de la Mala Calidad, es la herramienta de Lean Six Sigma que invierte esa conversación: calcula cuánto cuesta no mejorar el proceso, y obliga a salir de «será más eficiente» para llegar a «hoy estás perdiendo $130.000 al año».
+
+Cuatro categorías cubren todo el desperdicio. Las Fallas internas son costos antes de que el producto llegue al cliente: un proyecto abandonado a medias, un formulario que nadie revisa, leads sin contactar. Las Fallas externas ocurren después de la compra: corregir una entrega con errores, rehacer trabajo porque las instrucciones de traspaso eran ambiguas; además de costar dinero, erosionan la confianza del cliente. La Evaluación es lo que cuesta impedir que una falla interna se vuelva externa: el control de calidad, las auditorías, las revisiones. La Prevención es lo que cuesta reducir las otras tres — y ahí es donde cabe la propuesta de RevOps: no es un gasto nuevo, es prevención.
+
+La lógica que las une es Y = f(X): Y es el resultado financiero que la empresa quiere mover, y X son las causas que se pueden intervenir. Una propuesta de mejora es una X que mueve la Y. Si no puedes mostrar qué Y mueve tu X, la conversación con la gerencia no llega a ningún lado.
+
+El caso de la calculadora parte de una situación real: 10 vendedores, cada uno dedicando una hora diaria a trabajo administrativo, 260 días al año, a $50 la hora. Resultado: 2.600 horas de venta perdidas en tareas administrativas y $130.000 pagados a vendedores por hacer trabajo que no es de ventas. Contratar una persona de operaciones a $100.000 deja un ahorro neto de $30.000 el primer año, sin contar ninguna mejora en el pipeline. Y las 2.600 horas equivalen exactamente a un año completo de trabajo de un vendedor — eso es la cuota que se recupera.
+
+¿Qué tarea repetitiva de tu equipo, multiplicada por un año, costaría más que contratar a alguien para resolverla?
+
+Página 39
+---
+Una hoja de 11 por 17 pulgadas. Eso es todo el espacio que Toyota le dio a sus ingenieros para explicar un problema, analizarlo y proponer una solución. Esa restricción fue intencional: si no cabe en una página, es que todavía no se entiende del todo. Alicia Butler Pierre lo resume igual: la gerencia no lee prosa larga, necesita imágenes y viñetas. El error más frecuente con esta herramienta es usarla para documentar una decisión que ya estaba tomada, en vez de usarla para desarrollar la solución.
+
+La hoja se divide en dos lados. La izquierda responde por qué importa el problema. Antecedentes cuenta la historia: marketing genera leads que ventas no contacta. Condición actual muestra datos reales: mil leads al mes, 15 contactados, con el costo que implica. Metas muestra el estado ideal en los mismos gráficos. Y análisis es el corazón: los cinco porqués con cada equipo y el diagrama de espina de pescado con seis costillas, personas, métodos, materiales, equipos, entorno y gestión, numerando cada causa raíz.
+
+La derecha construye la solución. Contramedidas tiene una fila por causa raíz, con descripción y beneficios. Plan define cronograma y responsables con DARCI: quién decide, quién es accountable, quién ejecuta, a quién se consulta y a quién se informa. Y seguimiento indica qué indicadores se medirán y cada cuánto.
+
+Sobre la hoja van las iniciales de quienes la revisaron. Cada firma es una señal visible de respaldo: cuando la propuesta llega a la gerencia no llega sola, llega con la lista de quienes ya la vieron y están de acuerdo.
+
+Lo que suele revelar el análisis es que el problema no es de confianza entre equipos. Quizá ventas no contacta los leads porque no son calificados, o quizá ni sabía que marketing los enviaba. Si no se hace el análisis, se propone una solución al problema equivocado.
+
+¿Qué problema de tu empresa merecería un A3 antes de que alguien proponga una solución?
+
+Página 40
+---
+Presentar en frío ante la directiva es el escenario de mayor riesgo. Ronald Heifetz y Marty Linsky lo plantean con precisión: el cambio real pide a las personas renunciar a hábitos, lealtades y formas de pensar, a cambio de solo la posibilidad de un futuro mejor. Eso es una pérdida concreta a cambio de una promesa, y la resistencia es la respuesta natural. Una sola duda en la sala es suficiente para que se contagien los demás.
+
+Cuatro pasos antes de la presentación grupal. Sé honesto contigo: si llevas tiempo en la empresa, probablemente contribuiste al desorden; reconocerlo y pedir ayuda funciona mejor que culpar a otros, porque culpar te convierte en blanco. Nombra la pérdida: antes de mostrar soluciones, valida lo que estás pidiendo sacrificar — «sé cuánto les costó crear estos procesos; por eso quiero su ayuda para cambiarlos» — porque quien siente que nadie reconoce lo que pierde no escucha el beneficio. Busca aliados: ir solo es tentador porque nadie diluye las ideas, pero es una imprudencia; nadie debería caminar solo por terreno político. Pre-wiring: reunirte con cada ejecutivo por separado, aliados primero y luego opositores, para que la reunión grupal sirva para planificar cómo implementar, no para debatir si hacerlo.
+
+Ethan Rasiel lo escribe en The McKinsey Way: no debe haber sorpresas el día de la presentación; todos los actores clave deben conocer la solución antes. Y hay una ventaja práctica adicional: un ejecutivo convencido puede conseguirte un espacio en la agenda de alguien a quien tú no llegas.
+
+¿Con qué persona de tu empresa deberías conversar a solas antes de proponer tu próximo cambio?
+
+Página 41
+---
+La secuencia motivada de Monroe: cinco pasos para que tu audiencia pase a la acción. Sirve para una presentación de 15 minutos y también para un correo de cinco frases. Es un marco de persuasión desarrollado en los años 30 y todavía válido, porque responde a cómo la gente toma decisiones: primero presta atención, luego siente la urgencia del problema, luego evalúa la solución, luego la visualiza funcionando, y solo entonces actúa.
+
+Paso 1, atención: una frase corta que anticipa lo que quieres lograr, algo que interrumpa el modo piloto automático. Paso 2, necesidad: describe el problema con los datos del A3 si los tienes, para que la persona conecte emocionalmente antes de escuchar la solución. Paso 3, satisfacción: la solución en una sola frase de claridad inevitable, sin rodeos. Paso 4, visualización: los beneficios en detalle, con datos si los tienes, y nunca cifras que no puedas probar. Paso 5, acción: pide algo concreto, un nombre, una fecha, un número de teléfono. Es la parte más importante: sin esto, los cuatro pasos anteriores no producen nada.
+
+El correo de ejemplo está dirigido a una líder de implementación y usa una frase por paso. Atención: ¿viste el último reporte del pipeline? Necesidad: nuestro crecimiento se está frenando porque perdemos clientes en el traspaso de ventas a implementación. Satisfacción: propongo presentar a la especialista de implementación antes del cierre, no después. Visualización: así, cada cliente nuevo sabe desde el inicio quién lo acompaña y llega listo al arranque. Acción: ¿agendamos 30 minutos para revisar los detalles?
+
+¿Cuál de los cinco pasos sueles saltarte cuando pides algo a tu jefatura?
+
+Página 42
+---
+Heifetz y Linsky advierten que no basta con que nadie se oponga: se necesita apoyo entusiasta. Y quienes suelen decidir el resultado no son los que están a favor ni los que están en contra — son los del medio, sin interés especial en la iniciativa pero sí en la comodidad de lo conocido. Prepararse para trece objeciones no es pesimismo; es reconocer que la resistencia es predecible y que la respuesta correcta también puede serlo.
+
+Varias objeciones comparten un patrón de respuesta. Ante «nos ha ido bien, ¿por qué cambiar?», se reconoce el éxito y se explica la diferencia entre crecer en línea recta y crecer a escala. Ante «¿insinúas que nuestro equipo lo hace mal?», se valora lo que funciona y se muestra cómo potenciarlo. Ante «¿y qué pasa con esto, y esto, y esto?», se agradece el interés y se invita a la persona a participar en resolver esas preguntas. Ante «no es el momento», se recuerda que postergar hace perder impulso y que nunca será el momento ideal. Ante «aquí somos distintos», Marcus Sheridan señala que en sus charlas el cien por ciento del público cree lo mismo, cuando todos los negocios se basan en lo mismo: la confianza.
+
+Otras piden preparación específica de datos. Ante «ya probamos algo nuevo y no funcionó», se comparten casos reales similares y los recursos que esta vez harán la diferencia. Ante «el cambio es enorme», se propone empezar con un vendedor dispuesto a experimentar y se muestran sus resultados antes de expandir. Y si alguien te toma por sorpresa, se admite directamente y se promete volver con una respuesta.
+
+John Kotter y Lorne Whitehead en Buy-In dan cuatro reglas para salir bien de cualquier objeción: invitar a los escépticos a la conversación, porque si nadie objeta nadie se está involucrando; responder siempre con respeto, porque bajar al nivel combativo aleja a quienes están indecisos; dar respuestas cortas y de sentido común, que convencen más que los datos; y prepararse, porque con preparación de nota B+ las respuestas parecen inspiradas.
+
+¿Cuál de las trece objeciones esperarías escuchar primero en tu empresa?
+
+Página 43
+---
+Conseguir la aprobación es la mitad del trabajo. Una vez implementada la estrategia, la gente tiende a volver al estado anterior — sobre todo la gerencia, que no participa del día a día y siente primero los costos del cambio antes que los beneficios. La clave no es convencer a todos: es identificar los pinos clave, las pocas personas cuyo compromiso arrastra al resto.
+
+La metáfora es de bolos: si cae el pino clave — el influenciador central — los demás caen solos. Intentar derribarlos uno por uno es agotador e ineficiente. La misma energía dirigida al pino correcto produce el resultado con mucho menos fricción.
+
+William Bratton aplicó esta lógica en la policía de Nueva York. Identificó a los 76 comandantes de distrito, cada uno a cargo de entre 200 y 400 oficiales. En vez de intentar cambiar a miles de policías directamente, los puso a ellos en el foco: reuniones de estrategia dos veces por semana, con la cúpula presente, y solo dos días de aviso para el comandante que debía presentar los mapas y datos de su distrito.
+
+El efecto fue inmediato. Resultados y responsabilidades quedaron visibles para todos; nadie podía culpar al distrito vecino porque el vecino estaba sentado en la misma sala. Quienes mejoraban recibían reconocimiento público. Y los comandantes replicaron el formato con sus propios equipos — el cambio se multiplicó sin que Bratton tuviera que motivar a cada nivel por separado. La fuente es el artículo «Tipping Point Leadership», de W. Chan Kim y Renée Mauborgne, Harvard Business Review, 2003.
+
+¿Quiénes son los pinos clave de tu organización, las pocas personas cuyo compromiso arrastra al resto?
+
+Página 45
+---
+RevOps puede implementarse de dos maneras sin que la empresa necesite reorganizarse: con una estructura formal donde las operaciones de marketing, ventas y servicio reportan a un mismo líder, o con una cadencia informal donde las tres operaciones mantienen su línea de reporte original pero se reúnen periódicamente para tomar decisiones juntas. El resultado buscado es el mismo: que alguien mire el ciclo completo, no solo su parte.
+
+Tres modos muestran la diferencia en la práctica. Silos: cada operación trabaja sobre su bloque de forma independiente; cada una optimiza lo suyo y nadie ve la fricción que se genera entre ellas. Estructura formal: un líder de RevOps unifica las tres bajo una sola mirada sobre procesos, sistemas y datos; requiere reorganización y autoridad real. Cadencia informal: sin cambiar el organigrama, una reunión periódica alinea a los líderes de las tres operaciones; es el punto de entrada más frecuente porque no pide permiso estructural para empezar.
+
+Tres preguntas para trazar el camino. Primero: dibujar el organigrama actual, marcando los silos y los puntos donde se rompe la alineación hoy. Segundo: dibujar el organigrama ideal, el estado al que el equipo puede crecer, formal o informal. Tercero: trazar la ruta entre ambos — qué cambios hacen falta, en qué orden y de quién se necesita apoyo para hacerlos.
+
+¿Qué modo describe mejor a tu empresa hoy, y cuál sería realista alcanzar en un año?
+
+Página 46
+---
+Greg Keshian distingue tres tipos de personas bajo el paraguas de operaciones: quienes ejecutan la misión (el equipo de éxito del cliente, los vendedores, los agentes de soporte), quienes administran sistemas, y quienes hacen análisis. La clave es sumarlas en equilibrio — traer demasiadas personas de un tipo antes de tiempo genera desequilibrios que frenan el equipo.
+
+Cuatro momentos de crecimiento. Una persona: tú haces sistemas, análisis y procesos al mismo tiempo, hasta el punto de quiebre que describe Matt Volm — «estoy tan estirado que no hago nada bien, ni siquiera de forma regular». + Sistemas: se suma alguien que administre todos los sistemas; Ross Nibur lo llama una contratación crítica temprana porque la persona de sistemas debe conocer cada botón, cada clic, cada proceso y cada tecnología que usa el equipo de ventas — no para vender, sino para resolvérselo. + Análisis: llega una persona de análisis que cubre todas las áreas del negocio y convierte los datos en decisiones. Escala: al crecer el alcance, se suman otra persona de sistemas y otra de análisis, planificando en función de los problemas previstos para los próximos seis a doce meses.
+
+Bryan Semple advierte sobre los administradores: cuantos más tengas, más construirán configuraciones personalizadas en el sistema, y eso limita los cambios futuros. Sumarlos despacio no es mezquindad — es proteger la flexibilidad del stack.
+
+Y mientras los especialistas construyen sistemas y procesos, los líderes de operaciones construyen relaciones con marketing, ventas y servicio. Entienden el trabajo diario de esos equipos, y eso es lo que evita que los especialistas optimicen en el vacío. Doug Davidoff describe lo que pasa cuando falta ese puente: el equipo de operaciones llega con «sus procesos y sus reglas», y la fuerza de ventas empieza a llamarlos el «departamento de prevención de ventas».
+
+Si pudieras sumar una sola persona a tu equipo de operaciones, ¿sería de sistemas o de análisis?
+
+Página 48
+---
+Antes de publicar un cargo, la pregunta es si la solución real es contratar. Matt Volm describe el momento en que se llega a esta decisión: el punto de quiebre, cuando una persona está tan estirada que no hace nada bien, ni siquiera de forma regular, y el equipo necesita apoyo. Pero contratar sin saber qué está fallando es costoso: puede traer a alguien que resuelva el síntoma sin tocar la causa.
+
+La tabla mapea las responsabilidades del equipo con tres posibles estados de desempeño. Si el desempeño es satisfactorio, no hay urgencia. Si es insatisfactorio, algo está frenando a la persona que ya tiene esa responsabilidad. Si es nulo, nadie en el equipo tiene esa responsabilidad hoy y el equipo quiere asumirla. La diferencia importa porque la respuesta correcta cambia según el caso.
+
+Tres causas explican cada responsabilidad insatisfactoria o nula. Si hay demasiadas tareas para pocas personas, contratar es una buena solución. Si faltan habilidades o experiencia, contratar puede servir, pero también puede servir capacitar, apoyarse en otros equipos internos o consultar a un experto externo de forma puntual. Si la empresa no invierte lo suficiente en RevOps — tiempo, herramientas, acceso a datos — contratar no lo resuelve; primero hay que resolver el problema de inversión.
+
+El paso siguiente es agrupar en un mismo rol las responsabilidades que comparten habilidades. Un administrador de sistemas puede reunir la administración del CRM, la gestión del stack y la integración de datos. Con los roles claros, la siguiente decisión es qué tipo de perfil buscar: un especialista con experiencia directa en operaciones de ingresos, alguien que transiciona desde ventas o servicio al cliente, o alguien con una credencial específica en un área clave.
+
+¿Cuál de las tres causas explica mejor lo que hoy no funciona en tu equipo?
+
+Página 49
+---
+Tres perfiles distintos pueden ocupar un rol de RevOps, y el cuadrante ayuda a elegir cuál buscar. Los dos ejes son: qué tan específicas o amplias son las responsabilidades del cargo, y qué tan directa o transferible necesita ser la experiencia. El perfil correcto depende de cuáles sean las necesidades del equipo hoy — no del título más impresionante disponible.
+
+El especialista acreditado tiene responsabilidades específicas y experiencia directa: se buscan credenciales estándar de la industria en el área exacta, aporta valor rápido y es ideal cuando se necesita a alguien que ya sepa hacer la tarea sin curva de aprendizaje larga. Ross Nibur lo llama una contratación crítica temprana en empresas que recién están construyendo su stack. El líder de operaciones con experiencia tiene responsabilidades amplias y experiencia directa: idealmente alguien que ya ocupó ese rol en una empresa en la misma etapa de crecimiento. Nibur explica por qué: muchos problemas que parecen únicos no lo son — toda empresa necesita construir un motor de distribución de leads y un sistema de puntaje, y quien ya lo hizo puede hacerlo de nuevo más rápido.
+
+El generalista en transición tiene responsabilidades amplias y experiencia transferible: las habilidades sin el cargo exacto. La mayoría de los profesionales de operaciones empezó así. Chloe Barritault señala al ingeniero de ventas como uno de los mejores perfiles para transicionar a RevOps: entiende los sistemas, conoce el proceso de venta desde adentro y sabe lo que pasa en terreno. Yuri Dekiba agrega una advertencia clave para los tres perfiles: nunca asumir que lo que funcionó en la empresa anterior va a funcionar en la nueva — el contexto importa tanto como la experiencia.
+
+El cuarto cuadrante, responsabilidades acotadas sin credencial ni experiencia directa, no se recomienda: la persona no tiene el foco de un especialista ni la amplitud de un generalista, y eso casi siempre genera un rol sin dirección clara.
+
+Para el próximo rol que necesita tu equipo, ¿pesa más la experiencia directa o la capacidad de aprender rápido?
+
+Página 50
+---
+Hilmon Sorey lo plantea como un principio de diseño: el proceso de contratación debe emular lo que la persona hará en terreno una vez contratada. Si el trabajo exige resolver problemas con datos y sistemas bajo presión, el proceso de selección debe tener momentos de resolución de problemas con datos y sistemas. Y estandarizarlo garantiza que cada candidato tenga exactamente la misma oportunidad — sin favoritismos por afinidad.
+
+Tres fases en secuencia. Verificar la base técnica: no exige experiencia directa en operaciones, sino señales de que la persona resuelve problemas complejos con datos y sistemas — a menudo esas señales están en proyectos fuera de su cargo formal. Evaluación de habilidades: un ejercicio para llevar a casa o un entorno de prueba; Chloe Barritault dice que valora más el proceso de razonamiento que la respuesta correcta, porque una respuesta correcta sin razonamiento explícito no enseña nada sobre cómo piensa la persona. Entrevista cara a cara: preguntas estandarizadas para comparar con justicia, dejando de lado las afinidades personales que sesgan la decisión.
+
+Tres tipos de evaluación descritos por Sorey: Personalidad, que revela qué motiva a la persona y cómo reacciona ante la ambigüedad; Conductual, que muestra cómo trabaja en equipo y cómo maneja conflictos; Habilidades, que muestra dónde está hoy y si tiene la base para crecer.
+
+La pauta de ejemplo evalúa el atributo «experiencia gestionando sistemas». La pregunta: «cuéntame de una vez en que tuviste que administrar varios sistemas y hacer que funcionaran juntos». Una respuesta sólida trae números concretos — cuántos sistemas, cuánto bajó el costo del stack, qué integración construyó. Una respuesta débil habla solo de gustos o de ayudar a un familiar con el correo. Para comprensión básica de APIs, la tarea real equivalente es evaluar integraciones y la prueba es hacer una llamada de prueba en vivo.
+
+Sandy Robinson cierra con la actitud correcta: «creo firmemente en contratar personas más inteligentes que yo, mejores que yo». Dejarles proponer su manera, probar si funciona y medir los resultados.
+
+¿Qué tarea real de tu equipo podría convertirse en una prueba de habilidad para candidatos?
+
+Página 52
+---
+Toda estrategia de RevOps descansa en un ciclo de tres elementos que no termina: recolectar datos, comunicarlos a los líderes con un plan, y alinear a los equipos alrededor de métricas compartidas. Cuando el ciclo funciona, los equipos no solo ejecutan — también retroalimentan el siguiente ajuste. El ciclo no se hace una vez y se olvida: es el motor operativo permanente.
+
+Tres elementos en rotación continua. Recolectar datos: implementar los sistemas que capturan la información necesaria para ver las oportunidades de crecimiento — sin datos limpios, todo lo demás es especulación. Comunicar a líderes y comprometer un plan: llevar esas oportunidades a quienes toman decisiones, con un análisis que muestre la brecha y una propuesta concreta para abordarla. Alinear equipos: traducir el plan en métricas y metas compartidas entre marketing, ventas y servicio — de lo contrario cada equipo optimiza lo suyo y la fricción entre ellos crece.
+
+Lyndon Brathwaite da el método cuando no se llega a la meta: «Siempre miro cómo van las conversiones hasta el ingreso, hasta el final del pipeline. Cuando algo no funciona, en algún punto dentro de todo el proceso hay una brecha». Encontrada la brecha, la siguiente herramienta es hablar directamente con el equipo o hacer un grupo focal con clientes — porque el equipo casi siempre sabe qué está fallando y qué hay que arreglar. Jasmine Powers lo confirma: la operación no cierra los gaps de inmediato, pero con el tiempo la señal aparece — menor costo por lead, más conversión, mayor valor de vida del cliente.
+
+Mira la cadena completa es la táctica: seguir las conversiones paso a paso hasta encontrar dónde cae la tasa. Cuando todo marcha es el horizonte que Brathwaite describe como «poner refrigerante al motor y seguir adelante»: el foco deja de ser resolver problemas para pasar a buscar la próxima oportunidad — un mercado nuevo, un segmento de mayor valor — y preguntarse qué hace falta para seguir por delante.
+
+De los tres elementos, ¿cuál está más débil hoy en tu empresa?
+
+Página 53
+---
+De la visión a las metas trimestrales. RevOps es una inversión de 1 a 3 años. Doug Davidoff lo dice sin rodeos: «RevOps es tu inversión de 1 a 3 años. En 18 meses, todo lo que estás haciendo hoy te será más fácil». Y Jasmine Powers advierte que la validación no llega de inmediato: al principio el gasto en marketing parece igual de alto, pero con tiempo el costo por lead baja, las conversiones suben y el valor de vida del cliente crece. Saber eso de antemano cambia la manera de leer los primeros resultados.
+
+Tres prioridades estructuran los primeros trimestres. Por dónde empezar: Jen Spencer recomienda los problemas cuantificables, clics de un formulario, tasas de abandono, días que un negocio pasa en revisión legal, tiempo de respuesta, uso de la aplicación. Si puedes medir la fricción, puedes priorizar qué resolver primero. Lo que nunca se suelta: optimizar el proceso de ventas; ahí nace el flujo de ingresos que mantiene viva a la empresa, y con un pipeline predecible es que puedes innovar en la experiencia del cliente. Paciencia con los resultados: no se ven de inmediato. Con el tiempo baja el costo por lead, suben las conversiones y crece el valor de vida del cliente. El pago real llega a los 18 meses, según Davidoff.
+
+El plan de 12 meses tiene tres filas, metas, métricas y cómo se ve el éxito, y cuatro trimestres. Por ejemplo, en el primer trimestre, definir MQL y SQL con marketing y ventas, y el éxito se ve como un solo reporte sin discusiones. En el segundo, implementar el SLA, con el 90% de los leads contactados en 24 horas. En el tercero, agregar etapas posventa en el CRM, sin ningún negocio sin activar. En el cuarto, revisar el recorrido del cliente, con el plan del próximo año aprobado.
+
+Jen Spencer explica el método: alinearse en metas anuales y a tres años, y bajarlas a rocas trimestrales, porque una meta a tres años no se puede empezar en el año 3. Sarah Doughty agrega que el recorrido del cliente debe mapearse al menos cada 12 meses: si la empresa crece, lo que necesita cada segmento cambia, y si el producto cambia, el recorrido también.
+
+¿Qué meta de este trimestre te acercaría más a la visión de largo plazo de tu empresa?
+
+Página 54
+---
+Traducir una visión de largo plazo en tareas diarias es la magia operativa de RevOps. Sin ese puente, la estrategia queda en la presentación y el trabajo diario se llena de interrupciones que parecen urgentes pero no mueven nada importante. Chloe Barritault describe el método de su equipo: cada mañana definen tres cosas que lograrán ese día y se las comunican al CEO y a los equipos con que trabajan. Si aparece algo más urgente durante el día, hacen el ejercicio explícito de qué se sacrifica a cambio — esa fricción consciente es lo que protege los proyectos de largo plazo de las interrupciones.
+
+Dos campos para practicar ahora. Mis tres prioridades de hoy: los ejemplos en gris son revisar los leads sin contactar de los últimos siete días, corregir la definición de SQL con el equipo de ventas, y preparar el A3 del traspaso. Tres, no diez — porque con más de tres la priorización deja de existir. Mi lista de qué dejar de hacer: Doug Davidoff lo plantea con claridad: «En vez de una lista de pendientes, haz una lista de qué dejar de hacer. Es mucho más corta y tiene mucho más poder». El reporte semanal que nadie abre es el ejemplo típico — una hora por semana que nadie aprovecha y que se puede recuperar.
+
+Jasmine Powers da el consejo de cierre más práctico del curso: «Solo haz algo y sácalo. Hablan del producto mínimo viable. Sácalo. Mira cómo funciona y hazlo mejor». La perfección es el enemigo de la implementación, y en operaciones de ingresos lo que no se lanza no mejora.
+
+Asia Corbett cierra la clase con el mensaje que define al rol: «No se rindan porque las operaciones son difíciles. Son difíciles, pero son divertidas. Aquí está el porqué de que no somos solo personas de sistemas. Aquí está cómo ayudamos. No somos bloqueadores. Estamos aquí para ayudar. Ustedes van al mercado. Tengan éxito trayendo más ingresos. Al final del día, para eso estamos».
+
+¿Qué actividad de tu semana pondrías primero en tu lista de qué dejar de hacer?

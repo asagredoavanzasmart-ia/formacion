@@ -4,7 +4,45 @@ import { panelClass, textMuted, microLabel, featuredClass } from '../slideKit';
 import { ORANGE, BRAND, PEACH, NEUTRAL, SLATE, sceneTone, SceneDefs, IsoBox, IsoFloor, Float, PulseDisc } from '../scene3d';
 import type { Faces } from '../scene3d';
 
+import { useMarcaClase } from '../remotion/EscenaSincronizada';
+import { guiadoRevops, marcasRevops, finesRevops } from '../../data/guiadoRevops';
+
 export type SlideProps = { isDark: boolean };
+
+/* Índice de la última marca narrada de una calculadora (null fuera de su tramo en la clase guiada). */
+const SIN_MARCAS: number[] = [];
+export function usePasoNarrado(id: string) {
+  const s = guiadoRevops.slides.find((x) => x.id === id);
+  return useMarcaClase(s ? s.t : -10, s ? finesRevops[id] ?? s.t + 60 : -10, marcasRevops[id] ?? SIN_MARCAS);
+}
+
+/* Estado de una calculadora que la narración rellena: cada vez que cambia el paso narrado se aplica el estado
+   que `plan(paso)` devuelve (los números viajan suavemente hasta su valor). Con el audio en pausa nada lo pisa
+   y la persona puede editar los campos libremente. */
+export function useNarrado<S extends Record<string, number>>(id: string, inicial: S, plan: (paso: number) => Partial<S> | null): [S, React.Dispatch<React.SetStateAction<S>>, number | null] {
+  const paso = usePasoNarrado(id);
+  const [v, setV] = useState<S>(inicial);
+  const raf = React.useRef(0);
+  React.useEffect(() => {
+    if (paso === null) return;
+    let objetivo: Partial<S> = {};
+    for (let k = -1; k <= paso; k++) { const p = plan(k); if (p) objetivo = { ...objetivo, ...p }; }
+    const desde = { ...v };
+    const t0 = performance.now();
+    cancelAnimationFrame(raf.current);
+    const tick = (now: number) => {
+      const u = Math.min(1, (now - t0) / 700), e = 1 - Math.pow(1 - u, 3);
+      const nuevo = { ...desde } as S;
+      for (const key of Object.keys(objetivo) as (keyof S)[]) { const a = desde[key] as number, b = objetivo[key] as number; (nuevo as Record<keyof S, number>)[key] = Number.isInteger(b) && Number.isInteger(a) ? Math.round(a + (b - a) * e) : a + (b - a) * e; }
+      setV(nuevo);
+      if (u < 1) raf.current = requestAnimationFrame(tick);
+    };
+    raf.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [paso]);
+  return [v, setV, paso];
+}
 
 export const heading = (isDark: boolean) => (isDark ? 'text-white' : 'text-gray-900');
 
@@ -162,17 +200,17 @@ export function Bola({ id, cx, cy, r, neutral = false }: { id: string; cx: numbe
 }
 
 /* Campo numérico con etiqueta (calculadoras). */
-export function Campo({ isDark, label, value, onChange, step = 1, min = 0, max, prefijo, sufijo }: {
-  isDark: boolean; label: string; value: number; onChange: (v: number) => void; step?: number; min?: number; max?: number; prefijo?: string; sufijo?: string;
+export function Campo({ isDark, label, value, onChange, step = 1, min = 0, max, prefijo, sufijo, activo = false }: {
+  isDark: boolean; label: string; value: number; onChange: (v: number) => void; step?: number; min?: number; max?: number; prefijo?: string; sufijo?: string; activo?: boolean;
 }) {
   return (
-    <label className={`flex flex-col gap-1 p-2.5 rounded-2xl ${panelClass(isDark)}`}>
+    <label className={`flex flex-col gap-1 p-2.5 rounded-2xl transition-all duration-500 ${panelClass(isDark)} ${activo ? (isDark ? 'shadow-[0_16px_34px_-10px_rgba(0,0,0,.7),0_0_24px_rgba(255,133,29,.18)] -translate-y-0.5' : 'shadow-[0_16px_34px_-10px_rgba(17,24,39,.25),0_0_22px_rgba(255,133,29,.16)] -translate-y-0.5') : ''}`}>
       <span className={microLabel(isDark)}>{label}</span>
       <span className="flex items-center gap-1">
         {prefijo && <span className={`text-sm font-bold ${textMuted(isDark)}`}>{prefijo}</span>}
         <input
           type="number"
-          value={value}
+          value={Math.round(value * 100) / 100}
           step={step}
           min={min}
           max={max}

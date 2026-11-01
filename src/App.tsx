@@ -57,6 +57,7 @@ import { guiadoComunicacion2 } from './data/guiadoComunicacion2';
 import { guiadoOceano } from './data/guiadoOceano';
 import { guiadoLean } from './data/guiadoLean';
 import { guiadoEquipos } from './data/guiadoEquipos';
+import { guiadoRevops } from './data/guiadoRevops';
 import { guiadoMeddpicc } from './data/guiadoMeddpicc';
 import { guiadoSpin } from './data/guiadoSpin';
 import ClaseRevOps from './components/ClaseRevOps';
@@ -780,7 +781,7 @@ export default function App() {
                 overflowY: 'hidden',
                 overflowX: 'hidden',
                 overscrollBehavior: 'contain',
-                padding: activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'arquitectura-equipos' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling' ? '20px 14px 92px' : '20px 14px 24px',
+                padding: activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'arquitectura-equipos' || activeClassId === 'revops' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling' ? '20px 14px 92px' : '20px 14px 24px',
                 boxSizing: 'border-box',
                 background: isDark ? '#000' : '#f0f2f5',
                 pointerEvents: 'auto'
@@ -958,13 +959,7 @@ export default function App() {
 
                 {/* Clase "RevOps": diapositivas de contenido (ro-*) */}
                 {currentSlideId.startsWith('ro-') && slidesOrder[currentSlideIndex].level !== 1 && (
-                  <AudioSrcContext.Provider value={audioBySlide[currentSlideId]}>
-                    <GuidedControlContext.Provider value={cuesBySlide[currentSlideId] ? { cues: cuesBySlide[currentSlideId], onStep: setGuidedStep } : null}>
-                      <GuidedStepContext.Provider value={guidedStep}>
-                        <ClaseRevOps slideId={currentSlideId} isDark={isDark} />
-                      </GuidedStepContext.Provider>
-                    </GuidedControlContext.Provider>
-                  </AudioSrcContext.Provider>
+                  <ClaseRevOps slideId={currentSlideId} isDark={isDark} />
                 )}
 
                 {/* Clase "Pagar para vender mejor": diapositivas de contenido (cc-*) */}
@@ -1048,10 +1043,10 @@ export default function App() {
         </div>
 
         {/* Reproducción global de la clase con audio (flecha, resaltado y aparición de elementos) */}
-        {(activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'arquitectura-equipos' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling') && (
+        {(activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'arquitectura-equipos' || activeClassId === 'revops' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling') && (
           <ClaseGuiada
             key={activeClassId}
-            datos={activeClassId === 'kahneman' ? guiadoKahneman : activeClassId === 'influencia-persuasion' ? guiadoInfluencia : activeClassId === 'negociacion' ? guiadoNegociacion : activeClassId === 'proteccion-datos' ? guiadoProteccion : activeClassId === 'comunicacion-1' ? guiadoComunicacion1 : activeClassId === 'comunicacion-2' ? guiadoComunicacion2 : activeClassId === 'oceano-azul' ? guiadoOceano : activeClassId === 'lean-startup' ? guiadoLean : activeClassId === 'arquitectura-equipos' ? guiadoEquipos : activeClassId === 'meddpicc' ? guiadoMeddpicc : activeClassId === 'spin-selling' ? guiadoSpin : guiadoCompensacion}
+            datos={activeClassId === 'kahneman' ? guiadoKahneman : activeClassId === 'influencia-persuasion' ? guiadoInfluencia : activeClassId === 'negociacion' ? guiadoNegociacion : activeClassId === 'proteccion-datos' ? guiadoProteccion : activeClassId === 'comunicacion-1' ? guiadoComunicacion1 : activeClassId === 'comunicacion-2' ? guiadoComunicacion2 : activeClassId === 'oceano-azul' ? guiadoOceano : activeClassId === 'lean-startup' ? guiadoLean : activeClassId === 'arquitectura-equipos' ? guiadoEquipos : activeClassId === 'revops' ? guiadoRevops : activeClassId === 'meddpicc' ? guiadoMeddpicc : activeClassId === 'spin-selling' ? guiadoSpin : guiadoCompensacion}
             slideActualId={currentSlideId}
             irA={(id) => { const i = slidesOrder.findIndex((s) => s.id === id); if (i >= 0) setCurrentSlideIndex(i); }}
             isDark={isDark}

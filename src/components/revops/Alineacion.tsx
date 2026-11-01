@@ -4,7 +4,7 @@ import { Shell, panelClass, textMuted, microLabel, Pill, featuredClass } from '.
 import {
   ORANGE, PINK, BRAND, PEACH, NEUTRAL, SLATE, sceneTone, SceneDefs, IsoBox, IsoFloor, Cylinder, Orb, Float, Lift, Traveler, PulseDisc, hop, Persona,
 } from '../scene3d';
-import { SlideProps, heading, Piso, Bola, Cifra, Cita, Nota, Fuente, Opcion, BarrasIso, Campo, Paso, Verificado, fmt } from './kit';
+import { SlideProps, heading, Piso, Bola, Cifra, Cita, Nota, Fuente, Opcion, BarrasIso, Campo, Paso, Verificado, fmt, useNarrado } from './kit';
 
 /* ══════════════════════════════════════════════════════════════════
    LECCIÓN 4 · Responsabilidad con SLA
@@ -47,74 +47,83 @@ export function PorQueSLA({ isDark }: SlideProps) {
   );
 }
 
+/* Pasos narrados de la calculadora (orden de las frases en calculadoras.ts). */
+const SLA_PLAN = (p: number) => ({ [-1]: { meta: 0, ticket: 0, cierre: 0, aOport: 0, horas: 0 }, 5: { meta: 100000 }, 6: { ticket: 5000 }, 8: { cierre: 25 }, 10: { aOport: 20 }, 13: { meta: 150000 }, 14: { meta: 100000 }, 16: { horas: 24 } } as Record<number, Record<string, number>>)[p] ?? null;
+
 export function CalculadoraSLA({ isDark }: SlideProps) {
-  const [meta, setMeta] = useState(100000);
-  const [ticket, setTicket] = useState(5000);
-  const [cierre, setCierre] = useState(25);
-  const [aOport, setAOport] = useState(20);
-  const [horas, setHoras] = useState(24);
+  const [v, setV, paso] = useNarrado('ro-4-calculadora', { meta: 100000, ticket: 5000, cierre: 25, aOport: 20, horas: 24 }, SLA_PLAN);
+  const { meta, ticket, cierre, aOport, horas } = v;
+  const set = (k: keyof typeof v) => (x: number) => setV((o) => ({ ...o, [k]: x }));
   const negocios = ticket > 0 ? Math.ceil(meta / ticket) : 0;
   const oport = cierre > 0 ? Math.ceil(negocios / (cierre / 100)) : 0;
   const leads = aOport > 0 ? Math.ceil(oport / (aOport / 100)) : 0;
+  const ve = (desde: number) => (paso === null || paso >= desde ? 'opacity-100' : 'opacity-0 pointer-events-none');
+  const foco = (a: number, b = a) => paso !== null && paso >= a && paso <= b;
+  const anillo = (on: boolean) => (on ? 'shadow-[0_18px_38px_-10px_rgba(17,24,39,.3),0_0_24px_rgba(255,133,29,.2)] -translate-y-0.5' : '');
   return (
     <Shell isDark={isDark} title="Calcula" highlight="tu SLA" subtitle="Con tres datos de un año de ventas (tasa lead→oportunidad, tasa oportunidad→cierre y ticket promedio) sabes cuántos leads necesita ventas para llegar a la meta. Compara trimestres: la estacionalidad es normal.">
       <div className="h-full flex flex-col lg:flex-row gap-5 min-h-0">
         <div className="lg:w-[38%] flex flex-col gap-2 justify-center">
           <div className="grid grid-cols-2 gap-2">
-            <Campo isDark={isDark} label="Meta de ingresos al mes" prefijo="$" value={meta} step={10000} onChange={setMeta} />
-            <Campo isDark={isDark} label="Ticket promedio" prefijo="$" value={ticket} step={500} onChange={setTicket} />
-            <Campo isDark={isDark} label="Oportunidad → cierre" sufijo="%" value={cierre} max={100} onChange={setCierre} />
-            <Campo isDark={isDark} label="Lead → oportunidad" sufijo="%" value={aOport} max={100} onChange={setAOport} />
+            <Campo isDark={isDark} label="Meta de ingresos al mes" prefijo="$" value={meta} step={10000} onChange={set('meta')} activo={foco(5) || foco(13, 14)} />
+            <Campo isDark={isDark} label="Ticket promedio" prefijo="$" value={ticket} step={500} onChange={set('ticket')} activo={foco(6, 7)} />
+            <Campo isDark={isDark} label="Oportunidad → cierre" sufijo="%" value={cierre} max={100} onChange={set('cierre')} activo={foco(8, 9)} />
+            <Campo isDark={isDark} label="Lead → oportunidad" sufijo="%" value={aOport} max={100} onChange={set('aOport')} activo={foco(10, 11)} />
           </div>
-          <Campo isDark={isDark} label="Plazo de contacto de ventas" sufijo="horas" value={horas} onChange={setHoras} />
-          <Verificado isDark={isDark} tipo="corregido">Algunas guías indican <em>multiplicar</em> por las tasas de conversión; lo correcto es <strong>dividir</strong>. Con 25% de cierre, 20 negocios exigen 20 ÷ 0,25 = 80 oportunidades, no 5.</Verificado>
-          <Nota isDark={isDark} label="El plazo: 24 horas para empezar">Si aún no hay un plazo definido, 24 horas es un buen punto de partida. Reducirlo es un tema permanente de las reuniones entre marketing y ventas.</Nota>
+          <Campo isDark={isDark} label="Plazo de contacto de ventas" sufijo="horas" value={horas} onChange={set('horas')} activo={foco(16)} />
+          <div className={`transition-all duration-500 rounded-2xl ${ve(15)} ${anillo(foco(15))}`}><Verificado isDark={isDark} tipo="corregido">Algunas guías indican <em>multiplicar</em> por las tasas de conversión; lo correcto es <strong>dividir</strong>. Con 25% de cierre, 20 negocios exigen 20 ÷ 0,25 = 80 oportunidades, no 5.</Verificado></div>
+          <div className={`transition-all duration-500 rounded-2xl ${ve(16)}`}><Nota isDark={isDark} label="El plazo: 24 horas para empezar">Si aún no hay un plazo definido, 24 horas es un buen punto de partida. Reducirlo es un tema permanente de las reuniones entre marketing y ventas.</Nota></div>
         </div>
         <div className="lg:w-[62%] flex flex-col gap-2.5 justify-center">
-          <div className="h-[230px]">
-            <BarrasIso id="rocal" isDark={isDark} max={Math.max(leads, 1)} W={540} hMax={130} items={[
+          <div className={`h-[230px] transition-opacity duration-500 ${ve(7)}`}>
+            <BarrasIso id="rocal" isDark={isDark} max={Math.max(leads, oport, negocios, 1)} W={540} hMax={130} items={[
               { name: 'Leads calificados', value: leads, label: fmt(leads), hl: true },
               { name: 'Oportunidades', value: oport, label: fmt(oport), tone: 'peach' },
               { name: 'Negocios cerrados', value: negocios, label: fmt(negocios), tone: 'brand' },
             ]} />
           </div>
-          <div className={`p-4 rounded-3xl ${featuredClass(isDark)}`}>
+          <div className={`p-4 rounded-3xl transition-all duration-500 ${featuredClass(isDark)} ${ve(17)} ${anillo(foco(17))}`}>
             <p className={microLabel(isDark)}>Tu SLA</p>
             <p className={`text-base md:text-lg font-bold leading-snug ${heading(isDark)}`}>
               Cada mes, marketing entregará <span className="text-[#ff851d]">{fmt(leads)} leads calificados</span> a ventas, y ventas contactará cada uno dentro de <span className="text-[#ef375c]">{horas} horas</span> desde que lo recibe.
             </p>
           </div>
-          <Nota isDark={isDark} label="Referencia real (Mark Roberge, Harvard Business School)">Con 100 leads al mes, un vendedor del segmento medio conectaba con 50, hacía 30 llamadas de descubrimiento, 15 demostraciones y cerraba 5 clientes. Con 10 vendedores, marketing debía entregar 1.000 leads al mes. Un SLA así ya deja a la empresa en el 5% superior.</Nota>
+          <div className={`transition-all duration-500 rounded-2xl ${ve(18)} ${anillo(foco(18))}`}><Nota isDark={isDark} label="Referencia real (Mark Roberge, Harvard Business School)">Con 100 leads al mes, un vendedor del segmento medio conectaba con 50, hacía 30 llamadas de descubrimiento, 15 demostraciones y cerraba 5 clientes. Con 10 vendedores, marketing debía entregar 1.000 leads al mes. Un SLA así ya deja a la empresa en el 5% superior.</Nota></div>
         </div>
       </div>
     </Shell>
   );
 }
 
+const VALOR_PLAN = (p: number) => ({ [-1]: { ebooks: 0, demos: 0 }, 8: { ebooks: 150, demos: 50 }, 9: { ebooks: 0, demos: 100 }, 10: { ebooks: 300, demos: 0 }, 11: { ebooks: 150, demos: 50 } } as Record<number, Record<string, number>>)[p] ?? null;
+
 export function ValorLead({ isDark }: SlideProps) {
-  const [ebooks, setEbooks] = useState(150);
-  const [demos, setDemos] = useState(50);
+  const [v, setV, paso] = useNarrado('ro-4-valor', { ebooks: 150, demos: 50 }, VALOR_PLAN);
+  const { ebooks, demos } = v;
   const valor = ebooks * 1000 + demos * 3000;
   const metaValor = 300000;
   const pct = Math.min(1, valor / metaValor);
+  const ve = (desde: number) => (paso === null || paso >= desde ? 'opacity-100' : 'opacity-0 pointer-events-none');
+  const foco = (a: number, b = a) => paso !== null && paso >= a && paso <= b;
+  const anillo = (on: boolean) => (on ? 'shadow-[0_18px_38px_-10px_rgba(17,24,39,.3),0_0_24px_rgba(255,133,29,.2)] -translate-y-0.5' : '');
   return (
     <Shell isDark={isDark} title="Valor del lead," highlight="no volumen de leads" subtitle="No todos los MQL valen lo mismo. Cuando marketing se atrasaba, cambiaba sus llamados a la acción por descargas de ebooks, más fáciles de conseguir, y ventas preguntaba: «¿dónde están las solicitudes de demo?».">
       <div className="h-full flex flex-col lg:flex-row gap-5 min-h-0">
-        <div className="lg:w-[44%] flex flex-col items-center justify-center gap-1">
+        <div className={`lg:w-[44%] flex flex-col items-center justify-center gap-1 transition-opacity duration-500 ${ve(4)}`}>
           <div className="w-full max-w-[400px] h-[240px]">
             <BarrasIso id="roval" isDark={isDark} max={3000} W={400} hMax={130} items={[
-              { name: 'Descarga de ebook', value: 1000, label: '$1.000', tone: 'peach' },
-              { name: 'Solicitud de demo', value: 3000, label: '$3.000', hl: true },
+              { name: 'Descarga de ebook', value: paso === null || paso >= 5 ? 1000 : 0, label: '$1.000', tone: 'peach' },
+              { name: 'Solicitud de demo', value: paso === null || paso >= 6 ? 3000 : 0, label: '$3.000', hl: true },
             ]} caption="Valor de un lead = tasa de cierre × valor de la venta" />
           </div>
           <p className={`text-xs text-center max-w-sm ${textMuted(isDark)}`}>Mismo perfil (gerente de marketing de una empresa mediana), misma venta de $100.000: el ebook cierra 1% de las veces y la demo, 3%.</p>
         </div>
         <div className="lg:w-[56%] flex flex-col gap-2.5 justify-center">
-          <div className="grid grid-cols-2 gap-2">
-            <Campo isDark={isDark} label="Descargas de ebook" value={ebooks} step={10} onChange={setEbooks} />
-            <Campo isDark={isDark} label="Solicitudes de demo" value={demos} step={5} onChange={setDemos} />
+          <div className={`grid grid-cols-2 gap-2 transition-opacity duration-500 ${ve(8)}`}>
+            <Campo isDark={isDark} label="Descargas de ebook" value={ebooks} step={10} onChange={(x) => setV((o) => ({ ...o, ebooks: x }))} activo={foco(8) || foco(10)} />
+            <Campo isDark={isDark} label="Solicitudes de demo" value={demos} step={5} onChange={(x) => setV((o) => ({ ...o, demos: x }))} activo={foco(8, 9)} />
           </div>
-          <div className={`p-3.5 rounded-3xl ${featuredClass(isDark)}`}>
+          <div className={`p-3.5 rounded-3xl transition-all duration-500 ${featuredClass(isDark)} ${ve(8)} ${anillo(foco(12))}`}>
             <div className="flex items-baseline justify-between">
               <p className={microLabel(isDark)}>Valor de leads entregado este mes</p>
               <p className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ff851d] to-[#ef375c]">${fmt(valor)}</p>
@@ -125,8 +134,8 @@ export function ValorLead({ isDark }: SlideProps) {
             <p className={`text-xs mt-1.5 ${textMuted(isDark)}`}>Meta: ${fmt(metaValor)} de valor de leads. A marketing ya no le importa la mezcla: puede llegar con 100 demos, con 300 ebooks o combinando. Así marketing queda con una cuota de ingresos, igual que ventas.</p>
             <p className={`text-sm font-bold leading-snug mt-2 ${heading(isDark)}`}>SLA avanzado: cada mes, marketing entregará <span className="text-[#ff851d]">${fmt(metaValor)} en valor de leads</span>, y ventas contactará cada MQL dentro de <span className="text-[#ef375c]">24 horas</span>.</p>
           </div>
-          <Verificado isDark={isDark} tipo="corregido">La fuente dice que $300.000 se logran con «1.000 demos o 3.000 ebooks»; eso suma $3.000.000. Con sus propios valores, son <strong>100 demos o 300 ebooks</strong>.</Verificado>
-          <Nota isDark={isDark} label="Y ventas tampoco se libra: el tablero «no aparezcas aquí»">Si un lead no recibía llamada en 24 horas, el nombre del vendedor aparecía en pantalla. Si un lead llevaba dos semanas sin cinco intentos de contacto, también.</Nota>
+          <div className={`rounded-2xl transition-all duration-500 ${ve(13)} ${anillo(foco(13))}`}><Verificado isDark={isDark} tipo="corregido">La fuente dice que $300.000 se logran con «1.000 demos o 3.000 ebooks»; eso suma $3.000.000. Con sus propios valores, son <strong>100 demos o 300 ebooks</strong>.</Verificado></div>
+          <div className={`rounded-2xl transition-all duration-500 ${ve(14)} ${anillo(foco(14, 16))}`}><Nota isDark={isDark} label="Y ventas tampoco se libra: el tablero «no aparezcas aquí»">Si un lead no recibía llamada en 24 horas, el nombre del vendedor aparecía en pantalla. Si un lead llevaba dos semanas sin cinco intentos de contacto, también.</Nota></div>
         </div>
       </div>
     </Shell>
@@ -234,46 +243,46 @@ export function RamaJudicial({ isDark }: SlideProps) {
   );
 }
 
+const VEL_PLAN = (p: number) => ({ [-1]: { vol: 0, lpp: 0, hpp: 0, op: 0, ticket: 0, win: 0, ciclo: 0 }, 11: { vol: 250 }, 12: { lpp: 5 }, 13: { hpp: 3 }, 14: { hpp: 1 }, 15: { hpp: 3 }, 17: { op: 40 }, 18: { ticket: 5000 }, 19: { win: 25 }, 20: { ciclo: 60 } } as Record<number, Record<string, number>>)[p] ?? null;
+
 export function Velocidades({ isDark }: SlideProps) {
-  const [vol, setVol] = useState(250);
-  const [lpp, setLpp] = useState(5);
-  const [hpp, setHpp] = useState(3);
-  const [op, setOp] = useState(40);
-  const [ticket, setTicket] = useState(5000);
-  const [win, setWin] = useState(25);
-  const [ciclo, setCiclo] = useState(60);
+  const [v, setV, paso] = useNarrado('ro-4-velocidades', { vol: 250, lpp: 5, hpp: 3, op: 40, ticket: 5000, win: 25, ciclo: 60 }, VEL_PLAN);
+  const { vol, lpp, hpp, op, ticket, win, ciclo } = v;
+  const set = (k: keyof typeof v) => (x: number) => setV((o) => ({ ...o, [k]: x }));
   const lph = hpp > 0 ? lpp / hpp : 0;
   const vVentas = ciclo > 0 ? (op * ticket * (win / 100)) / ciclo : 0;
+  const ve = (desde: number) => (paso === null || paso >= desde ? 'opacity-100' : 'opacity-0 pointer-events-none');
+  const foco = (a: number, b = a) => paso !== null && paso >= a && paso <= b;
   return (
     <Shell isDark={isDark} title="Velocidad de marketing y" highlight="velocidad de ventas" subtitle="Dos cálculos para saber si el SLA es posible: cuántos leads produce cada hora de marketing y cuánto ingreso puede procesar ventas por día.">
       <div className="h-full grid grid-cols-1 lg:grid-cols-2 gap-5 min-h-0 content-center">
-        <div className={`p-4 rounded-3xl flex flex-col gap-2 ${panelClass(isDark)}`}>
+        <div className={`p-4 rounded-3xl flex flex-col gap-2 transition-opacity duration-500 ${panelClass(isDark)} ${ve(1)}`}>
           <p className={microLabel(isDark)}>Velocidad de marketing · una pieza de contenido</p>
           <div className="grid grid-cols-3 gap-2">
-            <Campo isDark={isDark} label="Piezas al año" value={vol} step={10} onChange={setVol} />
-            <Campo isDark={isDark} label="Leads por pieza" value={lpp} step={1} onChange={setLpp} />
-            <Campo isDark={isDark} label="Horas por pieza" value={hpp} step={0.5} onChange={setHpp} />
+            <Campo isDark={isDark} label="Piezas al año" value={vol} step={10} onChange={set('vol')} activo={foco(3) || foco(11)} />
+            <Campo isDark={isDark} label="Leads por pieza" value={lpp} step={1} onChange={set('lpp')} activo={foco(4) || foco(12)} />
+            <Campo isDark={isDark} label="Horas por pieza" value={hpp} step={0.5} onChange={set('hpp')} activo={foco(5) || foco(13, 14)} />
           </div>
-          <div className="grid grid-cols-3 gap-2">
-            <Cifra isDark={isDark} n={lph} dec={2} titulo="Leads por hora" />
-            <Cifra isDark={isDark} n={lph > 0 ? 1 / lph : 0} dec={2} titulo="Horas por lead" />
+          <div className={`grid grid-cols-3 gap-2 transition-opacity duration-500 ${ve(6)}`}>
+            <Cifra isDark={isDark} n={lph} dec={2} titulo="Leads por hora" destacada={foco(7)} />
+            <Cifra isDark={isDark} n={lph > 0 ? 1 / lph : 0} dec={2} titulo="Horas por lead" destacada={foco(8)} />
             <Cifra isDark={isDark} n={vol * hpp} titulo="Horas al año" destacada />
           </div>
-          <p className={`text-xs leading-snug ${textMuted(isDark)}`}>Ejemplo de Jamie Shanks (Sales for Life): 250 blogs al año, 5 leads por blog y 3 horas cada uno dan 1,7 leads por hora y 750 horas al año. Bajar cada blog a 1 hora libera 500 horas para otra pieza que rinda más.</p>
+          <p className={`text-xs leading-snug transition-opacity duration-500 ${textMuted(isDark)} ${ve(10)}`}>Ejemplo de Jamie Shanks (Sales for Life): 250 blogs al año, 5 leads por blog y 3 horas cada uno dan 1,7 leads por hora y 750 horas al año. Bajar cada blog a 1 hora libera 500 horas para otra pieza que rinda más.</p>
         </div>
-        <div className={`p-4 rounded-3xl flex flex-col gap-2 ${featuredClass(isDark)}`}>
+        <div className={`p-4 rounded-3xl flex flex-col gap-2 transition-opacity duration-500 ${featuredClass(isDark)} ${ve(16)}`}>
           <p className={microLabel(isDark)}>Velocidad de ventas = oportunidades × ticket × tasa de cierre ÷ días de ciclo</p>
           <div className="grid grid-cols-4 gap-2">
-            <Campo isDark={isDark} label="Oportunidades" value={op} onChange={setOp} />
-            <Campo isDark={isDark} label="Ticket" prefijo="$" value={ticket} step={500} onChange={setTicket} />
-            <Campo isDark={isDark} label="Cierre" sufijo="%" value={win} max={100} onChange={setWin} />
-            <Campo isDark={isDark} label="Ciclo" sufijo="días" value={ciclo} onChange={setCiclo} />
+            <Campo isDark={isDark} label="Oportunidades" value={op} onChange={set('op')} activo={foco(17)} />
+            <Campo isDark={isDark} label="Ticket" prefijo="$" value={ticket} step={500} onChange={set('ticket')} activo={foco(18)} />
+            <Campo isDark={isDark} label="Cierre" sufijo="%" value={win} max={100} onChange={set('win')} activo={foco(19)} />
+            <Campo isDark={isDark} label="Ciclo" sufijo="días" value={ciclo} onChange={set('ciclo')} activo={foco(20)} />
           </div>
           <div className="grid grid-cols-2 gap-2">
-            <Cifra isDark={isDark} n={vVentas} prefijo="$" titulo="Ingreso por día" />
+            <Cifra isDark={isDark} n={vVentas} prefijo="$" titulo="Ingreso por día" destacada={foco(21)} />
             <Cifra isDark={isDark} n={vVentas * 30} prefijo="$" titulo="Ingreso en 30 días" destacada />
           </div>
-          <p className={`text-xs leading-snug ${textMuted(isDark)}`}>Si la tasa de cierre es baja, quizá marketing atrae a la gente equivocada: revisa el perfil de cliente ideal y busca rasgos comunes en los negocios perdidos. Marketing también puede acortar el ciclo con contenido que responda dudas antes de la reunión.</p>
+          <p className={`text-xs leading-snug transition-opacity duration-500 ${textMuted(isDark)} ${ve(23)}`}>Si la tasa de cierre es baja, quizá marketing atrae a la gente equivocada: revisa el perfil de cliente ideal y busca rasgos comunes en los negocios perdidos. Marketing también puede acortar el ciclo con contenido que responda dudas antes de la reunión.</p>
         </div>
       </div>
     </Shell>
