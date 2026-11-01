@@ -15,7 +15,31 @@ export interface ClaseCatalogo {
   /** Etiqueta de temática (ej: "Ventas", "Marketing"). No es obligatoriamente B2B. */
   category: string;
   iconKey: ClaseIconKey;
+  /** Si la clase es parte de una formación de varias partes, el id de esa formación (ver `formaciones`). */
+  formacion?: string;
 }
+
+/** Formación: agrupa varias clases (sus partes) en una sola tarjeta de la portada. */
+export interface Formacion {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  category: string;
+  iconKey: ClaseIconKey;
+}
+
+export const formaciones: readonly Formacion[] = [
+  {
+    id: 'comunicacion-efectiva',
+    title: 'Comunicación efectiva',
+    subtitle: 'Formación en dos partes',
+    description:
+      'Cómo se conversa con el cliente y cómo se conversa dentro de la organización que vende: credibilidad, preguntas, persuasión, historias, silencio, coraje, retroalimentación y conflicto.',
+    category: 'Formación',
+    iconKey: 'ventas',
+  },
+];
 
 export const catalogoClases: readonly ClaseCatalogo[] = [
   {
@@ -98,6 +122,26 @@ export const catalogoClases: readonly ClaseCatalogo[] = [
       'Lo que toda empresa de marketing y ventas necesita saber: qué datos requieren consentimiento, cómo pedirlo bien, derechos de los titulares, obligaciones del responsable, brechas de seguridad, la Agencia de Protección de Datos y el régimen de infracciones y multas.',
     category: 'General',
     iconKey: 'general',
+  },
+  {
+    id: 'comunicacion-1',
+    title: 'Comunicación efectiva · Parte 1',
+    subtitle: 'Vender: la conversación con el cliente',
+    description:
+      'Primera impresión, credibilidad, preguntas, estilos de decisión del comprador, culturas, principios de influencia, el pitch, historias y conversaciones difíciles con el cliente.',
+    category: 'Ventas',
+    iconKey: 'ventas',
+    formacion: 'comunicacion-efectiva',
+  },
+  {
+    id: 'comunicacion-2',
+    title: 'Comunicación efectiva · Parte 2',
+    subtitle: 'La organización que vende',
+    description:
+      'Las palabras del líder y sus cinco palancas, la conversación organizacional, el costo del silencio, el coraje competente, recibir retroalimentación, pedir y dar consejo y anticipar el conflicto en el equipo comercial.',
+    category: 'Ventas',
+    iconKey: 'ventas',
+    formacion: 'comunicacion-efectiva',
   },
   {
     id: 'challenger',

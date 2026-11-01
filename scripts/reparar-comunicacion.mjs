@@ -1,0 +1,11 @@
+import {env,pipeline} from 'file:///C:/tmp/audio-transcription/node_modules/@huggingface/transformers/dist/transformers.node.mjs';
+import {readFile,writeFile} from 'node:fs/promises';
+import {spawn} from 'node:child_process';
+env.allowRemoteModels=false;
+const model=await pipeline('automatic-speech-recognition','Xenova/whisper-base',{dtype:'q8',session_options:{intraOpNumThreads:2,interOpNumThreads:1}});
+const file='C:/Users/arsag/Downloads/comunicaciónGenerated Audio October 31, 2026 - 12_52PM (1).wav';
+const raw=await new Promise((resolve,reject)=>{const p=spawn('C:/Program Files/DownloadHelper CoApp/ffmpeg.exe',['-v','error','-i',file,'-ss','1310','-t','70','-ar','16000','-ac','1','-f','f32le','pipe:1']);const b=[];p.stdout.on('data',x=>b.push(x));p.on('close',c=>c?reject(Error(String(c))):resolve(Buffer.concat(b)));});
+console.log('Duración del tramo:',raw.length/4/16000);
+const r=await model(new Float32Array(raw.buffer,raw.byteOffset,raw.length/4),{chunk_length_s:30,stride_length_s:5,return_timestamps:true,language:'spanish',task:'transcribe',no_repeat_ngram_size:3});
+await writeFile('salida/comunicacion/reparacion_1.json',JSON.stringify(r.chunks.map(c=>({...c,timestamp:c.timestamp.map(t=>t+1310)})),null,2));
+console.log('Tramo revisado',r.text);

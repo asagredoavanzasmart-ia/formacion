@@ -1,0 +1,12 @@
+import {env,pipeline} from 'file:///C:/tmp/audio-transcription/node_modules/@huggingface/transformers/dist/transformers.node.mjs';
+import {writeFile} from 'node:fs/promises';
+import {spawn} from 'node:child_process';
+const [id,start,length]=process.argv.slice(2).map(Number);
+const file=id===1?'Generated Audio October 31, 2026 - 2_15PM.wav':'Generated Audio October 31, 2026 - 2_15PM (1).wav';
+const raw=await new Promise((resolve,reject)=>{const p=spawn('C:/Program Files/DownloadHelper CoApp/ffmpeg.exe',['-v','error','-i','C:/Users/arsag/Downloads/'+file,'-ss',String(start),'-t',String(length),'-ar','16000','-ac','1','-f','f32le','pipe:1']);const b=[];p.stdout.on('data',x=>b.push(x));p.on('close',c=>c?reject(Error(String(c))):resolve(Buffer.concat(b)));});
+if(raw.length<64000)throw Error('Audio insuficiente');
+env.allowRemoteModels=false;
+const model=await pipeline('automatic-speech-recognition',process.argv[5]??'Xenova/whisper-base',{dtype:'q8',session_options:{intraOpNumThreads:2,interOpNumThreads:1}});
+const r=await model(new Float32Array(raw.buffer,raw.byteOffset,raw.length/4),{chunk_length_s:30,stride_length_s:5,return_timestamps:true,language:'spanish',task:'transcribe',no_repeat_ngram_size:3});
+await writeFile(`salida/comunicacion_parte2/reparacion_${id}_${start}.json`,JSON.stringify(r.chunks.map(c=>({...c,timestamp:c.timestamp.map(t=>t+start)})),null,2));
+console.log(r.text);

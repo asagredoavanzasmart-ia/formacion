@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Sun, Moon, Plus } from 'lucide-react';
-import type { ClaseCatalogo } from '../data/catalogoClases';
+import { formaciones } from '../data/catalogoClases';
+import type { ClaseCatalogo, Formacion } from '../data/catalogoClases';
 import TarjetaClase from './TarjetaClase';
+import TarjetaFormacion from './TarjetaFormacion';
 import './PortadaRepositorio.css';
 
 interface PortadaRepositorioProps {
@@ -25,6 +27,16 @@ export default function PortadaRepositorio({
   onOpenClass,
 }: PortadaRepositorioProps) {
   const hasClasses = catalog.length > 0;
+
+  // Las clases que pertenecen a una formación se reúnen en una sola tarjeta, en el lugar de su primera parte.
+  type Item = { tipo: 'clase'; clase: ClaseCatalogo } | { tipo: 'formacion'; formacion: Formacion; partes: ClaseCatalogo[] };
+  const tarjetas: Item[] = [];
+  for (const clase of catalog) {
+    const f = clase.formacion ? formaciones.find((x) => x.id === clase.formacion) : undefined;
+    if (!f) { tarjetas.push({ tipo: 'clase', clase }); continue; }
+    if (tarjetas.some((t) => t.tipo === 'formacion' && t.formacion.id === f.id)) continue;
+    tarjetas.push({ tipo: 'formacion', formacion: f, partes: catalog.filter((c) => c.formacion === f.id) });
+  }
 
   return (
     <div className="portada-root relative h-screen w-screen overflow-y-auto overflow-x-hidden">
@@ -75,15 +87,26 @@ export default function PortadaRepositorio({
 
           {hasClasses && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-              {catalog.map((clase, index) => (
-                <TarjetaClase
-                  key={clase.id}
-                  clase={clase}
-                  slideCount={slideCountByClassId?.[clase.id]}
-                  animationDelay={0.15 + index * 0.1}
-                  onOpen={onOpenClass}
-                />
-              ))}
+              {tarjetas.map((t, index) =>
+                t.tipo === 'formacion' ? (
+                  <TarjetaFormacion
+                    key={t.formacion.id}
+                    formacion={t.formacion}
+                    partes={t.partes}
+                    slideCountByClassId={slideCountByClassId}
+                    animationDelay={0.15 + index * 0.1}
+                    onOpen={onOpenClass}
+                  />
+                ) : (
+                  <TarjetaClase
+                    key={t.clase.id}
+                    clase={t.clase}
+                    slideCount={slideCountByClassId?.[t.clase.id]}
+                    animationDelay={0.15 + index * 0.1}
+                    onOpen={onOpenClass}
+                  />
+                ),
+              )}
 
               <div
                 className="portada-card-empty rounded-3xl p-6 md:p-7 flex flex-col items-center justify-center gap-3 text-center portada-text-muted min-h-[14rem]"
