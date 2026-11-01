@@ -41,6 +41,8 @@ import ClaseNegociacion from './components/ClaseNegociacion';
 import ClaseProteccion from './components/ClaseProteccion';
 import ClaseComunicacion1 from './components/ClaseComunicacion1';
 import ClaseComunicacion2 from './components/ClaseComunicacion2';
+import ClaseOceano from './components/ClaseOceano';
+import ClaseLean from './components/ClaseLean';
 import ClaseChallenger from './components/ClaseChallenger';
 import ClaseTrampas from './components/ClaseTrampas';
 import ClaseCompensacion from './components/ClaseCompensacion';
@@ -52,6 +54,8 @@ import { guiadoNegociacion } from './data/guiadoNegociacion';
 import { guiadoProteccion } from './data/guiadoProteccion';
 import { guiadoComunicacion1 } from './data/guiadoComunicacion1';
 import { guiadoComunicacion2 } from './data/guiadoComunicacion2';
+import { guiadoOceano } from './data/guiadoOceano';
+import { guiadoLean } from './data/guiadoLean';
 import { guiadoMeddpicc } from './data/guiadoMeddpicc';
 import { guiadoSpin } from './data/guiadoSpin';
 import ClaseRevOps from './components/ClaseRevOps';
@@ -780,7 +784,7 @@ export default function App() {
                 overflowY: 'hidden',
                 overflowX: 'hidden',
                 overscrollBehavior: 'contain',
-                padding: activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling' ? '20px 14px 92px' : '20px 14px 24px',
+                padding: activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling' ? '20px 14px 92px' : '20px 14px 24px',
                 boxSizing: 'border-box',
                 background: isDark ? '#000' : '#f0f2f5',
                 pointerEvents: 'auto'
@@ -936,6 +940,16 @@ export default function App() {
                   <ClaseComunicacion2 slideId={currentSlideId} isDark={isDark} />
                 )}
 
+                {/* Clase "Estrategia del océano azul": diapositivas de contenido (oa-*) */}
+                {currentSlideId.startsWith('oa-') && slidesOrder[currentSlideIndex].level !== 1 && (
+                  <ClaseOceano slideId={currentSlideId} isDark={isDark} />
+                )}
+
+                {/* Clase "El método Lean Startup": diapositivas de contenido (ls-*) */}
+                {currentSlideId.startsWith('ls-') && slidesOrder[currentSlideIndex].level !== 1 && (
+                  <ClaseLean slideId={currentSlideId} isDark={isDark} />
+                )}
+
                 {/* Clase "El Vendedor Desafiante": diapositivas de contenido (ch-*) */}
                 {currentSlideId.startsWith('ch-') && slidesOrder[currentSlideIndex].level !== 1 && (
                   <ClaseChallenger slideId={currentSlideId} isDark={isDark} />
@@ -1028,10 +1042,10 @@ export default function App() {
         </div>
 
         {/* Reproducción global de la clase con audio (flecha, resaltado y aparición de elementos) */}
-        {(activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling') && (
+        {(activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling') && (
           <ClaseGuiada
             key={activeClassId}
-            datos={activeClassId === 'kahneman' ? guiadoKahneman : activeClassId === 'influencia-persuasion' ? guiadoInfluencia : activeClassId === 'negociacion' ? guiadoNegociacion : activeClassId === 'proteccion-datos' ? guiadoProteccion : activeClassId === 'comunicacion-1' ? guiadoComunicacion1 : activeClassId === 'comunicacion-2' ? guiadoComunicacion2 : activeClassId === 'meddpicc' ? guiadoMeddpicc : activeClassId === 'spin-selling' ? guiadoSpin : guiadoCompensacion}
+            datos={activeClassId === 'kahneman' ? guiadoKahneman : activeClassId === 'influencia-persuasion' ? guiadoInfluencia : activeClassId === 'negociacion' ? guiadoNegociacion : activeClassId === 'proteccion-datos' ? guiadoProteccion : activeClassId === 'comunicacion-1' ? guiadoComunicacion1 : activeClassId === 'comunicacion-2' ? guiadoComunicacion2 : activeClassId === 'oceano-azul' ? guiadoOceano : activeClassId === 'lean-startup' ? guiadoLean : activeClassId === 'meddpicc' ? guiadoMeddpicc : activeClassId === 'spin-selling' ? guiadoSpin : guiadoCompensacion}
             slideActualId={currentSlideId}
             irA={(id) => { const i = slidesOrder.findIndex((s) => s.id === id); if (i >= 0) setCurrentSlideIndex(i); }}
             isDark={isDark}

@@ -692,6 +692,46 @@ export const comunicacion2Slides: SlideMeta[] = [
 ];
 
 // Guion por clase: cada id del catálogo apunta a su orden de diapositivas.
+export const oceanoSlides: SlideMeta[] = [
+  { id: 'oa-cover', title: 'Portada', level: 2 },
+  { id: 'oa-portada', title: 'Salir de la competencia', level: 2 },
+  { id: 'oa-rojo-azul', title: 'Océanos rojos y océanos azules', level: 2 },
+  { id: 'oa-valor', title: 'Innovación en valor', level: 2 },
+  { id: 'oa-acciones', title: 'Eliminar, reducir, aumentar y crear', level: 2 },
+  { id: 'oa-curva', title: 'La curva de valor', level: 2 },
+  { id: 'oa-seis', title: 'Seis preguntas', level: 2 },
+  { id: 'oa-etapas', title: 'Cuatro etapas', level: 2 },
+  { id: 'oa-productos', title: 'Colonos, emigrantes y pioneros', level: 2 },
+  { id: 'oa-no-clientes', title: 'La conquista de los no clientes', level: 2 },
+  { id: 'oa-wii', title: 'El caso de la Wii', level: 2 },
+  { id: 'oa-limites', title: 'Límites y críticas', level: 2 },
+  { id: 'oa-aplicar', title: 'Cómo aplicarlo en tu empresa', level: 2 },
+  { id: 'oa-sintesis', title: 'Del rojo al azul', level: 2 },
+  { id: 'oa-header-test', title: 'Evalúa lo aprendido', level: 1 },
+  { id: 'oa-test-basico', title: 'Test 1 · Principiante', level: 2 },
+  { id: 'oa-test-avanzado', title: 'Test 2 · Avanzado', level: 2 },
+];
+
+export const leanSlides: SlideMeta[] = [
+  { id: 'ls-cover', title: 'Portada', level: 2 },
+  { id: 'ls-portada', title: 'Aprender rápido, gastar lo mínimo', level: 2 },
+  { id: 'ls-toyota', title: 'De Toyota a las empresas emergentes', level: 2 },
+  { id: 'ls-ciclo', title: 'La incertidumbre y el ciclo de feedback', level: 2 },
+  { id: 'ls-pmv', title: 'Crear: el producto mínimo viable', level: 2 },
+  { id: 'ls-medir', title: 'Medir: la contabilidad de la innovación', level: 2 },
+  { id: 'ls-pivotar', title: 'Aprender: perseverar o pivotar', level: 2 },
+  { id: 'ls-tipos', title: 'Los diez tipos de pivote', level: 2 },
+  { id: 'ls-lotes', title: 'La técnica de los lotes pequeños', level: 2 },
+  { id: 'ls-porques', title: 'La técnica de los cinco porqués', level: 2 },
+  { id: 'ls-motores', title: 'Los motores de crecimiento', level: 2 },
+  { id: 'ls-aplicar', title: 'Cómo aplicarlo en tu empresa', level: 2 },
+  { id: 'ls-criticas', title: 'Críticas y límites', level: 2 },
+  { id: 'ls-sintesis', title: 'Aprender más rápido de lo que se gasta', level: 2 },
+  { id: 'ls-header-test', title: 'Evalúa lo aprendido', level: 1 },
+  { id: 'ls-test-basico', title: 'Test 1 · Principiante', level: 2 },
+  { id: 'ls-test-avanzado', title: 'Test 2 · Avanzado', level: 2 },
+];
+
 export const slidesByClass: Record<string, SlideMeta[]> = {
   'ventas-b2b': initialSlides,
   'metodologias-venta': metodologiasSlides,
@@ -709,6 +749,8 @@ export const slidesByClass: Record<string, SlideMeta[]> = {
   'proteccion-datos': proteccionSlides,
   'comunicacion-1': comunicacion1Slides,
   'comunicacion-2': comunicacion2Slides,
+  'oceano-azul': oceanoSlides,
+  'lean-startup': leanSlides,
 };
 
 // Cantidad de diapositivas (nivel 2) de cada clase del repositorio.
@@ -729,4 +771,6 @@ export const slideCountByClassId: Record<string, number> = {
   'proteccion-datos': proteccionSlides.filter((slide) => slide.level === 2).length,
   'comunicacion-1': comunicacion1Slides.filter((slide) => slide.level === 2).length,
   'comunicacion-2': comunicacion2Slides.filter((slide) => slide.level === 2).length,
+  'oceano-azul': oceanoSlides.filter((slide) => slide.level === 2).length,
+  'lean-startup': leanSlides.filter((slide) => slide.level === 2).length,
 };

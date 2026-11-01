@@ -1,0 +1,105 @@
+Imagina descubrir en semanas, y no en años, si tu idea de negocio tiene clientes: eso es lo que promete el método Lean Startup de Eric Ries, y de eso trata este recorrido, de aprender a gran velocidad gastando lo mínimo.
+
+Eric Ries nace en 1978 en Estados Unidos. Siendo todavía universitario coescribe una guía de programación en Java, y después estudia programación informática en la Universidad de Yale mientras lanza, con un amigo, su primera empresa emergente. Se gradúa en 2001 y empieza una carrera como empresario en Silicon Valley, la región de California junto a la bahía de San Francisco donde se concentran las principales empresas de tecnologías punta.
+
+Su primera empresa emergente, Catalyst Recruiting, fracasa. En 2004, cuando quiebra There.com, la empresa en la que trabajaba como ingeniero de software, funda otra con su compañero Will Harvey: IMVU, que comercializa un programa de mensajería instantánea con avatares tridimensionales personalizados. Allí aplica un método que las teorías de gestión tradicionales desacreditaban y que más tarde dejará por escrito. En 2007 la revista BusinessWeek lo nombra mejor joven emprendedor tecnológico, en 2009 gana el premio TechFellow en Ingeniería de Liderazgo y en 2010 se convierte en emprendedor residente en la Escuela de Negocios de Harvard. En 2011 publica El método Lean Startup, que enseguida se vuelve un superventas.
+
+Recorreremos de dónde viene el método, su ciclo de crear, medir y aprender, el producto mínimo viable, los pivotes, las técnicas lean, los motores de crecimiento, cómo aplicarlo y las críticas que recibe. ¿Cuántos meses de trabajo lleva tu empresa sin que ningún cliente real haya visto el producto?
+
+De Toyota a las empresas emergentes. En 1972, después de años de investigación y experimentación, Toyota pone en marcha un método de producción llamado lean manufacturing; lean significa en inglés «magro», «desengrasado». Su principio es simple y eficaz: disminuir las pérdidas y los desperdicios y, con ello, reducir los costes. Toyota se fija como meta una drástica reducción del despilfarro, que en japonés se llama muda, y sus ingenieros identifican siete fuentes.
+
+Esta filosofía aparece en una sociedad en pleno auge del consumo, donde hay que producir más y, al mismo tiempo, gastar menos. En los años noventa cruza el Pacífico: pensadores estadounidenses como James Womack y Daniel Jones, con Lean Thinking en 1996, la teorizan, y se propaga por las industrias, empezando por la automovilística. Hoy existen aplicaciones como la gestión lean, que busca eliminar todo despilfarro del trabajo, y el lean software, que lo busca en el desarrollo de programas.
+
+Eric Ries da el paso decisivo: aplicar la filosofía lean al proceso de innovación. En 2008 evoca el concepto por primera vez en su blog, Startup Lessons Learned. Parte de una pregunta que se hace todo joven emprendedor: ¿cómo me aseguro de que el producto en el que trabajo desde hace meses, a veces años, encontrará su clientela? Su respuesta es acercarse todo lo posible a los futuros usuarios.
+
+En esa búsqueda pesa el encuentro con Steve Blank, un empresario de Silicon Valley que sería inversor de IMVU. Blank insiste en que todo emprendedor debe determinar las expectativas y los deseos de sus clientes potenciales, y elabora una metodología de desarrollo de la clientela que está en la base del movimiento. ¿Cuál es el mayor despilfarro de tu empresa: producir más de lo necesario, o producir algo que nadie pidió?
+
+Una empresa emergente vive en la incertidumbre. Una startup es una joven empresa innovadora con un gran potencial de crecimiento, que se desarrolla en un entorno de incertidumbres y de riesgos. Sus dirigentes deben ser conscientes de ello y aceptar la consecuencia más incómoda: cuestionarse constantemente. Esas condiciones piden una gestión dedicada a la innovación, porque un crecimiento sostenible a largo plazo pasa necesariamente por introducir innovaciones de forma permanente.
+
+El método lean se resume en tres rasgos: un ciclo extremadamente rápido, los deseos de los clientes tenidos en cuenta y decisiones de base científica. Toda empresa emergente recorre el ciclo de feedback, la retroalimentación, con tres pasos: crear, medir y aprender. Se crea un producto, se mide cómo reaccionan los clientes y se aprende para decidir qué hacer. Reducir la duración total de este ciclo reduce las pérdidas de tiempo, de dinero y de energía.
+
+La idea es proceder a empujones, rectificando la trayectoria con lo que dice el cliente, en lugar de lanzar por todo lo alto algo pensado durante años. Conviene ensayar antes con un grupo reducido de personas: así se miden los resultados rápido, con menor coste, y se detectan los errores.
+
+Un ejemplo imaginario: una pequeña empresa quiere vender menús saludables a oficinas. En vez de montar una cocina industrial, ofrece cinco menús a dos oficinas durante dos semanas y anota qué piden, qué dejan y qué vuelven a pedir. Con eso aprende más que con un año de planos. ¿Cuál es el ciclo más corto que podrías recorrer esta semana con un cliente real?
+
+Crear: el producto mínimo viable. El producto mínimo viable, o PMV, es un prototipo del producto que queremos lanzar al mercado. Es mínimo porque su realización requiere el menor esfuerzo y el menor tiempo posibles, así que no será perfecto: le faltarán muchas funcionalidades. Pero permite entrar directamente en la producción y enfrentarlo por primera vez a los clientes. Sus reacciones inician el aprendizaje por feedback, eliminan cuanto antes los despilfarros y toman el camino más corto hacia las lecciones que validarán el producto. Toda estrategia descansa en hipótesis, y hay que contrastarlas lo antes posible para saber si pueden funcionar.
+
+El PMV no tiene por qué ser perfecto: incluso uno de baja calidad aporta datos útiles, a veces esenciales. Juzgar su calidad antes del lanzamiento exigiría saber qué considerará valioso el cliente, y eso nunca se sabe al lanzar un producto, cuando ni siquiera se sabe quiénes serán esos clientes. Además, un PMV suele traer malas noticias, y hay que ser capaz de superarlas: el fracaso permite aprender y evolucionar, y conviene mostrar flexibilidad, obstinación y no perder la esperanza.
+
+La experiencia de IMVU lo muestra. Cuenta Ries que, al recaudar fondos de inversores de capital riesgo, se sentían avergonzados: el producto tenía fallos y era de baja calidad, y sus cifras eran tan bajas que los inversores preguntaban en qué unidades estaban los gráficos, si en miles, y ellos debían responder que no, que eran unidades. Aun así, esos PMV coherentes les permitieron realizar los ajustes necesarios y crecer con rapidez.
+
+Un ejemplo imaginario: una aplicación para reservar canchas de pádel. En lugar de programar pagos y mapas, empieza con un formulario sencillo y un grupo de mensajes con diez clubes, y reserva a mano. Si los clubes no responden, lo descubre en días y no en meses. ¿Qué versión de tu producto cabe en una semana de trabajo y ya sería útil para un cliente real?
+
+Medir: la contabilidad de la innovación. En esta fase hay que determinar si los esfuerzos de desarrollo producen un progreso real. Para ello Ries propone la contabilidad de la innovación, una mirada cuantitativa a los esfuerzos y a los avances que muestra si la empresa logra crecer a largo plazo. Se empieza empleando el PMV para obtener datos sobre el entorno en el que el producto debe evolucionar.
+
+Luego hay que pasar «del funcionamiento de base al régimen ideal» mediante muchos intentos y microajustes basados en los datos. Es importante fragmentar el análisis y hacer cambios pequeños, por etapas, y que cada evolución mejore un elemento del motor de crecimiento. Por ejemplo, mejorar el diseño del producto para influir en el comportamiento de los clientes: si ese cambio produce un efecto positivo en la tasa de activación de nuevos clientes, se considera un conocimiento validado. Cuando se agotan las mejoras posibles llega la decisión final: ¿cambiar de rumbo, si la empresa no progresa en la dirección deseada, o persistir?
+
+Para decidir bien hay que evitar a toda costa los indicadores ilusorios, esos que muchos emprendedores buscan para simular un éxito o porque se niegan a abrir los ojos. Cifras genéricas, como el número total de clientes o las tasas de activación, pueden ser engañosas y no siempre se adaptan al motor de crecimiento: si este se basa en la fidelización, habrá que mirar las tasas de adquisición y de anulación.
+
+Un indicador decisional cumple las tres A. Accionable: muestra una relación clara de causa y efecto que lleva a la acción. Accesible: los informes son claros, precisos y comprensibles para todos, con unidades concretas. Auditable: los datos son creíbles para todos los empleados y se contrastan con sus imperfecciones. Y siempre hay que ser críticos con las cifras, recordando que tras ellas hay un factor humano. Un ejemplo imaginario: una tienda en línea presume de diez mil visitas, una cifra ilusoria; la que decide es cuántos de cada cien visitantes compran y cuántos regresan. ¿Cuál de las cifras que miras hoy te permitiría decidir algo mañana mismo?
+
+Aprender: perseverar o pivotar. Llega el momento de las conclusiones: ¿perseverar o alejarse de la estrategia inicial? Aquí interviene el concepto de pivote, en el centro de la teoría. Según Ries, no hay nada más peligroso que una empresa estancada: el estancamiento destruye la creatividad, igual que empeñarse en un callejón sin salida. Un cambio de dirección, cuando funciona, puede devolver a la empresa a una actividad sostenible a largo plazo.
+
+El verdadero valor de una empresa emergente se calcula según el número de pivotes que aún puede permitirse, es decir, el número de oportunidades que tiene de hacer un cambio fundamental en su estrategia de negocio. Todo cambio de estrategia es una nueva ocasión de dinamizar la actividad, y toda empresa, incluso la que está en expansión, debe poder cuestionarse y, si hace falta, adaptar o reinventar su estrategia, total o parcialmente.
+
+Muchos emprendedores tardan demasiado en pivotar: por indicadores ilusorios, por resultados iniciales ambiguos, por objetivos poco claros o por miedo al fracaso. Un pivote es emocionalmente duro para un creador, que puede pensar que el producto necesita un poco más de tiempo para demostrar su eficacia. Hay que reflexionar y estructurar bien un cambio de esa envergadura, pero sin temerle y sin querer cambiar a toda costa.
+
+Ries señala dos factores que indican que es el momento de tomar otra dirección: la efectividad decreciente de los experimentos con el producto y la sensación generalizada de que el proceso de desarrollo debería ser más productivo. Dicho de otra forma: ¿el producto aún crea el valor suficiente? ¿Qué señal te diría que ha llegado la hora de cambiar de rumbo en tu empresa?
+
+
+
+
+
+
+
+
+
+
+Los diez tipos de pivote. El pivote de acercamiento ocurre cuando una característica del producto inicial se convierte en el producto completo. El de alejamiento, al contrario: el producto inicial pasa a ser una característica de un producto mayor. El pivote de segmento de consumidor aparece cuando el producto resuelve el problema de unos clientes distintos de los previstos, y el de necesidad del consumidor cuando los clientes tienen otros problemas que les preocupan más que el que el producto resolvía.
+
+El pivote de plataforma consiste en pasar de una aplicación a una plataforma, o a la inversa. El de arquitectura del negocio cambia una empresa de alto margen y bajo volumen por una de bajo margen y alto volumen, o viceversa. El de captura del valor cambia la forma de medir y obtener el valor: Ries sostiene que el valor de una empresa se mide por el valor comercial del producto que vende, y modificar ese criterio tiene consecuencias para los productos y para el marketing.
+
+Quedan tres más: el pivote de motor de crecimiento, que cambia entre los tres motores que veremos; el de canal de venta o de distribución; y el de tecnología, que cambia la manera de realizar el producto.
+
+Un ejemplo imaginario: una empresa vende un programa de reservas a restaurantes y descubre que quienes más lo usan son los hoteles pequeños; ese es un pivote de segmento. ¿Tu producto tendría que cambiar de cliente, de problema o de canal, y cuál de los tres tendría más sentido?
+
+La técnica de los lotes pequeños. Muchos gestores siguen convencidos de que lo más eficaz es la producción en serie. Ries sostiene lo contrario: defiende el flujo continuo con fabricación en lotes pequeños, que es más rápida y permite identificar antes los problemas de calidad. La producción en serie necesita un gran volumen de existencias de piezas sueltas para atender la demanda en todo momento, y esas piezas almacenadas son una forma de despilfarro.
+
+La fabricación lean lo resuelve con la técnica de «tirar»: cada paso de la línea tira de la etapa anterior las partes que necesita. Solo se producen piezas cuando la etapa siguiente las requiere, según las peticiones y las expectativas de los clientes. El pedido desencadena la fabricación.
+
+Su origen está en la posguerra. Los productores japoneses, como Toyota, no podían competir con las gigantescas fábricas norteamericanas, que fabricaban coches en los lotes más grandes posibles para reducir el coste de cada pieza. El mercado japonés, limitado y destruido por la guerra, no podía seguir ese ritmo, y ingenieros como Taiichi Ohno y Shigeo Shingo recurrieron a lotes pequeños.
+
+Un ejemplo imaginario: una consultora, en vez de preparar un informe de cuarenta hojas, entrega cada semana un resumen de una hoja y ajusta con lo que el cliente responde. ¿Qué gran lote de trabajo podrías dividir en entregas semanales a tu cliente?
+
+La técnica de los cinco porqués. Cuando aparece un problema en el ciclo de feedback hay que poder resolverlo. Los cinco porqués permiten detectar la causa profunda yendo más allá de las apariencias: se pregunta «¿por qué?» al problema y luego, cada vez, por la causa identificada en el porqué anterior, hasta llegar a la raíz. Después se invierte de forma proporcional en cada nivel: si el problema es menor, se gasta menos energía en resolverlo. Junto a los lotes pequeños, es la base para reaccionar rápido sin invertir más de lo necesario.
+
+Un ejemplo imaginario: un cliente cancela. ¿Por qué? Porque no usaba el servicio. ¿Por qué? Porque no supo cómo empezar. ¿Por qué? Porque la bienvenida es un manual larguísimo. ¿Por qué? Porque nadie lo revisó. ¿Por qué? Porque nadie es responsable de la bienvenida. La raíz no era el cliente, sino que faltaba un responsable.
+
+Para que funcione hay que reunir a todas las personas implicadas, porque cualquier ausente corre el riesgo de convertirse en chivo expiatorio, y hacerlo en un entorno de confianza mutua y de responsabilización. Cada error, la primera vez, se trata con indulgencia y se hace todo lo posible para que no se repita. Y hay que saber que el método puede sacar a la luz verdades incómodas y exige inversión de tiempo y de dinero, pero esos esfuerzos son indispensables a largo plazo. ¿Qué problema de tu empresa sigue volviendo y qué pasaría si le preguntaras cinco veces por qué?
+
+Los motores de crecimiento. El motor de crecimiento es el mecanismo al que recurren las empresas emergentes para desarrollarse de manera duradera. Permite concentrarse en los datos de unos pocos indicadores, ignorando los demás, y así acelerar la validación de las hipótesis. Hay tres tipos.
+
+El motor pegajoso consiste en atraer y retener clientes a largo plazo: el número de clientes nuevos debe superar al de los que se van, y se trabaja para que los actuales aprecien más el producto y aumente la tasa de retención. El motor viral hace que sean los propios clientes quienes realicen la mayor parte del marketing: importa cuántos amigos consigue cada cliente nuevo que aprecien el producto, y esa transmisión ocurre de forma inconsciente. El motor remunerado busca aumentar los ingresos de cada cliente o reducir su coste de adquisición, calculando cuánto gastará un cliente a lo largo de su vida en el producto.
+
+En teoría pueden usarse varios a la vez, pero la experiencia de Ries lo lleva a preferir uno solo. El concepto permite ver si una empresa ha encontrado la idoneidad entre su producto y el mercado, es decir, una clientela amplia y fiel. Y todo motor acaba por quedarse sin aliento: hay que anticipar ese agotamiento y estar listos para cambiarlo, manteniendo flexible la estructura de la empresa. ¿Cuál de los tres motores explica hoy el crecimiento de tu empresa?
+
+Cómo aplicarlo en tu empresa. Todo lo anterior se resume en una secuencia de preguntas que puedes responder con tu equipo. Para empezar, la hipótesis: ¿qué crees que es verdad sobre tu cliente y todavía no has comprobado? Después, el producto mínimo: ¿cuál es la versión más pequeña que un cliente real podría usar esta semana? Luego, la medida: ¿qué cifra, accionable, accesible y auditable, te dirá si funcionó? Y por último, la decisión: ¿perseverar o pivotar, y qué señales pondrías de antemano?
+
+Un ejemplo imaginario: una pequeña empresa de capacitación en ventas cree que sus clientes quieren cursos largos. Ofrece a tres empresas una sesión de una hora y mide cuántas piden una segunda. Si piden más sesiones cortas, descubre que su motor es la repetición y no el curso largo; si no piden nada, cambia de segmento o de problema antes de grabar un solo video.
+
+La regla es no gastar más de lo que se necesita para aprender lo siguiente. Un motor a la vez, ensayos pequeños, cifras que obligan a decidir y el cliente al lado. ¿Cuál de estos pasos harías primero en tu empresa?
+
+Críticas y límites. Las técnicas lean no despiertan unanimidad. Al lean manufacturing se le reprocha intensificar el trabajo, con repercusiones en el bienestar físico y mental de los trabajadores, porque perseguir el tiempo considerado inútil priva de tiempos de recuperación necesarios. Algunos dirigentes lo aplican solo por la ganancia de productividad y la reducción de costes, cuando sus defensores piden verlo como una mejora a largo plazo.
+
+Sobre el Lean Startup en particular, hay quien denuncia que se centra en el corto plazo: al menor contratiempo se plantea un cambio de estrategia, y muchas empresas que tardaron en instalarse en el mercado quizá nunca se habrían abierto camino. Sin una visión a largo plazo, además, es más difícil encontrar inversores. Otros dicen que descuida el aspecto humano: a fuerza de prepararse contra toda incertidumbre, el emprendimiento podría perder su lado pasional y privilegiar un razonamiento frío, y exige emprendedores humildes, capaces de aceptar que sus proyectos acaben pronto en la basura.
+
+También se critica el encadenar un ensayo tras otro: la mayoría serían inútiles, y innovar a un ritmo frenético cansaría a empleados y creadores. Y se reprocha que los productos lleguen incompletos o rotos, cuando resulta difícil que un cliente prefiera un producto sin funcionalidades esenciales a otro cuidado en cada detalle. Los críticos recuerdan que Google y Facebook no llegaron al mercado con productos de baja calidad: observaron lo que se hacía antes y aprendieron de los demás, y algunos añaden que a una empresa le basta mirar los errores de las lean startup para lanzar directamente un producto mejor, como hizo Apple. Por último, se señala que estos métodos están ante todo adaptados a pequeñas empresas y encajan mal en las medianas o grandes. ¿Qué parte del método adaptarías a tu empresa y cuál dejarías de lado?
+
+En un mundo donde lanzar un producto es caro y equivocarse sale más caro todavía, el método Lean Startup propone otra forma de avanzar. El lean manufacturing nació en Toyota para evitar todo tipo de despilfarro, y Eric Ries lo trasladó al proceso de innovación de cualquier empresa, en especial de las emergentes.
+
+El método se apoya en conocer bien a los clientes potenciales y el mercado en el que el producto debe evolucionar, y para eso es indispensable acudir al terreno. Después, los clientes ensayan el producto y sus comentarios permiten ajustes progresivos hacia lo que realmente desean. Técnicas como los lotes pequeños y los cinco porqués ayudan a detectar rápido los problemas que frenarían el proceso, y los motores de crecimiento muestran si el producto encontró su mercado.
+
+Todo consiste en mejorar el rendimiento del ciclo de feedback: saber mejor qué espera el cliente para aumentar la rentabilidad, ahorrando tiempo y dinero y conservando las fuerzas donde de verdad hacen falta. El emprendimiento lean conquistó rápido a muchos emprendedores en todo el mundo y, pese a las críticas, el movimiento no ha dejado de crecer.
+
+La idea de conjunto es que lo valioso no es acertar a la primera, sino aprender más rápido de lo que se gasta. ¿Qué hipótesis de tu negocio vas a someter esta semana a un ensayo con clientes reales?
+

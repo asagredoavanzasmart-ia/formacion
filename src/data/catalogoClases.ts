@@ -144,6 +144,24 @@ export const catalogoClases: readonly ClaseCatalogo[] = [
     formacion: 'comunicacion-efectiva',
   },
   {
+    id: 'oceano-azul',
+    title: 'Estrategia del océano azul',
+    subtitle: 'Kim y Mauborgne · crear mercado sin competencia',
+    description:
+      'Océanos rojos y azules, innovación en valor, las cuatro acciones, la curva de valor del Cirque du Soleil, las seis preguntas, las cuatro etapas, los no clientes, el caso de la Wii, las críticas al modelo y cómo aplicarlo en tu empresa.',
+    category: 'Estrategia',
+    iconKey: 'general',
+  },
+  {
+    id: 'lean-startup',
+    title: 'El método Lean Startup',
+    subtitle: 'Eric Ries · innovar sin despilfarro',
+    description:
+      'De Toyota a las empresas emergentes: el ciclo crear, medir y aprender, el producto mínimo viable, la contabilidad de la innovación, los diez pivotes, los lotes pequeños, los cinco porqués, los motores de crecimiento y las críticas al método.',
+    category: 'Estrategia',
+    iconKey: 'general',
+  },
+  {
     id: 'challenger',
     title: 'El Vendedor Desafiante (Challenger)',
     subtitle: 'Dixon y Adamson · venta compleja B2B',
