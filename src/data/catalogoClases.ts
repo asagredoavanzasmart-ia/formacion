@@ -162,6 +162,15 @@ export const catalogoClases: readonly ClaseCatalogo[] = [
     iconKey: 'general',
   },
   {
+    id: 'enamorate-problema',
+    title: 'Enamórate del problema, no de la solución',
+    subtitle: 'Uri Levine · el método detrás de Waze y Moovit',
+    description:
+      'El problema como punto de partida, la matriz de mercado y dolor, la travesía de fracasos, la disrupción, trabajar por fases, conseguir y manejar inversionistas, despedir y contratar, el usuario de primera vez, la retención, el precio, el crecimiento, salir al mundo y la salida.',
+    category: 'Estrategia',
+    iconKey: 'general',
+  },
+  {
     id: 'challenger',
     title: 'El Vendedor Desafiante (Challenger)',
     subtitle: 'Dixon y Adamson · venta compleja B2B',
