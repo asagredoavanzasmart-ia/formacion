@@ -708,6 +708,7 @@ export const oceanoSlides: SlideMeta[] = [
   { id: 'oa-limites', title: 'Límites y críticas', level: 2 },
   { id: 'oa-aplicar', title: 'Cómo aplicarlo en tu empresa', level: 2 },
   { id: 'oa-sintesis', title: 'Del rojo al azul', level: 2 },
+  { id: 'oa-matriz', title: 'Construye tu curva de valor', level: 2 },
   { id: 'oa-header-test', title: 'Evalúa lo aprendido', level: 1 },
   { id: 'oa-test-basico', title: 'Test 1 · Principiante', level: 2 },
   { id: 'oa-test-avanzado', title: 'Test 2 · Avanzado', level: 2 },

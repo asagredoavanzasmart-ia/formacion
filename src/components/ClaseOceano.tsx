@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Thumbnail } from '@remotion/player';
 import { Shell, panelClass, textMuted, microLabel, featuredClass, Quiz } from './slideKit';
 import { OA_BASICO, OA_AVANZADO } from './oceano/tests';
+import MatrizOA from './oceano/MatrizOA';
 import { EscenaSincronizada } from './remotion/EscenaSincronizada';
 import { PisoTexto } from './remotion/comun';
 import { PAGINAS } from './oceano/indice';
@@ -135,6 +136,7 @@ function Caratula({ isDark }: { isDark: boolean }) {
 
 export default function ClaseOceano({ slideId, isDark }: { slideId: string; isDark: boolean }) {
   if (slideId === 'oa-cover') return <Caratula isDark={isDark} />;
+  if (slideId === 'oa-matriz') return <MatrizOA isDark={isDark} />;
   if (slideId === 'oa-test-basico') return (
     <Shell isDark={isDark} title="Test 1 ·" highlight="Fundamentos" subtitle="Diez preguntas sobre los conceptos centrales de la estrategia del océano azul. Al final verás tu puntaje y una recomendación.">
       <Quiz isDark={isDark} nivel="Nivel principiante" questions={OA_BASICO} />
