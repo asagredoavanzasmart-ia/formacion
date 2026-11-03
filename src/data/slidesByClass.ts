@@ -784,8 +784,42 @@ export const epSlides: SlideMeta[] = [
   { id: 'ep-test-avanzado', title: 'Test 2 · Avanzado', level: 2 },
 ];
 
+export const vcSlides: SlideMeta[] = [
+  { id: 'vc-portada', title: 'Inicio', level: 2 },
+  { id: 'vc-evolucion', title: 'Evolución de la venta', level: 2 },
+  { id: 'vc-intro', title: 'Introducción', level: 2 },
+  { id: 'vc-estrategia', title: 'Estrategia vs táctica', level: 2 },
+  { id: 'vc-vendedores', title: 'Comparación de vendedores', level: 2 },
+  { id: 'vc-pilares', title: 'Pilares de la estrategia', level: 2 },
+  { id: 'vc-header-1', title: 'I. Roles de influencia', level: 1 },
+  { id: 'vc-roles', title: 'Roles de compra', level: 2 },
+  { id: 'vc-economico', title: 'Identificar al comprador económico', level: 2 },
+  { id: 'vc-tecnico', title: 'Gestionar al comprador técnico', level: 2 },
+  { id: 'vc-perfiles', title: 'Resultados y ganancias por perfil', level: 2 },
+  { id: 'vc-preguntas', title: 'Resultados y ganancias (preguntas)', level: 2 },
+  { id: 'vc-header-2', title: 'II. ICP + oferta', level: 1 },
+  { id: 'vc-aterrizaje', title: 'Aterrizaje y expansión', level: 2 },
+  { id: 'vc-icp', title: 'Perfil del cliente ideal (ICP)', level: 2 },
+  { id: 'vc-icp-tool', title: 'Herramienta ICP', level: 2 },
+  { id: 'vc-oferta', title: 'La oferta irresistible', level: 2 },
+  { id: 'vc-constructor-oferta', title: 'Las tres palancas de la oferta', level: 2 },
+  { id: 'vc-header-3', title: 'III. Banderas rojas y problemas', level: 1 },
+  { id: 'vc-banderas', title: 'Banderas rojas', level: 2 },
+  { id: 'vc-superar', title: 'Superar problemas', level: 2 },
+  { id: 'vc-header-4', title: 'IV. Modos de respuesta', level: 1 },
+  { id: 'vc-receptividad', title: 'Nivel de receptividad', level: 2 },
+  { id: 'vc-modos', title: 'Modos de respuesta', level: 2 },
+  { id: 'vc-header-5', title: 'V. Proceso comercial', level: 1 },
+  { id: 'vc-ciclo', title: 'Ciclo normal de ventas', level: 2 },
+  { id: 'vc-flujos', title: 'Creador de flujos', level: 2 },
+  { id: 'vc-crm', title: 'Pipeline CRM', level: 2 },
+  { id: 'vc-procesos', title: 'Constructor de procesos', level: 2 },
+  { id: 'vc-lista', title: 'Lista de verificación', level: 2 },
+];
+
 export const slidesByClass: Record<string, SlideMeta[]> = {
   'ventas-b2b': initialSlides,
+  'ventas-complejas': vcSlides,
   'metodologias-venta': metodologiasSlides,
   'arquitectura-equipos': equiposSlides,
   meddpicc: meddpiccSlides,
@@ -809,6 +843,7 @@ export const slidesByClass: Record<string, SlideMeta[]> = {
 // Cantidad de diapositivas (nivel 2) de cada clase del repositorio.
 export const slideCountByClassId: Record<string, number> = {
   'ventas-b2b': initialSlides.filter((slide) => slide.level === 2).length,
+  'ventas-complejas': vcSlides.filter((slide) => slide.level === 2).length,
   'metodologias-venta': metodologiasSlides.filter((slide) => slide.level === 2).length,
   'arquitectura-equipos': equiposSlides.filter((slide) => slide.level === 2).length,
   meddpicc: meddpiccSlides.filter((slide) => slide.level === 2).length,

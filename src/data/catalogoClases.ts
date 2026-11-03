@@ -52,6 +52,15 @@ export const catalogoClases: readonly ClaseCatalogo[] = [
     iconKey: 'ventas',
   },
   {
+    id: 'ventas-complejas',
+    title: 'Ventas complejas',
+    subtitle: 'Formación estratégica · el grupo que decide',
+    description:
+      'La propuesta que viaja por cada parada: roles de influencia, ICP y oferta irresistible, banderas rojas, modos de respuesta de Miller y Heiman y el proceso comercial B2B de Michael Pearce.',
+    category: 'Ventas',
+    iconKey: 'ventas',
+  },
+  {
     id: 'metodologias-venta',
     title: 'La Ciencia de Vender',
     subtitle: 'Ventas avanzado',
