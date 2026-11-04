@@ -784,6 +784,34 @@ export const epSlides: SlideMeta[] = [
   { id: 'ep-test-avanzado', title: 'Test 2 · Avanzado', level: 2 },
 ];
 
+export const cpSlides: SlideMeta[] = [
+  { id: 'cp-portada', title: 'Inicio', level: 2 },
+  { id: 'cp-header-1', title: '1. Tecnología antes que estrategia', level: 1 },
+  { id: 'cp-tecnologia', title: 'Comprar antes de pensar', level: 2 },
+  { id: 'cp-evidencia', title: 'Lo que dicen los datos', level: 2 },
+  { id: 'cp-poder', title: 'El poder cambió de lado', level: 2 },
+  { id: 'cp-problema', title: 'El problema en una frase', level: 2 },
+  { id: 'cp-header-2', title: '2. Esperar resultados mágicos', level: 1 },
+  { id: 'cp-magia', title: 'La promesa y el ABS', level: 2 },
+  { id: 'cp-retorno', title: 'El retorno que nadie mide', level: 2 },
+  { id: 'cp-captacion', title: 'Cuánto cuesta un cliente nuevo', level: 2 },
+  { id: 'cp-piloto', title: 'Dosificar y pilotear', level: 2 },
+  { id: 'cp-header-3', title: '3. Automatizar un proceso malo', level: 1 },
+  { id: 'cp-automatizar', title: 'Repetir errores más rápido', level: 2 },
+  { id: 'cp-mapa', title: 'Mapear y medir', level: 2 },
+  { id: 'cp-header-4', title: '4. Segmentar en lugar de personalizar', level: 1 },
+  { id: 'cp-segmentar', title: 'Clientes en cajas', level: 2 },
+  { id: 'cp-personalizar', title: 'Personalizar con respeto', level: 2 },
+  { id: 'cp-header-5', title: '5. Olvidar a las personas', level: 1 },
+  { id: 'cp-personas', title: 'Lo que falla es la organización', level: 2 },
+  { id: 'cp-adopcion', title: 'Que el CRM devuelva algo', level: 2 },
+  { id: 'cp-header-6', title: '6. Datos sin propósito y canales desconectados', level: 1 },
+  { id: 'cp-datos', title: 'Datos sin propósito', level: 2 },
+  { id: 'cp-permiso', title: 'Preguntar mejor, no más', level: 2 },
+  { id: 'cp-canales', title: 'Canales que no se hablan', level: 2 },
+  { id: 'cp-sintesis', title: 'Síntesis', level: 2 },
+];
+
 export const vcSlides: SlideMeta[] = [
   { id: 'vc-portada', title: 'Inicio', level: 2 },
   { id: 'vc-evolucion', title: 'Evolución de la venta', level: 2 },
@@ -820,6 +848,7 @@ export const vcSlides: SlideMeta[] = [
 export const slidesByClass: Record<string, SlideMeta[]> = {
   'ventas-b2b': initialSlides,
   'ventas-complejas': vcSlides,
+  'crm-pymes': cpSlides,
   'metodologias-venta': metodologiasSlides,
   'arquitectura-equipos': equiposSlides,
   meddpicc: meddpiccSlides,
@@ -844,6 +873,7 @@ export const slidesByClass: Record<string, SlideMeta[]> = {
 export const slideCountByClassId: Record<string, number> = {
   'ventas-b2b': initialSlides.filter((slide) => slide.level === 2).length,
   'ventas-complejas': vcSlides.filter((slide) => slide.level === 2).length,
+  'crm-pymes': cpSlides.filter((slide) => slide.level === 2).length,
   'metodologias-venta': metodologiasSlides.filter((slide) => slide.level === 2).length,
   'arquitectura-equipos': equiposSlides.filter((slide) => slide.level === 2).length,
   meddpicc: meddpiccSlides.filter((slide) => slide.level === 2).length,

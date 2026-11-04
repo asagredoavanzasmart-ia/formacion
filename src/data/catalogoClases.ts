@@ -61,6 +61,15 @@ export const catalogoClases: readonly ClaseCatalogo[] = [
     iconKey: 'ventas',
   },
   {
+    id: 'crm-pymes',
+    title: 'CRM en pymes',
+    subtitle: 'Los seis errores que lo hacen fracasar',
+    description:
+      'Por qué tantos CRM fracasan en empresas pequeñas y medianas: tecnología antes que estrategia, expectativas mágicas, procesos malos automatizados, segmentar en vez de personalizar, olvidar a las personas y datos sin propósito. Con Pedro Reinares y Frederick Newell.',
+    category: 'Ventas',
+    iconKey: 'ventas',
+  },
+  {
     id: 'metodologias-venta',
     title: 'La Ciencia de Vender',
     subtitle: 'Ventas avanzado',
