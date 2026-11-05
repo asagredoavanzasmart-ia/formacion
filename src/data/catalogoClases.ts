@@ -1,4 +1,13 @@
 /**
+  {
+    id: 'esencialismo',
+    title: 'Esencialismo',
+    subtitle: 'Menos, pero mejor: tácticas para equipos',
+    description:
+      'Cómo un equipo distingue lo vital de lo trivial, elimina lo que sobra y ejecuta lo esencial casi sin fricción. Con Greg McKeown («Esencialismo» y «Sin esfuerzo») y Jack Trout y Steve Rivkin («El poder de lo simple»).',
+    category: 'Liderazgo',
+    iconKey: 'liderazgo',
+  },
  * Catálogo del repositorio de clases.
  * Capa de DATOS pura: no sabe cómo se dibuja (la UI decide el ícono según `iconKey`).
  * Para sumar una nueva temática, solo se agrega un objeto a `catalogoClases`.
@@ -41,7 +50,8 @@ export const formaciones: readonly Formacion[] = [
   },
 ];
 
-export const catalogoClases: readonly ClaseCatalogo[] = [
+export const catalogoClases: readonly ClaseCatalogo[
+] = [
   {
     id: 'ventas-b2b',
     title: 'Ventas B2B',
@@ -60,15 +70,7 @@ export const catalogoClases: readonly ClaseCatalogo[] = [
     category: 'Ventas',
     iconKey: 'ventas',
   },
-  {
-    id: 'esencialismo',
-    title: 'Esencialismo',
-    subtitle: 'Menos, pero mejor: tácticas para equipos',
-    description:
-      'Cómo un equipo distingue lo vital de lo trivial, elimina lo que sobra y ejecuta lo esencial casi sin fricción. Con Greg McKeown («Esencialismo» y «Sin esfuerzo») y Jack Trout y Steve Rivkin («El poder de lo simple»).',
-    category: 'Liderazgo',
-    iconKey: 'liderazgo',
-  },
+
   {
     id: 'crm-pymes',
     title: 'CRM en pymes',
