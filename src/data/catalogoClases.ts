@@ -61,6 +61,15 @@ export const catalogoClases: readonly ClaseCatalogo[] = [
     iconKey: 'ventas',
   },
   {
+    id: 'esencialismo',
+    title: 'Esencialismo',
+    subtitle: 'Menos, pero mejor: tácticas para equipos',
+    description:
+      'Cómo un equipo distingue lo vital de lo trivial, elimina lo que sobra y ejecuta lo esencial casi sin fricción. Con Greg McKeown («Esencialismo» y «Sin esfuerzo») y Jack Trout y Steve Rivkin («El poder de lo simple»).',
+    category: 'Liderazgo',
+    iconKey: 'liderazgo',
+  },
+  {
     id: 'crm-pymes',
     title: 'CRM en pymes',
     subtitle: 'Los seis errores que lo hacen fracasar',

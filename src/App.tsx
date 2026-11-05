@@ -45,6 +45,7 @@ import ClaseLean from './components/ClaseLean';
 import ClaseEP from './components/ClaseEP';
 import ClaseVC from './components/ClaseVC';
 import ClaseCP from './components/ClaseCP';
+import ClaseES from './components/ClaseES';
 import ClaseEquipos from './components/ClaseEquipos';
 import ClaseChallenger from './components/ClaseChallenger';
 import ClaseTrampas from './components/ClaseTrampas';
@@ -62,6 +63,7 @@ import { guiadoLean } from './data/guiadoLean';
 import { guiadoEP } from './data/guiadoEP';
 import { guiadoVC } from './data/guiadoVC';
 import { guiadoCP } from './data/guiadoCP';
+import { guiadoES } from './data/guiadoES';
 import { guiadoEquipos } from './data/guiadoEquipos';
 import { guiadoRevops } from './data/guiadoRevops';
 import { guiadoMeddpicc } from './data/guiadoMeddpicc';
@@ -151,7 +153,7 @@ export default function App() {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isNotesOpen, setIsNotesOpen] = useState(false);
   // Módulos expandidos para clases con estructura modular (e.g. RevOps)
-  const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set(['ro-header-1', 'se-header-1', 'ep-header-1']));
+  const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set(['ro-header-1', 'se-header-1', 'ep-header-1', 'es-header-1']));
   // Índice fijado por la ventana de presentador: evita reenviar el cambio en bucle.
   const lastRemoteIndex = useRef<number | null>(null);
   
@@ -637,7 +639,7 @@ export default function App() {
         <div className="flex-1 overflow-y-auto py-4 custom-scrollbar">
           <div className="flex flex-col">
             {(() => {
-              const isModular = activeClassId === 'revops' || activeClassId === 'sales-enablement' || activeClassId === 'enamorate-problema';
+              const isModular = activeClassId === 'revops' || activeClassId === 'sales-enablement' || activeClassId === 'enamorate-problema' || activeClassId === 'esencialismo';
               if (!isModular) {
                 // Renderizado plano normal
                 return slidesOrder.map((slide, index) => {
@@ -787,7 +789,7 @@ export default function App() {
                 overflowY: 'hidden',
                 overflowX: 'hidden',
                 overscrollBehavior: 'contain',
-                padding: activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'enamorate-problema' || activeClassId === 'ventas-complejas' || activeClassId === 'crm-pymes' || activeClassId === 'arquitectura-equipos' || activeClassId === 'revops' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling' ? '20px 14px 92px' : '20px 14px 24px',
+                padding: activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'enamorate-problema' || activeClassId === 'ventas-complejas' || activeClassId === 'crm-pymes' || activeClassId === 'esencialismo' || activeClassId === 'arquitectura-equipos' || activeClassId === 'revops' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling' ? '20px 14px 92px' : '20px 14px 24px',
                 boxSizing: 'border-box',
                 background: isDark ? '#000' : '#f0f2f5',
                 pointerEvents: 'auto'
@@ -957,6 +959,9 @@ export default function App() {
                 {currentSlideId.startsWith('cp-') && slidesOrder[currentSlideIndex].level !== 1 && (
                   <ClaseCP slideId={currentSlideId} isDark={isDark} />
                 )}
+                {currentSlideId.startsWith('es-') && slidesOrder[currentSlideIndex].level !== 1 && (
+                  <ClaseES slideId={currentSlideId} isDark={isDark} />
+                )}
 
                 {/* Clase "Ventas complejas": diapositivas de contenido (vc-*) */}
                 {currentSlideId.startsWith('vc-') && slidesOrder[currentSlideIndex].level !== 1 && (
@@ -1064,10 +1069,10 @@ export default function App() {
         </div>
 
         {/* Reproducción global de la clase con audio (flecha, resaltado y aparición de elementos) */}
-        {(activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'enamorate-problema' || activeClassId === 'ventas-complejas' || activeClassId === 'crm-pymes' || activeClassId === 'arquitectura-equipos' || activeClassId === 'revops' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling') && (
+        {(activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'enamorate-problema' || activeClassId === 'ventas-complejas' || activeClassId === 'crm-pymes' || activeClassId === 'esencialismo' || activeClassId === 'arquitectura-equipos' || activeClassId === 'revops' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling') && (
           <ClaseGuiada
             key={activeClassId}
-            datos={activeClassId === 'kahneman' ? guiadoKahneman : activeClassId === 'influencia-persuasion' ? guiadoInfluencia : activeClassId === 'negociacion' ? guiadoNegociacion : activeClassId === 'proteccion-datos' ? guiadoProteccion : activeClassId === 'comunicacion-1' ? guiadoComunicacion1 : activeClassId === 'comunicacion-2' ? guiadoComunicacion2 : activeClassId === 'oceano-azul' ? guiadoOceano : activeClassId === 'lean-startup' ? guiadoLean : activeClassId === 'enamorate-problema' ? guiadoEP : activeClassId === 'ventas-complejas' ? guiadoVC : activeClassId === 'crm-pymes' ? guiadoCP : activeClassId === 'arquitectura-equipos' ? guiadoEquipos : activeClassId === 'revops' ? guiadoRevops : activeClassId === 'meddpicc' ? guiadoMeddpicc : activeClassId === 'spin-selling' ? guiadoSpin : guiadoCompensacion}
+            datos={activeClassId === 'kahneman' ? guiadoKahneman : activeClassId === 'influencia-persuasion' ? guiadoInfluencia : activeClassId === 'negociacion' ? guiadoNegociacion : activeClassId === 'proteccion-datos' ? guiadoProteccion : activeClassId === 'comunicacion-1' ? guiadoComunicacion1 : activeClassId === 'comunicacion-2' ? guiadoComunicacion2 : activeClassId === 'oceano-azul' ? guiadoOceano : activeClassId === 'lean-startup' ? guiadoLean : activeClassId === 'enamorate-problema' ? guiadoEP : activeClassId === 'ventas-complejas' ? guiadoVC : activeClassId === 'crm-pymes' ? guiadoCP : activeClassId === 'esencialismo' ? guiadoES : activeClassId === 'arquitectura-equipos' ? guiadoEquipos : activeClassId === 'revops' ? guiadoRevops : activeClassId === 'meddpicc' ? guiadoMeddpicc : activeClassId === 'spin-selling' ? guiadoSpin : guiadoCompensacion}
             slideActualId={currentSlideId}
             irA={(id) => { const i = slidesOrder.findIndex((s) => s.id === id); if (i >= 0) setCurrentSlideIndex(i); }}
             isDark={isDark}

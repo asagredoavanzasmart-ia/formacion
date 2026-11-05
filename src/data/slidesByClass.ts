@@ -845,7 +845,45 @@ export const vcSlides: SlideMeta[] = [
   { id: 'vc-lista', title: 'Lista de verificación', level: 2 },
 ];
 
+export const esSlides: SlideMeta[] = [
+  { id: 'es-portada', title: 'Inicio', level: 2 },
+  { id: 'es-header-1', title: '1. La mentalidad', level: 1 },
+  { id: 'es-sam', title: 'El ejecutivo que dijo que no', level: 2 },
+  { id: 'es-paradoja', title: 'La paradoja del éxito', level: 2 },
+  { id: 'es-prioridad', title: 'Prioridad, en singular', level: 2 },
+  { id: 'es-ruido', title: 'Casi todo es ruido', level: 2 },
+  { id: 'es-concesiones', title: 'Elegir qué problema tener', level: 2 },
+  { id: 'es-header-2', title: '2. Explorar', level: 1 },
+  { id: 'es-espacio', title: 'Espacio para pensar', level: 2 },
+  { id: 'es-encabezado', title: 'Encontrar el encabezado', level: 2 },
+  { id: 'es-simple', title: 'Hablar simple', level: 2 },
+  { id: 'es-activo', title: 'Proteger el activo', level: 2 },
+  { id: 'es-criterios', title: 'Criterios extremos', level: 2 },
+  { id: 'es-header-3', title: '3. Eliminar', level: 1 },
+  { id: 'es-objetivo', title: 'Un objetivo esencial', level: 2 },
+  { id: 'es-no', title: 'El no elegante', level: 2 },
+  { id: 'es-repertorio', title: 'El repertorio del no', level: 2 },
+  { id: 'es-compromisos', title: 'Salir de un compromiso', level: 2 },
+  { id: 'es-editar', title: 'Editar y poner límites', level: 2 },
+  { id: 'es-informacion', title: 'Menos información', level: 2 },
+  { id: 'es-header-4', title: '4. Ejecutar', level: 1 },
+  { id: 'es-amortiguar', title: 'Amortiguar lo inesperado', level: 2 },
+  { id: 'es-prevenir', title: 'Prevenir de raíz', level: 2 },
+  { id: 'es-facil', title: '¿Y si fuera fácil?', level: 2 },
+  { id: 'es-restar', title: 'Restar obstáculos', level: 2 },
+  { id: 'es-victorias', title: 'Pequeñas victorias', level: 2 },
+  { id: 'es-rutinas', title: 'Rutinas que piensan por ti', level: 2 },
+  { id: 'es-ahora', title: '¿Qué es lo importante ahora?', level: 2 },
+  { id: 'es-header-5', title: '5. Liderar', level: 1 },
+  { id: 'es-lider', title: 'El líder esencialista', level: 2 },
+  { id: 'es-sintesis', title: '¿Qué es lo esencial?', level: 2 },
+  { id: 'es-header-test', title: 'Evalúa lo aprendido', level: 1 },
+  { id: 'es-test-basico', title: 'Test 1 · Principiante', level: 2 },
+  { id: 'es-test-avanzado', title: 'Test 2 · Avanzado', level: 2 },
+];
+
 export const slidesByClass: Record<string, SlideMeta[]> = {
+  esencialismo: esSlides,
   'ventas-b2b': initialSlides,
   'ventas-complejas': vcSlides,
   'crm-pymes': cpSlides,
@@ -871,6 +909,7 @@ export const slidesByClass: Record<string, SlideMeta[]> = {
 
 // Cantidad de diapositivas (nivel 2) de cada clase del repositorio.
 export const slideCountByClassId: Record<string, number> = {
+  esencialismo: esSlides.filter((slide) => slide.level === 2).length,
   'ventas-b2b': initialSlides.filter((slide) => slide.level === 2).length,
   'ventas-complejas': vcSlides.filter((slide) => slide.level === 2).length,
   'crm-pymes': cpSlides.filter((slide) => slide.level === 2).length,
