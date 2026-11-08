@@ -845,6 +845,39 @@ export const vcSlides: SlideMeta[] = [
   { id: 'vc-lista', title: 'Lista de verificación', level: 2 },
 ];
 
+export const fbSlides: SlideMeta[] = [
+  { id: 'fb-portada', title: 'Inicio', level: 2 },
+  { id: 'fb-header-1', title: '1. Por qué cuesta', level: 1 },
+  { id: 'fb-callar', title: 'El costo de callar', level: 2 },
+  { id: 'fb-tipos', title: 'Tres tipos de feedback', level: 2 },
+  { id: 'fb-amenaza', title: 'La reacción de amenaza', level: 2 },
+  { id: 'fb-novatos', title: 'Novatos y expertos', level: 2 },
+  { id: 'fb-header-2', title: '2. Dar feedback', level: 1 },
+  { id: 'fb-cuando', title: 'Cuándo sí y cuándo no', level: 2 },
+  { id: 'fb-encuadre', title: 'Abrir el encuadre', level: 2 },
+  { id: 'fb-red', title: 'Tu lado de la red', level: 2 },
+  { id: 'fb-abrir', title: 'Abrir y conversar', level: 2 },
+  { id: 'fb-plan', title: 'Plan y seguimiento', level: 2 },
+  { id: 'fb-espiral', title: 'La espiral del fracaso', level: 2 },
+  { id: 'fb-header-3', title: '3. Situaciones difíciles', level: 1 },
+  { id: 'fb-defensiva', title: 'Quien se pone a la defensiva', level: 2 },
+  { id: 'fb-estrella', title: 'El callado y la estrella', level: 2 },
+  { id: 'fb-arriba', title: 'Hacia arriba y entre culturas', level: 2 },
+  { id: 'fb-reconocer', title: 'Reconocer bien', level: 2 },
+  { id: 'fb-header-4', title: '4. Recibir feedback', level: 1 },
+  { id: 'fb-recibir', title: 'Tres disparadores', level: 2 },
+  { id: 'fb-verdad', title: 'De «eso está mal» a «cuéntame más»', level: 2 },
+  { id: 'fb-relacion', title: 'Dos carriles y un sistema', level: 2 },
+  { id: 'fb-identidad', title: 'La crítica a tamaño real', level: 2 },
+  { id: 'fb-conversar', title: 'Conversar y actuar', level: 2 },
+  { id: 'fb-header-5', title: '5. Cultura de equipo', level: 1 },
+  { id: 'fb-equipo', title: 'El equipo que se da feedback', level: 2 },
+  { id: 'fb-sintesis', title: 'Dar y recibir: un mismo ciclo', level: 2 },
+  { id: 'fb-header-test', title: 'Evalúa lo aprendido', level: 1 },
+  { id: 'fb-test-basico', title: 'Test 1 · Principiante', level: 2 },
+  { id: 'fb-test-avanzado', title: 'Test 2 · Avanzado', level: 2 },
+];
+
 export const esSlides: SlideMeta[] = [
   { id: 'es-portada', title: 'Inicio', level: 2 },
   { id: 'es-header-1', title: '1. La mentalidad', level: 1 },
@@ -883,6 +916,7 @@ export const esSlides: SlideMeta[] = [
 ];
 
 export const slidesByClass: Record<string, SlideMeta[]> = {
+  'feedback-equipos': fbSlides,
   esencialismo: esSlides,
   'ventas-b2b': initialSlides,
   'ventas-complejas': vcSlides,
@@ -909,6 +943,7 @@ export const slidesByClass: Record<string, SlideMeta[]> = {
 
 // Cantidad de diapositivas (nivel 2) de cada clase del repositorio.
 export const slideCountByClassId: Record<string, number> = {
+  'feedback-equipos': fbSlides.filter((slide) => slide.level === 2).length,
   esencialismo: esSlides.filter((slide) => slide.level === 2).length,
   'ventas-b2b': initialSlides.filter((slide) => slide.level === 2).length,
   'ventas-complejas': vcSlides.filter((slide) => slide.level === 2).length,

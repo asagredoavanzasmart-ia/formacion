@@ -44,6 +44,15 @@ export const formaciones: readonly Formacion[] = [
 export const catalogoClases: readonly ClaseCatalogo[
 ] = [
   {
+    id: 'feedback-equipos',
+    title: 'Feedback en equipos',
+    subtitle: 'Dar y recibir: tácticas para ventas y operaciones',
+    description:
+      'Cómo dar feedback que la otra persona entienda y quiera aplicar, y cómo recibirlo sin cerrarte ni rendirte: momentos, encuadre, conversaciones difíciles, reconocimiento, disparadores y rituales de equipo, con datos y casos.',
+    category: 'Liderazgo',
+    iconKey: 'liderazgo',
+  },
+  {
     id: 'esencialismo',
     title: 'Esencialismo',
     subtitle: 'Menos, pero mejor: tácticas para equipos',
