@@ -11,6 +11,17 @@ import type { PropsCE } from './kitVC';
 
 const ID = 'vc04', P = 'vc-estrategia';
 
+/* Pieza del iceberg: insignia redonda con su dibujo y un rótulo corto debajo (igual arriba y bajo el agua). */
+const Pieza: React.FC<{ x: number; y: number; texto: string; op: number; c: ReturnType<typeof tono>; color: string; children: React.ReactNode }> = ({ x, y, texto, op, c, color, children }) =>
+  op < 0.01 ? null : (
+    <g opacity={op} transform={`translate(${x} ${y + (1 - op) * 12})`}>
+      <circle r={46} fill={c.panel} style={{ filter: 'drop-shadow(0 4px 8px rgba(0,0,0,.18))' }} />
+      <circle r={46} fill="none" stroke={color} strokeWidth={5} />
+      {children}
+      <Txt x={0} y={80} textAnchor="middle" fontSize={26} fill={c.texto}>{texto}</Txt>
+    </g>
+  );
+
 export const EstrategiaVC: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico = false }) => {
   const { t, fin, m, vP, fondo } = useEscenaVC(P, marcas, estatico);
   const c = tono(isDark);
@@ -44,15 +55,21 @@ export const EstrategiaVC: React.FC<PropsCE> = ({ isDark, marcas, pregunta, esta
         <g opacity={e1(t, m('plan')) * (0.45 + 0.55 * crece)} transform={`translate(600 ${AG}) scale(${0.55 + 0.45 * crece}) translate(-600 ${-AG})`}>
           <path d={`M 440 ${AG + 4} L 300 560 L 340 720 L 600 800 L 880 720 L 920 560 L 760 ${AG + 4} Z`} fill={isDark ? '#93c5fd' : '#bfdbfe'} opacity={0.85} />
         </g>
-        {TAC.map(([, n], k) => t >= tT(k) && <Letrero key={n} x={[300, 600, 900][k]} y={[300, 140, 300][k]} texto={n} fondo={AZUL_M} id={ID} op={e1(t, tT(k))} tam={24} />)}
-        {t >= m('visible') && t < m('estrategia') && <Letrero x={1000} y={400} texto={t >= m('inmediato') ? 'Resultado inmediato' : 'La parte visible'} fondo={GRIS} id={ID} op={e1(t, t >= m('inmediato') ? m('inmediato') : m('visible'))} tam={24} />}
+        {TAC.map(([, n], k) => t >= tT(k) && (
+          <Pieza key={n} x={[250, 600, 950][k]} y={[300, 150, 300][k]} texto={n} op={e1(t, tT(k))} c={c} color={AZUL_M}>
+            {k === 0 && <g><rect x={-28} y={-26} width={56} height={36} rx={4} fill={AZUL_M} /><rect x={-20} y={-18} width={18} height={20} rx={2} fill="#fff" opacity={0.85} /><rect x={2} y={-4} width={8} height={6} fill="#fff" /><rect x={12} y={-12} width={8} height={14} fill="#fff" /><path d="M -14 10 L -22 30 M 14 10 L 22 30 M 0 10 L 0 30" stroke={GRIS} strokeWidth={4} strokeLinecap="round" /></g>}
+            {k === 1 && <g><path d="M -26 -24 H 26 Q 32 -24 32 -18 V 6 Q 32 12 26 12 H -4 L -16 26 L -14 12 H -26 Q -32 12 -32 6 V -18 Q -32 -24 -26 -24 Z" fill={ROSA} /><Txt x={0} y={2} textAnchor="middle" fontSize={30} fill="#fff">?</Txt></g>}
+            {k === 2 && <g><rect x={-22} y={-28} width={40} height={50} rx={4} fill="#fff" stroke={GRIS} strokeWidth={2} /><path d="M -14 6 q 6 -8 10 0 q 4 8 10 -2" stroke={AZUL_M} strokeWidth={3} fill="none" /><rect x={14} y={-20} width={6} height={40} rx={3} fill={AMBAR} transform={`rotate(${30 + 8 * Math.sin(t * 4)} 17 0)`} /><circle cx={20} cy={-26} r={11} fill={VERDE} /><path d="M 15 -26 l 4 4 l 7 -8" stroke="#fff" strokeWidth={3} fill="none" /></g>}
+          </Pieza>
+        ))}
+        {t >= m('visible') && t < m('estrategia') && <Letrero x={600} y={470} texto={t >= m('inmediato') ? 'Resultado inmediato' : 'La parte visible'} fondo={GRIS} id={ID} op={e1(t, t >= m('inmediato') ? m('inmediato') : m('visible'))} tam={24} />}
         {t >= m('estrategia') && <Letrero x={600} y={470} texto="Estrategia" id={ID} op={e1(t, m('estrategia'))} tam={30} />}
-        {t >= m('antes') && <g opacity={e1(t, m('antes'))}><Calendario x={420} y={600} s={0.55} marcados={Math.min(5, Math.floor((t - m('antes')) * 2))} /></g>}
-        {t >= m('global') && <g opacity={e1(t, m('global'))}><Hoja x={600} y={650} w={90} h={110} lineas={4} color={VIOLETA} /></g>}
+        {t >= m('antes') && <Pieza x={330} y={600} texto="Preparación" op={e1(t, m('antes'))} c={c} color={NARANJA}><Calendario x={0} y={0} s={0.42} marcados={Math.min(5, Math.floor((t - m('antes')) * 2))} /></Pieza>}
+        {t >= m('global') && <Pieza x={600} y={630} texto="Plan global" op={e1(t, m('global'))} c={c} color={NARANJA}><path d="M -26 18 Q -6 -20 6 4 T 28 -20" stroke={VIOLETA} strokeWidth={4} fill="none" strokeDasharray="6 5" /><circle cx={-26} cy={18} r={6} fill={NARANJA} /><path d="M 28 -20 l -2 -14 l 12 6 z" fill={ROSA} /></Pieza>}
         {t >= m('influencias') && (
-          <g opacity={e1(t, m('influencias'))}>
-            {[[740, 560], [820, 640], [740, 700]].map(([x, y], k, a) => <React.Fragment key={k}>{k > 0 && <Hilo x1={a[0][0]} y1={a[0][1]} x2={x} y2={y} u={sm(t, m('influencias') + 0.3 * k, m('influencias') + 0.3 * k + 0.8)} id={ID} grosor={4} />}<circle cx={x} cy={y} r={20} fill={[NARANJA, AMBAR, VERDE][k]} /></React.Fragment>)}
-          </g>
+          <Pieza x={870} y={600} texto="Influencias" op={e1(t, m('influencias'))} c={c} color={NARANJA}>
+            {([[-20, -16], [22, -10], [0, 20]] as [number, number][]).map(([x, y], k, a) => <React.Fragment key={k}>{k > 0 && <line x1={a[0][0]} y1={a[0][1]} x2={x} y2={y} stroke={GRIS} strokeWidth={3} opacity={sm(t, m('influencias') + 0.3 * k, m('influencias') + 0.3 * k + 0.6)} />}<circle cx={x} cy={y} r={9 + 2 * Math.sin(t * 3 + k)} fill={[NARANJA, AMBAR, VERDE][k]} /></React.Fragment>)}
+          </Pieza>
         )}
         {t >= m('improvisar') && <g opacity={e1(t, m('improvisar'))}>
           <Persona id={ID} x={1020} y={800} s={0.5} cuerpo={GRIS} />

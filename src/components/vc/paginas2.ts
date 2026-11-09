@@ -25,10 +25,12 @@ export const oferta = pag({
   bajada: 'El precio casi nunca es la objeción: el problema es el valor percibido.',
   inicio: 'con el cliente claro llega el turno',
   anclas: {
-    socio: 'hablar con mi socio', pensar: 'me lo tengo que pensar', posicionamiento: 'oferta y de posicionamiento', precio: 'no te compre por precio',
+    socio: 'hablar con mi socio', pensar: 'me lo tengo que pensar', momento: 'no es el momento', posicionamiento: 'oferta y de posicionamiento',
+    precio: 'no te compre por precio', objecion: 'casi nunca es la objeción real',
     ramas: 'las objeciones son las ramas', tronco: 'el tronco es el valor percibido', ti: 'no confío en ti', mi: 'no confío en mí', sistema: 'no confío en el sistema',
-    caen: 'se caen solas', antes: 'incluso antes de la reunión', ferrari: 'el caso del ferrari', millon: 'un millón de euros', cien: 'por cien mil',
-    horas: 'veinticuatro horas', error: 'parezca un error',
+    alto: 'el valor percibido es muy alto', caen: 'se caen solas', antes: 'incluso antes de la reunión', videos: 'enviando videos', faq: 'las preguntas frecuentes',
+    resueltas: 'sus dudas resueltas', ferrari: 'el caso del ferrari', millon: 'un millón de euros', cien: 'por cien mil',
+    horas: 'veinticuatro horas', dinero: 'no tenga el dinero', nada: 'no hay nada que pensar', error: 'parezca un error',
   },
   tarjetas: [
     { rotulo: 'Ramas y tronco', texto: 'Las objeciones son ramas; el tronco es el valor percibido.', frase: 'las objeciones son las ramas', destacada: true },
@@ -77,9 +79,13 @@ export const superar = pag({
   bajada: 'Identificación, bloqueo y abordaje.',
   inicio: 'superar los problemas principales',
   anclas: {
-    frentes: 'tres frentes', identificacion: 'la identificación', investigar: 'investigar con tus contactos', coach: 'apoyarte en el coach', bloqueo: 'el bloqueo cuando',
-    ayudale: 'primero ayúdale', paralelo: 'la venta en paralelo', rodear: 'rodear el bloqueo', venganza: 'la venganza del comprador', abordaje: 'el abordaje',
-    demostraciones: 'no quiere demostraciones', razon: 'una razón de negocio', exito: 'casos de éxito',
+    frentes: 'tres frentes', identificacion: 'la identificación', basar: 'basarse en el riesgo', monto: 'mayor monto e impacto', arriba: 'más arriba está la decisión',
+    investigar: 'investigar con tus contactos', fondos: 'quién libera los fondos', presupuesto: 'de qué presupuesto salen', coach: 'apoyarte en el coach',
+    proceso: 'el proceso de decisión', bloqueo: 'el bloqueo cuando', ayudale: 'primero ayúdale', prestigio: 'obtendrá prestigio', paralelo: 'la venta en paralelo',
+    ejecutivo: 'un ejecutivo de tu empresa', cliente: 'al ejecutivo del cliente', rodear: 'rodear el bloqueo', riesgo: 'de alto riesgo',
+    venganza: 'la venganza del comprador', abordaje: 'el abordaje', demostraciones: 'no quiere demostraciones', vision: 'conocimiento y visión',
+    razon: 'una razón de negocio', futuro: 'predecir el futuro', rentabilidad: 'su rentabilidad', estabilidad: 'su estabilidad', crecimiento: 'su crecimiento',
+    exito: 'casos de éxito', personal: 'un objetivo personal',
   },
   tarjetas: [
     { rotulo: 'Identificación', texto: 'A más monto e impacto, más arriba; investigar y apoyarse en el coach.', frase: 'la identificación' },
