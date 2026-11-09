@@ -841,8 +841,11 @@ export const vcSlides: SlideMeta[] = [
   { id: 'vc-ciclo', title: 'Ciclo normal de ventas', level: 2 },
   { id: 'vc-flujos', title: 'Creador de flujos', level: 2 },
   { id: 'vc-crm', title: 'Pipeline CRM', level: 2 },
-  { id: 'vc-procesos', title: 'Constructor de procesos', level: 2 },
+  { id: 'vc-procesos', title: 'Proceso comercial', level: 2 },
   { id: 'vc-lista', title: 'Lista de verificación', level: 2 },
+  { id: 'vc-header-test', title: 'Evalúa lo aprendido', level: 1 },
+  { id: 'vc-test-basico', title: 'Test 1 · Principiante', level: 2 },
+  { id: 'vc-test-avanzado', title: 'Test 2 · Avanzado', level: 2 },
 ];
 
 export const fbSlides: SlideMeta[] = [

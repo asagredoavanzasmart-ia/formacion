@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEscenaVC, Lienzo, Toma, Rotulo, Letrero, Txt, Persona, Moneda3D, Visto, Cruz, e1, sm, lerp, tono, useMovil, NARANJA, ROSA, AZUL_M, VERDE, AMBAR, GRIS } from './kitVC';
+import { useEscenaVC, Lienzo, Toma, Rotulo, Letrero, Txt, Persona, Edificio, Moneda3D, Visto, Cruz, e1, sm, lerp, tono, useMovil, NARANJA, ROSA, AZUL_M, VERDE, AMBAR, GRIS } from './kitVC';
 import type { PropsCE } from './kitVC';
 
 /**
@@ -46,7 +46,14 @@ export const AterrizajeVC: React.FC<PropsCE> = ({ isDark, marcas, pregunta, esta
         <rect x={60} y={730} width={700} height={40} rx={20} fill={isDark ? '#3a3f47' : '#94a3b8'} opacity={e1(t, m('entrada'))} />
         <line x1={90} y1={750} x2={730} y2={750} stroke="#fff" strokeWidth={5} strokeDasharray="34 22" opacity={0.7 * e1(t, m('entrada'))} />
         <g opacity={e1(t, m('entrada'))}>
-          <rect x={820} y={260} width={260} height={480} rx={14} fill={isDark ? '#475569' : '#64748b'} />
+          <path d="M 1080 740 L 1142 709 L 1142 229 L 1080 260 Z" fill={isDark ? '#475569' : '#64748b'} />
+          <path d="M 1080 740 L 1142 709 L 1142 229 L 1080 260 Z" fill="#000" opacity={0.28} />
+          <path d="M 820 260 L 1080 260 L 1142 229 L 882 229 Z" fill={isDark ? '#475569' : '#64748b'} />
+          <path d="M 820 260 L 1080 260 L 1142 229 L 882 229 Z" fill="#fff" opacity={0.3} />
+          <rect x={820} y={260} width={260} height={480} fill={isDark ? '#475569' : '#64748b'} />
+          <rect x={820} y={260} width={26} height={480} fill="#fff" opacity={0.14} />
+          {Array.from({ length: 6 }, (_, f) => <path key={f} d={`M 1094 ${686 - f * 72} l 34 -17 v 40 l -34 17 Z`} fill={f < pisos ? "#fde68a" : "#dbeafe"} opacity={f < pisos ? 0.8 : 0.3} />)}
+          <rect x={900} y={210} width={56} height={22} rx={3} fill={isDark ? '#475569' : '#64748b'} /><rect x={900} y={210} width={56} height={22} rx={3} fill="#000" opacity={0.2} />
           {Array.from({ length: 6 }, (_, f) => [0, 1, 2].map((k) => <rect key={`${f}${k}`} x={846 + k * 76} y={680 - f * 72} width={54} height={44} rx={6} fill={f < pisos ? '#fde68a' : (isDark ? '#334155' : '#94a3b8')} />))}
           <rect x={826} y={690} width={40} height={50} rx={4} fill="#1f2937" />
         </g>
@@ -84,7 +91,7 @@ export const AterrizajeVC: React.FC<PropsCE> = ({ isDark, marcas, pregunta, esta
       {/* 3 · el error */}
       <Toma t={t} a={m('fracasan')} b={fin + 1} cy={470}>
         <rect x={100} y={730} width={360} height={40} rx={20} fill={isDark ? '#3a3f47' : '#94a3b8'} />
-        <rect x={820} y={360} width={260} height={380} rx={14} fill={isDark ? '#334155' : '#94a3b8'} />
+        <Edificio x={950} y={740} w={260} h={380} color={isDark ? '#334155' : '#94a3b8'} />
         <Avion x={lerp(200, 420, sm(t, m('fracasan'), m('fracasan') + 2))} y={lerp(260, 540, sm(t, m('fracasan'), m('fracasan') + 2))} s={2.1} rot={18} color={isDark ? '#cbd5e1' : '#e2e8f0'} />
         {t >= m('fracasan') + 2 && <Cruz x={640} y={330} r={50} op={e1(t, m('fracasan') + 2)} />}
         <Letrero x={600} y={820} texto="La expansión el primer día" fondo={ROSA} id={ID} op={e1(t, m('fracasan') + 1)} tam={26} />

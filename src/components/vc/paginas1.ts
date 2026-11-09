@@ -147,10 +147,12 @@ export const economico = pag({
   bajada: 'Tiene la autoridad final para liberar fondos y vetar.',
   inicio: 'identificar al comprador económico',
   anclas: {
-    autoridad: 'la autoridad final', estatico: 'no es estático', sube: 'sube o baja', flotar: 'lo hacen flotar', presupuesto: 'el presupuesto a más dinero',
-    condiciones: 'las condiciones del negocio', experiencia: 'la experiencia previa', impacto: 'el impacto organizacional', preguntas: 'hazte dos preguntas',
-    nivel: 'en qué nivel de tu propia empresa', riesgo: 'considerando el riesgo', oro: 'la regla de oro', encima: 'un nivel por encima', indirectas: 'preguntas indirectas',
-    mienten: 'afirman tener la última palabra', coach: 'mejor aún con tu coach',
+    autoridad: 'la autoridad final', estatico: 'no es estático', cambia: 'cambia según el objetivo de venta', sube: 'sube o baja', flotar: 'lo hacen flotar',
+    presupuesto: 'el presupuesto a más dinero', tamano: 'el tamaño de la empresa', condiciones: 'las condiciones del negocio', dificiles: 'en tiempos difíciles',
+    directivos: 'pasa a los directivos', experiencia: 'la experiencia previa', primera: 'la primera vez que te compran', impacto: 'el impacto organizacional',
+    crecimiento: 'su crecimiento o su estabilidad', preguntas: 'hazte dos preguntas', nivel: 'en qué nivel de tu propia empresa', ajustando: 'la diferencia de tamaño',
+    riesgo: 'considerando el riesgo', arriba: 'más arriba o más abajo', oro: 'la regla de oro', encima: 'un nivel por encima', indirectas: 'preguntas indirectas',
+    saldran: 'de qué presupuesto saldrán', final: 'cómo funciona la decisión final', mienten: 'afirman tener la última palabra', coach: 'mejor aún con tu coach',
   },
   tarjetas: [
     { rotulo: 'Factor de flotación', texto: 'Presupuesto, condiciones, experiencia previa e impacto suben o bajan el nivel de quien decide.', frase: 'lo hacen flotar', destacada: true },
@@ -165,10 +167,12 @@ export const tecnico = pag({
   bajada: 'El portero evalúa lo medible y puede bloquear.',
   inicio: 'el comprador técnico es el portero',
   anclas: {
-    portero: 'es el portero', tres: 'tres perfiles', ingeniero: 'el ingeniero especialista', delega: 'delega toda la decisión', filtro: 'el filtro real',
-    experto: 'ser visto como el experto', asesor: 'el asesor o consultor', reputacion: 'proteger su reputación', menor: 'la opción de menor riesgo',
-    transformalo: 'transfórmalo en un coach', recelo: 'el técnico con recelo', saltes: 'no lo saltes', gana: 'cómo gana con el cambio', usuario: 'un comprador usuario entusiasta',
-    valida: 'valida con tu coach',
+    portero: 'es el portero', medible: 'evalúa lo medible', bloqueo: 'capacidad de bloqueo técnico', tres: 'tres perfiles', ingeniero: 'el ingeniero especialista',
+    influencia: 'influencia alta', indiscutible: 'opinión es indiscutible', delega: 'delega toda la decisión', filtro: 'el filtro real',
+    especificaciones: 'preséntale especificaciones', supera: 'supera sus exigencias', experto: 'ser visto como el experto', asesor: 'el asesor o consultor',
+    reputacion: 'proteger su reputación', solucionador: 'solucionador estratégico', menor: 'la opción de menor riesgo', transformalo: 'transfórmalo en un coach',
+    recelo: 'el técnico con recelo', control: 'teme perder el control', amenaza: 'una amenaza a su rol', saltes: 'no lo saltes', sabotea: 'saboteará la implementación',
+    teme: 'descubre por qué teme', gana: 'cómo gana con el cambio', enfatiza: 'enfatiza el control', usuario: 'un comprador usuario entusiasta', valida: 'valida con tu coach',
   },
   tarjetas: [
     { rotulo: 'El ingeniero especialista', texto: 'Influencia alta: el económico delega en él. Especificaciones y ventajas medibles.', frase: 'el ingeniero especialista' },

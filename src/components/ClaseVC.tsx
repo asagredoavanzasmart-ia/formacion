@@ -1,6 +1,7 @@
 import React from 'react';
 import { Thumbnail } from '@remotion/player';
-import { Shell, panelClass, textMuted, microLabel, featuredClass } from './slideKit';
+import { Shell, panelClass, textMuted, microLabel, featuredClass, Quiz } from './slideKit';
+import { VC_BASICO, VC_AVANZADO } from './vc/tests';
 import { EscenaSincronizada } from './remotion/EscenaSincronizada';
 import { PisoTexto } from './remotion/comun';
 import { PAGINAS } from './vc/indice';
@@ -122,6 +123,16 @@ function PaginaVCV({ p, isDark }: { p: PaginaVC; isDark: boolean }) {
 }
 
 export default function ClaseVC({ slideId, isDark }: { slideId: string; isDark: boolean }) {
+  if (slideId === 'vc-test-basico') return (
+    <Shell isDark={isDark} title="Test 1 ·" highlight="Fundamentos" subtitle="Diez preguntas sobre las ideas centrales de la venta compleja. Al final verás tu puntaje y una recomendación.">
+      <Quiz isDark={isDark} nivel="Nivel principiante" questions={VC_BASICO} />
+    </Shell>
+  );
+  if (slideId === 'vc-test-avanzado') return (
+    <Shell isDark={isDark} title="Test 2 ·" highlight="Aplicación" subtitle="Diez situaciones reales: qué hacer con cada comprador, cada bloqueo y cada parada del recorrido.">
+      <Quiz isDark={isDark} nivel="Nivel avanzado" questions={VC_AVANZADO} />
+    </Shell>
+  );
   const p = PAGINAS[slideId];
   return p ? <PaginaVCV key={slideId} p={p} isDark={isDark} /> : null;
 }

@@ -45,8 +45,20 @@ export const CrmVC: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico = 
           );
         })}
         {et >= 0 && (() => {
-          const x = lerp(80 + Math.max(0, et - 1) * 133, 80 + et * 133, sm(t, m(ET[et][0]), m(ET[et][0]) + 0.8)) + 60;
-          return <g transform={`translate(${x} 420)`}><rect x={-52} y={-60} width={104} height={120} rx={12} fill={c.panel} style={{ filter: `drop-shadow(0 6px 12px rgba(0,0,0,${c.sombra}))` }} /><rect x={-52} y={-60} width={104} height={16} rx={8} fill={NARANJA} /><Edificio x={0} y={40} w={36} h={60} color={AZUL_M} /></g>;
+          const u = sm(t, m(ET[et][0]), m(ET[et][0]) + 0.8);
+          const x = lerp(80 + Math.max(0, et - 1) * 133, 80 + et * 133, u) + 60;
+          const giro = 6 * Math.sin(Math.PI * u) * (et > 0 ? 1 : 0);
+          return (
+            <g transform={`translate(${x} ${450 - 18 * Math.sin(Math.PI * u)}) rotate(${giro})`}>
+              <rect x={-50} y={-92} width={100} height={184} rx={14} fill={c.panel} style={{ filter: `drop-shadow(0 ${6 + 8 * Math.sin(Math.PI * u)}px 14px rgba(0,0,0,${c.sombra}))` }} />
+              <path d="M -50 -64 V -78 Q -50 -92 -36 -92 H 36 Q 50 -92 50 -78 V -64 Z" fill={`url(#${ID}-marca)`} />
+              <rect x={-30} y={-80} width={60} height={6} rx={3} fill="#fff" opacity={0.85} />
+              <Edificio x={-6} y={26} w={46} h={74} color={AZUL_M} />
+              <rect x={-36} y={42} width={72} height={8} rx={4} fill={c.texto} opacity={0.75} />
+              <rect x={-36} y={56} width={48} height={7} rx={3.5} fill={c.tenue} opacity={0.5} />
+              {Array.from({ length: 8 }, (_, k) => <circle key={k} cx={-35 + k * 10} cy={78} r={3.6} fill={k <= et ? NARANJA : c.apagado} />)}
+            </g>
+          );
         })()}
         {et >= 0 && <Letrero x={600} y={820} texto={ET[et][1]} id={ID} op={1} tam={26} />}
       </Toma>

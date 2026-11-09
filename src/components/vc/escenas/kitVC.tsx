@@ -13,7 +13,7 @@ import { PAGINAS } from '../indice';
 export { Lienzo, Suelo, Cuenta, Cartel, Cifra, Monitor, Arco, enArco, Barra, brillo, mezcla, PIZARRA, AMBAR } from '../../equipos/escenas/kitEQ';
 export { Toma, Apoyo, Hoja, Reloj, Visto, Cruz, Flujo, Corazon, Moneda3D, PilaMonedas, Portatil, sm, cl, azar } from '../../lean/escenas/kitLS';
 export { Engranaje, Bombilla, Calendario, Telefono } from '../../lean/escenas/comunLS';
-export { Rotulo, W, H, MIN_TXT, lerp, escribe, e1, ventana, AZUL_M, ROJO_M, VERDE, VIOLETA, TEAL, Edificio, Flecha, Curva, Burbuja } from '../../lean/escenas/comunLS';
+export { Rotulo, W, H, MIN_TXT, lerp, escribe, e1, ventana, AZUL_M, ROJO_M, VERDE, VIOLETA, TEAL, Flecha, Curva, Burbuja } from '../../lean/escenas/comunLS';
 export type { PropsCE } from '../../lean/escenas/comunLS';
 export { Letrero, Txt, useMovil, Embudo, Tabla, enRuta, Lead } from '../../revops/escenas/kitRO';
 export { Fajo, Brujula, Pin, Contrato, Escalon, Cuadrantes, Nube, GRIS } from '../../ep/escenas/kitEP';
@@ -49,6 +49,43 @@ export const Hilo: React.FC<{ x1: number; y1: number; x2: number; y2: number; u:
     <g opacity={op}>
       {!color && <defs><linearGradient id={gid} gradientUnits="userSpaceOnUse" x1={x1} y1={y1} x2={x2 === x1 && y2 === y1 ? x1 + 1 : x2} y2={y2}><stop offset="0" stopColor={NARANJA} /><stop offset="1" stopColor={ROSA} /></linearGradient></defs>}
       <path d={curvaS(x1, y1, x2, y2)} fill="none" stroke={color ?? `url(#${gid})`} strokeWidth={grosor} strokeLinecap="round" pathLength={1} strokeDasharray="1 1" strokeDashoffset={1 - cl(u)} />
+    </g>
+  );
+};
+
+/* Edificio de oficinas en volumen: fachada, costado y techo en tres tonos del mismo color, grilla de ventanas
+   (algunas encendidas), zócalo, puerta y equipos en el techo. (x, y) es el centro de la base de la fachada. */
+export const Edificio: React.FC<{ x: number; y: number; w?: number; h?: number; color?: string; op?: number }> = ({ x, y, w = 100, h = 150, color = '#475569', op = 1 }) => {
+  if (op < 0.01) return null;
+  const d = Math.max(8, w * 0.26), dy = d * 0.5;
+  const cols = Math.max(2, Math.min(5, Math.round(w / 28)));
+  const filas = Math.max(2, Math.min(9, Math.round((h - 34) / 30)));
+  const mx = w * 0.14, gx = w * 0.07;
+  const vw = (w - 2 * mx - (cols - 1) * gx) / cols;
+  const top = -h + h * 0.08, base = -Math.max(18, h * 0.16);
+  const vh = Math.max(4, ((base - top) - (filas - 1) * 6) / filas);
+  const luz = (r: number, k: number) => ((r * 7 + k * 13 + Math.round(w)) % 5) < 2;
+  return (
+    <g transform={`translate(${x} ${y})`} opacity={op}>
+      <ellipse cx={d * 0.4} cy={4} rx={w * 0.66 + d * 0.4} ry={Math.max(5, w * 0.08)} fill="#000" opacity={0.2} />
+      <path d={`M ${w / 2} 0 L ${w / 2 + d} ${-dy} L ${w / 2 + d} ${-h - dy} L ${w / 2} ${-h} Z`} fill={color} />
+      <path d={`M ${w / 2} 0 L ${w / 2 + d} ${-dy} L ${w / 2 + d} ${-h - dy} L ${w / 2} ${-h} Z`} fill="#000" opacity={0.28} />
+      <path d={`M ${-w / 2} ${-h} L ${w / 2} ${-h} L ${w / 2 + d} ${-h - dy} L ${-w / 2 + d} ${-h - dy} Z`} fill={color} />
+      <path d={`M ${-w / 2} ${-h} L ${w / 2} ${-h} L ${w / 2 + d} ${-h - dy} L ${-w / 2 + d} ${-h - dy} Z`} fill="#fff" opacity={0.3} />
+      <rect x={-w / 2} y={-h} width={w} height={h} fill={color} />
+      <rect x={-w / 2} y={-h} width={w * 0.1} height={h} fill="#fff" opacity={0.14} />
+      <rect x={-w / 2} y={-Math.max(5, h * 0.04)} width={w} height={Math.max(5, h * 0.04)} fill="#000" opacity={0.18} />
+      {Array.from({ length: filas }, (_, r) => Array.from({ length: cols }, (_, k) => (
+        <rect key={`${r}-${k}`} x={-w / 2 + mx + k * (vw + gx)} y={top + r * (vh + 6)} width={vw} height={vh} rx={Math.min(3, vw * 0.2)}
+          fill={luz(r, k) ? '#fde68a' : '#dbeafe'} opacity={luz(r, k) ? 0.95 : 0.55} />
+      )))}
+      {Array.from({ length: filas }, (_, r) => <path key={r} d={`M ${w / 2 + d * 0.25} ${top + r * (vh + 6) - dy * 0.25} l ${d * 0.5} ${-dy * 0.5} v ${vh} l ${-d * 0.5} ${dy * 0.5} Z`} fill="#dbeafe" opacity={0.3} />)}
+      <rect x={-w * 0.12} y={base + 4} width={w * 0.24} height={-base - 4} rx={2} fill="#1e293b" opacity={0.75} />
+      <rect x={-w * 0.17} y={base} width={w * 0.34} height={4} rx={2} fill="#fff" opacity={0.6} />
+      {h > 70 && <rect x={-w * 0.3 + d * 0.4} y={-h - dy - h * 0.06} width={w * 0.22} height={h * 0.06} rx={2} fill={color} />}
+      {h > 70 && <rect x={-w * 0.3 + d * 0.4} y={-h - dy - h * 0.06} width={w * 0.22} height={h * 0.06} rx={2} fill="#000" opacity={0.2} />}
+      {h > 110 && <path d={`M ${w * 0.22} ${-h - dy * 0.6} v ${-h * 0.12}`} stroke={color} strokeWidth={Math.max(2, w * 0.025)} strokeLinecap="round" />}
+      {h > 110 && <circle cx={w * 0.22} cy={-h - dy * 0.6 - h * 0.12} r={Math.max(2, w * 0.025)} fill={ROSA} />}
     </g>
   );
 };

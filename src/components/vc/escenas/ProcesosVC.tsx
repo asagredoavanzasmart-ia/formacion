@@ -3,7 +3,7 @@ import { useEscenaVC, Lienzo, Toma, Rotulo, Letrero, Txt, Persona, Busto, Engran
 import type { PropsCE } from './kitVC';
 
 /**
- * Constructor de procesos.
+ * Proceso comercial.
  * 1 · El flujo: ingreso de la oportunidad → la etapa (regla, salida, automatización, responsable) → ganado (alerta de
  *     incorporación) o perdido (encuesta de salida).
  * 2 · Pearce: quién hace qué y cuándo, para clientes nuevos y actuales; la solicitud que va a primera o segunda línea, las
@@ -30,7 +30,7 @@ export const ProcesosVC: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estati
   const prof = sm(t, m('profesional'), m('profesional') + 1.2);
 
   return (
-    <Lienzo id={ID} t={t} fin={fin} fondo={fondo} vP={vP} pregunta={pregunta} isDark={isDark} titulo="Constructor de procesos">
+    <Lienzo id={ID} t={t} fin={fin} fondo={fondo} vP={vP} pregunta={pregunta} isDark={isDark} titulo="Proceso comercial">
       <Rotulo t={t} lista={rot} id={ID} />
 
       {/* 1 · el flujo */}

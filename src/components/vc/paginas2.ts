@@ -100,9 +100,11 @@ export const receptividad = pag({
   bajada: 'Antes de vender, diagnostica cómo vive cada comprador el cambio.',
   inicio: 'los modos de respuesta parten',
   anclas: {
-    diagnostica: 'diagnostica cómo se siente', miller: 'robert miller', oculto: 'el factor oculto', cambie: 'le pides que cambie', ayuda: 'como una ayuda',
-    amenaza: 'como una amenaza', trampas: 'tres trampas fatales', propia: 'tu propia percepción', comparte: 'comparte tu percepción', equivocada: 'está equivocada',
-    realidad: 'la realidad es que', momentos: 'sino momentos', cuatro: 'los cuatro modos',
+    diagnostica: 'diagnostica cómo se siente', situacion: 'su situación actual y al cambio', miller: 'robert miller', oculto: 'el factor oculto',
+    cambie: 'le pides que cambie', ayuda: 'como una ayuda', amenaza: 'como una amenaza', encaja: 'encaja técnicamente', trampas: 'tres trampas fatales',
+    propia: 'tu propia percepción', comparte: 'comparte tu percepción', equivocada: 'está equivocada', realidad: 'la realidad es que',
+    personalidad: 'ni de la personalidad', percibe: 'cómo percibe su situación comercial', pasara: 'qué cree que pasará', momentos: 'sino momentos',
+    positivo: 'alguien muy positivo', fallo: 'solo falló tu momento', cuatro: 'los cuatro modos', crecimiento: 'crecimiento problemas', confianza: 'exceso de confianza',
   },
   tarjetas: [
     { rotulo: 'Factor oculto: el cambio', texto: 'Tú ves una ayuda; el comprador puede ver una amenaza.', frase: 'el factor oculto', destacada: true },
@@ -135,9 +137,11 @@ export const ciclo = pag({
   bajada: 'El tiempo real que toma transformar a un desconocido en cliente recurrente.',
   inicio: 'el proceso comercial empieza por medir',
   anclas: {
-    ciclo: 'el ciclo normal de ventas', formula: 'la fórmula clave', meses: 'entre tres y nueve meses', seis: 'los seis meses', semanas: 'entre diez y veinte semanas',
-    fases: 'cinco fases', recopilacion: 'recopilación', medicion: 'medición', depuracion: 'depuración', resultado: 'resultado sumar', aplicacion: 'y aplicación',
-    pearce: 'michael pearce', informacion: 'qué información es relevante', contactar: 'cuántas veces hay que contactar',
+    ciclo: 'el ciclo normal de ventas', desconocido: 'un desconocido en un cliente recurrente', formula: 'la fórmula clave', meses: 'entre tres y nueve meses',
+    seis: 'los seis meses', semanas: 'entre diez y veinte semanas', quince: 'ronda las quince', fases: 'cinco fases', recopilacion: 'recopilación',
+    medicion: 'medición', primer: 'desde el primer contacto', firma: 'la firma del contrato', depuracion: 'depuración', relampago: 'ventas relámpago',
+    dosdias: 'una venta de dos días', resultado: 'resultado sumar', aplicacion: 'y aplicación', predices: 'predices ingresos', mover: 'mover un objetivo',
+    antes: 'meses antes de tiempo', pearce: 'michael pearce', informacion: 'qué información es relevante', contactar: 'cuántas veces hay que contactar',
   },
   tarjetas: [
     { rotulo: 'Fórmula clave', texto: 'Tiempo total dividido por el número de ventas reales.', frase: 'la fórmula clave', destacada: true },
@@ -186,9 +190,9 @@ export const crm = pag({
 });
 
 export const procesos = pag({
-  id: 'vc-procesos', titulo: 'Constructor de', destaque: 'procesos',
+  id: 'vc-procesos', titulo: 'Proceso', destaque: 'comercial',
   bajada: 'Quién hace qué y cuándo, con reglas y métricas.',
-  inicio: 'el constructor de procesos define',
+  inicio: 'cada etapa tiene un nombre',
   anclas: {
     etapa: 'cada etapa tiene', responsable: 'un responsable', ingreso: 'el ingreso de la oportunidad', ganado: 'ganado que dispara', perdido: 'y perdido',
     quien: 'quién hace qué y cuándo', reglas: 'fijar reglas', linea: 'primera o a segunda línea', metricas: 'se ponen métricas', automatiza: 'el crm automatiza',
