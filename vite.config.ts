@@ -2,11 +2,10 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import fs from 'fs';
 import path from 'path';
-import {defineConfig, type Plugin} from 'vite';
+import {defineConfig, loadEnv, type Plugin} from 'vite';
 
-const BASE = '/panel-de-trabajo/';
 const ARCHIVO_GUIONES = path.resolve(__dirname, 'guiones/guiones-editados.json');
-const ENDPOINT_GUIONES = `${BASE}__guiones`;
+const ENDPOINT_GUIONES = '/formacion/__guiones';
 
 /* Solo en desarrollo: guarda los guiones editados en un JSON dentro del proyecto. */
 function guardarGuiones(): Plugin {
@@ -55,10 +54,14 @@ function guardarGuiones(): Plugin {
   };
 }
 
-export default defineConfig(() => {
+export default defineConfig(({mode}) => {
+  const env = loadEnv(mode, '.', '');
   return {
-    base: BASE,
+    base: '/formacion/',
     plugins: [react(), tailwindcss(), guardarGuiones()],
+    define: {
+      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

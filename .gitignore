@@ -1,52 +1,8 @@
-# Dependencias y compilados (dist se publica aparte, en la rama gh-pages)
 node_modules/
 build/
 dist/
 coverage/
-*.tsbuildinfo
-
-# Sistema y editores
 .DS_Store
-Thumbs.db
-desktop.ini
-.vscode/
-.idea/
-*.swp
-
-# Registros
 *.log
-npm-debug.log*
-
-# Secretos: nunca se suben. Solo la plantilla .env.example (sin valores reales)
 .env*
 !.env.example
-*.pem
-*.key
-*.p12
-*.pfx
-*.crt
-id_rsa*
-credentials*.json
-service-account*.json
-secrets*.json
-*.secret
-.npmrc
-
-# Material de trabajo de audio (grabaciones, transcripciones, zips): pesa cientos de MB
-salida/
-*.wav
-*.zip
-
-# Herramientas locales: modelos de Whisper (más de 100 MB) y skills personales
-.tools/
-skills/
-
-# Scripts sueltos de transcripción y alineación de cada entrega de audio
-/alinear_*.mjs
-/transcribir_*.mjs
-/validar_*.mjs
-/convertir_*.mjs
-
-# Notas de trabajo de grabación
-guiones/*_FALTA_*.txt
-guiones/*_REGRABAR_*.txt
