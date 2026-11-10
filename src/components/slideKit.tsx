@@ -133,6 +133,14 @@ export function Quiz({ isDark, nivel, questions }: { isDark: boolean; nivel: str
   const q = questions[i];
   const last = i === questions.length - 1;
 
+  // En móvil el test se recorre con scroll: al responder se trae la explicación a la vista y al avanzar se vuelve a la pregunta.
+  const raiz = React.useRef<HTMLDivElement>(null);
+  const explicacion = React.useRef<HTMLDivElement>(null);
+  // Solo en el modo reel: en PC los contenedores tienen overflow oculto y un scroll programático los desplazaría.
+  const enReel = () => !!raiz.current?.closest('.reel-lienzo');
+  React.useEffect(() => { if (enReel()) raiz.current?.scrollIntoView({ block: 'nearest' }); }, [i]);
+  React.useEffect(() => { if (picked !== null && enReel()) explicacion.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }, [picked]);
+
   const pick = (k: number) => {
     if (picked !== null) return;
     setPicked(k);
@@ -177,7 +185,7 @@ export function Quiz({ isDark, nivel, questions }: { isDark: boolean; nivel: str
   }
 
   return (
-    <div className="h-full flex flex-col justify-center gap-3 max-w-4xl mx-auto w-full">
+    <div ref={raiz} className="h-full flex flex-col justify-center gap-3 max-w-4xl mx-auto w-full">
       <div className="flex items-center gap-3">
         <span className={microLabel(isDark)}>{nivel}</span>
         <div className={`flex-1 h-2 rounded-full overflow-hidden ${isDark ? 'bg-white/10' : 'bg-gray-200'}`}>
@@ -214,7 +222,7 @@ export function Quiz({ isDark, nivel, questions }: { isDark: boolean; nivel: str
             })}
           </div>
           {picked !== null && (
-            <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className={`p-3 rounded-2xl flex items-start justify-between gap-4 ${picked === q.answer ? (isDark ? 'bg-[#2a2418]' : 'bg-orange-50') : (isDark ? 'bg-[#2a1a1e]' : 'bg-rose-50')}`}>
+            <motion.div ref={explicacion} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className={`scroll-mb-24 p-3 rounded-2xl flex items-start justify-between gap-4 ${picked === q.answer ? (isDark ? 'bg-[#2a2418]' : 'bg-orange-50') : (isDark ? 'bg-[#2a1a1e]' : 'bg-rose-50')}`}>
               <span>
                 <span className={`${microLabel(isDark)} block`}>{picked === q.answer ? 'Correcto' : 'Repasa esto'}</span>
                 <span className={`text-sm leading-snug ${textMuted(isDark)}`}>{q.why}</span>

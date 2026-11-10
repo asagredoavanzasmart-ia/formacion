@@ -45,6 +45,7 @@ import ClaseLean from './components/ClaseLean';
 import ClaseEP from './components/ClaseEP';
 import ClaseVC from './components/ClaseVC';
 import ClaseCP from './components/ClaseCP';
+import ClaseAD from './components/ClaseAD';
 import ClaseES from './components/ClaseES';
 import ClaseFB from './components/ClaseFB';
 import ClaseEquipos from './components/ClaseEquipos';
@@ -64,6 +65,7 @@ import { guiadoLean } from './data/guiadoLean';
 import { guiadoEP } from './data/guiadoEP';
 import { guiadoVC } from './data/guiadoVC';
 import { guiadoCP } from './data/guiadoCP';
+import { guiadoAD } from './data/guiadoAD';
 import { guiadoES } from './data/guiadoES';
 import { guiadoFB } from './data/guiadoFB';
 import { guiadoEquipos } from './data/guiadoEquipos';
@@ -455,6 +457,7 @@ export default function App() {
   const reelDir = useRef(1);
   const stageRef = useRef<HTMLDivElement>(null);
   const reelTouch = useRef<{ x: number; y: number } | null>(null);
+  const reelBorde = useRef({ arriba: true, abajo: true });
   const reelIr = (delta: number) => {
     const i = currentSlideIndex + delta;
     if (i < 0 || i >= slidesOrder.length) return;
@@ -497,6 +500,8 @@ export default function App() {
     const target = e.target as HTMLElement;
     const bloqueado = e.touches.length !== 1 || !!target.closest('input, textarea, select, [contenteditable="true"], .react-flow, [data-reel-bloqueo]');
     reelTouch.current = bloqueado ? null : { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    // Se anota si el gesto empezó en un borde: un deslizamiento que solo hace scroll no debe además cambiar de página.
+    reelBorde.current = { arriba: reelAlFinal(-1), abajo: reelAlFinal(1) };
   };
   const reelTouchEnd = (e: React.TouchEvent) => {
     const inicio = reelTouch.current;
@@ -506,7 +511,7 @@ export default function App() {
     const dy = e.changedTouches[0].clientY - inicio.y;
     if (Math.abs(dy) < 60 || Math.abs(dy) < Math.abs(dx) * 1.2) return;
     const dir = dy < 0 ? 1 : -1; // deslizar hacia arriba avanza, como en un reel
-    if (reelAlFinal(dir)) reelIr(dir);
+    if (dir > 0 ? reelBorde.current.abajo : reelBorde.current.arriba) reelIr(dir);
   };
   useEffect(() => { if (reel && stageRef.current) stageRef.current.scrollTop = 0; }, [currentSlideIndex, reel]);
   useEffect(() => {
@@ -604,6 +609,7 @@ export default function App() {
 
   const currentSlide = slidesOrder[currentSlideIndex] || slidesOrder[0];
   const currentSlideId = currentSlide.id;
+  const esTest = /-test-(basico|avanzado)$/.test(currentSlideId);
 
   return (
     <div className={`min-h-screen transition-colors duration-500 overflow-hidden flex ${isDark ? 'bg-[#000000] text-[#f8f9fa]' : 'bg-[#f0f2f5] text-[#111827]'}`}>
@@ -788,10 +794,11 @@ export default function App() {
                 zIndex: 60,
                 width: marco.ancho,
                 height: '100dvh',
-                overflowY: 'hidden',
+                // Los tests no se achican para caber: se leen con su letra real y se recorren con scroll.
+                overflowY: esTest ? 'auto' : 'hidden',
                 overflowX: 'hidden',
                 overscrollBehavior: 'contain',
-                padding: activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'enamorate-problema' || activeClassId === 'ventas-complejas' || activeClassId === 'crm-pymes' || activeClassId === 'esencialismo' || activeClassId === 'feedback-equipos' || activeClassId === 'arquitectura-equipos' || activeClassId === 'revops' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling' ? '20px 14px 92px' : '20px 14px 24px',
+                padding: activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'enamorate-problema' || activeClassId === 'ventas-complejas' || activeClassId === 'crm-pymes' || activeClassId === 'adquisicion' || activeClassId === 'esencialismo' || activeClassId === 'feedback-equipos' || activeClassId === 'arquitectura-equipos' || activeClassId === 'revops' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling' ? '20px 14px 92px' : '20px 14px 24px',
                 boxSizing: 'border-box',
                 background: isDark ? '#000' : '#f0f2f5',
                 pointerEvents: 'auto'
@@ -816,7 +823,7 @@ export default function App() {
                 pointerEvents: 'auto'
               }}
             >
-              <AjustarAlto activo={reel}>
+              <AjustarAlto activo={reel && !esTest}>
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentSlideId}
@@ -957,6 +964,11 @@ export default function App() {
                   <ClaseLean slideId={currentSlideId} isDark={isDark} />
                 )}
 
+                {/* Clase "Ofertas y adquisición": diapositivas de contenido (ad-*) */}
+                {currentSlideId.startsWith('ad-') && slidesOrder[currentSlideIndex].level !== 1 && (
+                  <ClaseAD slideId={currentSlideId} isDark={isDark} />
+                )}
+
                 {/* Clase "CRM en pymes": diapositivas de contenido (cp-*) */}
                 {currentSlideId.startsWith('cp-') && slidesOrder[currentSlideIndex].level !== 1 && (
                   <ClaseCP slideId={currentSlideId} isDark={isDark} />
@@ -1074,10 +1086,10 @@ export default function App() {
         </div>
 
         {/* Reproducción global de la clase con audio (flecha, resaltado y aparición de elementos) */}
-        {(activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'enamorate-problema' || activeClassId === 'ventas-complejas' || activeClassId === 'crm-pymes' || activeClassId === 'esencialismo' || activeClassId === 'feedback-equipos' || activeClassId === 'arquitectura-equipos' || activeClassId === 'revops' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling') && (
+        {(activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'enamorate-problema' || activeClassId === 'ventas-complejas' || activeClassId === 'crm-pymes' || activeClassId === 'adquisicion' || activeClassId === 'esencialismo' || activeClassId === 'feedback-equipos' || activeClassId === 'arquitectura-equipos' || activeClassId === 'revops' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling') && (
           <ClaseGuiada
             key={activeClassId}
-            datos={activeClassId === 'kahneman' ? guiadoKahneman : activeClassId === 'influencia-persuasion' ? guiadoInfluencia : activeClassId === 'negociacion' ? guiadoNegociacion : activeClassId === 'proteccion-datos' ? guiadoProteccion : activeClassId === 'comunicacion-1' ? guiadoComunicacion1 : activeClassId === 'comunicacion-2' ? guiadoComunicacion2 : activeClassId === 'oceano-azul' ? guiadoOceano : activeClassId === 'lean-startup' ? guiadoLean : activeClassId === 'enamorate-problema' ? guiadoEP : activeClassId === 'ventas-complejas' ? guiadoVC : activeClassId === 'crm-pymes' ? guiadoCP : activeClassId === 'esencialismo' ? guiadoES : activeClassId === 'feedback-equipos' ? guiadoFB : activeClassId === 'arquitectura-equipos' ? guiadoEquipos : activeClassId === 'revops' ? guiadoRevops : activeClassId === 'meddpicc' ? guiadoMeddpicc : activeClassId === 'spin-selling' ? guiadoSpin : guiadoCompensacion}
+            datos={activeClassId === 'kahneman' ? guiadoKahneman : activeClassId === 'influencia-persuasion' ? guiadoInfluencia : activeClassId === 'negociacion' ? guiadoNegociacion : activeClassId === 'proteccion-datos' ? guiadoProteccion : activeClassId === 'comunicacion-1' ? guiadoComunicacion1 : activeClassId === 'comunicacion-2' ? guiadoComunicacion2 : activeClassId === 'oceano-azul' ? guiadoOceano : activeClassId === 'lean-startup' ? guiadoLean : activeClassId === 'enamorate-problema' ? guiadoEP : activeClassId === 'ventas-complejas' ? guiadoVC : activeClassId === 'crm-pymes' ? guiadoCP : activeClassId === 'adquisicion' ? guiadoAD : activeClassId === 'esencialismo' ? guiadoES : activeClassId === 'feedback-equipos' ? guiadoFB : activeClassId === 'arquitectura-equipos' ? guiadoEquipos : activeClassId === 'revops' ? guiadoRevops : activeClassId === 'meddpicc' ? guiadoMeddpicc : activeClassId === 'spin-selling' ? guiadoSpin : guiadoCompensacion}
             slideActualId={currentSlideId}
             irA={(id) => { const i = slidesOrder.findIndex((s) => s.id === id); if (i >= 0) setCurrentSlideIndex(i); }}
             isDark={isDark}

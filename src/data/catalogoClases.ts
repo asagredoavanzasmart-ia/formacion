@@ -81,6 +81,15 @@ export const catalogoClases: readonly ClaseCatalogo[
   },
 
   {
+    id: 'adquisicion',
+    title: 'Ofertas y adquisición',
+    subtitle: 'El método de Alex Hormozi para ofertas B2B',
+    description:
+      'La regla del tres a uno, el nicho y el precio, la ecuación del valor, bonos y garantías, el imán de prospectos y los cuatro canales hasta escalar con la regla del cien. Con evidencia revisada por pares donde existe.',
+    category: 'Ventas',
+    iconKey: 'ventas',
+  },
+  {
     id: 'crm-pymes',
     title: 'CRM en pymes',
     subtitle: 'Los seis errores que lo hacen fracasar',
