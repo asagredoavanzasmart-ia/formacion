@@ -2,6 +2,7 @@ import React from 'react';
 import { useEscena as useEscenaEQ } from '../../equipos/escenas/kitEQ';
 import { NARANJA, ROSA, tono, sombra, Txt, cl, lerp, GRIS } from '../../vc/escenas/kitVC';
 import { PAGINAS } from '../paginas';
+import { PisoTexto } from '../../remotion/comun';
 
 /* Kit de «CRM en pymes»: reexporta el armazón y los dibujos de «Ventas complejas» y suma lo propio de la clase
    (la ficha de cliente, el CRM como pantalla con módulos, el libro, el medidor y el sello). Sólidos rellenos. */
@@ -81,13 +82,16 @@ export const Medidor: React.FC<{ x: number; y: number; r?: number; v: number; co
 
 /* Sello de goma que cae y golpea. (x, y) es su centro; `u` de 0 a 1 es la caída. */
 export const Sello: React.FC<{ x: number; y: number; texto: string; u: number; color?: string; rot?: number; tam?: number }> = ({ x, y, texto, u, color = '#e5484d', rot = -8, tam = 34 }) => {
+  // En pantallas angostas el texto sube al piso de 13 px: el marco crece con él para no cortar las letras.
+  const piso = React.useContext(PisoTexto);
   if (u <= 0.01) return null;
   const k = lerp(2.2, 1, cl(u * 1.3));
-  const w = texto.length * tam * 0.62 + 50;
+  const tf = Math.max(tam, piso);
+  const w = texto.length * tf * 0.62 + 50;
   return (
     <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${k})`} opacity={cl(u * 3)}>
-      <rect x={-w / 2} y={-tam * 0.95} width={w} height={tam * 1.9} rx={14} fill="none" stroke={color} strokeWidth={7} />
-      <Txt x={0} y={tam * 0.36} textAnchor="middle" fontSize={tam} fill={color} peso={800} letterSpacing={2}>{texto}</Txt>
+      <rect x={-w / 2} y={-tf * 0.95} width={w} height={tf * 1.9} rx={14} fill="none" stroke={color} strokeWidth={7} />
+      <Txt x={0} y={tf * 0.36} textAnchor="middle" fontSize={tam} fill={color} peso={800} letterSpacing={2}>{texto}</Txt>
     </g>
   );
 };

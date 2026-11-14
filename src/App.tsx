@@ -46,6 +46,7 @@ import ClaseEP from './components/ClaseEP';
 import ClaseVC from './components/ClaseVC';
 import ClaseCP from './components/ClaseCP';
 import ClaseAD from './components/ClaseAD';
+import ClaseBR from './components/ClaseBR';
 import ClaseES from './components/ClaseES';
 import ClaseFB from './components/ClaseFB';
 import ClaseEquipos from './components/ClaseEquipos';
@@ -66,6 +67,7 @@ import { guiadoEP } from './data/guiadoEP';
 import { guiadoVC } from './data/guiadoVC';
 import { guiadoCP } from './data/guiadoCP';
 import { guiadoAD } from './data/guiadoAD';
+import { guiadoBR } from './data/guiadoBR';
 import { guiadoES } from './data/guiadoES';
 import { guiadoFB } from './data/guiadoFB';
 import { guiadoEquipos } from './data/guiadoEquipos';
@@ -798,7 +800,7 @@ export default function App() {
                 overflowY: esTest ? 'auto' : 'hidden',
                 overflowX: 'hidden',
                 overscrollBehavior: 'contain',
-                padding: activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'enamorate-problema' || activeClassId === 'ventas-complejas' || activeClassId === 'crm-pymes' || activeClassId === 'adquisicion' || activeClassId === 'esencialismo' || activeClassId === 'feedback-equipos' || activeClassId === 'arquitectura-equipos' || activeClassId === 'revops' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling' ? '20px 14px 92px' : '20px 14px 24px',
+                padding: activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'enamorate-problema' || activeClassId === 'ventas-complejas' || activeClassId === 'crm-pymes' || activeClassId === 'adquisicion' || activeClassId === 'secretos-brunson' || activeClassId === 'esencialismo' || activeClassId === 'feedback-equipos' || activeClassId === 'arquitectura-equipos' || activeClassId === 'revops' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling' ? '20px 14px 92px' : '20px 14px 24px',
                 boxSizing: 'border-box',
                 background: isDark ? '#000' : '#f0f2f5',
                 pointerEvents: 'auto'
@@ -968,6 +970,10 @@ export default function App() {
                 {currentSlideId.startsWith('ad-') && slidesOrder[currentSlideIndex].level !== 1 && (
                   <ClaseAD slideId={currentSlideId} isDark={isDark} />
                 )}
+                {/* Clase «Los secretos de Brunson»: diapositivas de contenido (br-*) */}
+                {currentSlideId.startsWith('br-') && slidesOrder[currentSlideIndex].level !== 1 && (
+                  <ClaseBR slideId={currentSlideId} isDark={isDark} />
+                )}
 
                 {/* Clase "CRM en pymes": diapositivas de contenido (cp-*) */}
                 {currentSlideId.startsWith('cp-') && slidesOrder[currentSlideIndex].level !== 1 && (
@@ -1086,10 +1092,10 @@ export default function App() {
         </div>
 
         {/* Reproducción global de la clase con audio (flecha, resaltado y aparición de elementos) */}
-        {(activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'enamorate-problema' || activeClassId === 'ventas-complejas' || activeClassId === 'crm-pymes' || activeClassId === 'adquisicion' || activeClassId === 'esencialismo' || activeClassId === 'feedback-equipos' || activeClassId === 'arquitectura-equipos' || activeClassId === 'revops' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling') && (
+        {(activeClassId === 'compensacion-comercial' || activeClassId === 'kahneman' || activeClassId === 'influencia-persuasion' || activeClassId === 'negociacion' || activeClassId === 'proteccion-datos' || activeClassId === 'comunicacion-1' || activeClassId === 'comunicacion-2' || activeClassId === 'oceano-azul' || activeClassId === 'lean-startup' || activeClassId === 'enamorate-problema' || activeClassId === 'ventas-complejas' || activeClassId === 'crm-pymes' || activeClassId === 'adquisicion' || activeClassId === 'secretos-brunson' || activeClassId === 'esencialismo' || activeClassId === 'feedback-equipos' || activeClassId === 'arquitectura-equipos' || activeClassId === 'revops' || activeClassId === 'meddpicc' || activeClassId === 'spin-selling') && (
           <ClaseGuiada
             key={activeClassId}
-            datos={activeClassId === 'kahneman' ? guiadoKahneman : activeClassId === 'influencia-persuasion' ? guiadoInfluencia : activeClassId === 'negociacion' ? guiadoNegociacion : activeClassId === 'proteccion-datos' ? guiadoProteccion : activeClassId === 'comunicacion-1' ? guiadoComunicacion1 : activeClassId === 'comunicacion-2' ? guiadoComunicacion2 : activeClassId === 'oceano-azul' ? guiadoOceano : activeClassId === 'lean-startup' ? guiadoLean : activeClassId === 'enamorate-problema' ? guiadoEP : activeClassId === 'ventas-complejas' ? guiadoVC : activeClassId === 'crm-pymes' ? guiadoCP : activeClassId === 'adquisicion' ? guiadoAD : activeClassId === 'esencialismo' ? guiadoES : activeClassId === 'feedback-equipos' ? guiadoFB : activeClassId === 'arquitectura-equipos' ? guiadoEquipos : activeClassId === 'revops' ? guiadoRevops : activeClassId === 'meddpicc' ? guiadoMeddpicc : activeClassId === 'spin-selling' ? guiadoSpin : guiadoCompensacion}
+            datos={activeClassId === 'kahneman' ? guiadoKahneman : activeClassId === 'influencia-persuasion' ? guiadoInfluencia : activeClassId === 'negociacion' ? guiadoNegociacion : activeClassId === 'proteccion-datos' ? guiadoProteccion : activeClassId === 'comunicacion-1' ? guiadoComunicacion1 : activeClassId === 'comunicacion-2' ? guiadoComunicacion2 : activeClassId === 'oceano-azul' ? guiadoOceano : activeClassId === 'lean-startup' ? guiadoLean : activeClassId === 'enamorate-problema' ? guiadoEP : activeClassId === 'ventas-complejas' ? guiadoVC : activeClassId === 'crm-pymes' ? guiadoCP : activeClassId === 'adquisicion' ? guiadoAD : activeClassId === 'secretos-brunson' ? guiadoBR : activeClassId === 'esencialismo' ? guiadoES : activeClassId === 'feedback-equipos' ? guiadoFB : activeClassId === 'arquitectura-equipos' ? guiadoEquipos : activeClassId === 'revops' ? guiadoRevops : activeClassId === 'meddpicc' ? guiadoMeddpicc : activeClassId === 'spin-selling' ? guiadoSpin : guiadoCompensacion}
             slideActualId={currentSlideId}
             irA={(id) => { const i = slidesOrder.findIndex((s) => s.id === id); if (i >= 0) setCurrentSlideIndex(i); }}
             isDark={isDark}

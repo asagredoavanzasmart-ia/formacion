@@ -81,6 +81,15 @@ export const catalogoClases: readonly ClaseCatalogo[
   },
 
   {
+    id: 'secretos-brunson',
+    title: 'Los secretos de Brunson',
+    subtitle: 'Embudos, persuasión y tráfico, con evidencia',
+    description:
+      'La trilogía de Russell Brunson para negocios de productos y servicios: escalera de valor, embudos que se pagan solos, el gran dominó y las tres dudas, el sueño cien y el tráfico propio. Cierra con un anexo crítico: dónde funciona, dónde no y qué evidencia falta.',
+    category: 'Ventas',
+    iconKey: 'ventas',
+  },
+  {
     id: 'adquisicion',
     title: 'Ofertas y adquisición',
     subtitle: 'El método de Alex Hormozi para ofertas B2B',
