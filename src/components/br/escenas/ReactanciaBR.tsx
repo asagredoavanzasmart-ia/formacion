@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, PersonaCara, Telefono, Reloj, Sello, Cruz, Visto, Globo, Balanza, Brazo, hombroDe, resorte, suave, Pizarra, Cubo, Edificio, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
+import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, PersonaCara, Telefono, Reloj, Sello, Cruz, Visto, Globo, Balanza, hombroDe, resorte, suave, Pizarra, Cubo, Edificio, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
 import type { PropsCE } from './kitBR';
 
 /**
@@ -91,14 +91,23 @@ export const ReactanciaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, esta
             const sxCerca = apoyo[0] - 21 - 66;
             const sx = lerp(sxCerca - 120, sxCerca, camina) - 75 * retira;
             const hombro = hombroDe(sx, 698, S);
-            // Reposo: antebrazo a la altura de la cintura, mano relajada (estas figuras tienen el torso corto).
-            const reposo: [number, number] = [hombro[0] + 26, hombro[1] + 44];
-            const u = alza * (1 - retira);
-            const meta: [number, number] = [lerp(reposo[0], apoyo[0], u), lerp(reposo[1], apoyo[1], u)];
+            // Brazo sintético: un rectángulo (manga) y un círculo (mano) que solo existen mientras empuja.
+            // Sale del hombro, se estira hasta el pecho del comprador y se recoge y desaparece al retirarse.
+            const u = Math.max(0, Math.min(1, alza * (1 - retira)));
+            const ini: [number, number] = [hombro[0] - 4, hombro[1] + 6];
+            const fin2: [number, number] = [lerp(ini[0] + 10, apoyo[0], u), lerp(ini[1] + 10, apoyo[1], u)];
+            const largo = Math.hypot(fin2[0] - ini[0], fin2[1] - ini[1]);
+            const ang = (Math.atan2(fin2[1] - ini[1], fin2[0] - ini[0]) * 180) / Math.PI;
+            const op = Math.min(1, u * 2.5);
             return (
               <g>
                 <PersonaCara id={ID} x={sx} y={698} s={S} cuerpo={NARANJA} corbata e={lerp(0.5, -0.6, reacciona)} />
-                <Brazo hombro={hombro} objetivo={meta} s={S} manga="#ea580c" abre={Math.min(1, u * 1.2)} cierra={0.85 * (1 - Math.min(1, u * 1.5))} />
+                {op > 0.02 && (
+                  <g opacity={op} transform={`translate(${ini[0]} ${ini[1]}) rotate(${ang})`}>
+                    <rect x={0} y={-6.5 * S} width={Math.max(0, largo - 6 * S)} height={13 * S} rx={6.5 * S} fill="#ea580c" />
+                    <circle cx={largo} cy={0} r={8 * S} fill="#f7c4a0" />
+                  </g>
+                )}
               </g>
             );
           })()}
