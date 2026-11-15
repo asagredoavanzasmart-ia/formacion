@@ -98,7 +98,7 @@ export const ReactanciaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, esta
             return (
               <g>
                 <PersonaCara id={ID} x={sx} y={698} s={S} cuerpo={NARANJA} corbata e={lerp(0.5, -0.6, reacciona)} />
-                <Brazo hombro={hombro} objetivo={meta} s={S} manga="#ea580c" abre={Math.min(1, u * 1.2)} />
+                <Brazo hombro={hombro} objetivo={meta} s={S} manga="#ea580c" abre={Math.min(1, u * 1.2)} cierra={0.85 * (1 - Math.min(1, u * 1.5))} />
               </g>
             );
           })()}

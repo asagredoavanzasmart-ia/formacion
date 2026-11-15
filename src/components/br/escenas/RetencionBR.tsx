@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, Sello, Balde, Megafono, Cubo, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
+import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, PersonaCara, Sello, Balde, Megafono, Cubo, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL, resorte } from './kitBR';
 import type { PropsCE } from './kitBR';
 
 /**
@@ -54,21 +54,76 @@ export const RetencionBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estat
         {t >= m('retenido') && <Sello x={870} y={800} texto={movil ? 'Ya adquirido' : 'No paga otra adquisición'} u={sm(t, m('retenido'), m('retenido') + 0.6)} color={VERDE} tam={24} rot={-3} />}
       </Toma>
 
-      {/* 2 · Expectativas y boca a boca */}
-      <Toma t={t} a={m('oliver')} b={fin + 1} cy={470}>
-        <g opacity={E('oliver') * (1 - 0.7 * E('anderson'))}>
-          <rect x={110} y={200} width={300} height={160} rx={20} fill={`url(#${ID}-marca)`} />
-          <Txt x={260} y={262} textAnchor="middle" fontSize={26} fill="#fff" peso={800}>Anuncio</Txt>
-          <Txt x={260} y={310} textAnchor="middle" fontSize={28} fill="#fff" peso={800}>«En 10 minutos»</Txt>
-          <rect x={120} y={700} width={420} height={6} rx={3} fill={c.apagado} />
-          <rect x={150} y={700 - 300 * sm(t, m('oliver'), m('oliver') + 1)} width={140} height={300 * sm(t, m('oliver'), m('oliver') + 1)} rx={12} fill={VIOLETA} />
-          <rect x={370} y={700 - lerp(300, 120, brecha) * sm(t, m('satisfaccion'), m('satisfaccion') + 1)} width={140} height={lerp(300, 120, brecha) * sm(t, m('satisfaccion'), m('satisfaccion') + 1)} rx={12} fill={AZUL_M} />
-          <rect x={370} y={400} width={140} height={180 * brecha} rx={12} fill={ROJO_M} opacity={0.3} />
-          <Txt x={220} y={745} textAnchor="middle" fontSize={26} fill={c.texto} peso={800}>Prometido</Txt>
-          <Txt x={440} y={745} textAnchor="middle" fontSize={26} fill={c.texto} peso={800}>Percibido</Txt>
-          <Conector x1={260} y1={360} x2={220} y2={395} u={E('oliver')} t={t} color={VIOLETA} puntos={2} grosor={4} />
-          <Pastilla x={330} y={800} texto={movil ? 'Desconfirmación' : 'Desconfirmación negativa'} fondo={ROJO_M} tam={24} op={brecha} />
-        </g>
+      {/* 2 · Expectativas (Oliver, 1980): la satisfacción es la brecha entre la línea de lo prometido y el nivel de lo
+          percibido. Primero lo percibido supera la promesa (verde); luego el anuncio promete «tu vida en 10 minutos», la
+          línea sube con un resorte, lo percibido se queda en lo ordinario y la brecha se pinta en rojo. */}
+      <Toma t={t} a={m('oliver')} b={m('anderson')} cy={470}>
+        {(() => {
+          const tS = m('satisfaccion'), t10 = m('diez');
+          const traza = sm(t, tS, tS + 0.9);
+          const llena = resorte(t, tS + 1.2, { rigidez: 60, amortiguacion: 13 });
+          const sube = resorte(t, t10, { rigidez: 90, amortiguacion: 10 });
+          const baja = resorte(t, t10 + 0.6, { rigidez: 70, amortiguacion: 14 });
+          const yPiso = 740, yProm = lerp(430, 268, sube), yPerc = lerp(yPiso, 384, llena) + (560 - 384) * baja;
+          const supera = yPerc < yProm;
+          const gap = Math.abs(yProm - yPerc);
+          const malo = sm(t, t10 + 1.0, t10 + 1.6);
+          const liquido = supera ? VERDE : AZUL_M;
+          const xT = 560, wT = 124;
+          return (
+            <g>
+              <rect x={110} y={yPiso} width={980} height={10} rx={5} fill={c.apagado} opacity={E('oliver')} />
+              {/* Anuncio: un cartel sobre un poste */}
+              <g opacity={E('oliver', 0.6)}>
+                <rect x={222} y={470} width={16} height={270} fill="#64748b" />
+                <rect x={100} y={312} width={260} height={168} rx={22} fill={`url(#${ID}-marca)`} style={sombra(0.2, 6, 14)} />
+                <Txt x={230} y={368} textAnchor="middle" fontSize={24} fill="#fff" peso={800} opacity={0.85}>Anuncio</Txt>
+                <g opacity={1 - sm(t, t10 - 0.2, t10 + 0.2)}><Txt x={230} y={428} textAnchor="middle" fontSize={30} fill="#fff" peso={800}>{movil ? 'Promesa' : 'Lo que prometes'}</Txt></g>
+                <g opacity={sm(t, t10, t10 + 0.4)}>
+                  {movil
+                    ? <Txt x={230} y={432} textAnchor="middle" fontSize={34} fill="#fff" peso={800}>10 minutos</Txt>
+                    : <><Txt x={230} y={418} textAnchor="middle" fontSize={26} fill="#fff" peso={800}>Transforma tu vida</Txt><Txt x={230} y={454} textAnchor="middle" fontSize={26} fill="#fff" peso={800}>en 10 minutos</Txt></>}
+                </g>
+              </g>
+              {/* Tubo de lo percibido: vidrio con el nivel del líquido */}
+              <g opacity={E('satisfaccion', 0.5)}>
+                <rect x={xT} y={236} width={wT} height={yPiso - 236} rx={24} fill={c.panel} opacity={0.6} />
+                <rect x={xT} y={236} width={wT} height={yPiso - 236} rx={24} fill="none" stroke={c.apagado} strokeWidth={4} />
+                {llena > 0.01 && <>
+                  <rect x={xT + 6} y={yPerc} width={wT - 12} height={Math.max(0, yPiso - 6 - yPerc)} rx={18} fill={liquido} />
+                  <rect x={xT + 6} y={yPerc} width={34} height={Math.max(0, yPiso - 6 - yPerc)} rx={17} fill="#fff" opacity={0.2} />
+                  <ellipse cx={xT + wT / 2} cy={yPerc + 2} rx={wT / 2 - 6} ry={7} fill="#fff" opacity={0.35} />
+                </>}
+                <Txt x={xT + wT / 2} y={784} textAnchor="middle" fontSize={24} fill={c.texto} peso={800}>Percibido</Txt>
+              </g>
+              {/* Lo que faltó: el volumen de la promesa que no se cumplió, rayado en rojo */}
+              {!supera && malo > 0.01 && <g opacity={malo}>
+                <rect x={xT + 6} y={yProm} width={wT - 12} height={gap} rx={10} fill={ROJO_M} opacity={0.16} />
+                <rect x={xT + 6} y={yProm} width={wT - 12} height={gap} rx={10} fill="none" stroke={ROJO_M} strokeWidth={3} strokeDasharray="10 8" />
+              </g>}
+              {/* Línea de la promesa: nace en el anuncio y cruza el escenario */}
+              <path fill="none" d={`M 360 ${yProm < 330 ? 330 : yProm} V ${yProm} H ${lerp(360, 1060, traza)}`} stroke={VIOLETA} strokeWidth={5} strokeDasharray="16 10" strokeLinecap="round" />
+              <Txt x={1060} y={yProm - 16} textAnchor="end" fontSize={24} fill={VIOLETA} peso={800} opacity={sm(traza, 0.7, 1)}>Prometido</Txt>
+              {/* Medida de la brecha a la izquierda del tubo */}
+              {llena > 0.6 && <g opacity={sm(llena, 0.6, 1)}>
+                <path d={`M 536 ${yProm} V ${yPerc} M 524 ${yProm} H 548 M 524 ${yPerc} H 548`} stroke={supera ? VERDE : ROJO_M} strokeWidth={5} strokeLinecap="round" />
+                <Txt x={514} y={(yProm + yPerc) / 2 + 9} textAnchor="end" fontSize={26} fill={supera ? VERDE : ROJO_M} peso={800}>{supera ? '+' : (movil ? 'Brecha' : 'Brecha')}</Txt>
+              </g>}
+              {/* Cliente: sonríe si lo percibido supera lo prometido; se enoja con la brecha */}
+              <g opacity={E('satisfaccion', 0.5, 0.4)}>
+                <PersonaCara id={ID} x={930} y={yPiso} s={1} cuerpo={TEAL} corbata e={llena > 0.8 ? (supera ? 1 : -1 * malo) : 0} enojo={malo} />
+              </g>
+              <Pastilla x={890} y={500} texto="Satisfecho" fondo={VERDE} tam={24} op={supera && llena > 0.8 ? sm(llena, 0.8, 1) * (1 - sm(t, t10 - 0.3, t10)) : 0} />
+              <Pastilla x={870} y={430} texto={movil ? 'Desconfirmación' : 'Desconfirmación negativa'} fondo={ROJO_M} tam={24} op={sm(t, t10 + 1.8, t10 + 2.3)} />
+              {/* La fórmula, arriba y al centro */}
+              <Pastilla x={600} y={172} texto={movil ? 'Percibido − prometido' : 'Satisfacción = percibido − prometido'} fondo={c.panel} color={VIOLETA} tam={26} op={E('satisfaccion')} />
+            </g>
+          );
+        })()}
+      </Toma>
+
+      {/* 3 · Boca a boca */}
+      <Toma t={t} a={m('anderson')} b={fin + 1} cy={470}>
         {t >= m('anderson') && (
           <g opacity={E('anderson')}>
             {[0, 1].map((k) => {

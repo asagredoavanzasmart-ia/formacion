@@ -16,10 +16,12 @@ import type { PropsCE } from './kitBR';
 const ID = 'br26', P = 'br-comite';
 
 const Mesa: React.FC<{ n: number; e: number; c: ReturnType<typeof tono>; t: number }> = ({ n, e, t }) => {
-  const sillas = Array.from({ length: 10 }, (_, k) => { const a = Math.PI + (k / 9) * Math.PI; return [600 + Math.cos(a) * 330, 560 + Math.sin(a) * 120] as const; });
+  // Sillas repartidas a igual distancia en x sobre el borde trasero de la mesa: nadie queda encimado.
+  const sillas = Array.from({ length: 10 }, (_, k) => { const x = 300 + k * (600 / 9); return [x, 580 - 130 * Math.sqrt(Math.max(0, 1 - ((x - 600) / 330) ** 2))] as const; });
+  const orden = sillas.map((p, k) => [p, k] as const).sort((a, b) => a[0][1] - b[0][1]);
   return (
     <g>
-      {sillas.map(([x, y], k) => k < n ? <g key={k}><PersonaCara id={ID} x={x} y={y + 10} s={0.5} cuerpo={[AZUL_M, ROSA, VERDE, TEAL, VIOLETA, AMBAR, GRIS, NARANJA, AZUL_M, ROSA][k]} corbata={k % 2 === 0} e={e + 0.1 * Math.sin(t * 2 + k)} /></g> : null)}
+      {orden.map(([[x, y], k]) => k < n ? <g key={k}><PersonaCara id={ID} x={x} y={y + 10} s={0.5} cuerpo={[AZUL_M, ROSA, VERDE, TEAL, VIOLETA, AMBAR, GRIS, NARANJA, AZUL_M, ROSA][k]} corbata={k % 2 === 0} e={e + 0.1 * Math.sin(t * 2 + k)} /></g> : null)}
       <ellipse cx={600} cy={640} rx={300} ry={90} fill="#92400e" />
       <ellipse cx={600} cy={628} rx={300} ry={90} fill="#b45309" />
     </g>
