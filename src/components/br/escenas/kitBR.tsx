@@ -8,6 +8,7 @@ import { PAGINAS } from '../paginas';
    Sólidos rellenos, sin contornos. */
 
 export * from '../../ad/escenas/kitAD';
+export * from './kit2BR';
 
 /* Armazón de la escena de una página: los nombres de las marcas salen de las anclas de la página. */
 export function useEscenaBR(id: string, marcas: number[], estatico = false) {

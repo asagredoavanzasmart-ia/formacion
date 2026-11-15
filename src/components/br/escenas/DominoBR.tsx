@@ -1,14 +1,15 @@
 import React from 'react';
-import { useEscenaBR, Lienzo, Toma, Rotulo, Letrero, Txt, Domino, Barra, Sello, Hoja, e1, sm, ventana, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS } from './kitBR';
+import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Domino, Sello, Persona, Tarjeta, Conector, Pastilla, LogoCF, Visto, Cruz, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS } from './kitBR';
 import type { PropsCE } from './kitBR';
 
 /**
  * El gran dominó.
- * Toma 1: Belcher revisa diez años de ofertas: con una sola creencia la conversión es alta; con dos, cae a la mitad.
- * Toma 2: una fila de fichas pequeñas (las objeciones) y una ficha grande al frente: al caer la grande, arrastra a todas.
- * La frase lógica se arma por partes (oportunidad → deseo → vehículo).
- * Toma 3: ClickFunnels como ejemplo, con la nota de que conviene al autor; y el criterio: si la frase no es verdadera,
- * la ficha no cae y lo que hay es una mejora.
+ * Toma 1: Perry Belcher revisa diez años de ofertas (diez carpetas que se abren) y un gráfico muestra lo que encontró:
+ * pedir creer más de una cosa deja la conversión a la mitad.
+ * Toma 2: la frase del gran dominó arriba, con sus tres piezas (oportunidad, deseo, vehículo) que se encienden al
+ * nombrarse; abajo, una ficha grande («la creencia») frente a una fila de objeciones: al caer, las tumba a todas.
+ * Toma 3: el ejemplo de ClickFunnels (con su logo) y el sello «conviene al autor»; luego el criterio: si la frase es
+ * verdadera la ficha cae; si no, lo que ofreces es una mejora y la ficha queda en pie.
  */
 
 const ID = 'br08', P = 'br-domino';
@@ -17,74 +18,83 @@ export const DominoBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico
   const { t, fin, m, vP, fondo } = useEscenaBR(P, marcas, estatico);
   const c = tono(isDark);
   const movil = useMovil();
+  const E = (n: string, d = 0.5, extra = 0) => (t >= m(n) + extra - 0.05 ? Math.min(1, pop(t, m(n) + extra, d)) : 0);
   const rot: [number, string][] = [
-    [m('diez'), 'Diez años de ofertas'], [m('domino'), 'El gran dominó'], [m('logica'), 'La frase'], [m('clickfunnels'), 'El ejemplo de ClickFunnels'], [m('criterio'), 'El criterio'],
+    [m('diez'), 'Diez años de ofertas'], [m('domino'), 'El gran dominó'], [m('logica'), 'Una frase lógica'],
+    [m('peso'), 'Caen las objeciones'], [m('clickfunnels'), 'El ejemplo de ClickFunnels'], [m('criterio'), 'El criterio'],
   ];
   const caeG = sm(t, m('peso'), m('peso') + 0.7);
-  const PIEZAS: [string, string][] = [['clave', 'Clave del deseo'], ['vehiculo', 'Solo por mi vehículo']];
+  const cascada = (k: number) => sm(t, m('peso') + 0.5 + k * 0.22, m('peso') + 0.9 + k * 0.22);
+  const PZ: [string, string, string][] = [['logica', 'la oportunidad', NARANJA], ['clave', 'lo que más desean', ROSA], ['vehiculo', 'mi vehículo', VIOLETA]];
 
   return (
     <Lienzo id={ID} t={t} fin={fin} fondo={fondo} vP={vP} pregunta={pregunta} isDark={isDark} titulo="El gran dominó">
       <Rotulo t={t} lista={rot} id={ID} />
 
-      {/* 1 · Una creencia o dos */}
+      {/* 1 · Diez años de ofertas */}
       <Toma t={t} a={0} b={m('domino')} cy={470}>
-        <g opacity={e1(t, 0.3)}>
-          {Array.from({ length: 10 }, (_, k) => <Hoja key={k} x={170 + (k % 5) * 18} y={420 - Math.floor(k / 5) * 14 - (k % 5) * 6} s={0.9} />)}
-          <Letrero x={210} y={560} texto="10 años de ofertas" fondo={GRIS} id={ID} tam={26} />
-        </g>
-        {t >= m('mitad') - 0.4 && (
-          <g opacity={e1(t, m('mitad') - 0.4)}>
-            <rect x={420} y={680} width={640} height={6} rx={3} fill={c.apagado} />
-            <Barra x={600} y={680} w={150} hMax={380} valor={100} max={100} u={1} color={VERDE} rotulo="Una creencia" c={c} suf="" />
-            <Barra x={880} y={680} w={150} hMax={380} valor={50} max={100} u={sm(t, m('mitad'), m('mitad') + 1)} color={ROJO_M} rotulo="Dos o más" c={c} suf="" />
-            <Letrero x={880} y={200} texto="Conversión a la mitad" fondo={ROJO_M} id={ID} tam={28} op={e1(t, m('mitad') + 0.5)} />
-          </g>
-        )}
-      </Toma>
-
-      {/* 2 · La ficha que arrastra */}
-      <Toma t={t} a={m('domino')} b={m('clickfunnels')} cy={470}>
-        <g opacity={e1(t, m('domino'))}>
-          <rect x={120} y={700} width={960} height={12} rx={6} fill={c.apagado} />
-          <Domino x={250} y={700} h={300} cae={caeG} color={NARANJA} puntos={4} texto={movil ? '' : 'Una'} tam={30} />
-          {Array.from({ length: 6 }, (_, k) => {
-            const cae = sm(t, m('peso') + 0.35 + k * 0.12, m('peso') + 0.75 + k * 0.12);
-            return <Domino key={k} x={470 + k * 100} y={700} h={150} cae={cae} color={GRIS} puntos={2} />;
+        <Tarjeta x={80} y={200} w={480} h={460} titulo="10 años de ofertas" c={c} id={ID} op={E('diez', 0.6, -0.3)} acento={AMBAR}>
+          {Array.from({ length: 10 }, (_, k) => {
+            const u = sm(t, m('diez') + k * 0.12, m('diez') + k * 0.12 + 0.4);
+            const x = 40 + (k % 5) * 82, y = 110 + Math.floor(k / 5) * 140;
+            return <g key={k} opacity={u} transform={`translate(${x} ${y + (1 - u) * 20})`}><path d="M 0 10 H 26 L 34 0 H 70 V 100 H 0 Z" fill={AMBAR} /><rect x={0} y={16} width={70} height={84} rx={6} fill="#fbbf24" /><Txt x={35} y={70} textAnchor="middle" fontSize={22} fill="#fff" peso={800}>{`${k + 1}`}</Txt></g>;
           })}
-          {t >= m('unica') && <Letrero x={250} y={320} texto="La única creencia" fondo={NARANJA} id={ID} tam={28} op={e1(t, m('unica')) * (1 - caeG)} />}
-          {t < m('peso') && <Txt x={720} y={500} textAnchor="middle" fontSize={28} fill={c.tenue} opacity={e1(t, m('unica'))}>Objeciones</Txt>}
-        </g>
-        {t >= m('logica') && (
-          <g opacity={ventana(t, m('logica'), m('clickfunnels'))}>
-            <rect x={420} y={180} width={680} height={150} rx={24} fill={c.panel} style={sombra(c.sombra, 3, 8)} />
-            <Txt x={460} y={240} fontSize={28} fill={c.texto} peso={800}>Si creen que…</Txt>
-            {PIEZAS.map(([n, txt], k) => t >= m(n) - 0.1 ? (
-              <g key={n} opacity={e1(t, m(n))}>
-                <rect x={460 + k * 320} y={262} width={300} height={50} rx={14} fill={[ROSA, VIOLETA][k]} />
-                <Txt x={610 + k * 320} y={296} textAnchor="middle" fontSize={24} fill="#fff" peso={800}>{txt}</Txt>
-              </g>
-            ) : null)}
-          </g>
-        )}
-        {t >= m('peso') && <Letrero x={720} y={430} texto="Lo demás pierde peso" fondo={VERDE} id={ID} tam={30} op={e1(t, m('peso') + 0.8)} />}
+          <Persona id={ID} x={240} y={440} s={0.5} cuerpo={GRIS} />
+        </Tarjeta>
+        <Conector x1={560} y1={430} x2={640} y2={430} u={E('mitad', 0.4, -0.4)} t={t} color={AMBAR} />
+        <Tarjeta x={640} y={200} w={480} h={460} titulo="Conversión" c={c} id={ID} op={E('mitad', 0.6, -0.4)}>
+          <rect x={60} y={380} width={360} height={5} rx={2} fill={c.apagado} />
+          <rect x={90} y={380 - 260 * sm(t, m('mitad') - 0.2, m('mitad') + 0.8)} width={120} height={260 * sm(t, m('mitad') - 0.2, m('mitad') + 0.8)} rx={12} fill={VERDE} />
+          <rect x={270} y={380 - 130 * sm(t, m('mitad') + 0.4, m('mitad') + 1.4)} width={120} height={130 * sm(t, m('mitad') + 0.4, m('mitad') + 1.4)} rx={12} fill={ROJO_M} />
+          <Txt x={150} y={420} textAnchor="middle" fontSize={24} fill={c.texto} peso={800}>{movil ? '1' : '1 creencia'}</Txt>
+          <Txt x={330} y={420} textAnchor="middle" fontSize={24} fill={c.texto} peso={800}>{movil ? '2+' : 'Más de una'}</Txt>
+          <Txt x={330} y={230} textAnchor="middle" fontSize={34} fill={ROJO_M} peso={800} opacity={sm(t, m('mitad') + 1.2, m('mitad') + 1.6)}>÷2</Txt>
+        </Tarjeta>
       </Toma>
 
-      {/* 3 · El ejemplo y el criterio */}
-      <Toma t={t} a={m('clickfunnels')} b={fin + 1} cy={470}>
-        <g opacity={e1(t, m('clickfunnels'))}>
-          <rect x={120} y={190} width={960} height={190} rx={28} fill={c.panel} style={sombra(c.sombra, 4, 12)} />
-          <Txt x={600} y={270} textAnchor="middle" fontSize={32} fill={c.texto} peso={800}>«Los embudos son la clave del éxito en línea</Txt>
-          <Txt x={600} y={325} textAnchor="middle" fontSize={32} fill={c.texto} peso={800}>y solo se obtienen con ClickFunnels»</Txt>
-          {t >= m('conviene') && <Sello x={movil ? 720 : 870} y={420} texto={movil ? 'Le conviene' : 'Conviene al autor'} u={sm(t, m('conviene'), m('conviene') + 0.6)} color={ROJO_M} tam={28} rot={-6} />}
+      {/* 2 · La frase y la caída */}
+      <Toma t={t} a={m('domino')} b={m('clickfunnels')} cy={470}>
+        <Tarjeta x={120} y={180} w={960} h={190} titulo={movil ? undefined : 'Si creen que…'} c={c} id={ID} op={E('logica', 0.6, -0.4)}>
+          {PZ.map(([n, txt, col], k) => {
+            const u = E(n, 0.5);
+            return (
+              <g key={n}>
+                <Pastilla x={170 + k * 310} y={120} texto={movil ? ['Oportunidad', 'Deseo', 'Vehículo'][k] : txt} fondo={col} tam={26} op={0.25 + 0.75 * u} s={0.9 + 0.1 * u} />
+                {k < 2 && <Txt x={325 + k * 310} y={130} textAnchor="middle" fontSize={34} fill={c.tenue} peso={800}>→</Txt>}
+              </g>
+            );
+          })}
+        </Tarjeta>
+        <rect x={120} y={720} width={960} height={10} rx={5} fill={c.apagado} opacity={E('domino')} />
+        <g opacity={E('domino')}>
+          <Domino x={210} y={720} h={260} cae={caeG} color={`url(#${ID}-marca)`} puntos={2} />
+          <Pastilla x={210} y={410} texto={movil ? 'La creencia' : 'La única creencia'} fondo={NARANJA} tam={24} op={E('unica')} />
         </g>
+        {Array.from({ length: 6 }, (_, k) => <g key={k} opacity={E('domino', 0.5, 0.3 + k * 0.08)}><Domino x={450 + k * 105} y={720} h={150} cae={cascada(k)} color={GRIS} puntos={k % 3 + 1} /></g>)}
+        <Pastilla x={720} y={790} texto="Las demás objeciones" fondo={GRIS} tam={24} op={E('domino', 0.5, 1)} />
+      </Toma>
+
+      {/* 3 · ClickFunnels y el criterio */}
+      <Toma t={t} a={m('clickfunnels')} b={fin + 1} cy={470}>
+        <Tarjeta x={110} y={190} w={980} h={200} c={c} id={ID} op={E('clickfunnels')} acento="#3f5368">
+          <LogoCF x={130} y={105} s={0.62} gira={t * 2} isDark={isDark} />
+          <Txt x={590} y={92} textAnchor="middle" fontSize={movil ? 28 : 28} fill={c.texto} peso={800}>{movil ? '«Embudos: la clave»' : '«Los embudos son la clave del éxito en línea'}</Txt>
+          {!movil && <Txt x={590} y={138} textAnchor="middle" fontSize={28} fill={c.texto} peso={800}>y solo se obtienen con ClickFunnels»</Txt>}
+        </Tarjeta>
+        {t >= m('conviene') && <Sello x={movil ? 760 : 880} y={420} texto={movil ? 'Le conviene' : 'Conviene al autor'} u={sm(t, m('conviene'), m('conviene') + 0.6)} color={ROJO_M} tam={28} rot={-5} />}
         {t >= m('criterio') && (
-          <g opacity={e1(t, m('criterio'))}>
-            <rect x={120} y={720} width={960} height={10} rx={5} fill={c.apagado} />
-            <Domino x={360} y={720} h={210} cae={sm(t, m('criterio') + 0.6, m('criterio') + 1.3)} color={VERDE} puntos={3} />
-            <Letrero x={360} y={800} texto={movil ? 'Cae' : 'Frase verdadera: cae'} fondo={VERDE} id={ID} tam={26} />
-            <Domino x={840} y={720} h={210} cae={0.06 * Math.sin(t * 5) * sm(t, m('mejora'), m('mejora') + 0.5)} color={GRIS} puntos={3} />
-            {t >= m('mejora') && <Letrero x={840} y={800} texto={movil ? 'No cae' : 'No cae: es una mejora'} fondo={GRIS} id={ID} tam={26} op={e1(t, m('mejora'))} />}
+          <g opacity={E('criterio')}>
+            <rect x={120} y={730} width={960} height={10} rx={5} fill={c.apagado} />
+            <Domino x={330} y={730} h={170} cae={sm(t, m('criterio') + 1, m('criterio') + 1.8)} color={VERDE} puntos={2} />
+            <Pastilla x={360} y={800} texto={movil ? 'Verdadera: cae' : 'Frase verdadera: cae'} fondo={VERDE} tam={24} />
+            <Visto x={250} y={520} r={30} op={sm(t, m('criterio') + 1.8, m('criterio') + 2.2)} />
+          </g>
+        )}
+        {t >= m('mejora') && (
+          <g opacity={E('mejora')}>
+            <Domino x={860} y={730} h={170} cae={0.06 * Math.sin(t * 5)} color={GRIS} puntos={2} />
+            <Pastilla x={860} y={800} texto={movil ? 'No cae' : 'No cae: es una mejora'} fondo={GRIS} tam={24} />
+            <Cruz x={960} y={520} r={30} />
           </g>
         )}
       </Toma>

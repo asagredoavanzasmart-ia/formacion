@@ -1,30 +1,44 @@
 import React from 'react';
-import { useEscenaBR, Lienzo, Toma, Rotulo, Letrero, Txt, Cifra, Persona, Burbuja, Sello, e1, sm, ventana, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
+import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, Sello, Pescador, Tarjeta, Conector, Pastilla, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
 import type { PropsCE } from './kitBR';
 
 /**
  * Activación y marca.
- * Toma 1: Binet y Field: un archivo de cerca de mil casos del que salen dos curvas: la activación (picos que suben y
- * caen) y la marca (una línea que crece despacio); al lado, dos barras apiladas con el reparto 60/40 y 46/54.
- * Toma 2: Dawes: una multitud de veinte personas; solo una está comprando hoy (5 %) y el anzuelo del embudo la pesca;
- * las otras diecinueve llevan una burbuja de recuerdo: la disponibilidad mental de Byron Sharp.
+ * Toma 1: Binet y Field: un archivo de cerca de mil casos; de él sale un gráfico de ventas en el tiempo donde la marca
+ * es una base que sube despacio y la activación son picos encima de esa base; al lado, dos donas con el reparto
+ * (consumo masivo 60/40, empresas 46/54).
+ * Toma 2: John Dawes (2021): de veinte compradores solo uno está comprando hoy; un pescador en la orilla lo engancha con
+ * su caña (el embudo pesca en ese 5 %). Los otros diecinueve guardan la marca en una burbuja de recuerdo: la
+ * disponibilidad mental de Byron Sharp.
  */
 
 const ID = 'br24', P = 'br-marca';
+
+const Dona: React.FC<{ x: number; y: number; marca: number; u: number; c: ReturnType<typeof tono> }> = ({ x, y, marca, u, c }) => (
+  <g transform={`translate(${x} ${y})`}>
+    <circle r={80} fill="none" stroke={NARANJA} strokeWidth={40} opacity={u > 0 ? 1 : 0.2} />
+    <circle r={80} fill="none" stroke={VIOLETA} strokeWidth={40} pathLength={1} strokeDasharray={`${(marca / 100) * u} 1`} transform="rotate(-90)" />
+    <Txt x={0} y={10} textAnchor="middle" fontSize={30} fill={c.texto} peso={800}>{`${marca}/${100 - marca}`}</Txt>
+  </g>
+);
 
 export const MarcaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico = false }) => {
   const { t, fin, m, vP, fondo } = useEscenaBR(P, marcas, estatico);
   const c = tono(isDark);
   const movil = useMovil();
+  const E = (n: string, d = 0.5, extra = 0) => (t >= m(n) + extra - 0.05 ? Math.min(1, pop(t, m(n) + extra, d)) : 0);
   const rot: [number, string][] = [
     [m('binet'), 'Binet y Field'], [m('dos'), 'Dos mecánicas'], [m('sesenta'), 'Cómo repartir'],
     [m('dawes'), 'John Dawes (2021)'], [m('pesca'), 'El 5 % y el 95 %'], [m('justos'), 'Para ser justos'],
   ];
-  const act = sm(t, m('activacion'), m('activacion') + 2);
-  const mar = sm(t, m('marca'), m('marca') + 2);
-  const picos = Array.from({ length: 41 }, (_, k) => { const x = k / 40; const pico = Math.max(0, Math.sin(x * Math.PI * 8)) ** 6; return [120 + x * 560, 600 - 40 - 200 * pico] as const; });
-  const curvaM = Array.from({ length: 41 }, (_, k) => { const x = k / 40; return [120 + x * 560, 600 - 20 - 230 * x * x] as const; });
-  const recorte = (pts: readonly (readonly [number, number])[], u: number) => pts.slice(0, Math.max(2, Math.round(pts.length * u))).map(([x, y], k) => `${k ? 'L' : 'M'} ${x} ${y}`).join(' ');
+  const act = sm(t, m('activacion'), m('activacion') + 2.5);
+  const mar = sm(t, m('marca'), m('marca') + 2.5);
+  const base = (x: number) => 40 + 170 * x * x * mar;
+  const pico = (x: number) => act * 150 * Math.pow(Math.max(0, Math.sin(x * Math.PI * 7)), 8);
+  const W = 520, H0 = 330;
+  const traza = (fn: (x: number) => number) => Array.from({ length: 81 }, (_, k) => { const x = k / 80; return `${k ? 'L' : 'M'} ${40 + x * W} ${H0 - fn(x)}`; }).join(' ');
+  const pesca = sm(t, m('pesca'), m('pesca') + 1.2);
+  const BUY = 2;
 
   return (
     <Lienzo id={ID} t={t} fin={fin} fondo={fondo} vP={vP} pregunta={pregunta} isDark={isDark} titulo="Activación y marca">
@@ -32,63 +46,50 @@ export const MarcaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico 
 
       {/* 1 · Dos mecánicas y el reparto */}
       <Toma t={t} a={0} b={m('dawes')} cy={470}>
-        <g opacity={ventana(t, m('binet') - 0.3, m('dos') + 0.2)}>
-          {Array.from({ length: 6 }, (_, k) => <rect key={k} x={300 + k * 18} y={320 - k * 14} width={300} height={200} rx={16} fill={[GRIS, AZUL_M, VIOLETA, GRIS, AZUL_M, VIOLETA][k]} opacity={0.5 + k * 0.08} />)}
-          <Cifra x={540} y={640} valor={1000} u={sm(t, m('mil'), m('mil') + 1)} pre="≈ " suf=" casos" tam={48} color={AZUL_M} miles />
+        <g opacity={E('binet') * (1 - E('dos'))}>
+          {Array.from({ length: 4 }, (_, k) => <g key={k} transform={`translate(${380 + k * 120} 330)`}><rect x={-50} y={0} width={100} height={260} rx={10} fill="#94a3b8" /><rect x={-40} y={20 + (k % 2) * 10} width={80} height={60} rx={6} fill="#cbd5e1" /><rect x={-40} y={100} width={80} height={60} rx={6} fill="#cbd5e1" /><rect x={-40} y={180} width={80} height={60} rx={6} fill="#cbd5e1" /></g>)}
+          <Cifra x={560} y={280} valor={1000} u={sm(t, m('mil'), m('mil') + 1.2)} pre="≈ " suf=" casos" tam={46} color={AZUL_M} miles />
         </g>
-        {t >= m('dos') && (
-          <g opacity={e1(t, m('dos'))}>
-            <rect x={100} y={240} width={600} height={400} rx={24} fill={c.panel} style={sombra(c.sombra, 4, 12)} />
-            <rect x={120} y={580} width={560} height={4} rx={2} fill={c.apagado} />
-            <Txt x={400} y={620} textAnchor="middle" fontSize={24} fill={c.tenue}>tiempo →</Txt>
-            {t >= m('activacion') && <path d={recorte(picos, act)} stroke={NARANJA} strokeWidth={8} fill="none" strokeLinejoin="round" />}
-            {t >= m('marca') && <path d={recorte(curvaM, mar)} stroke={VIOLETA} strokeWidth={8} fill="none" />}
-            {t >= m('picos') && <Letrero x={260} y={290} texto="Activación: picos" fondo={NARANJA} id={ID} tam={24} op={e1(t, m('picos'))} />}
-            {t >= m('marca') && <Letrero x={540} y={290} texto="Marca: memoria" fondo={VIOLETA} id={ID} tam={24} op={e1(t, m('marca') + 0.5)} />}
+        <Tarjeta x={60} y={210} w={600} h={470} titulo={movil ? 'Ventas en el tiempo' : 'Ventas a lo largo del tiempo'} c={c} id={ID} op={E('dos')}>
+          <path d={`M 40 ${H0} H ${40 + W}`} stroke={c.apagado} strokeWidth={4} transform="translate(0 30)" />
+          <g transform="translate(0 30)">
+            <path d={`${traza(base)} L ${40 + W} ${H0} L 40 ${H0} Z`} fill={VIOLETA} opacity={0.25 + 0.25 * mar} />
+            <path d={traza((x) => base(x) + pico(x))} stroke={NARANJA} strokeWidth={6} fill="none" strokeLinejoin="round" opacity={act > 0 ? 1 : 0} />
           </g>
-        )}
-        {t >= m('sesenta') && [0, 1].map((k) => {
-          const x = k === 0 ? 820 : 1010, mk = k === 0 ? 60 : 46, n = k === 0 ? 'sesenta' : 'b2b';
-          if (t < m(n)) return null;
-          const u = sm(t, m(n), m(n) + 1);
-          return (
-            <g key={k} opacity={e1(t, m(n))}>
-              <rect x={x - 60} y={240} width={120} height={400 * (mk / 100) * u} rx={10} fill={VIOLETA} />
-              <rect x={x - 60} y={240 + 400 * (mk / 100) * u} width={120} height={400 * (1 - mk / 100) * u} rx={10} fill={NARANJA} />
-              <Txt x={x} y={260 + 200 * (mk / 100)} textAnchor="middle" fontSize={34} fill="#fff" peso={800}>{mk}</Txt>
-              <Txt x={x} y={260 + 400 * (mk / 100) + 200 * (1 - mk / 100)} textAnchor="middle" fontSize={34} fill="#fff" peso={800}>{100 - mk}</Txt>
-              <Txt x={x} y={690} textAnchor="middle" fontSize={26} fill={c.texto} peso={800}>{k === 0 ? 'Consumo' : 'Empresas'}</Txt>
-            </g>
-          );
-        })}
-        {t >= m('b2b') && <Txt x={915} y={740} textAnchor="middle" fontSize={24} fill={c.tenue} opacity={e1(t, m('b2b') + 0.4)}>marca / activación</Txt>}
+          <Pastilla x={180} y={420} texto={movil ? 'Picos' : 'Activación: picos'} fondo={NARANJA} tam={22} op={E('picos')} />
+          <Pastilla x={430} y={420} texto={movil ? 'Marca' : 'Marca: base que sube'} fondo={VIOLETA} tam={22} op={E('marca')} />
+        </Tarjeta>
+        <g opacity={E('sesenta')}>
+          <Dona x={890} y={330} marca={60} u={sm(t, m('sesenta'), m('sesenta') + 1)} c={c} />
+          <Txt x={890} y={455} textAnchor="middle" fontSize={24} fill={c.texto} peso={800}>{movil ? 'Consumo' : 'Consumo masivo'}</Txt>
+        </g>
+        <g opacity={E('b2b')}>
+          <Dona x={890} y={600} marca={46} u={sm(t, m('b2b'), m('b2b') + 1)} c={c} />
+          <Txt x={890} y={725} textAnchor="middle" fontSize={24} fill={c.texto} peso={800}>{movil ? 'Empresas' : 'Entre empresas'}</Txt>
+        </g>
+        <Txt x={890} y={790} textAnchor="middle" fontSize={22} fill={c.tenue} peso={800} opacity={E('sesenta')}>marca / activación</Txt>
       </Toma>
 
       {/* 2 · El 5 % y el 95 % */}
       <Toma t={t} a={m('dawes')} b={fin + 1} cy={470}>
-        <g opacity={e1(t, m('dawes'))}>
-          {Array.from({ length: 20 }, (_, k) => {
-            const x = 200 + (k % 10) * 90, y = 470 + Math.floor(k / 10) * 190;
-            const compra = k === 6;
-            const enCinco = t >= m('cinco');
-            return (
-              <g key={k}>
-                <Persona id={ID} x={x} y={y} s={0.42} cuerpo={compra && enCinco ? NARANJA : GRIS} />
-                {!compra && t >= m('sharp') && <g opacity={e1(t, m('sharp') + (k % 5) * 0.12)}><circle cx={x + 26} cy={y - 104 + 4 * Math.sin(t * 2 + k)} r={18} fill="url(#br24-marca)" /><circle cx={x + 10} cy={y - 78} r={6} fill="url(#br24-marca)" /></g>}
-              </g>
-            );
-          })}
-          {t >= m('cinco') && <Letrero x={340} y={250} texto="≈ 5 % compra hoy" fondo={NARANJA} id={ID} tam={28} op={e1(t, m('cinco'))} />}
-          {t >= m('pesca') && (
-            <g opacity={e1(t, m('pesca'))}>
-              <path d={`M 740 200 V ${lerp(220, 330, sm(t, m('pesca'), m('pesca') + 1))}`} stroke={c.texto} strokeWidth={4} />
-              <path d={`M 740 ${lerp(220, 330, sm(t, m('pesca'), m('pesca') + 1))} q 0 24 -18 24`} stroke={c.texto} strokeWidth={6} fill="none" strokeLinecap="round" />
-              <Letrero x={880} y={250} texto="95 %: recordarte" fondo={VIOLETA} id={ID} tam={28} />
+        <path d="M 60 820 Q 140 760 260 800 L 260 860 H 60 Z" fill="#65a30d" opacity={E('pesca')} />
+        {t >= m('pesca') - 0.2 && <Pescador id={ID} x={150} y={800} hx={lerp(520, 470, pesca)} hy={lerp(380, 440, pesca)} c={c} s={0.75} tira={pesca} op={E('pesca', 0.5, -0.2)} />}
+        {Array.from({ length: 20 }, (_, k) => {
+          const x = 380 + (k % 10) * 78, y = 560 + Math.floor(k / 10) * 210;
+          const compra = k === BUY;
+          const enCinco = t >= m('cinco');
+          const dx = compra ? -70 * pesca : 0, dy = compra ? -50 * pesca : 0;
+          return (
+            <g key={k} opacity={E('dawes', 0.5, (k % 10) * 0.04)}>
+              <Persona id={ID} x={x + dx} y={y + dy} s={0.5} cuerpo={compra && enCinco ? NARANJA : GRIS} />
+              {!compra && t >= m('sharp') && <g opacity={sm(t, m('sharp') + (k % 7) * 0.12, m('sharp') + (k % 7) * 0.12 + 0.4)}><circle cx={x + 28} cy={y - 118 + 4 * Math.sin(t * 2 + k)} r={20} fill={c.panel} stroke={VIOLETA} strokeWidth={3} /><circle cx={x + 28} cy={y - 118 + 4 * Math.sin(t * 2 + k)} r={10} fill={`url(#${ID}-marca)`} /><circle cx={x + 12} cy={y - 92} r={5} fill={VIOLETA} /></g>}
             </g>
-          )}
-          {t >= m('sharp') && <Txt x={420} y={800} textAnchor="middle" fontSize={26} fill={c.tenue} opacity={e1(t, m("sharp"))}>Disponibilidad mental (Sharp)</Txt>}
-          {t >= m('justos') && <Sello x={960} y={760} texto={movil ? 'Algo de marca' : 'Lista: algo de marca'} u={sm(t, m("justos"), m("justos") + 0.6)} color={GRIS} tam={26} rot={-4} />}
-        </g>
+          );
+        })}
+        <Pastilla x={movil ? 400 : 500} y={240} texto="≈ 5 % compra hoy" fondo={NARANJA} tam={26} op={E('cinco')} />
+        <Pastilla x={movil ? 920 : 880} y={240} texto={movil ? '95 %: recordarte' : '95 %: que te recuerden'} fondo={VIOLETA} tam={26} op={E('pesca', 0.5, 0.6)} />
+        <Pastilla x={880} y={300} texto={movil ? 'Disponibilidad mental' : 'Disponibilidad mental · Byron Sharp'} fondo={c.panel} color={VIOLETA} tam={22} op={E('sharp')} />
+        {t >= m('justos') && <Sello x={960} y={370} texto={movil ? 'Algo de marca' : 'La lista ya hace algo de marca'} u={sm(t, m('justos'), m('justos') + 0.6)} color={GRIS} tam={22} rot={-3} />}
       </Toma>
     </Lienzo>
   );

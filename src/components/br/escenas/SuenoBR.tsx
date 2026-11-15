@@ -1,13 +1,15 @@
 import React from 'react';
-import { useEscenaBR, Lienzo, Toma, Rotulo, Letrero, Txt, Cifra, Persona, Edificio, Telefono, Barra, Sello, Pin, e1, sm, ventana, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
+import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, Edificio, Calendario, Cubo, Pala, Navegador, Tarjeta, Conector, Pastilla, Visto, Globo, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
 import type { PropsCE } from './kitBR';
 
 /**
- * El sueño cien.
- * Toma 1: Chet Holmes frente a una cuadrícula de dos mil anunciantes; 167 se encienden y concentran el 95 % del gasto
- * (barra). Paquetes y llamadas cada quince días; cuatro meses de silencio y llega Xerox; el ranking sube del 15.º al 1.º.
- * Toma 2: la versión de Brunson: los clientes ya están reunidos alrededor de quien los reunió (constelaciones con un
- * referente al centro) y de búsquedas; un mapa con 185 fuentes. El pozo que se cava antes de tener sed.
+ * El sueño cien (Chet Holmes).
+ * Toma 1: el ranking de quince revistas con la de Holmes al fondo; doscientos puntos representan los 2.000
+ * anunciantes, se encienden los 167 que importan y una dona muestra que gastan el 95 % del presupuesto.
+ * Toma 2: Holmes envía un paquete cada quince días por una cinta hacia seis empresas; meses sin respuesta hasta que
+ * Xerox se enciende, luego casi treinta, y su revista sube del puesto 15 al 1.
+ * Toma 3: dónde ya está reunido tu cliente: por intereses (un referente con su órbita de seguidores) y por búsqueda
+ * (frases que se escriben); el mapa de 185 fuentes y 30 millones, y el pozo que se cava antes de tener sed.
  */
 
 const ID = 'br14', P = 'br-sueno';
@@ -16,80 +18,91 @@ export const SuenoBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico 
   const { t, fin, m, vP, fondo } = useEscenaBR(P, marcas, estatico);
   const c = tono(isDark);
   const movil = useMovil();
+  const E = (n: string, d = 0.5, extra = 0) => (t >= m(n) + extra - 0.05 ? Math.min(1, pop(t, m(n) + extra, d)) : 0);
   const rot: [number, string][] = [
-    [m('holmes'), 'Chet Holmes'], [m('ciento'), '167 de 2.000'], [m('paquete'), 'Constancia'], [m('xerox'), 'Del último al primero'],
-    [m('reunidos'), 'Ya están reunidos'], [m('pozo'), 'Antes de tener sed'],
+    [m('holmes'), 'Chet Holmes'], [m('dosmil'), 'Los que importan'], [m('paquete'), 'Constancia'],
+    [m('xerox'), 'La primera respuesta'], [m('reunidos'), 'Ya están reunidos'], [m('pozo'), 'Antes de tener sed'],
   ];
-  const sel = sm(t, m('ciento'), m('ciento') + 1);
-  const rank = t >= m('primero') ? lerp(15, 1, sm(t, m('primero'), m('primero') + 1)) : 15;
+  const IMP = [3, 17, 22, 38, 41, 59, 66, 77, 85, 92, 104, 118, 127, 141, 156, 173, 188];
+  const dona = sm(t, m('noventa'), m('noventa') + 1.4);
+  const sube = sm(t, m('primero'), m('primero') + 1.6);
+  const puesto = Math.round(lerp(15, 1, sube));
+  const encendidas = (k: number) => (k === 0 ? sm(t, m('xerox'), m('xerox') + 0.6) : sm(t, m('treinta') + k * 0.25, m('treinta') + k * 0.25 + 0.5));
+  const envio = ((t - m('paquete')) * 0.45) % 1;
+  const EMP: [number, number][] = [[640, 470], [800, 470], [960, 470], [640, 690], [800, 690], [960, 690]];
 
   return (
     <Lienzo id={ID} t={t} fin={fin} fondo={fondo} vP={vP} pregunta={pregunta} isDark={isDark} titulo="El sueño cien">
       <Rotulo t={t} lista={rot} id={ID} />
 
-      {/* 1 · Holmes */}
-      <Toma t={t} a={0} b={m('reunidos')} cy={470}>
-        <g opacity={e1(t, m('holmes') - 0.3)}>
-          <Persona id={ID} x={170} y={640} s={0.75} cuerpo={NARANJA} corbata />
-          <Letrero x={170} y={720} texto="Chet Holmes" fondo={NARANJA} id={ID} tam={26} />
-          {t >= m('ultimo') && <Cifra x={170} y={330} valor={Math.round(rank)} u={1} pre="#" tam={72} color={rank < 2 ? VERDE : ROJO_M} />}
-          {t >= m('ultimo') && <Txt x={170} y={380} textAnchor="middle" fontSize={24} fill={c.tenue}>de 15 revistas</Txt>}
+      {/* 1 · El ranking y los que importan */}
+      <Toma t={t} a={0} b={m('paquete')} cy={470}>
+        <Tarjeta x={60} y={200} w={250} h={560} titulo={movil ? '15 revistas' : '15 revistas'} c={c} id={ID} op={E('revista', 0.6, -0.4)} acento={GRIS} tam={24}>
+          {Array.from({ length: 15 }, (_, k) => <g key={k}><rect x={30} y={76 + k * 31} width={190} height={22} rx={8} fill={k === 14 ? NARANJA : c.panel2} /><Txt x={44} y={93 + k * 31} fontSize={16} fill={k === 14 ? '#fff' : c.tenue} peso={800}>{`#${k + 1}`}</Txt></g>)}
+        </Tarjeta>
+        <Pastilla x={185} y={790} texto="Holmes: último" fondo={NARANJA} tam={22} op={E('ultimo')} />
+        <Tarjeta x={350} y={200} w={420} h={430} titulo={movil ? '2.000 anunciantes' : '2.000 anunciantes posibles'} c={c} id={ID} op={E('dosmil', 0.6, -0.3)} tam={24}>
+          {Array.from({ length: 200 }, (_, k) => <circle key={k} cx={40 + (k % 20) * 18} cy={100 + Math.floor(k / 20) * 30} r={6} fill={IMP.includes(k) && t >= m('ciento') ? NARANJA : c.apagado} opacity={IMP.includes(k) && t >= m('ciento') ? sm(t, m('ciento') + IMP.indexOf(k) * 0.05, m('ciento') + IMP.indexOf(k) * 0.05 + 0.3) * 0.7 + 0.3 : 1} />)}
+          <Pastilla x={210} y={400} texto="167 de 2.000" fondo={NARANJA} tam={26} op={E('ciento', 0.5, 0.8)} />
+        </Tarjeta>
+        <g opacity={E('noventa', 0.6, -0.3)}>
+          <circle cx={950} cy={420} r={130} fill="none" stroke={c.apagado} strokeWidth={60} />
+          <circle cx={950} cy={420} r={130} fill="none" stroke={NARANJA} strokeWidth={60} pathLength={1} strokeDasharray={`${0.95 * dona} 1`} transform="rotate(-90 950 420)" />
+          <Cifra x={950} y={440} valor={95} u={dona} suf=" %" tam={52} color={NARANJA} />
+          <Txt x={950} y={610} textAnchor="middle" fontSize={24} fill={c.tenue} peso={800}>{movil ? 'del presupuesto' : 'del presupuesto de la industria'}</Txt>
         </g>
-        {t >= m('dosmil') - 0.2 && (
-          <g opacity={e1(t, m('dosmil') - 0.2)}>
-            <rect x={320} y={190} width={520} height={480} rx={26} fill={c.panel} style={sombra(c.sombra, 4, 12)} />
-            {Array.from({ length: 200 }, (_, k) => {
-              const i = k % 20, j = Math.floor(k / 20);
-              const top = k % 12 === 0;
-              return <rect key={k} x={346 + i * 24} y={220 + j * 34} width={18} height={24} rx={4} fill={top && sel > 0.2 ? AMBAR : c.apagado} opacity={top ? 1 : lerp(1, 0.4, sel)} />;
-            })}
-            <Txt x={580} y={630} textAnchor="middle" fontSize={26} fill={c.tenue}>2.000 anunciantes</Txt>
-          </g>
-        )}
-        {t >= m('noventa') - 0.2 && (
-          <g opacity={e1(t, m('noventa') - 0.2)}>
-            <rect x={900} y={190} width={220} height={480} rx={26} fill={c.panel} style={sombra(c.sombra, 4, 12)} />
-            <rect x={950} y={230} width={120} height={400} rx={14} fill={c.apagado} />
-            <rect x={950} y={230 + 400 * (1 - 0.95 * sm(t, m('noventa'), m('noventa') + 1))} width={120} height={400 * 0.95 * sm(t, m('noventa'), m('noventa') + 1)} rx={14} fill={AMBAR} />
-            <Txt x={1010} y={660} textAnchor="middle" fontSize={30} fill={c.texto} peso={800}>95 %</Txt>
-            <Letrero x={1010} y={730} texto="167 = 95 % del gasto" fondo={AMBAR} id={ID} tam={24} />
-          </g>
-        )}
-        {t >= m('paquete') && (
-          <g opacity={ventana(t, m('paquete'), m('xerox'))}>
-            <rect x={340} y={690} width={480} height={110} rx={20} fill={c.panel2} />
-            {Array.from({ length: 8 }, (_, k) => <g key={k}><rect x={360 + k * 56} y={712} width={40} height={30} rx={6} fill={k % 2 ? AZUL_M : NARANJA} opacity={k <= ((t - m('paquete')) * 3) % 8 ? 1 : 0.25} /></g>)}
-            <Txt x={580} y={784} textAnchor="middle" fontSize={24} fill={c.tenue}>Paquete y llamada cada 15 días</Txt>
-          </g>
-        )}
-        {t >= m('xerox') && <Sello x={580} y={745} texto="Xerox: sí" u={sm(t, m('xerox'), m('xerox') + 0.6)} color={VERDE} tam={36} />}
+        <Conector x1={770} y1={420} x2={820} y2={420} u={E('noventa')} t={t} color={NARANJA} puntos={2} />
       </Toma>
 
-      {/* 2 · Ya están reunidos */}
-      <Toma t={t} a={m('reunidos')} b={fin + 1} cy={470}>
-        <g opacity={e1(t, m('reunidos'))}>
-          {[[300, 430, ROSA, 'intereses'], [600, 330, VIOLETA, 'intereses'], [900, 450, AZUL_M, 'busqueda']].map(([x, y, col, n], k) => {
-            const on = t >= m(n as string) - 0.1 || k === 0 ? 1 : 0.2;
-            return (
-              <g key={k} opacity={on}>
-                {Array.from({ length: 8 }, (_, j) => { const a = (j / 8) * Math.PI * 2 + t * 0.3 * (k % 2 ? -1 : 1); return <circle key={j} cx={(x as number) + 130 * Math.cos(a)} cy={(y as number) + 100 * Math.sin(a)} r={16} fill="#f7c4a0" />; })}
-                {k < 2 ? <Persona id={ID} x={x as number} y={(y as number) + 50} s={0.45} cuerpo={col as string} /> : (
-                  <g><rect x={(x as number) - 90} y={(y as number) - 26} width={180} height={52} rx={26} fill="#fff" style={sombra(0.2, 2, 6)} /><Txt x={x as number} y={(y as number) + 9} textAnchor="middle" fontSize={24} fill={GRIS} peso={700}>buscador…</Txt></g>
-                )}
-              </g>
-            );
-          })}
-          {t >= m('intereses') && <Letrero x={450} y={640} texto="Por intereses" fondo={VIOLETA} id={ID} tam={28} op={e1(t, m('intereses'))} />}
-          {t >= m('busqueda') && <Letrero x={900} y={640} texto="Por búsqueda" fondo={AZUL_M} id={ID} tam={28} op={e1(t, m('busqueda'))} />}
+      {/* 2 · Un paquete cada quince días */}
+      <Toma t={t} a={m('paquete')} b={m('reunidos')} cy={470}>
+        <Persona id={ID} x={140} y={640} s={0.85} cuerpo={NARANJA} />
+        <Pastilla x={140} y={700} texto="Holmes" fondo={NARANJA} tam={22} op={E('paquete')} />
+        <rect x={210} y={600} width={340} height={22} rx={11} fill={c.apagado} opacity={E('paquete')} />
+        {t >= m('paquete') && sube < 0.2 && <g transform={`translate(${lerp(230, 560, envio)} ${600 - 30 * Math.sin(Math.PI * envio)})`} opacity={Math.sin(Math.PI * envio)}><rect x={-26} y={-40} width={52} height={40} rx={6} fill="#d97706" /><path d="M -26 -24 H 26" stroke="#92400e" strokeWidth={4} /></g>}
+        {EMP.map(([x, y], k) => {
+          const on = encendidas(k);
+          return (
+            <g key={k} opacity={E('paquete', 0.5, 0.2 + k * 0.1)}>
+              <Edificio x={x} y={y} w={100} h={150} color={on > 0.5 ? VERDE : GRIS} />
+              {on > 0.5 && <Visto x={x + 40} y={y - 170} r={18} op={on} />}
+              {k === 0 && on > 0.3 && <Pastilla x={x} y={y + 30} texto="Xerox" fondo={VERDE} tam={22} op={on} />}
+            </g>
+          );
+        })}
+        <g opacity={E('cuatro') * (1 - sm(t, m('xerox'), m('xerox') + 0.5))}><Calendario x={360} y={360} s={0.8} marcados={8} /><Txt x={360} y={470} textAnchor="middle" fontSize={24} fill={c.tenue} peso={800}>{movil ? '4 meses' : '4 meses sin respuesta'}</Txt></g>
+        <Pastilla x={360} y={300} texto={movil ? '≈ 30 clientes' : 'Casi 30 en seis meses'} fondo={VERDE} tam={24} op={E('treinta')} />
+        <g opacity={E('primero')}>
+          <rect x={300} y={720} width={240} height={90} rx={18} fill={c.panel} style={sombra(0.14, 4, 10)} />
+          <Txt x={420} y={780} textAnchor="middle" fontSize={44} fill={sube > 0.9 ? VERDE : NARANJA} peso={800}>{`Puesto #${puesto}`}</Txt>
         </g>
-        {t >= m('mapeo') && <Letrero x={600} y={190} texto="185 fuentes · 30 millones" fondo={NARANJA} id={ID} tam={30} op={e1(t, m('mapeo'))} />}
-        {t >= m('pozo') && (
-          <g opacity={e1(t, m('pozo'))}>
-            <ellipse cx={600} cy={760} rx={110} ry={26} fill="#334155" />
-            <ellipse cx={600} cy={760} rx={80} ry={16} fill={AZUL_M} opacity={0.6 + 0.2 * Math.sin(t * 3)} />
-            <Letrero x={600} y={820} texto="Cavar el pozo antes de tener sed" fondo={TEAL} id={ID} tam={24} />
-          </g>
-        )}
+      </Toma>
+
+      {/* 3 · Dónde ya están reunidos */}
+      <Toma t={t} a={m('reunidos')} b={fin + 1} cy={470}>
+        <Tarjeta x={80} y={190} w={480} h={340} titulo="Por intereses" c={c} id={ID} op={E('intereses')} acento={VIOLETA} tam={24}>
+          <Persona id={ID} x={240} y={240} s={0.75} cuerpo={VIOLETA} corbata />
+          {Array.from({ length: 9 }, (_, k) => { const a = t * 0.6 + (k / 9) * Math.PI * 2; return <circle key={k} cx={240 + 180 * Math.cos(a)} cy={190 + 70 * Math.sin(a)} r={14} fill={[NARANJA, ROSA, AZUL_M][k % 3]} opacity={0.85} />; })}
+        </Tarjeta>
+        <g opacity={E('busqueda')}>
+          <Navegador x={640} y={190} w={480} h={340} c={c} texto={'cómo conseguir clientes'.slice(0, Math.max(0, Math.floor((t - m('busqueda')) * 10)))}>
+            {[0, 1, 2].map((k) => <g key={k} opacity={sm(t, m('busqueda') + 1.5 + k * 0.4, m('busqueda') + 1.9 + k * 0.4)}><rect x={30} y={80 + k * 80} width={420} height={60} rx={12} fill={c.panel2} /><rect x={50} y={98 + k * 80} width={260} height={12} rx={6} fill={AZUL_M} opacity={0.6} /><rect x={50} y={118 + k * 80} width={180} height={8} rx={4} fill={c.apagado} /></g>)}
+          </Navegador>
+        </g>
+        <g opacity={E('mapeo')}>
+          <Globo x={240} y={690} r={100} t={t} c={c} pins={Array.from({ length: 12 }, (_, k) => [k * 30, (k % 5) * 12 - 20] as [number, number])} n={Math.round(12 * sm(t, m('mapeo'), m('mapeo') + 2))} />
+          <Cifra x={470} y={660} valor={185} u={sm(t, m('mapeo'), m('mapeo') + 1.2)} tam={40} color={VIOLETA} suf=" fuentes" />
+          <Cifra x={470} y={720} valor={30} u={sm(t, m('mapeo'), m('mapeo') + 1.2)} tam={34} color={c.texto} suf=" millones" />
+        </g>
+        <g opacity={E('pozo')}>
+          <ellipse cx={900} cy={760} rx={110} ry={34} fill="#78716c" />
+          <ellipse cx={900} cy={756} rx={80} ry={22} fill="#1e3a8a" />
+          <ellipse cx={900} cy={756} rx={80 * sm(t, m('pozo'), m('pozo') + 2)} ry={22 * sm(t, m('pozo'), m('pozo') + 2)} fill="#3b82f6" opacity={0.8} />
+          <Persona id={ID} x={1060} y={760} s={0.6} cuerpo={NARANJA} />
+          <Pala x={1000} y={640} s={0.5} rot={-30 + 18 * Math.sin(t * 3)} />
+          <Txt x={900} y={640} textAnchor="middle" fontSize={24} fill={c.texto} peso={800}>{movil ? 'Cava antes' : 'Cavar el pozo antes de tener sed'}</Txt>
+        </g>
+        <Conector x1={320} y1={530} x2={290} y2={590} u={E('mapeo')} t={t} color={VIOLETA} puntos={2} grosor={4} />
       </Toma>
     </Lienzo>
   );
