@@ -45,15 +45,23 @@ export const Coche: React.FC<{ x: number; y: number; s?: number; color: string; 
   <g transform={`translate(${x} ${y}) scale(${s})`} opacity={op}>
     <ellipse cx={0} cy={4} rx={138} ry={10} fill="#000" opacity={0.16} />
     {viejo && [0, 1, 2].map((k) => { const p = (t * 0.6 + k / 3) % 1; return <circle key={k} cx={-140 - p * 70} cy={-34 - p * 40} r={10 + p * 18} fill="#94a3b8" opacity={0.5 * (1 - p)} />; })}
-    <path d="M -128 -20 Q -130 -56 -100 -62 L -62 -66 L -34 -102 Q -26 -110 -8 -110 L 52 -110 Q 70 -110 82 -98 L 108 -66 Q 132 -62 134 -40 L 134 -22 Q 134 -12 124 -12 L -120 -12 Q -128 -12 -128 -20 Z" fill={color} />
-    <path d="M -128 -40 L 134 -40 L 134 -22 Q 134 -12 124 -12 L -120 -12 Q -128 -12 -128 -20 Z" fill="#000" opacity={0.14} />
-    <path d="M -54 -66 L -30 -98 Q -26 -102 -18 -102 L 14 -102 L 14 -66 Z" fill="#dbeafe" opacity={0.92} />
-    <path d="M 24 -102 L 50 -102 Q 62 -102 70 -92 L 92 -66 L 24 -66 Z" fill="#dbeafe" opacity={0.92} />
-    <path d="M 19 -102 V -16" stroke="#000" strokeOpacity={0.12} strokeWidth={3} />
-    <rect x={30} y={-56} width={18} height={5} rx={2} fill="#000" opacity={0.25} />
-    <rect x={124} y={-56} width={10} height={12} rx={3} fill="#fde68a" />
-    <rect x={-128} y={-56} width={8} height={12} rx={3} fill="#ef4444" />
-    {nuevo && <path d="M -20 -98 L 6 -98 L -24 -70 L -44 -70 Z" fill="#fff" opacity={0.55} />}
+    {/* Sedán mirando a +x: maleta corta atrás (luz roja), cabina retrasada y capó largo adelante (faro amarillo) */}
+    <path d="M -130 -22 Q -131 -54 -112 -60 L -96 -64 L -72 -100 Q -66 -107 -54 -107 L 22 -107 Q 34 -107 42 -99 L 72 -66 L 118 -61 Q 134 -57 134 -40 L 134 -22 Q 134 -12 124 -12 L -120 -12 Q -130 -12 -130 -22 Z" fill={color} />
+    <path d="M -130 -40 L 134 -40 L 134 -22 Q 134 -12 124 -12 L -120 -12 Q -130 -12 -130 -22 Z" fill="#000" opacity={0.14} />
+    {/* Línea del capó y de la maleta */}
+    <path d="M 74 -64 Q 100 -60 126 -56" stroke="#000" strokeOpacity={0.1} strokeWidth={3} fill="none" />
+    {/* Ventana trasera (inclinada hacia atrás) y ventana delantera con el parabrisas */}
+    <path d="M -86 -66 L -66 -96 Q -62 -100 -56 -100 L -24 -100 L -24 -66 Z" fill="#dbeafe" opacity={0.92} />
+    <path d="M -14 -100 L 18 -100 Q 28 -100 34 -93 L 58 -66 L -14 -66 Z" fill="#dbeafe" opacity={0.92} />
+    <path d="M -19 -100 V -16" stroke="#000" strokeOpacity={0.12} strokeWidth={3} />
+    <path d="M 62 -66 V -16" stroke="#000" strokeOpacity={0.08} strokeWidth={2} />
+    <rect x={-6} y={-56} width={18} height={5} rx={2} fill="#000" opacity={0.25} />
+    <rect x={-60} y={-56} width={18} height={5} rx={2} fill="#000" opacity={0.25} />
+    {/* Faro delantero amarillo con su haz, y luz trasera roja */}
+    <path d="M 122 -58 Q 134 -55 134 -46 L 124 -46 Z" fill="#fde68a" />
+    <rect x={-130} y={-54} width={9} height={13} rx={3} fill="#ef4444" />
+    <rect x={128} y={-30} width={6} height={10} rx={2} fill="#f59e0b" opacity={0.8} />
+    {nuevo && <path d="M 4 -97 L 18 -97 L -2 -69 L -12 -69 Z" fill="#fff" opacity={0.55} />}
     {viejo && <><path d="M -96 -40 q 12 -10 24 0 q -12 8 -24 0 Z" fill="#000" opacity={0.18} /><rect x={-4} y={-58} width={42} height={26} rx={5} fill="#fbbf24" transform="rotate(-10 17 -45)" /><path d="M 2 -50 L 32 -40 M 2 -40 L 32 -50" stroke="#b45309" strokeWidth={3} transform="rotate(-10 17 -45)" /></>}
     {[-74, 80].map((wx) => (
       <g key={wx} transform={`translate(${wx} -10)`}>
