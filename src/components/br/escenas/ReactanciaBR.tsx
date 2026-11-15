@@ -94,8 +94,10 @@ export const ReactanciaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, esta
             // Brazo sintético: un rectángulo (manga) y un círculo (mano) que solo existen mientras empuja.
             // Sale del hombro, se estira hasta el pecho del comprador y se recoge y desaparece al retirarse.
             const u = Math.max(0, Math.min(1, alza * (1 - retira)));
-            const ini: [number, number] = [hombro[0] - 4, hombro[1] + 6];
-            const fin2: [number, number] = [lerp(ini[0] + 10, apoyo[0], u), lerp(ini[1] + 10, apoyo[1], u)];
+            // Nace dentro del torso, con su borde superior en la línea del hombro.
+            // Torso: tope en −108; el brazo (24 de grosor) va recto y horizontal con su borde superior en −104.
+            const ini: [number, number] = [sx + 8 * S, 698 - 92 * S];
+            const fin2: [number, number] = [lerp(ini[0] + 10, apoyo[0] + 4, u), ini[1]];
             const largo = Math.hypot(fin2[0] - ini[0], fin2[1] - ini[1]);
             const ang = (Math.atan2(fin2[1] - ini[1], fin2[0] - ini[0]) * 180) / Math.PI;
             const op = Math.min(1, u * 2.5);
@@ -104,8 +106,8 @@ export const ReactanciaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, esta
                 <PersonaCara id={ID} x={sx} y={698} s={S} cuerpo={NARANJA} corbata e={lerp(0.5, -0.6, reacciona)} />
                 {op > 0.02 && (
                   <g opacity={op} transform={`translate(${ini[0]} ${ini[1]}) rotate(${ang})`}>
-                    <rect x={0} y={-6.5 * S} width={Math.max(0, largo - 6 * S)} height={13 * S} rx={6.5 * S} fill="#ea580c" />
-                    <circle cx={largo} cy={0} r={8 * S} fill="#f7c4a0" />
+                    <rect x={0} y={-12 * S} width={Math.max(0, largo - 4 * S)} height={24 * S} rx={3 * S} fill="#ea580c" />
+                    <circle cx={largo + 3 * S} cy={0} r={10 * S} fill="#f7c4a0" />
                   </g>
                 )}
               </g>
