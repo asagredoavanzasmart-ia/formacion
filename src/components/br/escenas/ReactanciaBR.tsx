@@ -68,16 +68,25 @@ export const ReactanciaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, esta
       {/* 3 · Reactancia */}
       <Toma t={t} a={m('brehm')} b={m('ensenanza')} cy={470}>
         <g opacity={E('brehm')}>
-          <rect x={90} y={700} width={540} height={10} rx={5} fill={c.apagado} />
-          <Mano x={lerp(250, 424, empuje) - 70 * reacciona} y={640} s={0.72} empuja={empuje * (1 - reacciona)} t={t} />
+          <rect x={90} y={700} width={560} height={10} rx={5} fill={c.apagado} />
+          {(() => {
+            // El vendedor avanza y empuja con su propio brazo; cuando el comprador reacciona, retrocede.
+            const sx = lerp(170, 240, empuje) - 70 * reacciona, hx = sx + 193;
+            return (
+              <g>
+                <PersonaCara id={ID} x={sx} y={698} s={0.95} cuerpo={NARANJA} corbata e={lerp(0.5, -0.6, reacciona)} />
+                <Mano x={hx} y={597} s={0.7} brazo={231} manga="#ea580c" empuja={empuje * (1 - reacciona)} t={t} />
+              </g>
+            );
+          })()}
+          <Pastilla x={330} y={470} texto="Presión" fondo={NARANJA} tam={24} op={empuje * (1 - reacciona)} />
           <g transform={`rotate(${lean} 500 698)`}>
-            <Persona id={ID} x={500} y={698} s={0.95} cuerpo={AZUL_M} corbata />
+            <PersonaCara id={ID} x={500} y={698} s={0.95} cuerpo={AZUL_M} corbata e={-reacciona} enojo={reacciona} />
           </g>
           {(() => {
             const hx = 500 + Math.sin((lean * Math.PI) / 180) * 136, hy = 698 - 136 * Math.cos((lean * Math.PI) / 180);
             return (
               <g>
-                <Cara id={ID} x={hx} y={hy} r={30} e={-reacciona} enojo={reacciona} />
                 {/* Símbolo de enojo junto a la cabeza */}
                 {reacciona > 0.05 && <g transform={`translate(${hx + 44} ${hy - 34}) scale(${0.8 + 0.12 * Math.sin(t * 8)})`} opacity={reacciona}>
                   {[0, 90, 180, 270].map((a) => <path key={a} d="M 5 -14 Q 5 -5 14 -5" stroke={ROJO_M} strokeWidth={5} fill="none" strokeLinecap="round" transform={`rotate(${a})`} />)}
@@ -85,10 +94,10 @@ export const ReactanciaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, esta
               </g>
             );
           })()}
-          {/* El comprador empuja de vuelta: flecha hacia la mano */}
+          {/* El comprador empuja de vuelta: flecha hacia el vendedor */}
           {reacciona > 0.05 && <g opacity={reacciona}>
-            <path d="M 300 560 H 230" stroke={ROJO_M} strokeWidth={8} strokeLinecap="round" />
-            <path d="M 236 544 L 214 560 L 236 576 Z" fill={ROJO_M} />
+            <path d="M 440 470 H 340" stroke={ROJO_M} strokeWidth={8} strokeLinecap="round" />
+            <path d="M 346 454 L 322 470 L 346 486 Z" fill={ROJO_M} />
           </g>}
           <Pastilla x={450} y={790} texto="Reacciona en contra" fondo={ROJO_M} tam={26} op={reacciona} />
         </g>
@@ -101,8 +110,8 @@ export const ReactanciaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, esta
           <Cifra x={290} y={120} valor={15000} u={sm(t, m('quince'), m('quince') + 1)} pre="≈ $" tam={36} color={AMBAR} miles />
         </Tarjeta>
         <Tarjeta x={700} y={580} w={420} h={170} titulo={movil ? undefined : 'Guion que pide crédito'} c={c} id={ID} op={E('guion')} acento={VIOLETA} tam={22}>
-          <rect x={50} y={65} width={150} height={92} rx={12} fill={VIOLETA} /><rect x={50} y={88} width={150} height={16} fill="#1f2937" opacity={0.5} /><rect x={66} y={124} width={56} height={12} rx={4} fill="#fff" opacity={0.7} />
-          <Txt x={300} y={120} textAnchor="middle" fontSize={26} fill={c.texto} peso={800} opacity={E('credito')}>{movil ? 'Crédito' : 'Crédito bancario'}</Txt>
+          <rect x={40} y={70} width={124} height={80} rx={12} fill={VIOLETA} /><rect x={40} y={90} width={124} height={14} fill="#1f2937" opacity={0.5} /><rect x={54} y={122} width={46} height={11} rx={4} fill="#fff" opacity={0.7} />
+          <Txt x={292} y={120} textAnchor="middle" fontSize={24} fill={c.texto} peso={800} opacity={E('credito')}>{movil ? 'Crédito' : 'Crédito bancario'}</Txt>
         </Tarjeta>
         {['reloj', 'quince', 'guion'].map((n, k) => <Conector key={n} x1={700} y1={285 + k * 190} x2={560} y2={560} u={E(n)} t={t} color={[ROJO_M, AMBAR, VIOLETA][k]} puntos={2} grosor={4} />)}
       </Toma>

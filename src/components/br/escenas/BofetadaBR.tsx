@@ -85,7 +85,7 @@ export const BofetadaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estati
         <g transform={`translate(${xT + 260 * empuje} ${curvaY(xT) + 300 * empuje * empuje}) rotate(${50 * empuje})`} opacity={1 - empuje * 0.6}>
           <Tienda x={0} y={0} s={0.55} cierra={empuje} />
         </g>
-        {t >= m('expulsa') && <Mano x={xT - 140 + 90 * empuje} y={curvaY(xT) - 50} s={0.75} op={E('expulsa')} empuja={empuje} t={t} />}
+        {t >= m('expulsa') && <Mano x={xT - 150 + 87 * empuje} y={curvaY(xT) + 24} s={0.6} brazo={0} op={E('expulsa')} empuja={empuje} t={t} />}
       </Toma>
 
       {/* 3 · Tres tipos de tráfico */}
