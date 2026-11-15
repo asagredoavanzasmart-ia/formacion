@@ -201,30 +201,78 @@ export const Navegador: React.FC<{ x: number; y: number; w: number; h: number; c
 
 /* Globo terráqueo que gira: meridianos y alfileres en longitud/latitud (grados) que aparecen según `pins`. */
 export const Globo: React.FC<{ x: number; y: number; r: number; t: number; pins?: [number, number][]; n?: number; color?: string; c: C; op?: number }> = ({ x, y, r, t, pins = [], n = 0, color = NARANJA, c, op = 1 }) => {
-  const rot = t * 18;
+  const uid = React.useId().replace(/:/g, '');
+  // Proyección ortográfica real: el globo gira sobre su eje y está inclinado 20° hacia quien mira.
+  // Gira lento y en el sentido real (de oeste a este): parte en Europa y África y llega al Atlántico con América.
+  const lon0 = 15 - t * 4, lat0 = 20, R = Math.PI / 180;
+  const sf0 = Math.sin(lat0 * R), cf0 = Math.cos(lat0 * R);
+  const proy = (lon: number, lat: number) => {
+    const f = lat * R, dl = (lon - lon0) * R;
+    const px = Math.cos(f) * Math.sin(dl), py = cf0 * Math.sin(f) - sf0 * Math.cos(f) * Math.cos(dl);
+    const vis = sf0 * Math.sin(f) + cf0 * Math.cos(f) * Math.cos(dl);
+    return { px, py, vis };
+  };
+  // Continentes: el lado oculto se pega al borde del disco, así la silueta nunca se da vuelta.
+  const ruta = (pts: number[][]) => {
+    const p = pts.map(([lo, la]) => proy(lo, la));
+    if (p.every((q) => q.vis < 0)) return null;
+    return p.map((q, k) => { let { px, py } = q; if (q.vis < 0) { const l = Math.hypot(px, py) || 1; px /= l; py /= l; } return `${k ? 'L' : 'M'} ${(px * r).toFixed(1)} ${(-py * r).toFixed(1)}`; }).join(' ') + ' Z';
+  };
+  const tierra = CONTINENTES.map((pts, k) => { const d = ruta(pts); return d ? <path key={k} d={d} fill="#22a06b" stroke="#178a5a" strokeWidth={1.5} strokeLinejoin="round" /> : null; });
+  const linea = (pts: [number, number][], k: string) => {
+    let d = '', abierto = false;
+    pts.forEach(([lo, la]) => { const q = proy(lo, la); if (q.vis > 0) { d += `${abierto ? 'L' : 'M'} ${(q.px * r).toFixed(1)} ${(-q.py * r).toFixed(1)} `; abierto = true; } else abierto = false; });
+    return d ? <path key={k} d={d} fill="none" stroke="#fff" strokeOpacity={0.22} strokeWidth={1.5} /> : null;
+  };
+  const paralelos = [-60, -30, 0, 30, 60].map((la) => linea(Array.from({ length: 73 }, (_, i) => [i * 5 - 180, la]), `p${la}`));
+  const meridianos = Array.from({ length: 12 }, (_, k) => linea(Array.from({ length: 37 }, (_, i) => [k * 30, i * 5 - 90]), `m${k}`));
   return (
     <g transform={`translate(${x} ${y})`} opacity={op}>
+      <defs>
+        <clipPath id={`${uid}-disco`}><circle r={r} /></clipPath>
+        <radialGradient id={`${uid}-mar`} cx="38%" cy="32%" r="75%"><stop offset="0" stopColor="#60a5fa" /><stop offset="0.65" stopColor="#2563eb" /><stop offset="1" stopColor="#1e3a8a" /></radialGradient>
+        <radialGradient id={`${uid}-luz`} cx="35%" cy="30%" r="70%"><stop offset="0" stopColor="#fff" stopOpacity={0.28} /><stop offset="0.5" stopColor="#fff" stopOpacity={0} /><stop offset="1" stopColor="#000" stopOpacity={0.22} /></radialGradient>
+      </defs>
       <ellipse cx={0} cy={r + 14} rx={r * 0.8} ry={14} fill="#000" opacity={0.14} />
-      <circle r={r} fill="#3b82f6" opacity={0.9} />
-      <circle r={r} fill="#fff" opacity={0.08} />
-      {[-60, -30, 0, 30, 60].map((lat) => { const yy = -r * Math.sin((lat * Math.PI) / 180), rr = r * Math.cos((lat * Math.PI) / 180); return <ellipse key={lat} cx={0} cy={yy} rx={rr} ry={rr * 0.12} fill="none" stroke="#fff" strokeOpacity={0.25} strokeWidth={2} />; })}
-      {Array.from({ length: 6 }, (_, k) => { const a = (((k * 30 + rot) % 180) * Math.PI) / 180; return <ellipse key={k} cx={0} cy={0} rx={Math.abs(r * Math.cos(a))} ry={r} fill="none" stroke="#fff" strokeOpacity={0.22} strokeWidth={2} />; })}
-      {/* Manchas de tierra que giran con el globo */}
-      {[[-40, 20, 70, 50], [60, -10, 60, 70], [150, 30, 80, 46], [230, -30, 50, 40], [300, 40, 40, 30]].map(([lon, lat, w, h], k) => {
-        const a = ((lon + rot) * Math.PI) / 180;
-        if (Math.cos(a) < 0.05) return null;
-        const px = r * Math.sin(a) * Math.cos((lat * Math.PI) / 180), py = -r * Math.sin((lat * Math.PI) / 180);
-        return <ellipse key={k} cx={px} cy={py} rx={(w / 2) * Math.cos(a)} ry={h / 2} fill="#10b981" opacity={0.85} />;
-      })}
+      <circle r={r} fill={`url(#${uid}-mar)`} />
+      <g clipPath={`url(#${uid}-disco)`}>
+        {paralelos}{meridianos}
+        {tierra}
+      </g>
+      <circle r={r} fill={`url(#${uid}-luz)`} />
       {pins.slice(0, n).map(([lon, lat], k) => {
-        const a = ((lon + rot) * Math.PI) / 180;
-        if (Math.cos(a) < 0.05) return null;
-        const px = r * Math.sin(a) * Math.cos((lat * Math.PI) / 180), py = -r * Math.sin((lat * Math.PI) / 180);
-        return <g key={k} transform={`translate(${px} ${py})`}><path d="M 0 0 L -9 -20 A 11 11 0 1 1 9 -20 Z" fill={color} /><circle cy={-24} r={4.5} fill={c.panel} /></g>;
+        const q = proy(lon, lat);
+        if (q.vis < 0.08) return null;
+        return <g key={k} transform={`translate(${q.px * r} ${-q.py * r})`}><path d="M 0 0 L -9 -20 A 11 11 0 1 1 9 -20 Z" fill={color} /><circle cy={-24} r={4.5} fill={c.panel} /></g>;
       })}
     </g>
   );
 };
+
+/* Siluetas simplificadas de los continentes en [longitud, latitud]. */
+const CONTINENTES: number[][][] = [
+  // América del Norte
+  [[-168, 66], [-162, 70], [-140, 70], [-120, 72], [-95, 72], [-80, 73], [-75, 64], [-65, 60], [-60, 52], [-66, 45], [-70, 42], [-76, 35], [-80, 31], [-81, 25], [-83, 29], [-90, 30], [-97, 27], [-97, 21], [-90, 21], [-87, 16], [-83, 10], [-79, 8], [-86, 13], [-92, 15], [-105, 20], [-110, 24], [-112, 30], [-118, 34], [-124, 40], [-124, 48], [-133, 56], [-148, 60], [-158, 57], [-165, 60]],
+  // Groenlandia
+  [[-50, 60], [-42, 60], [-22, 70], [-20, 80], [-40, 83], [-60, 80], [-70, 76], [-55, 68]],
+  // América del Sur
+  [[-79, 8], [-72, 12], [-62, 10], [-52, 5], [-50, 0], [-35, -6], [-39, -14], [-41, -22], [-48, -26], [-53, -34], [-58, -38], [-65, -42], [-67, -50], [-70, -54], [-75, -50], [-73, -40], [-71, -30], [-71, -18], [-76, -14], [-81, -5], [-80, 0], [-78, 6]],
+  // Europa y Asia
+  [[-10, 36], [-9, 43], [-2, 44], [-5, 48], [0, 50], [5, 53], [8, 57], [5, 62], [15, 68], [25, 71], [40, 68], [60, 70], [80, 73], [100, 77], [120, 73], [140, 72], [160, 70], [180, 68], [178, 62], [160, 60], [155, 50], [142, 46], [135, 43], [130, 35], [122, 40], [120, 32], [122, 25], [110, 20], [108, 12], [105, 9], [100, 13], [101, 7], [104, 1.5], [100, 5], [98, 9], [98, 16], [93, 20], [90, 22], [80, 15], [77, 8], [73, 20], [67, 25], [58, 25], [56, 27], [50, 30], [48, 29], [52, 24], [56, 22], [57, 18], [52, 15], [45, 13], [43, 15], [38, 22], [34, 28], [32, 31], [35, 36], [27, 37], [26, 41], [23, 38], [20, 40], [16, 38], [18, 40], [13, 45], [12, 44], [16, 41], [8, 44], [3, 43], [-1, 37], [-6, 36]],
+  // África
+  [[-17, 21], [-16, 14], [-12, 8], [-8, 4], [0, 5], [8, 4], [9, 1], [12, -6], [13, -12], [12, -18], [15, -27], [18, -34], [25, -34], [32, -28], [35, -24], [35, -18], [40, -15], [40, -8], [39, -4], [43, 0], [51, 12], [44, 11], [43, 13], [39, 16], [37, 22], [34, 28], [32, 31], [25, 32], [20, 32], [11, 33], [10, 37], [0, 36], [-6, 36], [-10, 30], [-13, 27]],
+  // Madagascar
+  [[44, -25], [47, -25], [50, -15], [49, -12], [44, -17]],
+  // Gran Bretaña
+  [[-5, 50], [1, 51], [0, 53], [-3, 56], [-5, 58], [-6, 56], [-3, 54], [-5, 52]],
+  // Japón
+  [[130, 31], [135, 34], [140, 35], [142, 40], [141, 43], [145, 44], [140, 41], [136, 37], [131, 34]],
+  // Borneo y Sumatra
+  [[109, 1], [111, 2], [117, 7], [119, 5], [116, -4], [110, -3]],
+  [[95, 5], [98, 4], [104, -2], [106, -6], [102, -4]],
+  // Australia
+  [[114, -22], [114, -34], [118, -35], [124, -34], [131, -31], [138, -35], [141, -38], [147, -38], [150, -37], [153, -29], [153, -25], [146, -19], [142, -11], [141, -15], [136, -12], [130, -12], [126, -14], [122, -17]],
+];
 
 /* Cara con emoción: `e` de −1 (triste) a 1 (feliz); `enojo` 0 a 1 frunce las cejas. */
 export const Cara: React.FC<{ id: string; x: number; y: number; r?: number; e?: number; enojo?: number; op?: number }> = ({ id, x, y, r = 40, e = 0, enojo = 0, op = 1 }) => (
