@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Sobre, Frasco, Moneda3D, Reloj, Balanza, Mano, Tarjeta, Conector, Pastilla, Cruz, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
+import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Sobre, Frasco, Moneda3D, Reloj, Balanza, Brazo, resorte, Tarjeta, Conector, Pastilla, Cruz, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
 import type { PropsCE } from './kitBR';
 
 /**
@@ -76,7 +76,7 @@ export const BofetadaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estati
           {([['adopcion', 'Adopción', VERDE, 130, 440], ['subida', 'Subida', AMBAR, 440, 760], ['expulsa', 'Bofetada', ROJO_M, 760, 1070]] as const).map(([n, txt, col, x0, x1]) => (
             <g key={n} opacity={0.25 + 0.75 * E(n)}>
               <rect x={x0} y={240} width={x1 - x0 - 8} height={400} rx={18} fill={col} opacity={0.12} />
-              <Txt x={(x0 + x1) / 2} y={286} textAnchor="middle" fontSize={28} fill={col} peso={800}>{txt}</Txt>
+              <Txt x={(x0 + x1) / 2} y={movil ? (n === 'expulsa' ? 610 : 318) : 286} textAnchor="middle" fontSize={28} fill={col} peso={800}>{txt}</Txt>
             </g>
           ))}
           <path d={Array.from({ length: 40 }, (_, k) => { const x = 130 + (k * 940) / 39; return `${k ? 'L' : 'M'} ${x} ${curvaY(x)}`; }).join(' ')} stroke={`url(#${ID}-marcaH)`} strokeWidth={8} fill="none" />
@@ -85,7 +85,18 @@ export const BofetadaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estati
         <g transform={`translate(${xT + 260 * empuje} ${curvaY(xT) + 300 * empuje * empuje}) rotate(${50 * empuje})`} opacity={1 - empuje * 0.6}>
           <Tienda x={0} y={0} s={0.55} cierra={empuje} />
         </g>
-        {t >= m('expulsa') && <Mano x={xT - 150 + 87 * empuje} y={curvaY(xT) + 24} s={0.6} brazo={0} op={E('expulsa')} empuja={empuje} t={t} />}
+        {/* La mano de Google baja desde arriba, toma impulso y golpea la tienda fuera de la curva (resortes de Remotion) */}
+        {t >= m('expulsa') - 0.4 && (() => {
+          // Baja desde arriba casi recta, toma impulso, golpea el techo de la tienda y vuelve a subir.
+          const baja = resorte(t, m('expulsa') - 0.4, { rigidez: 70, amortiguacion: 16 });
+          const golpe = resorte(t, m('expulsa') + 0.25, { rigidez: 300, amortiguacion: 18 });
+          const sube = resorte(t, m('expulsa') + 1.5, { rigidez: 90, amortiguacion: 16 });
+          const yC = curvaY(1000);
+          const yW = lerp(-120, yC - 150, baja) + 62 * golpe - (yC + 40) * sube;
+          const xW = 990 + 24 * golpe;
+          // El hombro queda fuera de cuadro: el largo acompaña a la distancia para que el brazo entre casi recto.
+          return <Brazo hombro={[xW + 14, -200]} objetivo={[xW, yW]} s={1} mira={1} largo={Math.max(60, yW + 200) / 0.985} grosor={36} manga="#475569" abre={1} mano={0.95} op={1 - sube} />;
+        })()}
       </Toma>
 
       {/* 3 · Tres tipos de tráfico */}

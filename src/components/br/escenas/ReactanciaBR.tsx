@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, PersonaCara, Telefono, Reloj, Sello, Cruz, Visto, Globo, Balanza, Mano, Pizarra, Cubo, Edificio, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
+import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, PersonaCara, Telefono, Reloj, Sello, Cruz, Visto, Globo, Balanza, Brazo, hombroDe, resorte, suave, Pizarra, Cubo, Edificio, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
 import type { PropsCE } from './kitBR';
 
 /**
@@ -26,9 +26,16 @@ export const ReactanciaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, esta
     [m('reloj'), 'Lo que la activa'], [m('ensenanza'), 'Enseñar y diagnosticar'],
   ];
   const pines = Math.round(23 * sm(t, m('paises'), m('paises') + 2.5));
-  const empuje = sm(t, m('brehm') + 0.3, m('brehm') + 1.3);
-  const reacciona = sm(t, m('reacciona'), m('reacciona') + 0.8);
-  const lean = empuje * 12 - reacciona * 20;
+  // Movimiento con resortes de Remotion: el vendedor camina, levanta el brazo, empuja; el comprador cede y luego
+  // reacciona: se endereza, empuja de vuelta y el vendedor retira la mano y retrocede.
+  const T0 = m('brehm'), TR = m('reacciona');
+  const camina = suave(t, T0 + 0.1, T0 + 1.0);
+  const alza = resorte(t, T0 + 0.55, { rigidez: 110, amortiguacion: 16 });
+  const contacto = resorte(t, T0 + 1.05, { rigidez: 80, amortiguacion: 11 });
+  const reacciona = resorte(t, TR, { rigidez: 120, amortiguacion: 12 });
+  const retira = resorte(t, TR + 0.12, { rigidez: 140, amortiguacion: 18 });
+  const empuje = contacto * (1 - retira);
+  const lean = 12 * contacto * (1 - reacciona) - 8 * reacciona;
 
   return (
     <Lienzo id={ID} t={t} fin={fin} fondo={fondo} vP={vP} pregunta={pregunta} isDark={isDark} titulo="Presión y reactancia">
@@ -69,20 +76,33 @@ export const ReactanciaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, esta
       <Toma t={t} a={m('brehm')} b={m('ensenanza')} cy={470}>
         <g opacity={E('brehm')}>
           <rect x={90} y={700} width={560} height={10} rx={5} fill={c.apagado} />
-          {(() => {
-            // El vendedor avanza y empuja con su propio brazo; cuando el comprador reacciona, retrocede.
-            const sx = lerp(170, 240, empuje) - 70 * reacciona, hx = sx + 193;
-            return (
-              <g>
-                <PersonaCara id={ID} x={sx} y={698} s={0.95} cuerpo={NARANJA} corbata e={lerp(0.5, -0.6, reacciona)} />
-                <Mano x={hx} y={597} s={0.7} brazo={231} manga="#ea580c" empuja={empuje * (1 - reacciona)} t={t} />
-              </g>
-            );
-          })()}
-          <Pastilla x={330} y={470} texto="Presión" fondo={NARANJA} tam={24} op={empuje * (1 - reacciona)} />
+          {/* El comprador va primero: la mano del vendedor se apoya por delante de su pecho */}
           <g transform={`rotate(${lean} 500 698)`}>
             <PersonaCara id={ID} x={500} y={698} s={0.95} cuerpo={AZUL_M} corbata e={-reacciona} enojo={reacciona} />
           </g>
+          {(() => {
+            // Pecho del comprador, que gira con su inclinación alrededor de los pies (500, 698).
+            const S = 0.95, r = (lean * Math.PI) / 180;
+            const lx = -40 * S, ly = -64 * S;
+            const pecho: [number, number] = [500 + lx * Math.cos(r) - ly * Math.sin(r), 698 + lx * Math.sin(r) + ly * Math.cos(r)];
+            // La muñeca queda a ~15 del pecho: la palma se apoya en él sin atravesarlo.
+            const apoyo: [number, number] = [pecho[0] - 15, pecho[1] + 8];
+            // El vendedor se acerca lo justo para alcanzar con el brazo casi extendido; al reaccionar, retrocede.
+            const sxCerca = apoyo[0] - 21 - 66;
+            const sx = lerp(sxCerca - 120, sxCerca, camina) - 75 * retira;
+            const hombro = hombroDe(sx, 698, S);
+            // Reposo: antebrazo a la altura de la cintura, mano relajada (estas figuras tienen el torso corto).
+            const reposo: [number, number] = [hombro[0] + 26, hombro[1] + 44];
+            const u = alza * (1 - retira);
+            const meta: [number, number] = [lerp(reposo[0], apoyo[0], u), lerp(reposo[1], apoyo[1], u)];
+            return (
+              <g>
+                <PersonaCara id={ID} x={sx} y={698} s={S} cuerpo={NARANJA} corbata e={lerp(0.5, -0.6, reacciona)} />
+                <Brazo hombro={hombro} objetivo={meta} s={S} manga="#ea580c" abre={Math.min(1, u * 1.2)} />
+              </g>
+            );
+          })()}
+          <Pastilla x={330} y={470} texto="Presión" fondo={NARANJA} tam={24} op={Math.min(1, empuje)} />
           {(() => {
             const hx = 500 + Math.sin((lean * Math.PI) / 180) * 136, hy = 698 - 136 * Math.cos((lean * Math.PI) / 180);
             return (

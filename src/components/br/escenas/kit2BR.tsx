@@ -134,49 +134,8 @@ export const Pescador: React.FC<{ id: string; x: number; y: number; hx: number; 
   );
 };
 
-/* Mano abierta que empuja hacia la derecha, con antebrazo. (x, y) es el centro de la palma. */
-export const Mano: React.FC<{ x: number; y: number; s?: number; manga?: string; op?: number; empuja?: number; t?: number; brazo?: number }> = ({ x, y, s = 1, manga = '#334155', op = 1, empuja = 0, t = 0, brazo = 200 }) => {
-  const piel = '#f5c09a', sombraP = '#e0a072', claro = '#fde4d2';
-  // Mano abierta en gesto de empujar: la muñeca se dobla hacia arriba y la palma mira hacia adelante.
-  // Dedos (x de la base, largo, ancho, giro): índice, medio, anular y meñique, levemente abiertos en abanico.
-  const DEDOS: [number, number, number, number][] = [[-19, 58, 17, -7], [-1, 66, 18, -1], [17, 61, 17, 5], [33, 47, 14, 11]];
-  return (
-    <g transform={`translate(${x} ${y}) scale(${s})`} opacity={op}>
-      {/* Manga horizontal que llega a la muñeca, con puño */}
-      {brazo > 0 && <>
-        <rect x={-30 - brazo} y={42} width={brazo + 4} height={40} rx={20} fill={manga} />
-        <rect x={-30 - brazo} y={64} width={brazo + 4} height={18} rx={9} fill="#000" opacity={0.16} />
-      </>}
-      <rect x={-34} y={36} width={18} height={52} rx={7} fill="#f1f5f9" />
-      {/* Muñeca doblada: une el puño con la base de la palma */}
-      <path d="M -18 44 Q 0 40 20 46 L 16 80 Q -2 84 -18 80 Z" fill={piel} />
-      {/* Dedos en abanico, con uña y pliegue de nudillo */}
-      {DEDOS.map(([fx, h, w, g], k) => (
-        <g key={k} transform={`rotate(${g} ${fx} -36)`}>
-          <rect x={fx - w / 2} y={-36 - h} width={w} height={h + 14} rx={w / 2} fill={piel} />
-          <rect x={fx + w * 0.12} y={-36 - h} width={w * 0.38} height={h + 6} rx={w * 0.19} fill={sombraP} opacity={0.35} />
-          <rect x={fx - w * 0.3} y={-33 - h} width={w * 0.6} height={w * 0.62} rx={w * 0.3} fill={claro} />
-          <path d={`M ${fx - w * 0.32} ${-36 - h * 0.42} q ${w * 0.32} 3 ${w * 0.64} 0`} stroke={sombraP} strokeWidth={2} fill="none" strokeLinecap="round" />
-        </g>
-      ))}
-      {/* Palma redondeada, más ancha arriba */}
-      <path d="M -30 -42 Q -4 -50 42 -40 Q 46 -6 38 22 Q 30 50 10 52 H -10 Q -28 48 -32 18 Q -34 -14 -30 -42 Z" fill={piel} />
-      <path d="M 22 -44 Q 34 -42 42 -40 Q 46 -6 38 22 Q 30 50 10 52 Q 30 20 22 -44 Z" fill={sombraP} opacity={0.4} />
-      {/* Líneas de la palma */}
-      <path d="M -20 -6 Q 6 -14 30 -8" stroke={sombraP} strokeWidth={2.5} fill="none" strokeLinecap="round" opacity={0.6} />
-      <path d="M -16 24 Q -2 6 4 -24" stroke={sombraP} strokeWidth={2.5} fill="none" strokeLinecap="round" opacity={0.5} />
-      {/* Pulgar: dos falanges que salen del costado y apuntan hacia arriba y afuera */}
-      <path d="M -26 30 Q -46 26 -54 6 L -64 -16 Q -68 -30 -56 -34 Q -45 -37 -40 -25 L -28 -2 Z" fill={piel} />
-      <path d="M -54 6 L -64 -16 Q -68 -30 -56 -34 Q -62 -14 -50 4 Z" fill={sombraP} opacity={0.35} />
-      <rect x={-63} y={-31} width={11} height={11} rx={5.5} fill={claro} transform="rotate(-24 -57.5 -25.5)" />
-      <path d="M -50 -6 q 6 -4 12 -2" stroke={sombraP} strokeWidth={2} fill="none" strokeLinecap="round" />
-      {/* Líneas de empuje delante de la palma */}
-      {empuja > 0.01 && [0, 1, 2].map((k) => (
-        <path key={k} d={`M ${60 + k * 14 + 4 * Math.sin(t * 8 + k)} ${-40 + k * 4} q 12 44 0 88`} stroke={sombraP} strokeWidth={5} fill="none" strokeLinecap="round" opacity={empuja * (0.8 - k * 0.22)} />
-      ))}
-    </g>
-  );
-};
+/* Brazo articulado con mano (compartido por todas las clases en remotion/brazo). */
+export { Brazo, ManoPerfil, resorte, suave, hombroDe, resolverCodo, PIEL } from '../../remotion/brazo';
 
 /* Avión visto desde arriba, nariz hacia arriba. `agujeros` son puntos [x, y] relativos con impactos. */
 export const Avion: React.FC<{ x: number; y: number; s?: number; color?: string; agujeros?: [number, number][]; agU?: number; op?: number }> = ({ x, y, s = 1, color = '#94a3b8', agujeros = [], agU = 1, op = 1 }) => (
