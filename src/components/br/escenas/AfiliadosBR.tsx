@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, Moneda3D, Libro, Hoja, Sello, Navegador, Balanza, Tarjeta, Conector, Pastilla, LogoCF, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
+import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, PersonaCara, Moneda3D, Libro, Hoja, Sello, Navegador, Balanza, Tarjeta, Conector, Pastilla, LogoCF, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
 import type { PropsCE } from './kitBR';
 
 /**
@@ -97,26 +97,25 @@ export const AfiliadosBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estat
       {/* 3 · Materiales, riesgo y honestidad */}
       <Toma t={t} a={m('capacita')} b={fin + 1} cy={470}>
         <g opacity={E('capacita')}>
-          <rect x={90} y={270} width={200} height={150} rx={18} fill={AMBAR} />
-          <rect x={160} y={244} width={60} height={34} rx={10} fill="none" stroke={AMBAR} strokeWidth={10} />
-          <Txt x={190} y={360} textAnchor="middle" fontSize={24} fill="#fff" peso={800}>Materiales</Txt>
-          {[0, 1, 2].map((k) => { const p = ((t - m('capacita')) * 0.4 + k / 3) % 1; return <g key={k} opacity={Math.sin(Math.PI * p)}><Hoja x={lerp(310, 520, p)} y={300 + k * 30} w={50} h={64} color={c.tenue} /></g>; })}
+          <rect x={70} y={270} width={250} height={150} rx={18} fill={AMBAR} />
+          <rect x={165} y={244} width={60} height={34} rx={10} fill="none" stroke={AMBAR} strokeWidth={10} />
+          <Txt x={195} y={360} textAnchor="middle" fontSize={24} fill="#fff" peso={800}>Materiales</Txt>
+          {[0, 1, 2].map((k) => { const p = ((t - m('capacita')) * 0.4 + k / 3) % 1; return <g key={k} opacity={Math.sin(Math.PI * p)}><Hoja x={lerp(340, 520, p)} y={300 + k * 30} w={50} h={64} color={c.tenue} /></g>; })}
           {[0, 1, 2].map((k) => <Persona key={k} id={ID} x={580 + k * 80} y={430} s={0.45} cuerpo={[NARANJA, VIOLETA, TEAL][k]} />)}
           <Pastilla x={660} y={480} texto={movil ? 'Para copiar' : 'Listos para copiar y editar'} fondo={AMBAR} tam={22} />
         </g>
         {t >= m('riesgo') && (
           <g opacity={E('riesgo')}>
             <Balanza x={300} y={800} inc={lerp(-14, 14, riesgo)} c={c} brazo={150} alto={210}
-              izq={<g><Txt x={0} y={-30} textAnchor="middle" fontSize={22} fill={c.texto} peso={800}>Tú</Txt></g>}
-              der={<g><Txt x={0} y={-30} textAnchor="middle" fontSize={22} fill={c.texto} peso={800}>Venta</Txt></g>} />
+              izq={<g><Txt x={0} y={62} textAnchor="middle" fontSize={22} fill={c.texto} peso={800}>Tú</Txt></g>}
+              der={<g><Txt x={0} y={62} textAnchor="middle" fontSize={22} fill={c.texto} peso={800}>Venta</Txt></g>} />
             <g transform={`translate(${lerp(150, 450, riesgo)} ${lerp(640, 690, riesgo)})`}><path d="M -40 30 L -26 -24 H 26 L 40 30 Z" fill={ROJO_M} /><circle cy={-34} r={12} fill="none" stroke={ROJO_M} strokeWidth={6} /></g>
             <Pastilla x={300} y={540} texto={movil ? 'Pagas al vender' : 'Pagas cuando se vende'} fondo={VERDE} tam={24} />
           </g>
         )}
         {t >= m('honestidad') && (
           <g opacity={E('honestidad')}>
-            <Persona id={ID} x={900} y={720} s={0.7} cuerpo={VIOLETA} />
-            <Cara id={ID} x={900} y={620} r={26} e={-seVan} />
+            <PersonaCara id={ID} x={900} y={720} s={0.7} cuerpo={VIOLETA} e={-seVan} enojo={seVan} />
             {[0, 1, 2, 3, 4].map((k) => <circle key={k} cx={lerp(800 + k * 50, 760 + k * 110, seVan)} cy={lerp(780, 830, seVan)} r={14} fill={GRIS} opacity={1 - 0.7 * seVan} />)}
             <Pastilla x={900} y={560} texto="Exige honestidad" fondo={ROJO_M} tam={26} />
           </g>

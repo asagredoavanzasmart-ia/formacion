@@ -98,13 +98,24 @@ export const CreatividadBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, est
       {/* 3 · 80/20 y el ensayo */}
       <Toma t={t} a={m('ochenta')} b={fin + 1} cy={470}>
         <g opacity={E('ochenta')}>
+          {/* El presupuesto, partido en 80 y 20: cada moneda cae de su tramo a su pila */}
+          <rect x={90} y={210} width={560} height={54} rx={14} fill={c.apagado} />
+          <rect x={90} y={210} width={448} height={54} rx={14} fill={AZUL_M} opacity={0.85} />
+          <rect x={538} y={210} width={112} height={54} rx={14} fill={VERDE} opacity={0.85} />
+          <Txt x={314} y={246} textAnchor="middle" fontSize={24} fill="#fff" peso={800}>Presupuesto · 80 %</Txt>
+          <Txt x={594} y={246} textAnchor="middle" fontSize={24} fill="#fff" peso={800}>20 %</Txt>
           {Array.from({ length: 10 }, (_, k) => {
             const fria = k < 8;
-            const p = sm(monedas, k * 0.06, k * 0.06 + 0.4);
-            return <Moneda3D key={k} x={lerp(120 + k * 44, fria ? 200 + (k % 4) * 46 : 470 + (k - 8) * 46, p)} y={lerp(230, fria ? 400 + Math.floor(k / 4) * 50 : 400, p)} r={18} giro={1} />;
+            const p = sm(monedas, k * 0.07, k * 0.07 + 0.3);
+            const x0 = fria ? 130 + k * 52 : 568 + (k - 8) * 52;
+            const xF = fria ? 270 : 590, yF = 470 - (fria ? k : k - 8) * 14;
+            if (p <= 0) return null;
+            return p < 1
+              ? <Moneda3D key={k} x={lerp(x0, xF, p)} y={lerp(280, yF, p * p)} r={18} giro={Math.cos(t * 6 + k)} />
+              : <g key={k}><ellipse cx={xF} cy={yF + 4} rx={34} ry={10} fill="#d97706" /><ellipse cx={xF} cy={yF} rx={34} ry={10} fill="#fbbf24" /></g>;
           })}
           <Txt x={270} y={540} textAnchor="middle" fontSize={26} fill={AZUL_M} peso={800}>{movil ? 'Fría: 80 %' : 'Audiencia fría: 80 %'}</Txt>
-          <Txt x={490} y={540} textAnchor="middle" fontSize={26} fill={VERDE} peso={800}>20 %</Txt>
+          <Txt x={590} y={540} textAnchor="middle" fontSize={26} fill={VERDE} peso={800}>20 %</Txt>
           <Txt x={380} y={590} textAnchor="middle" fontSize={24} fill={c.tenue} peso={800}>{movil ? '…trae 20 %' : 'y trae solo el 20 % de los resultados'}</Txt>
         </g>
         {t >= m('llenan') && (

@@ -94,14 +94,32 @@ export const SuenoBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico 
           <Cifra x={470} y={660} valor={185} u={sm(t, m('mapeo'), m('mapeo') + 1.2)} tam={40} color={VIOLETA} suf=" fuentes" />
           <Cifra x={470} y={720} valor={30} u={sm(t, m('mapeo'), m('mapeo') + 1.2)} tam={34} color={c.texto} suf=" millones" />
         </g>
-        <g opacity={E('pozo')}>
-          <ellipse cx={900} cy={760} rx={110} ry={34} fill="#78716c" />
-          <ellipse cx={900} cy={756} rx={80} ry={22} fill="#1e3a8a" />
-          <ellipse cx={900} cy={756} rx={80 * sm(t, m('pozo'), m('pozo') + 2)} ry={22 * sm(t, m('pozo'), m('pozo') + 2)} fill="#3b82f6" opacity={0.8} />
-          <Persona id={ID} x={1060} y={760} s={0.6} cuerpo={NARANJA} />
-          <Pala x={1000} y={640} s={0.5} rot={-30 + 18 * Math.sin(t * 3)} />
-          <Txt x={900} y={640} textAnchor="middle" fontSize={24} fill={c.texto} peso={800}>{movil ? 'Cava antes' : 'Cavar el pozo antes de tener sed'}</Txt>
-        </g>
+        {t >= m('pozo') - 0.1 && (() => {
+          const agua = sm(t, m('pozo') + 0.8, m('pozo') + 3);
+          const palada = (t * 0.9) % 1;
+          return (
+            <g opacity={E('pozo')}>
+              {/* Pozo de piedra con techo y balde */}
+              <rect x={800} y={600} width={14} height={140} rx={5} fill="#92400e" />
+              <rect x={986} y={600} width={14} height={140} rx={5} fill="#92400e" />
+              <path d="M 780 606 L 900 556 L 1020 606 Z" fill="#b45309" />
+              <path d="M 900 556 L 1020 606 H 900 Z" fill="#000" opacity={0.15} />
+              <rect x={810} y={624} width={180} height={8} rx={4} fill="#78350f" />
+              <path d={`M 900 632 V ${662 + 8 * Math.sin(t * 2)}`} stroke="#78350f" strokeWidth={3} />
+              <path d={`M 886 ${662 + 8 * Math.sin(t * 2)} h 28 l -4 22 h -20 Z`} fill="#64748b" />
+              <ellipse cx={900} cy={742} rx={112} ry={30} fill="#78716c" />
+              <ellipse cx={900} cy={740} rx={88} ry={20} fill="#1e293b" />
+              <ellipse cx={900} cy={740} rx={88 * agua} ry={20 * agua} fill="#3b82f6" opacity={0.9} />
+              <path d="M 788 742 V 786 Q 900 820 1012 786 V 742 Q 900 774 788 742 Z" fill="#a8a29e" />
+              {[0, 1, 2, 3].map((k) => <rect key={k} x={806 + k * 50} y={756 + (k % 2) * 14} width={40} height={12} rx={4} fill="#78716c" opacity={0.6} />)}
+              {/* Quien cava, con la pala en movimiento y tierra que salta */}
+              <Persona id={ID} x={1090} y={790} s={0.6} cuerpo={NARANJA} />
+              <Pala x={1040} y={700} s={0.42} rot={-35 + 22 * Math.sin(t * 3.4)} />
+              {[0, 1, 2].map((k) => { const p = (palada + k / 3) % 1; return <circle key={k} cx={1020 + 60 * p} cy={760 - 70 * Math.sin(Math.PI * p)} r={6} fill="#92400e" opacity={1 - p} />; })}
+              <Pastilla x={900} y={834} texto={movil ? 'Cava antes' : 'Cavar el pozo antes de tener sed'} fondo={AZUL_M} tam={22} />
+            </g>
+          );
+        })()}
         <Conector x1={320} y1={530} x2={290} y2={590} u={E('mapeo')} t={t} color={VIOLETA} puntos={2} grosor={4} />
       </Toma>
     </Lienzo>

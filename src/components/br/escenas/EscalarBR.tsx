@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, Embudo, Telefono, Medidor, Burbuja, Balanza, Billete, Regalo, Bombilla, Megafono, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS } from './kitBR';
+import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, PersonaCara, Embudo, Telefono, Medidor, Burbuja, Balanza, Billete, Regalo, Bombilla, Megafono, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS } from './kitBR';
 import type { PropsCE } from './kitBR';
 
 /**
@@ -99,9 +99,8 @@ export const EscalarBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatic
           <Persona id={ID} x={600 + 120 * sale} y={556} s={0.75} cuerpo={AZUL_M} />
           <rect x={80} y={708} width={1040} height={10} rx={5} fill={c.apagado} />
           <g transform={`translate(${-200 * sale} 0)`} opacity={1 - 0.75 * sale}>
-            <Persona id={ID} x={250} y={708} s={0.8} cuerpo={GRIS} />
+            <PersonaCara id={ID} x={250} y={708} s={0.8} cuerpo={GRIS} e={sale > 0.1 ? -1 : 0} />
             <Paleta x={300} y={600} alto={lerp(120, 140, puja)} color={GRIS} monto="$1" />
-            {sale > 0.1 && <Cara id={ID} x={250} y={600} r={20} e={-1} />}
           </g>
           <Persona id={ID} x={950} y={708} s={0.8} cuerpo={VERDE} corbata />
           <Paleta x={900} y={600} alto={lerp(120, 300, puja)} color={VERDE} monto={puja > 0.5 ? '$3' : '$1'} />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Persona, Burbuja, Bombilla, Corazon, Casa, Sello, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
+import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Persona, PersonaCara, Burbuja, Bombilla, Corazon, Casa, Sello, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
 import type { PropsCE } from './kitBR';
 
 /**
@@ -94,9 +94,8 @@ export const EpifaniaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estati
             const x = p < 0.6 ? lerp(260, 600, p / 0.6) : lerp(600, 480, (p - 0.6) / 0.4);
             return <g key={w} opacity={Math.sin(Math.PI * p)}><rect x={x - 40} y={300 + k * 80} width={80} height={44} rx={10} fill={GRIS} /><Txt x={x} y={330 + k * 80} textAnchor="middle" fontSize={24} fill="#fff" peso={800}>{w}</Txt></g>;
           })}
-          <Persona id={ID} x={900} y={620} s={0.75} cuerpo={AZUL_M} />
-          <Cara id={ID} x={900} y={380} r={42} e={-0.8} />
-          <Txt x={960} y={330} fontSize={48} fill={GRIS} peso={800}>?</Txt>
+          <PersonaCara id={ID} x={900} y={640} s={0.85} cuerpo={AZUL_M} e={-0.8} enojo={0.3} />
+          <Txt x={950} y={470} fontSize={52} fill={GRIS} peso={800}>?</Txt>
           <Pastilla x={420} y={730} texto={movil ? 'Kim Klaver' : 'Kim Klaver: el asesino n.º 1 de las ventas'} fondo={ROJO_M} tam={24} op={E('klaver')} />
         </g>
         <g opacity={algo}>
@@ -106,7 +105,7 @@ export const EpifaniaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estati
           <Casa x={920} y={560} s={0.9} />
           <Txt x={260} y={600} textAnchor="middle" fontSize={26} fill={c.texto} peso={800}>Lo nuevo</Txt>
           <Txt x={920} y={620} textAnchor="middle" fontSize={26} fill={c.texto} peso={800}>Lo conocido</Txt>
-          <Cara id={ID} x={600} y={680} r={42} e={1} />
+          <PersonaCara id={ID} x={600} y={770} s={0.6} cuerpo={AMBAR} e={1} />
         </g>
       </Toma>
 

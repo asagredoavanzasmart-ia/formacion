@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, Escalon, Calendario, Regalo, EtiquetaPrecio, Cubo, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
+import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, PersonaCara, Escalon, Calendario, Regalo, EtiquetaPrecio, Cubo, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
 import type { PropsCE } from './kitBR';
 
 /**
@@ -33,6 +33,8 @@ export const EscaleraBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estati
   ];
   const amarillo = sm(t, m('amarillos'), m('amarillos') + 1);
   const colDiente = `rgb(${Math.round(lerp(255, 250, amarillo))}, ${Math.round(lerp(255, 214, amarillo))}, ${Math.round(lerp(255, 120, amarillo))})`;
+  // El consultorio parte centrado y se corre a la izquierda cuando llega la cuenta.
+  const desliza = 230 * (1 - sm(t, m('pagando') - 1.2, m('pagando') - 0.3));
   const R: [string, string, number][] = [['pagando', 'Bandejas blanqueadoras', 0], ['pagando', 'Retenedores', 0.8], ['consulta', 'Control en 6 meses', 0]];
 
   // Toma 2: la escalera.
@@ -54,24 +56,49 @@ export const EscaleraBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estati
 
       {/* 1 · El consultorio */}
       <Toma t={t} a={0} b={m('escalera')} cy={470}>
+        <g transform={`translate(${desliza} 0)`}>
         <g opacity={E('dentista', 0.6, -0.3)}>
-          <rect x={150} y={700} width={360} height={14} rx={7} fill={c.apagado} />
-          <rect x={300} y={600} width={40} height={100} rx={10} fill="#94a3b8" />
-          <path d="M 180 600 H 420 Q 440 600 440 580 V 570 H 180 Z" fill={AZUL_M} />
-          <path d="M 180 575 L 130 470 Q 124 452 140 448 L 160 446 L 214 570 Z" fill={AZUL_M} />
-          <rect x={112} y={418} width={56} height={36} rx={14} fill="#1d4ed8" />
-          <Persona id={ID} x={270} y={572} s={0.58} cuerpo={NARANJA} />
-          <path d="M 470 380 Q 420 320 360 330" stroke="#94a3b8" strokeWidth={10} fill="none" strokeLinecap="round" />
-          <ellipse cx={350} cy={338} rx={34} ry={18} fill="#fde68a" />
-          <Persona id={ID} x={500} y={700} s={0.78} cuerpo="#e2e8f0" />
+          {/* Piso del consultorio */}
+          <rect x={70} y={718} width={560} height={12} rx={6} fill={c.apagado} />
+          {/* Lámpara con brazo articulado: el haz cae sobre la boca del paciente */}
+          <rect x={592} y={330} width={16} height={390} rx={7} fill="#94a3b8" />
+          <ellipse cx={600} cy={720} rx={46} ry={9} fill="#000" opacity={0.15} />
+          <path d="M 600 340 L 450 330 L 330 372" stroke="#94a3b8" strokeWidth={12} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx={450} cy={330} r={9} fill="#64748b" />
+          <path d={`M 300 386 L 330 380 L 196 486 L 160 470 Z`} fill="#fde68a" opacity={0.28 + 0.06 * Math.sin(t * 3)} />
+          <g transform="rotate(-30 314 378)"><ellipse cx={314} cy={378} rx={40} ry={20} fill="#64748b" /><ellipse cx={314} cy={386} rx={30} ry={10} fill="#fde68a" /></g>
+          {/* Dentista detrás del sillón, con mascarilla y espejo */}
+          <Persona id={ID} x={290} y={718} s={1.55} cuerpo="#e2e8f0" />
+          <rect x={262} y={514} width={56} height={26} rx={10} fill="#bae6fd" />
+          <path d="M 262 520 L 252 512 M 318 520 L 328 512" stroke="#7dd3fc" strokeWidth={3} />
+          <path d="M 262 590 L 190 486" stroke="#64748b" strokeWidth={6} strokeLinecap="round" />
+          <circle cx={186} cy={480} r={9} fill="#cbd5e1" stroke="#64748b" strokeWidth={3} />
+          {/* Sillón reclinado */}
+          <rect x={300} y={640} width={50} height={76} rx={10} fill="#64748b" />
+          <ellipse cx={325} cy={716} rx={80} ry={10} fill="#475569" />
+          <path d="M 205 628 L 140 528" stroke={AZUL_M} strokeWidth={34} strokeLinecap="round" />
+          <path d="M 205 632 H 450 L 532 690" stroke={AZUL_M} strokeWidth={34} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M 205 646 H 450 L 526 700" stroke="#000" strokeWidth={8} fill="none" opacity={0.12} strokeLinecap="round" />
+          <path d="M 132 512 L 116 488" stroke="#1d4ed8" strokeWidth={32} strokeLinecap="round" />
+          {/* Paciente (Brunson) tendido en el sillón */}
+          <path d="M 162 500 L 232 608 L 452 608 L 540 668" stroke={NARANJA} strokeWidth={42} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M 300 608 L 452 608 L 540 668" stroke="#1e3a8a" strokeWidth={36} fill="none" strokeLinecap="round" strokeLinejoin="round" opacity={0.85} />
+          <ellipse cx={556} cy={680} rx={16} ry={11} fill="#1f2937" />
+          <path d="M 200 560 L 270 612" stroke="#c2410c" strokeWidth={16} strokeLinecap="round" />
+          <circle cx={146} cy={466} r={30} fill={`url(#${ID}-cara)`} />
+          <path d="M 118 470 Q 112 436 142 434 Q 160 434 168 446 Q 140 444 128 474 Z" fill="#2b1a12" />
+          <circle cx={156} cy={460} r={3.5} fill="#3b2a20" />
+          <ellipse cx={168} cy={478} rx={6} ry={4.5} fill="#7f1d1d" />
         </g>
         <g opacity={E('limpieza')}>
-          <circle cx={250} cy={260} r={96} fill={c.panel} style={sombra(0.15, 6, 12)} />
-          <circle cx={290} cy={370} r={14} fill={c.panel} /><circle cx={300} cy={400} r={8} fill={c.panel} />
-          <Diente x={250} y={265} s={1.05} color={colDiente} inc={-9 * amarillo} />
+          <circle cx={200} cy={268} r={92} fill={isDark ? '#1e3a5f' : '#e0f2fe'} style={sombra(0.15, 6, 12)} />
+          <circle cx={150} cy={386} r={13} fill={isDark ? '#1e3a5f' : '#e0f2fe'} /><circle cx={140} cy={418} r={8} fill={isDark ? '#1e3a5f' : '#e0f2fe'} />
+          <Diente x={200} y={274} s={1.05} color={colDiente} inc={-9 * amarillo} />
+          {amarillo > 0.05 && [[-22, -10], [14, 6], [-6, 30]].map(([dx, dy], k) => <circle key={k} cx={200 + dx} cy={274 + dy} r={7} fill="#a16207" opacity={0.45 * amarillo} />)}
+          {amarillo < 0.5 && [[-70, -40], [64, -56], [70, 40]].map(([dx, dy], k) => <path key={k} d="M 0 -12 L 3 -3 L 12 0 L 3 3 L 0 12 L -3 3 L -12 0 L -3 -3 Z" fill="#fbbf24" transform={`translate(${200 + dx} ${268 + dy}) scale(${(0.7 + 0.3 * Math.sin(t * 5 + k)) * (1 - amarillo * 2)})`} />)}
         </g>
-        <Pastilla x={250} y={130 + 0} texto="Limpieza gratis" fondo={VERDE} tam={24} op={0} />
-        <Pastilla x={410} y={190} texto="Gratis" fondo={VERDE} tam={24} op={E('limpieza', 0.5, 0.4)} />
+        <Pastilla x={360} y={196} texto="Gratis" fondo={VERDE} tam={24} op={E('limpieza', 0.5, 0.4)} />
+        </g>
         <Tarjeta x={700} y={210} w={420} h={400} titulo="La cuenta" c={c} id={ID} op={E('pagando', 0.6, -0.3)} acento={ROJO_M}>
           {R.map(([n, txt, d], k) => {
             const u = sm(t, m(n) + d, m(n) + d + 0.6);
@@ -124,8 +151,7 @@ export const EscaleraBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estati
         <g opacity={E('masaje')}><Escalon x={230} y={720} w={200} h={100} color={AMBAR} /><Txt x={330} y={680} textAnchor="middle" fontSize={26} fill="#fff" peso={800}>{movil ? 'Masaje' : 'Masaje gratis'}</Txt></g>
         <g opacity={E('quiro')}><Escalon x={500} y={720} w={200} h={200} color={NARANJA} /><Txt x={600} y={580} textAnchor="middle" fontSize={28} fill="#fff" peso={800}>Ajuste</Txt><Txt x={600} y={620} textAnchor="middle" fontSize={28} fill="#fff" peso={800}>$50</Txt></g>
         <g opacity={E('bienestar')}><Escalon x={770} y={720} w={220} h={390} color={VIOLETA} /><Txt x={880} y={400} textAnchor="middle" fontSize={28} fill="#fff" peso={800}>Bienestar</Txt><Txt x={880} y={444} textAnchor="middle" fontSize={34} fill="#fff" peso={800}>$5.000</Txt></g>
-        <Persona id={ID} x={qx} y={q > 0 ? qy : 620} s={0.55} cuerpo={TEAL} />
-        {q > 0.97 && <Cara id={ID} x={1040} y={290} r={30} e={1} />}
+        <PersonaCara id={ID} x={qx} y={q > 0 ? qy : 620} s={0.55} cuerpo={TEAL} e={q > 0.97 ? 1 : 0} />
         <Pastilla x={330} y={430} texto={movil ? 'Cebo' : 'Nuevo cebo'} fondo={AMBAR} tam={24} op={E('masaje', 0.5, 0.5)} />
         <Conector x1={330} y1={460} x2={330} y2={600} u={E('masaje', 0.5, 0.6)} t={t} color={AMBAR} puntos={2} grosor={4} />
       </Toma>

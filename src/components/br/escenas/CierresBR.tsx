@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Corazon, Reloj, Persona, Sello, Balanza, Burbuja, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS } from './kitBR';
+import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Corazon, Reloj, Persona, PersonaCara, Sello, Balanza, Burbuja, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
 import type { PropsCE } from './kitBR';
 
 /**
@@ -41,7 +41,8 @@ export const CierresBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatic
               <Txt x={x} y={290} textAnchor="middle" fontSize={28} fill={col} peso={800}>{`${k + 1}. ${txt}`}</Txt>
               <g transform={`translate(${x} 400)`}>
                 {k === 0 && <Corazon x={0} y={0} s={1.5 + 0.08 * Math.sin(t * 6)} color={ROSA} />}
-                {k === 1 && <Balanza x={0} y={70} inc={6 * Math.sin(t * 1.5)} c={c} brazo={60} alto={110} color={AZUL_M} />}
+                {k === 1 && <g transform="translate(0 78) scale(0.52)"><Balanza x={0} y={0} inc={6 * Math.sin(t * 1.5)} c={c} brazo={150} alto={210} color={AZUL_M}
+                  izq={<rect x={-26} y={-30} width={52} height={30} rx={8} fill={AZUL_M} opacity={0.6} />} der={<rect x={-26} y={-30} width={52} height={30} rx={8} fill={AZUL_M} opacity={0.6} />} /></g>}
                 {k === 2 && <Reloj x={0} y={0} r={52} t={t} vel={4} aro={AMBAR} />}
               </g>
               <Pastilla x={x} y={680} texto={pct} fondo={col} tam={26} op={E(nP)} />
@@ -64,9 +65,9 @@ export const CierresBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatic
           <Persona id={ID} x={290} y={520} s={0.85} cuerpo={NARANJA} corbata />
           <Burbuja x={330} y={330} w={230} texto="«¿Cierto?»" u={sm(preguntaCiclo, 0, 0.3)} c={c} id={ID} tam={30} />
           {Array.from({ length: 6 }, (_, k) => {
-            const x = 120 + (k % 3) * 140, y = 700 + Math.floor(k / 3) * 90;
+            const x = 110 + k * 76, y = 740;
             const si = sm(preguntaCiclo, 0.35 + k * 0.04, 0.5 + k * 0.04) * (1 - sm(preguntaCiclo, 0.85, 0.98));
-            return <g key={k}><Cara id={ID} x={x} y={y + 4 * si} r={30} e={0.6} /><g opacity={si} transform={`translate(${x + 34} ${y - 34})`}><rect x={-26} y={-18} width={52} height={34} rx={12} fill={VERDE} /><Txt x={0} y={7} textAnchor="middle" fontSize={20} fill="#fff" peso={800}>Sí</Txt></g></g>;
+            return <g key={k}><PersonaCara id={ID} x={x} y={y + 50 - 4 * si} s={0.36} cuerpo={[AZUL_M, ROSA, VERDE, VIOLETA, AMBAR, TEAL][k]} e={0.6} /><g opacity={si} transform={`translate(${x + 34} ${y - 34})`}>{movil ? <><circle r={16} fill={VERDE} /><path d="M -7 0 L -2 6 L 8 -6" stroke="#fff" strokeWidth={4} fill="none" strokeLinecap="round" /></> : <><rect x={-26} y={-18} width={52} height={34} rx={12} fill={VERDE} /><Txt x={0} y={7} textAnchor="middle" fontSize={20} fill="#fff" peso={800}>Sí</Txt></>}</g></g>;
           })}
         </g>
         <Pastilla x={290} y={612} texto="Ted Thomas" fondo={NARANJA} tam={24} op={E('thomas')} />

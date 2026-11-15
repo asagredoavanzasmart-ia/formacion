@@ -24,10 +24,19 @@ export const OportunidadBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, est
     [m('mejora'), 'Oferta de mejora'], [m('nueva'), 'Nueva oportunidad'], [m('dificil'), 'Por qué la mejora cuesta'],
     [m('estatus'), 'El estatus'], [m('ipod'), 'El iPod'], [m('real'), 'Un cambio real'],
   ];
-  // Auto viejo: avanza a tirones y se detiene.
-  const av = sm(t, m('mejora'), m('mejora') + 4);
-  const xViejo = lerp(170, 430, av) + (av < 1 ? 6 * Math.sin(t * 9) : 0);
-  const xNuevo = lerp(170, 960, sm(t, m('nueva'), m('nueva') + 3.5));
+  // Auto viejo: avanza a tirones (cuatro arranques con pausas, siempre hacia adelante) y se detiene.
+  const av = sm(t, m('mejora'), m('mejora') + 4.5);
+  const tramo = Math.min(3, Math.floor(av * 4)), frac = av * 4 - tramo;
+  const xViejo = lerp(170, 430, av >= 1 ? 1 : (tramo + sm(frac, 0, 0.6)) / 4);
+  const andando = av < 1 && frac < 0.6;
+  const xNuevo = lerp(170, 950, sm(t, m('nueva'), m('nueva') + 3.5));
+  const Calle: React.FC<{ y: number }> = ({ y }) => (
+    <g>
+      <rect x={60} y={y + 2} width={1060} height={46} rx={10} fill="#64748b" opacity={isDark ? 0.55 : 0.35} />
+      {Array.from({ length: 14 }, (_, k) => <rect key={k} x={80 + k * 76} y={y + 23} width={40} height={5} rx={2} fill="#fff" opacity={0.8} />)}
+      {Array.from({ length: 6 }, (_, k) => <rect key={k} x={1040 + (k % 2) * 14} y={y + 2 + Math.floor(k / 2) * 15.3} width={14} height={15.3} fill={(k + Math.floor(k / 2)) % 2 ? '#fff' : '#1f2937'} opacity={0.9} />)}
+    </g>
+  );
   const SEN: [string, string, string, number, number][] = [['dificil', 'Dolor ya vivido', 'Dolor', 660, 300], ['admitir', 'Admitir el error', 'Error', 820, 230], ['rojo', 'Océano rojo', 'Rojo', 960, 300]];
   const incl = t >= m('justifica') ? lerp(-12, 12, sm(t, m('justifica'), m('justifica') + 1.4)) : lerp(0, -12, sm(t, m('estatus') + 0.6, m('estatus') + 1.6));
   const llena = sm(t, m('biblioteca'), m('biblioteca') + 2);
@@ -38,25 +47,24 @@ export const OportunidadBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, est
 
       {/* 1 · Dos caminos */}
       <Toma t={t} a={0} b={m('estatus')} cy={470}>
-        <rect x={60} y={400} width={1060} height={20} rx={10} fill={c.apagado} />
-        <rect x={60} y={672} width={1060} height={20} rx={10} fill={c.apagado} />
+        <Calle y={400} />
+        <Calle y={672} />
         <g>
-          <rect x={1096} y={340} width={14} height={360} fill={c.texto} opacity={0.7} />
-          {Array.from({ length: 9 }, (_, k) => <rect key={k} x={1110} y={340 + k * 40} width={18} height={20} fill={k % 2 ? c.texto : c.panel} opacity={0.8} />)}
-          <path d="M 1110 200 V 340 M 1110 200 L 1170 222 L 1110 244 Z" stroke={c.texto} strokeWidth={6} fill={VERDE} />
-          <Txt x={1103} y={190} textAnchor="end" fontSize={26} fill={VERDE} peso={800}>Meta</Txt>
+          <rect x={1086} y={200} width={10} height={520} rx={4} fill={c.texto} opacity={0.75} />
+          <path d={`M 1096 206 Q ${1130} ${200 + 6 * Math.sin(t * 3)} 1166 214 L 1166 262 Q 1130 ${254 + 6 * Math.sin(t * 3 + 1)} 1096 258 Z`} fill={VERDE} />
+          <Txt x={1076} y={236} textAnchor="end" fontSize={26} fill={VERDE} peso={800}>Meta</Txt>
         </g>
         {t >= m('mejora') - 0.1 && (
           <g opacity={E('mejora')}>
-            <Coche x={xViejo} y={400} s={0.85} color={GRIS} viejo t={t} rueda={xViejo * 2} />
+            <Coche x={xViejo} y={400 + (andando ? 2 * Math.abs(Math.sin(t * 14)) : 0)} s={0.85} color={GRIS} viejo t={t} rueda={xViejo * 2.5} />
             <Pastilla x={170} y={230} texto="Mejora" fondo={GRIS} tam={26} />
           </g>
         )}
         {t >= m('nueva') - 0.1 && (
           <g opacity={E('nueva')}>
-            <Coche x={xNuevo} y={672} s={0.85} color={NARANJA} nuevo rueda={xNuevo * 2} />
-            <Pastilla x={180} y={520} texto="Nueva oportunidad" fondo={NARANJA} tam={26} />
-            {[0, 1, 2].map((k) => <rect key={k} x={xNuevo - 160 - k * 30} y={612 + k * 14} width={50 - k * 10} height={5} rx={2} fill={NARANJA} opacity={(1 - sm(t, m('nueva') + 3.5, m('nueva') + 4)) * 0.6} />)}
+            <Coche x={xNuevo} y={672} s={0.85} color={NARANJA} nuevo rueda={xNuevo * 2.5} />
+            <Pastilla x={180} y={520} texto={movil ? 'Nueva' : 'Nueva oportunidad'} fondo={NARANJA} tam={26} />
+            {[0, 1, 2].map((k) => <rect key={k} x={xNuevo - 170 - k * 34} y={600 + k * 16} width={50 - k * 10} height={5} rx={2} fill={NARANJA} opacity={(1 - sm(t, m('nueva') + 3.5, m('nueva') + 4)) * 0.6} />)}
           </g>
         )}
         {SEN.map(([n, txt, corto, x, y], k) => {

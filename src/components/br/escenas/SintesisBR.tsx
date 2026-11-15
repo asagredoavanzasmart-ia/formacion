@@ -79,17 +79,18 @@ export const SintesisBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estati
           <Txt x={600} y={478} textAnchor="middle" fontSize={22} fill={c.texto} peso={800}>Embudo</Txt>
           {GEAR.map(([txt, corto, col], k) => {
             const a = (k / 4) * Math.PI * 2 - Math.PI / 4;
-            const d = lerp(380, 215, conecta) + 120 * suelta;
-            const x = 600 + Math.cos(a) * d * 1.3, y = 470 + Math.sin(a) * d * 0.9;
+            // Encajados: los dientes de cada engranaje entran entre los del embudo (radios 110 y 64 más el diente).
+            const d = lerp(360, 212, conecta) + 70 * suelta;
+            const x = 600 + Math.cos(a) * d, y = 470 + Math.sin(a) * d;
             return (
               <g key={txt} opacity={1 - 0.65 * suelta}>
-                <Engranaje x={x} y={y} r={64} t={suelta > 0.5 ? 0 : -t * 1.7} color={col} hueco={c.panel} />
-                <Txt x={x} y={y + (Math.sin(a) > 0 ? 104 : -88)} textAnchor="middle" fontSize={24} fill={c.texto} peso={800}>{movil ? corto : txt}</Txt>
+                <Engranaje x={x} y={y} r={64} t={suelta > 0.5 ? 0 : -t + 0.75} color={col} hueco={c.panel} />
+                <Txt x={x} y={y + (Math.sin(a) > 0 ? 112 : -98)} opacity={1 - suelta} textAnchor="middle" fontSize={24} fill={c.texto} peso={800}>{movil ? corto : txt}</Txt>
               </g>
             );
           })}
           <Pastilla x={600} y={800} texto={suelta > 0.5 ? (movil ? 'Gira en falso' : 'Solo tácticas: gira en falso') : 'Máquina comercial'} fondo={suelta > 0.5 ? ROJO_M : VERDE} tam={26} op={E('conectas', 0.5, 1.2)} />
-          {suelta > 0.5 && Array.from({ length: 4 }, (_, k) => { const p = (t * 0.5 + k / 4) % 1; return <g key={k} opacity={Math.sin(Math.PI * p)}><Persona id={ID} x={lerp(700, 1120, p)} y={600} s={0.35} cuerpo={GRIS} /></g>; })}
+          {suelta > 0.5 && Array.from({ length: 4 }, (_, k) => { const p = (t * 0.5 + k / 4) % 1; return <g key={k} opacity={Math.sin(Math.PI * p)}><Persona id={ID} x={lerp(860, 1130, p)} y={836} s={0.35} cuerpo={GRIS} /></g>; })}
         </g>
       </Toma>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Sobre, Persona, Visto, Sello, Frasco, Moneda3D, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
+import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Sobre, Persona, PersonaCara, Visto, Sello, Frasco, Moneda3D, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
 import type { PropsCE } from './kitBR';
 
 /**
@@ -54,7 +54,7 @@ export const ListaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico 
         })}
         {[0, 1, 2, 3, 4, 5].map((k) => {
           const x = 880 + (k % 3) * 100, y = 380 + Math.floor(k / 3) * 140;
-          return <g key={k} opacity={E('disco', 0.5, 0.6)}><Persona id={ID} x={x} y={y} s={0.42} cuerpo={GRIS} /><Cara id={ID} x={x} y={y - 56} r={14} e={-enojo} enojo={enojo} />{enojo > 0.5 && <g opacity={enojo}><rect x={x + 14} y={y - 110} width={34} height={22} rx={5} fill={ROJO_M} /><Txt x={x + 31} y={y - 93} textAnchor="middle" fontSize={16} fill="#fff" peso={800}>!</Txt></g>}</g>;
+          return <g key={k} opacity={E('disco', 0.5, 0.6)}><PersonaCara id={ID} x={x} y={y} s={0.42} cuerpo={GRIS} e={-enojo} enojo={enojo} />{enojo > 0.5 && <g opacity={enojo}><rect x={x + 14} y={y - 110} width={34} height={22} rx={5} fill={ROJO_M} /><Txt x={x + 31} y={y - 93} textAnchor="middle" fontSize={16} fill="#fff" peso={800}>!</Txt></g>}</g>;
         })}
         <Pastilla x={980} y={240} texto={movil ? '+30 quejas' : 'Más de 30 quejas'} fondo={ROJO_M} tam={24} op={E('disco', 0.5, 2.4)} />
         {t >= m('setenta') && <g opacity={E('setenta')}><rect x={880} y={640} width={220} height={120} rx={16} fill="#334155" /><rect x={900} y={655} width={180} height={50} rx={8} fill="#a3e635" opacity={0.85} /><Txt x={990} y={692} textAnchor="middle" fontSize={34} fill="#1f2937" peso={800}>$70</Txt></g>}
@@ -66,8 +66,7 @@ export const ListaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico 
           const x = 180 + k * 120;
           return (
             <g key={k} opacity={E('permiso', 0.5, k * 0.25)}>
-              <Persona id={ID} x={x} y={720} s={0.6} cuerpo={[NARANJA, ROSA, VIOLETA, TEAL][k]} />
-              <Cara id={ID} x={x} y={640} r={18} e={1} />
+              <PersonaCara id={ID} x={x} y={720} s={0.6} cuerpo={[NARANJA, ROSA, VIOLETA, TEAL][k]} e={1} />
               <rect x={x - 30} y={530} width={60} height={34} rx={10} fill={VERDE} /><Txt x={x} y={555} textAnchor="middle" fontSize={20} fill="#fff" peso={800}>Sí</Txt>
             </g>
           );

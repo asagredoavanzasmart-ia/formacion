@@ -85,17 +85,31 @@ export const BofetadaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estati
         <g transform={`translate(${xT + 260 * empuje} ${curvaY(xT) + 300 * empuje * empuje}) rotate(${50 * empuje})`} opacity={1 - empuje * 0.6}>
           <Tienda x={0} y={0} s={0.55} cierra={empuje} />
         </g>
-        {t >= m('expulsa') && <Mano x={xT - 140 + 90 * empuje} y={curvaY(xT) - 50} s={0.75} op={E('expulsa')} />}
+        {t >= m('expulsa') && <Mano x={xT - 140 + 90 * empuje} y={curvaY(xT) - 50} s={0.75} op={E('expulsa')} empuja={empuje} t={t} />}
       </Toma>
 
       {/* 3 · Tres tipos de tráfico */}
       <Toma t={t} a={m('expuesto')} b={fin + 1} cy={470}>
         <Pastilla x={600} y={200} texto={movil ? 'Una sola fuente: riesgo' : '100 % de una sola fuente: expuesto'} fondo={ROJO_M} tam={26} op={E('expuesto') * (1 - sm(t, m('controlas'), m('controlas') + 0.5))} />
         <Tarjeta x={70} y={240} w={320} h={330} titulo={movil ? 'Pagado' : 'Pagado: lo controlas'} c={c} id={ID} op={E('controlas')} acento={NARANJA} tam={24}>
-          <rect x={60} y={110} width={150} height={36} rx={10} fill="#94a3b8" />
-          <rect x={180} y={110} width={40} height={100} rx={10} fill="#94a3b8" />
-          <g transform={`translate(120 100) rotate(${90 * valvula})`}><rect x={-40} y={-8} width={80} height={16} rx={8} fill={ROJO_M} /><circle r={12} fill="#475569" /></g>
-          {valvula > 0.5 && [0, 1, 2].map((k) => { const p = (t * 1.2 + k / 3) % 1; return <g key={k} transform={`translate(200 ${220 + p * 80})`} opacity={1 - p}><circle r={13} fill={AMBAR} /><Txt x={0} y={6} textAnchor="middle" fontSize={16} fill="#fff" peso={800}>$</Txt></g>; })}
+          {/* Llave de agua en la pared: tú abres la manilla y cada gota es una moneda que pagas */}
+          <rect x={20} y={96} width={22} height={90} rx={6} fill="#cbd5e1" />
+          <rect x={40} y={124} width={50} height={34} fill="#94a3b8" />
+          <rect x={86} y={110} width={92} height={62} rx={18} fill="#94a3b8" />
+          <rect x={86} y={110} width={92} height={18} rx={9} fill="#fff" opacity={0.3} />
+          <path d="M 170 130 H 214 Q 246 130 246 162 V 196" stroke="#94a3b8" strokeWidth={28} fill="none" />
+          <path d="M 170 144 H 212 Q 232 144 232 164 V 196" stroke="#000" strokeWidth={6} fill="none" opacity={0.1} />
+          <rect x={228} y={192} width={36} height={14} rx={5} fill="#64748b" />
+          <rect x={124} y={88} width={16} height={24} rx={4} fill="#64748b" />
+          <g transform={`rotate(${lerp(-8, -72, valvula)} 132 96)`}>
+            <rect x={125} y={30} width={14} height={66} rx={7} fill={ROJO_M} />
+            <circle cx={132} cy={30} r={13} fill={ROJO_M} />
+          </g>
+          <circle cx={132} cy={96} r={11} fill="#475569" />
+          {valvula > 0.5 && [0, 1, 2].map((k) => { const p = (t * 1.1 + k / 3) % 1; return <Moneda3D key={k} x={246} y={222 + p * 66} r={12} giro={Math.cos(t * 6 + k)} op={Math.min(1, (1 - p) * 2)} />; })}
+          <ellipse cx={246} cy={304} rx={46} ry={10} fill={AMBAR} opacity={0.35 * valvula} />
+          <Txt x={92} y={260} textAnchor="middle" fontSize={22} fill={c.tenue} peso={800} opacity={movil ? 0 : valvula}>Cada visita</Txt>
+          <Txt x={92} y={288} textAnchor="middle" fontSize={22} fill={c.tenue} peso={800} opacity={movil ? 0 : valvula}>cuesta</Txt>
         </Tarjeta>
         <Tarjeta x={440} y={240} w={320} h={330} titulo={movil ? 'Ganado' : 'Ganado: lo ganas'} c={c} id={ID} op={E('ganas')} acento={VERDE} tam={24}>
           <path d="M 110 270 H 210 L 196 320 H 124 Z" fill="#b45309" />

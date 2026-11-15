@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, Reloj, Burbuja, Balanza, Pizarra, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
+import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, PersonaCara, Reloj, Burbuja, Balanza, Pizarra, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
 import type { PropsCE } from './kitBR';
 
 /**
@@ -19,7 +19,7 @@ const Mesa: React.FC<{ n: number; e: number; c: ReturnType<typeof tono>; t: numb
   const sillas = Array.from({ length: 10 }, (_, k) => { const a = Math.PI + (k / 9) * Math.PI; return [600 + Math.cos(a) * 330, 560 + Math.sin(a) * 120] as const; });
   return (
     <g>
-      {sillas.map(([x, y], k) => k < n ? <g key={k}><Persona id={ID} x={x} y={y + 10} s={0.5} cuerpo={[AZUL_M, ROSA, VERDE, TEAL, VIOLETA, AMBAR, GRIS, NARANJA, AZUL_M, ROSA][k]} corbata={k % 2 === 0} /><Cara id={ID} x={x} y={y - 57} r={15} e={e + 0.1 * Math.sin(t * 2 + k)} /></g> : null)}
+      {sillas.map(([x, y], k) => k < n ? <g key={k}><PersonaCara id={ID} x={x} y={y + 10} s={0.5} cuerpo={[AZUL_M, ROSA, VERDE, TEAL, VIOLETA, AMBAR, GRIS, NARANJA, AZUL_M, ROSA][k]} corbata={k % 2 === 0} e={e + 0.1 * Math.sin(t * 2 + k)} /></g> : null)}
       <ellipse cx={600} cy={640} rx={300} ry={90} fill="#92400e" />
       <ellipse cx={600} cy={628} rx={300} ry={90} fill="#b45309" />
     </g>
@@ -84,10 +84,15 @@ export const ComiteBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico
       <Toma t={t} a={m('reducir')} b={fin + 1} cy={470}>
         <g opacity={1 - 0.75 * E('challenger')}>
           <Balanza x={380} y={780} inc={inc} c={c} brazo={190} alto={300}
-            izq={<g><path d="M -50 0 L -36 -60 H 36 L 50 0 Z" fill={ROJO_M} transform={`scale(${1 - 0.45 * apoyos})`} /><Txt x={0} y={-20} textAnchor="middle" fontSize={20} fill="#fff" peso={800}>Riesgo</Txt></g>}
+            izq={<g transform={`scale(${1 - 0.3 * apoyos})`}>
+              <rect x={-18} y={-92} width={36} height={24} rx={10} fill="none" stroke={ROJO_M} strokeWidth={9} />
+              <path d="M -66 0 L -48 -74 H 48 L 66 0 Z" fill={ROJO_M} />
+              <path d="M 0 -74 H 48 L 66 0 H 0 Z" fill="#000" opacity={0.12} />
+              {!movil && <Txt x={0} y={-28} textAnchor="middle" fontSize={22} fill="#fff" peso={800}>Riesgo</Txt>}
+            </g>}
             der={<g>{[0, 1, 2].map((k) => <rect key={k} x={-60 + k * 42} y={-40 - (1 - sm(apoyos, k / 3, k / 3 + 0.3)) * 160} width={36} height={40} rx={6} fill={[VERDE, TEAL, AZUL_M][k]} opacity={sm(apoyos, k / 3 - 0.05, k / 3 + 0.1)} />)}</g>} />
           <Pastilla x={380} y={250} texto={movil ? 'Riesgo percibido' : 'Reducir el riesgo percibido'} fondo={ROJO_M} tam={26} op={E('reducir')} />
-          {(['Alcance acotado', 'Casos parecidos', 'Garantías reales'] as const).map((txt, k) => <Pastilla key={txt} x={880} y={290 + k * (movil ? 80 : 60)} texto={txt} fondo={[VERDE, TEAL, AZUL_M][k]} tam={26} op={sm(apoyos, k / 3 - 0.05, k / 3 + 0.1)} />)}
+          {(['Alcance acotado', 'Casos parecidos', 'Garantías reales'] as const).map((txt, k) => <Pastilla key={txt} x={880} y={(movil ? 262 : 290) + k * (movil ? 70 : 60)} texto={txt} fondo={[VERDE, TEAL, AZUL_M][k]} tam={26} op={sm(apoyos, k / 3 - 0.05, k / 3 + 0.1)} />)}
         </g>
         {t >= m('challenger') && (
           <g opacity={E('challenger')}>

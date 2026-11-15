@@ -1,6 +1,6 @@
 import React from 'react';
 import { NARANJA, ROSA, tono, sombra, Txt, lerp } from '../../vc/escenas/kitVC';
-import { PisoTexto } from '../../remotion/comun';
+import { PisoTexto, Persona } from '../../remotion/comun';
 
 /* Dibujos de «Los secretos de Brunson», segunda versión: objetos literales bien construidos (sólidos rellenos, tres
    tonos, sombra suave, sin contornos) para armar cada escena como un escenario continuo. */
@@ -87,11 +87,14 @@ export const Balanza: React.FC<{ x: number; y: number; inc: number; c: C; brazo?
   const r = (inc * Math.PI) / 180;
   const ex = Math.cos(r) * brazo, ey = Math.sin(r) * brazo;
   const col = color ?? c.texto;
+  // Platos proporcionales al brazo: en balanzas chicas no se salen de su lugar.
+  const pw = Math.min(90, brazo * 0.42), ph = Math.min(90, brazo * 0.45), hondo = pw * 0.55;
   const plato = (px: number, py: number, cont: React.ReactNode, k: number) => (
     <g key={k}>
-      <path d={`M ${px} ${py} L ${px - 70} ${py + 90} M ${px} ${py} L ${px + 70} ${py + 90}`} stroke={col} strokeWidth={3} opacity={0.6} />
-      <g transform={`translate(${px} ${py + 90})`}>{cont}</g>
-      <path d={`M ${px - 90} ${py + 90} Q ${px} ${py + 140} ${px + 90} ${py + 90} Z`} fill={col} opacity={0.85} />
+      <path d={`M ${px} ${py} L ${px - pw * 0.78} ${py + ph} M ${px} ${py} L ${px + pw * 0.78} ${py + ph}`} stroke={col} strokeWidth={Math.max(2, pw / 30)} opacity={0.6} />
+      <circle cx={px} cy={py} r={Math.max(4, pw / 12)} fill={col} />
+      <g transform={`translate(${px} ${py + ph})`}>{cont}</g>
+      <path d={`M ${px - pw} ${py + ph} Q ${px} ${py + ph + hondo} ${px + pw} ${py + ph} Z`} fill={col} opacity={0.85} />
     </g>
   );
   return (
@@ -132,16 +135,40 @@ export const Pescador: React.FC<{ id: string; x: number; y: number; hx: number; 
 };
 
 /* Mano abierta que empuja hacia la derecha, con antebrazo. (x, y) es el centro de la palma. */
-export const Mano: React.FC<{ x: number; y: number; s?: number; manga?: string; op?: number }> = ({ x, y, s = 1, manga = '#334155', op = 1 }) => (
-  <g transform={`translate(${x} ${y}) scale(${s})`} opacity={op}>
-    <rect x={-230} y={-34} width={190} height={68} rx={30} fill={manga} />
-    <rect x={-70} y={-40} width={36} height={80} rx={14} fill="#1e293b" />
-    <rect x={-40} y={-46} width={70} height={92} rx={26} fill="#f7c4a0" />
-    {[-36, -12, 12, 34].map((fy, k) => <rect key={k} x={20} y={fy - 9} width={k === 0 || k === 3 ? 40 : 50} height={18} rx={9} fill="#f7c4a0" />)}
-    <rect x={-20} y={-66} width={20} height={44} rx={10} fill="#eab090" transform="rotate(-35 -10 -44)" />
-    <rect x={-40} y={-10} width={70} height={56} rx={26} fill="#000" opacity={0.06} />
-  </g>
-);
+export const Mano: React.FC<{ x: number; y: number; s?: number; manga?: string; op?: number; empuja?: number; t?: number }> = ({ x, y, s = 1, manga = '#334155', op = 1, empuja = 0, t = 0 }) => {
+  const piel = '#f5c09a', sombraP = '#e3a47a';
+  // Dedos hacia arriba (gesto de «alto» que empuja): índice, medio, anular y meñique, de izquierda a derecha.
+  const DEDOS: [number, number][] = [[-22, 58], [-4, 68], [14, 63], [31, 48]];
+  return (
+    <g transform={`translate(${x} ${y}) scale(${s})`} opacity={op}>
+      {/* Manga y puño de la camisa */}
+      <rect x={-250} y={-30} width={200} height={60} rx={26} fill={manga} />
+      <rect x={-250} y={6} width={200} height={24} rx={12} fill="#000" opacity={0.18} />
+      <rect x={-64} y={-36} width={24} height={72} rx={9} fill="#e2e8f0" />
+      <rect x={-64} y={8} width={24} height={28} rx={9} fill="#000" opacity={0.08} />
+      {/* Muñeca y palma */}
+      <rect x={-44} y={-22} width={28} height={50} fill={piel} />
+      <path d="M -28 -40 Q -28 -54 -12 -54 H 30 Q 44 -54 44 -40 V 30 Q 44 54 16 56 H -4 Q -28 54 -28 30 Z" fill={piel} />
+      {/* Dedos con uñas */}
+      {DEDOS.map(([fx, h], k) => (
+        <g key={k}>
+          <rect x={fx - 7.5} y={-48 - h} width={15} height={h + 12} rx={7.5} fill={piel} />
+          <rect x={fx - 5} y={-46 - h} width={10} height={11} rx={5} fill="#fde4d2" />
+          <path d={`M ${fx - 6} ${-48 - h * 0.45} h 12`} stroke={sombraP} strokeWidth={2} strokeLinecap="round" opacity={0.7} />
+        </g>
+      ))}
+      {/* Pulgar abierto hacia la izquierda */}
+      <path d="M -24 34 Q -42 32 -50 12 L -62 -14 Q -66 -27 -55 -31 Q -45 -34 -40 -23 L -26 2 Z" fill={piel} />
+      <rect x={-62} y={-28} width={10} height={10} rx={5} fill="#fde4d2" transform="rotate(-25 -57 -23)" />
+      {/* Sombra lateral de la palma */}
+      <path d="M 18 -54 H 30 Q 44 -54 44 -40 V 30 Q 44 54 16 56 Z" fill={sombraP} opacity={0.45} />
+      {/* Líneas de empuje */}
+      {empuja > 0.01 && [0, 1, 2].map((k) => (
+        <path key={k} d={`M ${62 + k * 14 + 4 * Math.sin(t * 8 + k)} ${-44 + k * 4} q 12 44 0 88`} stroke={sombraP} strokeWidth={5} fill="none" strokeLinecap="round" opacity={empuja * (0.8 - k * 0.22)} />
+      ))}
+    </g>
+  );
+};
 
 /* Avión visto desde arriba, nariz hacia arriba. `agujeros` son puntos [x, y] relativos con impactos. */
 export const Avion: React.FC<{ x: number; y: number; s?: number; color?: string; agujeros?: [number, number][]; agU?: number; op?: number }> = ({ x, y, s = 1, color = '#94a3b8', agujeros = [], agU = 1, op = 1 }) => (
@@ -231,6 +258,17 @@ export const Cara: React.FC<{ id: string; x: number; y: number; r?: number; e?: 
     <circle cx={-14} cy={-6} r={4.5} fill="#3b2a20" /><circle cx={14} cy={-6} r={4.5} fill="#3b2a20" />
     <path d={`M -24 ${-20 - 4 * e} L -6 ${-18 + 8 * enojo} M 24 ${-20 - 4 * e} L 6 ${-18 + 8 * enojo}`} stroke="#3b2a20" strokeWidth={4} strokeLinecap="round" />
     <path d={`M -16 18 Q 0 ${18 + 16 * e} 16 18`} stroke="#3b2a20" strokeWidth={4.5} fill="none" strokeLinecap="round" />
+  </g>
+);
+
+/* Persona con cara expresiva: la emoción se dibuja sobre su propia cabeza (nunca una cara suelta flotando). */
+export const PersonaCara: React.FC<{ id: string; x: number; y: number; s?: number; cuerpo?: string; pelo?: string; corbata?: boolean; e?: number; enojo?: number }> = ({ id, x, y, s = 1, cuerpo, pelo = '#2b1a12', corbata = false, e = 0, enojo = 0 }) => (
+  <g>
+    <Persona id={id} x={x} y={y} s={s} cuerpo={cuerpo} pelo={pelo} corbata={corbata} />
+    <Cara id={id} x={x} y={y - 134 * s} r={31 * s} e={e} enojo={enojo} />
+    <g transform={`translate(${x} ${y}) scale(${s})`}>
+      <path d="M -32 -138 Q -31 -173 0 -171 Q 31 -173 32 -138 Q 18 -158 0 -157 Q -18 -158 -32 -138 Z" fill={pelo} />
+    </g>
   </g>
 );
 

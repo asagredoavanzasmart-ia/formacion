@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, Termometro, Hoja, Sobre, Gente, Calendario, Megafono, Regalo, Corazon, Bombilla, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS } from './kitBR';
+import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, PersonaCara, Termometro, Hoja, Sobre, Gente, Calendario, Megafono, Regalo, Corazon, Bombilla, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS } from './kitBR';
 import type { PropsCE } from './kitBR';
 
 /**
@@ -126,12 +126,11 @@ export const TemperaturaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, est
           const juicio = sm(t, m('calidofrio') + 1.6, m('calidofrio') + 2.6);
           return (
             <g key={k} opacity={Math.min(1, u)}>
-              <Persona id={ID} x={x} y={720} s={0.75} cuerpo={col} />
+              <PersonaCara id={ID} x={x} y={720} s={0.75} cuerpo={col} e={juicio * (k === 0 ? 1 : -1)} enojo={k === 1 ? juicio : 0} />
               <rect x={x - 90} y={300} width={180} height={110} rx={14} fill={col} />
               <Txt x={x} y={345} textAnchor="middle" fontSize={24} fill="#fff" peso={800}>«Es</Txt>
               <Txt x={x} y={385} textAnchor="middle" fontSize={30} fill="#fff" peso={800}>{k === 0 ? 'cálido»' : 'frío»'}</Txt>
               <Conector x1={x + (k === 0 ? 70 : -70)} y1={560} x2={600 + (k === 0 ? -80 : 80)} y2={440} u={u} t={t} color={col} puntos={2} curva={k === 0 ? 0.15 : -0.15} />
-              <Cara id={ID} x={x} y={500} r={36} e={juicio * (k === 0 ? 1 : -1)} enojo={k === 1 ? juicio : 0} />
               <Estrellas x={x} y={790} n={k === 0 ? 5 : 2} u={juicio} />
             </g>
           );

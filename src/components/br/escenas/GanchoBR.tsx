@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, Libro, Regalo, Corazon, Sello, Engranaje, Burbuja, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
+import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, PersonaCara, Libro, Regalo, Corazon, Sello, Engranaje, Burbuja, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
 import type { PropsCE } from './kitBR';
 
 /**
@@ -80,7 +80,7 @@ export const GanchoBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico
         </g>
         {t >= m('madres') && (
           <g opacity={E('madres')}>
-            {[0, 1, 2, 3, 4].map((k) => { const x = 560 + k * 110; return <g key={k}><Persona id={ID} x={x} y={720} s={0.55} cuerpo={[VIOLETA, AZUL_M, AMBAR, TEAL, NARANJA][k]} pelo={k % 2 ? '#7c2d12' : '#2b1a12'} /><Cara id={ID} x={x} y={630} r={16} e={1} /></g>; })}
+            {[0, 1, 2, 3, 4].map((k) => { const x = 560 + k * 110; return <g key={k}><PersonaCara id={ID} x={x} y={720} s={0.55} cuerpo={[VIOLETA, AZUL_M, AMBAR, TEAL, NARANJA][k]} pelo={k % 2 ? '#7c2d12' : '#2b1a12'} e={1} /></g>; })}
             {[0, 1, 2].map((k) => { const p = (t * 0.7 + k / 3) % 1; return <Corazon key={k} x={620 + k * 160} y={560 - p * 90} s={0.6} color={ROSA} op={Math.sin(Math.PI * p)} />; })}
             <Pastilla x={780} y={790} texto={movil ? '«Me pasó a mí»' : 'Muchas madres se reconocían'} fondo={VIOLETA} tam={24} />
           </g>

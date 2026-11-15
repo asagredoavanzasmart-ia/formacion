@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Regalo, EtiquetaPrecio, Sello, Persona, Burbuja, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
+import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Regalo, EtiquetaPrecio, Sello, Persona, PersonaCara, Burbuja, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
 import type { PropsCE } from './kitBR';
 
 /**
@@ -46,12 +46,11 @@ export const PilaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico =
         </Tarjeta>
         <Conector x1={560} y1={360} x2={420} y2={400} u={E('ultimo')} t={t} color={AMBAR} curva={0.2} puntos={2} />
         <g opacity={E('ultimo')}>
-          <Persona id={ID} x={250} y={720} s={0.85} cuerpo={TEAL} />
+          <PersonaCara id={ID} x={250} y={720} s={0.85} cuerpo={TEAL} e={-0.8} />
           <circle cx={290} cy={400} r={120} fill={c.panel} style={sombra(0.14, 6, 12)} />
           <circle cx={262} cy={538} r={14} fill={c.panel} /><circle cx={256} cy={566} r={8} fill={c.panel} />
           <Regalo x={240} y={420} s={0.45} color={AMBAR} />
           <EtiquetaPrecio x={330} y={390} texto="$97" color={ROJO_M} s={1.1} />
-          <Cara id={ID} x={250} y={606} r={27} e={-0.8} />
         </g>
         <Pastilla x={260} y={790} texto={movil ? 'Bono vs. precio' : 'Un bono pequeño frente al precio'} fondo={AMBAR} tam={24} op={E('bono')} />
       </Toma>
@@ -99,7 +98,7 @@ export const PilaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico =
         {t >= m('condicionales') && (
           <g opacity={E('condicionales')}>
             <Burbuja x={150} y={620} w={movil ? 400 : 520} texto={movil ? "«¿Valdría $97?»" : "«Aunque solo hiciera esto, ¿valdría $97?»"} u={sm(t, m('condicionales'), m('condicionales') + 1.4)} c={c} id={ID} tam={24} />
-            {[0, 1, 2].map((k) => <Cara key={k} id={ID} x={200 + k * 110} y={700 + 6 * Math.sin(t * 5 + k)} r={36} e={1} />)}
+            {[0, 1, 2].map((k) => <g key={k} transform={`translate(0 ${-6 * Math.abs(Math.sin(t * 4 + k))})`}><PersonaCara id={ID} x={200 + k * 120} y={810} s={0.55} cuerpo={[NARANJA, VIOLETA, TEAL][k]} e={1} /></g>)}
           </g>
         )}
         {t >= m('cuarenta') && (

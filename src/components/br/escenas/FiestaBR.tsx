@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Persona, Burbuja, Visto, Cruz, Corazon, Casa, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
+import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Persona, PersonaCara, Burbuja, Visto, Cruz, Corazon, Casa, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
 import type { PropsCE } from './kitBR';
 
 /**
@@ -55,7 +55,7 @@ export const FiestaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico
             <Burbuja x={200} y={460} w={movil ? 330 : 360} texto="«¡Compra mi curso!»" u={sm(t, m('evitan') - 0.3, m('evitan') + 0.8)} c={c} id={ID} tam={26} />
             {[0, 1, 2].map((k) => {
               const x = 300 + (k - 1) * lerp(110, 230, aleja), y = lerp(720, 770, aleja) + (k === 1 ? 30 : 0);
-              return <g key={k}><Persona id={ID} x={x} y={y} s={0.45} cuerpo={[ROSA, AZUL_M, AMBAR][k]} /><Cara id={ID} x={x} y={y - 60} r={14} e={-aleja} /></g>;
+              return <g key={k}><PersonaCara id={ID} x={x} y={y} s={0.45} cuerpo={[ROSA, AZUL_M, AMBAR][k]} e={-aleja} /></g>;
             })}
           </g>
         )}
@@ -65,7 +65,7 @@ export const FiestaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico
             <Burbuja x={780} y={460} w={movil ? 330 : 340} texto="«Te presento a…»" u={sm(t, m('acercan') - 0.3, m('acercan') + 0.8)} c={c} id={ID} tam={26} />
             {[0, 1, 2, 3].map((k) => {
               const x = 880 + (k - 1.5) * lerp(250, 110, acerca), y = lerp(790, 740, acerca);
-              return <g key={k}><Persona id={ID} x={x} y={y} s={0.45} cuerpo={[ROSA, AZUL_M, AMBAR, VIOLETA][k]} /><Cara id={ID} x={x} y={y - 60} r={14} e={acerca} /></g>;
+              return <g key={k}><PersonaCara id={ID} x={x} y={y} s={0.45} cuerpo={[ROSA, AZUL_M, AMBAR, VIOLETA][k]} e={acerca} /></g>;
             })}
             {acerca > 0.8 && [0, 1].map((k) => { const p = (t * 0.6 + k / 2) % 1; return <Corazon key={k} x={830 + k * 100} y={600 - p * 80} s={0.5} color={ROSA} op={Math.sin(Math.PI * p)} />; })}
           </g>

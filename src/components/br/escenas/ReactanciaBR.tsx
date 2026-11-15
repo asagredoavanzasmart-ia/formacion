@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, Telefono, Reloj, Sello, Cruz, Visto, Globo, Balanza, Mano, Pizarra, Cubo, Edificio, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
+import { useEscenaBR, Lienzo, Toma, Rotulo, Txt, Cifra, Persona, PersonaCara, Telefono, Reloj, Sello, Cruz, Visto, Globo, Balanza, Mano, Pizarra, Cubo, Edificio, Tarjeta, Conector, Pastilla, Cara, pop, sm, lerp, tono, useMovil, sombra, NARANJA, ROSA, AZUL_M, VERDE, ROJO_M, AMBAR, VIOLETA, GRIS, TEAL } from './kitBR';
 import type { PropsCE } from './kitBR';
 
 /**
@@ -68,13 +68,29 @@ export const ReactanciaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, esta
       {/* 3 · Reactancia */}
       <Toma t={t} a={m('brehm')} b={m('ensenanza')} cy={470}>
         <g opacity={E('brehm')}>
-          <Mano x={lerp(220, 340, empuje) - 40 * reacciona} y={600} s={0.9} />
-          <g transform={`rotate(${lean} 470 680)`}>
-            <Persona id={ID} x={470} y={680} s={0.95} cuerpo={AZUL_M} corbata />
+          <rect x={90} y={700} width={540} height={10} rx={5} fill={c.apagado} />
+          <Mano x={lerp(250, 424, empuje) - 70 * reacciona} y={640} s={0.72} empuja={empuje * (1 - reacciona)} t={t} />
+          <g transform={`rotate(${lean} 500 698)`}>
+            <Persona id={ID} x={500} y={698} s={0.95} cuerpo={AZUL_M} corbata />
           </g>
-          <Cara id={ID} x={470 + Math.sin((lean * Math.PI) / 180) * 128} y={680 - 128 * Math.cos((lean * Math.PI) / 180)} r={30} e={-reacciona} enojo={reacciona} />
-          {reacciona > 0 && [0, 1, 2].map((k) => <path key={k} d={`M ${400 - k * 26} ${470 - k * 10} l -16 -16`} stroke={ROJO_M} strokeWidth={6} strokeLinecap="round" opacity={reacciona} />)}
-          <Pastilla x={430} y={770} texto="Reacciona en contra" fondo={ROJO_M} tam={26} op={reacciona} />
+          {(() => {
+            const hx = 500 + Math.sin((lean * Math.PI) / 180) * 136, hy = 698 - 136 * Math.cos((lean * Math.PI) / 180);
+            return (
+              <g>
+                <Cara id={ID} x={hx} y={hy} r={30} e={-reacciona} enojo={reacciona} />
+                {/* Símbolo de enojo junto a la cabeza */}
+                {reacciona > 0.05 && <g transform={`translate(${hx + 44} ${hy - 34}) scale(${0.8 + 0.12 * Math.sin(t * 8)})`} opacity={reacciona}>
+                  {[0, 90, 180, 270].map((a) => <path key={a} d="M 5 -14 Q 5 -5 14 -5" stroke={ROJO_M} strokeWidth={5} fill="none" strokeLinecap="round" transform={`rotate(${a})`} />)}
+                </g>}
+              </g>
+            );
+          })()}
+          {/* El comprador empuja de vuelta: flecha hacia la mano */}
+          {reacciona > 0.05 && <g opacity={reacciona}>
+            <path d="M 300 560 H 230" stroke={ROJO_M} strokeWidth={8} strokeLinecap="round" />
+            <path d="M 236 544 L 214 560 L 236 576 Z" fill={ROJO_M} />
+          </g>}
+          <Pastilla x={450} y={790} texto="Reacciona en contra" fondo={ROJO_M} tam={26} op={reacciona} />
         </g>
         <Tarjeta x={700} y={200} w={420} h={170} titulo={movil ? undefined : 'Reloj de cuenta regresiva'} c={c} id={ID} op={E('reloj')} acento={ROJO_M} tam={22}>
           <Reloj x={90} y={105} r={40} t={t} vel={6} aro={ROJO_M} />
@@ -88,7 +104,7 @@ export const ReactanciaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, esta
           <rect x={50} y={65} width={150} height={92} rx={12} fill={VIOLETA} /><rect x={50} y={88} width={150} height={16} fill="#1f2937" opacity={0.5} /><rect x={66} y={124} width={56} height={12} rx={4} fill="#fff" opacity={0.7} />
           <Txt x={300} y={120} textAnchor="middle" fontSize={26} fill={c.texto} peso={800} opacity={E('credito')}>{movil ? 'Crédito' : 'Crédito bancario'}</Txt>
         </Tarjeta>
-        {['reloj', 'quince', 'guion'].map((n, k) => <Conector key={n} x1={700} y1={285 + k * 190} x2={540} y2={520} u={E(n)} t={t} color={[ROJO_M, AMBAR, VIOLETA][k]} puntos={2} grosor={4} />)}
+        {['reloj', 'quince', 'guion'].map((n, k) => <Conector key={n} x1={700} y1={285 + k * 190} x2={560} y2={560} u={E(n)} t={t} color={[ROJO_M, AMBAR, VIOLETA][k]} puntos={2} grosor={4} />)}
       </Toma>
 
       {/* 4 · Enseñar y diagnosticar */}
@@ -96,8 +112,7 @@ export const ReactanciaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, esta
         <Pizarra x={300} y={220} w={600} h={340} u={sm(t, m('ensenanza'), m('ensenanza') + 1.6)} isDark={isDark} titulo={movil ? 'Diagnóstico' : 'Enseñanza y diagnóstico'} op={E('ensenanza')} />
         <g opacity={E('ensenanza', 0.5, 0.4)}>
           <Persona id={ID} x={220} y={720} s={0.85} cuerpo={NARANJA} />
-          <Persona id={ID} x={980} y={720} s={0.85} cuerpo={AZUL_M} corbata />
-          <Cara id={ID} x={980} y={605} r={28} e={1} />
+          <PersonaCara id={ID} x={980} y={720} s={0.85} cuerpo={AZUL_M} corbata e={1} />
           <Conector x1={260} y1={600} x2={360} y2={500} u={1} t={t} color={NARANJA} puntos={2} grosor={4} />
           <Conector x1={940} y1={600} x2={840} y2={500} u={1} t={t} color={AZUL_M} puntos={2} grosor={4} />
         </g>

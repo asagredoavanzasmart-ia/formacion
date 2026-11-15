@@ -93,25 +93,29 @@ export const LimitesBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatic
 
       {/* 3 · Herramienta y riel */}
       <Toma t={t} a={m('herramienta')} b={fin + 1} cy={470}>
-        <g opacity={E('herramienta') * (1 - 0.6 * rail)}>
-          <g transform="translate(260 400) rotate(-30)">
-            <rect x={-18} y={-10} width={36} height={190} rx={14} fill={GRIS} />
-            <path d="M -50 -60 a 50 50 0 1 0 100 0 l -22 0 l 0 30 l -56 0 l 0 -30 Z" fill={GRIS} />
+        <g opacity={E('herramienta')}>
+          {/* Llave de herramientas con un embudo grabado: la herramienta de adquisición */}
+          <g transform="translate(300 420) rotate(-35)">
+            <rect x={-20} y={-30} width={40} height={230} rx={18} fill="#64748b" />
+            <rect x={-20} y={-30} width={14} height={230} rx={7} fill="#fff" opacity={0.18} />
+            <path d="M -62 -64 A 66 66 0 1 0 62 -64 L 30 -64 L 30 -20 L -30 -20 L -30 -64 Z" fill="#64748b" />
+            <path d="M -62 -64 A 66 66 0 0 0 -40 -14 L -30 -20 L -30 -64 Z" fill="#fff" opacity={0.15} />
+            <path d="M -18 70 H 18 L 6 100 V 130 H -6 V 100 Z" fill={NARANJA} />
           </g>
-          <Txt x={270} y={240} textAnchor="middle" fontSize={28} fill={c.texto} peso={800}>Adquisición</Txt>
-          <Txt x={560} y={430} textAnchor="middle" fontSize={70} fill={c.tenue} peso={800}>≠</Txt>
-          <Edificio x={850} y={560} w={240} h={280} color={AZUL_M} />
-          <Txt x={850} y={240} textAnchor="middle" fontSize={28} fill={c.texto} peso={800}>{movil ? 'Negocio' : 'Negocio completo'}</Txt>
+          <Txt x={300} y={240} textAnchor="middle" fontSize={28} fill={c.texto} peso={800}>{movil ? 'Adquisición' : 'Herramienta de adquisición'}</Txt>
+          <Txt x={600} y={440} textAnchor="middle" fontSize={70} fill={c.tenue} peso={800}>≠</Txt>
+          <Edificio x={880} y={560} w={190} h={230} color={AZUL_M} />
+          <Txt x={880} y={240} textAnchor="middle" fontSize={28} fill={c.texto} peso={800}>{movil ? 'Negocio' : 'Negocio completo'}</Txt>
         </g>
         {rail > 0 && (
           <g>
-            <rect x={120} y={690} width={960} height={20} rx={10} fill={c.apagado} />
-            <rect x={120} y={690} width={480 * rail} height={20} rx={10} fill={VERDE} />
-            <rect x={600} y={690} width={480 * rail2} height={20} rx={10} fill={AMBAR} />
-            <g opacity={rail}><Cubo x={200} y={660} l={40} color={VERDE} /><Persona id={ID} x={290} y={680} s={0.4} cuerpo={VERDE} /></g>
-            <g opacity={rail2}><Cubo x={830} y={660} l={70} color={AMBAR} />{[0, 1, 2, 3, 4].map((j) => <Persona key={j} id={ID} x={910 + j * 30} y={680} s={0.32} cuerpo={AMBAR} />)}<Calendario x={1080} y={600} s={0.35} marcados={12} /></g>
-            <Pastilla x={330} y={770} texto={movil ? 'Rápida y barata' : 'Rápida · individual · barata'} fondo={VERDE} tam={24} op={rail} />
-            <Pastilla x={880} y={770} texto={movil ? 'Cara, de comité' : 'Cara · comité · años'} fondo={AMBAR} tam={24} op={rail2} />
+            <rect x={120} y={720} width={960} height={20} rx={10} fill={c.apagado} />
+            <rect x={120} y={720} width={480 * rail} height={20} rx={10} fill={VERDE} />
+            <rect x={600} y={720} width={480 * rail2} height={20} rx={10} fill={AMBAR} />
+            <g opacity={rail}><Cubo x={220} y={690} l={36} color={VERDE} /><Persona id={ID} x={300} y={712} s={0.4} cuerpo={VERDE} /></g>
+            <g opacity={rail2}><Cubo x={740} y={696} l={50} color={AMBAR} />{[0, 1, 2, 3, 4].map((j) => <Persona key={j} id={ID} x={850 + j * 34} y={712} s={0.34} cuerpo={AMBAR} />)}<Calendario x={1060} y={668} s={0.3} marcados={12} /></g>
+            <Pastilla x={360} y={800} texto={movil ? 'Rápida y barata' : 'Rápida · individual · barata'} fondo={VERDE} tam={24} op={rail} />
+            <Pastilla x={880} y={800} texto={movil ? 'Cara, de comité' : 'Cara · comité · años'} fondo={AMBAR} tam={24} op={rail2} />
           </g>
         )}
       </Toma>

@@ -47,8 +47,35 @@ export const MarcaBR: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico 
       {/* 1 · Dos mecánicas y el reparto */}
       <Toma t={t} a={0} b={m('dawes')} cy={470}>
         <g opacity={E('binet') * (1 - E('dos'))}>
-          {Array.from({ length: 4 }, (_, k) => <g key={k} transform={`translate(${380 + k * 120} 330)`}><rect x={-50} y={0} width={100} height={260} rx={10} fill="#94a3b8" /><rect x={-40} y={20 + (k % 2) * 10} width={80} height={60} rx={6} fill="#cbd5e1" /><rect x={-40} y={100} width={80} height={60} rx={6} fill="#cbd5e1" /><rect x={-40} y={180} width={80} height={60} rx={6} fill="#cbd5e1" /></g>)}
-          <Cifra x={560} y={280} valor={1000} u={sm(t, m('mil'), m('mil') + 1.2)} pre="≈ " suf=" casos" tam={46} color={AZUL_M} miles />
+          {/* Los dos investigadores revisan el archivo de casos */}
+          <rect x={150} y={700} width={900} height={12} rx={6} fill={c.apagado} />
+          <Persona id={ID} x={230} y={700} s={0.95} cuerpo={VIOLETA} />
+          <Persona id={ID} x={970} y={700} s={0.95} cuerpo={NARANJA} corbata />
+          <Pastilla x={230} y={760} texto="Binet" fondo={VIOLETA} tam={22} />
+          <Pastilla x={970} y={760} texto="Field" fondo={NARANJA} tam={22} />
+          {Array.from({ length: 5 }, (_, k) => {
+            const x = 390 + k * 105;
+            return (
+              <g key={k}>
+                <rect x={x - 48} y={400} width={96} height={300} rx={10} fill="#64748b" />
+                <rect x={x + 18} y={400} width={30} height={300} rx={8} fill="#000" opacity={0.12} />
+                {[0, 1, 2].map((j) => {
+                  // Los cajones se abren por turno y de cada uno salta una carpeta.
+                  const fase = ((t * 0.5 + k * 0.37 + j * 0.23) % 1);
+                  const abre = Math.sin(Math.PI * sm(fase, 0, 0.5)) * 18;
+                  const carpeta = sm(fase, 0.1, 0.45) * (1 - sm(fase, 0.45, 0.6));
+                  return (
+                    <g key={j}>
+                      {carpeta > 0.01 && <rect x={x - 26} y={414 + j * 94 - 40 * carpeta} width={52} height={36} rx={4} fill={[AMBAR, ROSA, AZUL_M][(k + j) % 3]} opacity={carpeta} />}
+                      <rect x={x - 40} y={414 + j * 94 + abre * 0.2} width={80} height={80} rx={6} fill="#cbd5e1" transform={`translate(0 ${abre * 0.15})`} />
+                      <rect x={x - 16} y={446 + j * 94} width={32} height={8} rx={4} fill="#64748b" />
+                    </g>
+                  );
+                })}
+              </g>
+            );
+          })}
+          {t >= m('mil') - 0.05 && <Cifra x={600} y={340} valor={1000} u={sm(t, m('mil'), m('mil') + 1.2)} pre="≈ " suf=" casos" tam={52} color={AZUL_M} miles />}
         </g>
         <Tarjeta x={60} y={210} w={600} h={470} titulo={movil ? 'Ventas en el tiempo' : 'Ventas a lo largo del tiempo'} c={c} id={ID} op={E('dos')}>
           <path d={`M 40 ${H0} H ${40 + W}`} stroke={c.apagado} strokeWidth={4} transform="translate(0 30)" />
