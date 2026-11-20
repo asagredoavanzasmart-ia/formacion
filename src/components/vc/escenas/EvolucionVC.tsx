@@ -34,6 +34,37 @@ const Corona: React.FC<{ x: number; y: number; s?: number; op?: number }> = ({ x
     </g>
   );
 
+/* Etiqueta colgante que dice de qué ejemplo se trata: una pestaña con ojal, el tipo arriba y el caso abajo.
+   Se ancla en la esquina inferior izquierda del escenario, que queda libre en todas las tomas. */
+const Etiqueta: React.FC<{ tipo: string; caso: string; op: number; c: ReturnType<typeof tono>; movil: boolean; id: string }> = ({ tipo, caso, op, c, movil, id }) => {
+  if (op < 0.01) return null;
+  if (movil) {
+    // En móvil, una sola línea bajo los nombres de los nodos: «Ejemplo: Condominio».
+    const txt = `Ejemplo: ${caso}`;
+    const w = txt.length * 44 * 0.55 + 70, h = 66, x = 40, y = 784;
+    return (
+      <g opacity={op} transform={`translate(${x} ${y - 10 * (1 - op)})`}>
+        <path d={`M 0 ${h / 2} L 22 0 H ${w - 14} Q ${w} 0 ${w} 14 V ${h - 14} Q ${w} ${h} ${w - 14} ${h} H 22 Z`} fill={c.panel} style={sombra(c.sombra, 4, 12)} />
+        <path d={`M 0 ${h / 2} L 22 0 V ${h} Z`} fill={`url(#${id}-marca)`} />
+        <Txt x={38} y={47} fontSize={44} fill={c.texto}>{txt}</Txt>
+      </g>
+    );
+  }
+  const tT = 17, tC = 30;
+  const w = Math.max(tipo.length * tT * 0.62, caso.length * tC * 0.56) + 92;
+  const h = movil ? 128 : 92;
+  const x = 40, y = movil ? 720 : 748;
+  return (
+    <g opacity={op} transform={`translate(${x} ${y - 12 * (1 - op)})`}>
+      <path d={`M 0 ${h / 2} L 26 0 H ${w - 16} Q ${w} 0 ${w} 16 V ${h - 16} Q ${w} ${h} ${w - 16} ${h} H 26 Z`} fill={c.panel} style={sombra(c.sombra, 4, 12)} />
+      <path d={`M 0 ${h / 2} L 26 0 V ${h} Z`} fill={`url(#${id}-marca)`} />
+      <circle cx={16} cy={h / 2} r={5} fill={c.panel} />
+      <Txt x={46} y={movil ? 50 : 34} fontSize={tT} fill={c.tenue} style={{ letterSpacing: movil ? 1 : 2.5 }}>{tipo.toUpperCase()}</Txt>
+      <Txt x={46} y={movil ? 106 : 72} fontSize={tC} fill={c.texto}>{caso}</Txt>
+    </g>
+  );
+};
+
 export const EvolucionVC: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estatico = false }) => {
   const { t, fin, m, vP, fondo } = useEscenaVC(P, marcas, estatico);
   const c = tono(isDark);
@@ -406,6 +437,18 @@ export const EvolucionVC: React.FC<PropsCE> = ({ isDark, marcas, pregunta, estat
           );
         })()}
       </Toma>
+
+      {/* Etiqueta del ejemplo en curso: aparece cuando se nombra el caso y se va con su toma */}
+      {([
+        [m('pareja'), a0, 'Ejemplo', movil ? 'Pareja compra casa' : 'Pareja que compra una casa'],
+        [m('ejecutivo'), b0, 'Ejemplo de empresa', 'Empresa mediana'],
+        [b0, c0, 'Ejemplo de empresa', 'Condominio'],
+        [c0, d0, 'Ejemplo de empresa', movil ? 'Dos socios' : 'Empresa de dos socios'],
+        // En móvil se retira cuando entra el letrero de Comercial y Operaciones, que ocupa la misma franja.
+        [d0, movil ? m('comercial') : e0, 'Ejemplo de empresa', 'Empresa grande'],
+      ] as [number, number, string, string][]).map(([a, b, tipo, caso]) => t >= a - 0.05 && t < b + 0.4 && (
+        <Etiqueta key={caso} tipo={tipo} caso={caso} op={ventana(t, a, b)} c={c} movil={movil} id={ID} />
+      ))}
 
       {/* el vendedor queda en escena en todos los casos */}
       <Nodo x={V[0]} y={V[1]} nombre={vend.n} corto={'c' in vend ? vend.c : undefined} figura={vend.f} color={NARANJA} op={opVend} isDark={D} id={ID} />
